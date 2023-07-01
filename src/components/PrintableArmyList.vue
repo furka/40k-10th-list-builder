@@ -103,7 +103,7 @@ function unitLine(unit) {
   font-family: monospace;
   font-size: 16px;
   max-height: 95svh;
-  max-width: 80vw;
+  max-width: calc(100vw - 16px);
   overflow: hidden;
   padding: 32px;
   position: relative;

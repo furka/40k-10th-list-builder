@@ -96,6 +96,10 @@ onUnmounted(() => {
   position: relative;
   overflow: hidden;
 
+  @media screen and (max-width: 754px) {
+    --toolbar-height: 120px;
+  }
+
   &__toolbar {
     height: var(--toolbar-height);
   }

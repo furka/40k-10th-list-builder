@@ -83,12 +83,41 @@ const detachments = computed(() => {
   justify-content: space-between;
   color: white;
 
+  --font-size: 28px;
+
+  @media screen and (max-width: 1024px) {
+    --font-size: 16px;
+  }
+  @media screen and (max-width: 754px) {
+    flex-wrap: wrap;
+  }
+
+  input,
+  select {
+    background-color: transparent;
+    border-bottom: 2px dashed white;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    color: currentcolor;
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+
+    option {
+      color: initial;
+    }
+
+    &::placeholder {
+      color: #aaa;
+    }
+  }
+
   &__group {
     align-items: center;
     display: flex;
     flex-direction: row;
     flex-shrink: 0;
-    font-size: 28px;
+    font-size: var(--font-size);
     justify-content: flex-end;
     margin-inline: 8px;
   }
@@ -97,6 +126,11 @@ const detachments = computed(() => {
     display: flex;
     justify-content: space-between;
     width: 230px;
+    font-size: 28px;
+
+    input {
+      font-size: 28px;
+    }
 
     .over {
       color: #ff0000;
@@ -111,29 +145,9 @@ const detachments = computed(() => {
     width: 3em;
   }
 
-  input,
-  select {
-    background-color: transparent;
-    border-bottom: 2px dashed white;
-    border-left: none;
-    border-right: none;
-    border-top: none;
-    color: currentcolor;
-    font-family: var(--font-family);
-    font-size: 28px;
-
-    option {
-      color: initial;
-    }
-
-    &::placeholder {
-      color: #aaa;
-    }
-  }
-
   input[type="checkbox"] {
-    width: 24px;
-    height: 24px;
+    width: 1em;
+    height: 1em;
   }
 
   label {
