@@ -87,6 +87,7 @@ const detachments = computed(() => {
 
   @media screen and (max-width: 1024px) {
     --font-size: 16px;
+    line-height: 50px;
   }
   @media screen and (max-width: 754px) {
     flex-wrap: wrap;
@@ -125,11 +126,9 @@ const detachments = computed(() => {
   &__points {
     display: flex;
     justify-content: space-between;
-    width: 230px;
-    font-size: 28px;
 
-    input {
-      font-size: 28px;
+    label {
+      margin-inline-start: 32px;
     }
 
     .over {

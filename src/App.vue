@@ -24,7 +24,7 @@ const appData = reactive({
   detachment: restore("detachment") || "Awakened Dynasty",
   codexFilter: "",
   armyName: "",
-  editCollection: restore("editCollection") || false,
+  editCollection: false,
   appHeight: window.innerHeight,
   appWidth: window.innerWidth,
   compendium: FACTIONS,
@@ -52,7 +52,6 @@ watch(appData, () => {
   save("maxPoints");
   save("faction");
   save("detachment");
-  save("editCollection");
 });
 
 watch(
@@ -95,10 +94,6 @@ onUnmounted(() => {
   font-family: var(--font-family);
   position: relative;
   overflow: hidden;
-
-  @media screen and (max-width: 754px) {
-    --toolbar-height: 120px;
-  }
 
   &__toolbar {
     height: var(--toolbar-height);
