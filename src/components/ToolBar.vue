@@ -77,21 +77,12 @@ const detachments = computed(() => {
 
 <style scoped lang="scss">
 .toolbar {
+  --font-size: 28px;
   background-color: #333;
+  color: white;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  color: white;
-
-  --font-size: 28px;
-
-  @media screen and (max-width: 1024px) {
-    --font-size: 16px;
-    line-height: 50px;
-  }
-  @media screen and (max-width: 754px) {
-    flex-wrap: wrap;
-  }
 
   input,
   select {
