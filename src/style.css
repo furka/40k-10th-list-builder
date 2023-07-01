@@ -1,13 +1,5 @@
-html {
-  overflow: hidden;
-  width: 100%;
-}
 body {
   background-color: #fff;
   padding: 0;
   margin: 0;
-  height: 100%;
-  position: fixed;
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
 }
