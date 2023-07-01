@@ -103,7 +103,7 @@ onUnmounted(() => {
   &__body {
     display: flex;
     justify-content: center;
-    height: calc(100vh - var(--toolbar-height));
+    height: calc(100svh - var(--toolbar-height));
   }
 
   .version {
