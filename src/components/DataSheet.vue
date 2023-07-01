@@ -13,6 +13,8 @@ function onCollectionBlur(collection) {
   collection.owned = Math.min(999, Math.max(0, Number(collection.owned)));
 }
 
+// test
+
 if (!props.dataSheet.enhancements && !collection.value) {
   props.appData.collection.push({
     name: props.dataSheet.name,
