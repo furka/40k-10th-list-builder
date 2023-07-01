@@ -54,6 +54,10 @@ watch(appData, () => {
   save("detachment");
 });
 
+const width = computed(() => {
+  return window.innerWidth;
+});
+
 watch(
   () => appData.bin,
   () => appData.bin.splice(0)
@@ -82,7 +86,7 @@ onUnmounted(() => {
       <ArmyList :app-data="appData" />
       <ArmyCodex :app-data="appData" @add="addUnit" />
     </div>
-    <div class="version">version {{ PACKAGE.version }}</div>
+    <div class="version">version {{ PACKAGE.version }}, {{ width }}px</div>
   </div>
 </template>
 
