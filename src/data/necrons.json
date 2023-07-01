@@ -1,5 +1,32 @@
 {
   "name": "Necrons",
+  "detachments": [
+    {
+      "name": "Awakened Dynasty",
+      "enhancements": {
+        "name": "Enhancements",
+        "enhancements": true,
+        "sizes": [
+          {
+            "name": "Hypermaterial Ablator",
+            "points": 25
+          },
+          {
+            "name": "Sempiternal Weave",
+            "points": 10
+          },
+          {
+            "name": "The Sovereign Coronal",
+            "points": 30
+          },
+          {
+            "name": "Veil of Darkness",
+            "points": 20
+          }
+        ]
+      }
+    }
+  ],
   "data-sheets": [
     {
       "name": "Annihilation Barge",
@@ -7,22 +34,22 @@
     },
     {
       "name": "Anrakyr the Traveller",
-      "epic-hero": true,
+      "max": 1,
       "sizes": [{ "models": 1, "points": 95 }]
     },
     {
       "name": "C’tan Shard of the Deceiver",
-      "epic-hero": true,
+      "max": 1,
       "sizes": [{ "models": 1, "points": 265 }]
     },
     {
       "name": "C’tan Shard of the Nightbringer",
-      "epic-hero": true,
+      "max": 1,
       "sizes": [{ "models": 1, "points": 255 }]
     },
     {
       "name": "C’tan Shard of the Void Dragon",
-      "epic-hero": true,
+      "max": 1,
       "sizes": [{ "models": 1, "points": 270 }]
     },
     {
@@ -102,12 +129,12 @@
     },
     {
       "name": "Illuminor Szeras",
-      "epic-hero": true,
+      "max": 1,
       "sizes": [{ "models": 1, "points": 220 }]
     },
     {
       "name": "Immortals",
-      "battle-line": true,
+      "max": 6,
       "sizes": [
         { "models": 5, "points": 70 },
         { "models": 10, "points": 140 }
@@ -115,7 +142,7 @@
     },
     {
       "name": "Imotekh the Stormlord",
-      "epic-hero": true,
+      "max": 1,
       "sizes": [{ "models": 1, "points": 105 }]
     },
     {
@@ -156,7 +183,7 @@
     },
     {
       "name": "Necron Warriors",
-      "battle-line": true,
+      "max": 6,
       "sizes": [
         { "models": 10, "points": 120 },
         { "models": 20, "points": 240 }
@@ -164,7 +191,7 @@
     },
     {
       "name": "Nemesor Zahndrekh",
-      "epic-hero": true,
+      "max": 1,
       "sizes": [{ "models": 1, "points": 85 }]
     },
     {
@@ -184,7 +211,7 @@
     },
     {
       "name": "Orikan the Diviner",
-      "epic-hero": true,
+      "max": 1,
       "sizes": [{ "models": 1, "points": 80 }]
     },
     {
@@ -224,7 +251,7 @@
     },
     {
       "name": "The Silent King",
-      "epic-hero": true,
+      "max": 1,
       "sizes": [{ "models": 3, "points": 470 }]
     },
     {
@@ -240,7 +267,7 @@
     },
     {
       "name": "Trazyn the Infinite",
-      "epic-hero": true,
+      "max": 1,
       "sizes": [{ "models": 1, "points": 75 }]
     },
     {
@@ -256,7 +283,7 @@
     },
     {
       "name": "Vargard Obyron",
-      "epic-hero": true,
+      "max": 1,
       "sizes": [{ "models": 1, "points": 85 }]
     }
   ]
