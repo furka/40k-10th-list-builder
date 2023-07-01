@@ -117,10 +117,7 @@ const detachments = computed(() => {
   &__points {
     display: flex;
     justify-content: space-between;
-
-    label {
-      margin-inline-start: 32px;
-    }
+    min-width: 230px;
 
     .over {
       color: #ff0000;
