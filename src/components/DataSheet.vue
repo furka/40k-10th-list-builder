@@ -28,7 +28,7 @@ function onCollectionBlur(collection) {
 const count = computed(() => {
   return props.appData.units.filter(
     (unit) => unit.name === props.dataSheet.name && !unit.bonus
-  ).length;
+  )?.length;
 });
 
 const maxed = computed(() => {
@@ -67,7 +67,7 @@ function enoughInCollection(option) {
 function enhancementTaken(enhancement) {
   return (
     props.appData.units.filter((u) => u.optionName === enhancement.name)
-      .length > 0
+      ?.length > 0
   );
 }
 
