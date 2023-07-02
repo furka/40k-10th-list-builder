@@ -16,7 +16,7 @@ const factions = computed(() => {
 const detachments = computed(() => {
   return props.appData.compendium
     .find((faction) => faction.name === props.appData.faction)
-    .detachments?.map((detachment) => detachment.name);
+    ?.detachments?.map((detachment) => detachment.name);
 });
 </script>
 
