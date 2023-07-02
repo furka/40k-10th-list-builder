@@ -10,14 +10,24 @@ const props = defineProps({
 const height = computed(() => {
   return `${Math.floor(props.unit.points * props.scale)}px`;
 });
+const name = computed(() => {
+  let name = "";
+
+  if (props.unit.models) {
+    name += `(${props.unit.models}) `;
+  }
+  name += props.unit.name;
+  if (props.unit.optionName) {
+    name += ` — ${props.unit.optionName}`;
+  }
+  return name;
+});
 </script>
 
 <template>
-  <div class="army-list-unit" :data-id="props.unit.id">
+  <div class="army-list-unit" :data-id="props.unit.id" :title="name">
     <span class="army-list-unit__name">
-      <span v-if="props.unit.models"> ({{ props.unit.models }}) </span>
-      {{ props.unit.name }}
-      <span v-if="props.unit.optionName">— {{ props.unit.optionName }}</span>
+      {{ name }}
     </span>
   </div>
 </template>
@@ -49,6 +59,11 @@ const height = computed(() => {
     text-align: center;
     text-overflow: ellipsis;
     white-space: nowrap;
+
+    &:hover {
+      background-color: rgb(0 89 46);
+      overflow: initial;
+    }
   }
 }
 .sortable-ghost {

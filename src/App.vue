@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 import ArmyList from "./components/ArmyList.vue";
 import ArmyCodex from "./components/ArmyCodex.vue";
 import ToolBar from "./components/ToolBar.vue";
-import { FACTIONS } from "./data/factions";
+import { FACTIONS } from "./utils/data-reader";
 import PACKAGE from "../package.json";
 
 function save(key, val = appData[key]) {
@@ -12,7 +12,11 @@ function save(key, val = appData[key]) {
 }
 
 function restore(key) {
-  return JSON.parse(localStorage.getItem(key));
+  try {
+    return JSON.parse(localStorage.getItem(key));
+  } catch (e) {
+    return;
+  }
 }
 
 const appData = reactive({
@@ -20,8 +24,8 @@ const appData = reactive({
   bin: [],
   collection: restore("collection") || [],
   maxPoints: restore("maxPoints") || 2000,
-  faction: restore("faction") || "Necrons",
-  detachment: restore("detachment") || "Awakened Dynasty",
+  faction: restore("faction") || FACTIONS[0].name,
+  detachment: restore("detachment") || FACTIONS[0].detachments[0].name,
   codexFilter: "",
   armyName: "",
   editCollection: false,
@@ -41,7 +45,9 @@ function addUnit(unit, size) {
   unit.points = size.points;
   unit.models = size.models;
   unit.optionName = size.name;
+  unit.bonus = size.bonus;
   unit.id = uuidv4();
+  delete unit.sizes;
 
   appData.units.unshift(unit);
 }
@@ -62,7 +68,11 @@ watch(
 watch(
   () => appData.faction,
   () => {
-    appData.units.splice(0);
+    appData.codexFilter = "";
+    appData.editCollection = false;
+    appData.detachment = FACTIONS.find(
+      (f) => f.name === appData.faction
+    ).detachments[0]?.name;
   }
 );
 

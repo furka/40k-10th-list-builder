@@ -6,25 +6,28 @@ const props = defineProps({
 });
 
 const collection = computed(() => {
-  return props.appData.collection.find((u) => u.name === props.dataSheet.name);
+  let entry = props.appData.collection.find(
+    (u) => u.name === props.dataSheet.name
+  );
+
+  if (!entry) {
+    entry = {
+      name: props.dataSheet.name,
+      owned: 999,
+    };
+    props.appData.collection.push(entry);
+  }
+
+  return entry;
 });
 
 function onCollectionBlur(collection) {
   collection.owned = Math.min(999, Math.max(0, Number(collection.owned)));
 }
 
-// test
-
-if (!props.dataSheet.enhancements && !collection.value) {
-  props.appData.collection.push({
-    name: props.dataSheet.name,
-    owned: 999,
-  });
-}
-
 const count = computed(() => {
   return props.appData.units.filter(
-    (unit) => unit.name === props.dataSheet.name
+    (unit) => unit.name === props.dataSheet.name && !unit.bonus
   ).length;
 });
 
@@ -69,6 +72,10 @@ function enhancementTaken(enhancement) {
 }
 
 function optionAvailable(option) {
+  if (option.bonus) {
+    return true;
+  }
+
   if (maxed.value) {
     return false;
   }
@@ -85,8 +92,10 @@ function optionAvailable(option) {
   <div class="data-sheet" v-if="owned">
     <div class="data-sheet__title" :class="{ maxed: maxed }">
       <span class="data-sheet__name">
-        <span v-if="count > 0"> ({{ count }}) </span>
+        <template v-if="count > 0"> ({{ count }}) </template>
         {{ props.dataSheet.name }}
+        <span v-if="props.dataSheet.epicHero" title="Epic Hero">[E]</span>
+        <span v-if="props.dataSheet.battleLine" title="Battleline">[B]</span>
       </span>
 
       <label
@@ -129,7 +138,10 @@ function optionAvailable(option) {
           {{ option.name }}
         </span>
         <span class="data-sheet__option-spacer"></span>
-        <span>{{ option.points }} pts</span>
+        <span class="data-sheet__points">
+          <template v-if="option.bonus">+</template>
+          {{ option.points }} pts
+        </span>
       </li>
     </ul>
   </div>
@@ -142,48 +154,53 @@ function optionAvailable(option) {
   writing-mode: horizontal-tb;
 
   &__title {
+    align-items: center;
     background-color: rgba(0, 0, 0, 0.65);
     color: #fff;
     display: flex;
     font-weight: bold;
     justify-content: space-between;
-    overflow: hidden;
     padding: 4px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    align-items: center;
+    position: relative;
   }
 
   &__name {
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
     line-height: 20px;
   }
 
   label {
-    display: flex;
     align-items: center;
+    background-color: #000;
     border-bottom: 2px dashed currentColor;
+    bottom: 0;
+    display: flex;
     font-size: 12px;
+    padding: 4px;
+    position: absolute;
+    right: 0;
+    top: 0;
   }
 
   &__owned {
-    width: 3em;
-    text-align: left;
-    border: none;
-    padding: 2px;
     background-color: transparent;
+    border: none;
     color: currentcolor;
     font-family: var(--font-family);
-    font-weight: bold;
     font-size: 12px;
+    font-weight: bold;
+    padding: 2px;
+    text-align: left;
+    width: 3em;
   }
 
   &__option-spacer {
     border-bottom: 2px dotted black;
     flex-grow: 1;
     margin: 4px 2px;
+  }
+
+  &__points {
+    flex-shrink: 0;
   }
 
   ul {

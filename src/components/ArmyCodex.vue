@@ -34,7 +34,7 @@ const dataSheets = computed(() => {
 const enhancements = computed(() => {
   return codex.value.detachments?.find(
     (d) => d.name === props.appData.detachment
-  ).enhancements;
+  )?.enhancements;
 });
 
 const codexEl = ref(null);

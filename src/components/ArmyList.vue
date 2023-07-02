@@ -40,7 +40,6 @@ const points = computed(() => {
   flex-shrink: 0;
   justify-content: flex-end;
   max-width: calc(100vw - 300px);
-  overflow: hidden;
   width: 250px;
 }
 </style>

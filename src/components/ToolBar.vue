@@ -46,12 +46,14 @@ const detachments = computed(() => {
             {{ faction }}
           </option>
         </select>
-        —
-        <select v-model="props.appData.detachment">
-          <option v-for="(faction, index) in detachments">
-            {{ faction }}
-          </option>
-        </select>
+        <template v-if="detachments.length > 0">
+          —
+          <select v-model="props.appData.detachment">
+            <option v-for="(faction, index) in detachments">
+              {{ faction }}
+            </option>
+          </select>
+        </template>
       </label>
     </div>
 
