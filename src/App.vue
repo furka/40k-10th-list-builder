@@ -99,7 +99,7 @@ onUnmounted(() => {
 <style scoped lang="scss">
 .app {
   --font-family: Calibri, sans-serif;
-  --toolbar-height: 50px;
+  --toolbar-height: 88px;
   background-color: #111;
   font-family: var(--font-family);
   position: relative;

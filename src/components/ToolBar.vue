@@ -22,57 +22,59 @@ const detachments = computed(() => {
 
 <template>
   <div class="toolbar">
-    <div class="toolbar__points toolbar__group">
-      <PrintableArmyList :app-data="props.appData" />
-      <label>
-        <span :class="{ over: points > props.appData.maxPoints }">
-          {{ points }}
-        </span>
-        /
-        <input
-          type="number"
-          min="500"
-          step="500"
-          v-model.number="props.appData.maxPoints"
-          class="toolbar__points-input"
-        />
-      </label>
+    <div class="toolbar__row">
+      <div class="toolbar__points toolbar__group">
+        <PrintableArmyList :app-data="props.appData" />
+        <label>
+          <span :class="{ over: points > props.appData.maxPoints }">
+            {{ points }}
+          </span>
+          /
+          <input
+            type="number"
+            min="500"
+            step="500"
+            v-model.number="props.appData.maxPoints"
+            class="toolbar__points-input"
+          />
+        </label>
+      </div>
+      <div class="toolbar_faction toolbar__group">
+        <label>
+          <input type="checkbox" v-model="props.appData.editCollection" />
+          Edit Collection
+        </label>
+      </div>
+
+      <div class="toolbar__group">
+        <label>
+          <input
+            type="text"
+            v-model="props.appData.codexFilter"
+            placeholder="Filter Codex"
+            class="toolbar__codex-filter"
+          />
+        </label>
+      </div>
     </div>
 
-    <div class="toolbar__group">
-      <label>
-        <select v-model="props.appData.faction">
-          <option v-for="(faction, index) in factions">
+    <div class="toolbar__row toolbar__faction">
+      <select v-model="props.appData.faction" class="toolbar__faction-select">
+        <option v-for="(faction, index) in factions">
+          {{ faction }}
+        </option>
+      </select>
+      <template v-if="detachments?.length > 0">
+        <span>—</span>
+        <select
+          v-model="props.appData.detachment"
+          class="toolbar__detachment-select"
+        >
+          <option v-for="(faction, index) in detachments">
             {{ faction }}
           </option>
         </select>
-        <template v-if="detachments?.length > 0">
-          —
-          <select v-model="props.appData.detachment">
-            <option v-for="(faction, index) in detachments">
-              {{ faction }}
-            </option>
-          </select>
-        </template>
-      </label>
-    </div>
-
-    <div class="toolbar_faction toolbar__group">
-      <label>
-        <input type="checkbox" v-model="props.appData.editCollection" />
-        Edit Collection
-      </label>
-    </div>
-
-    <div class="toolbar__group">
-      <label>
-        <input
-          type="text"
-          v-model="props.appData.codexFilter"
-          placeholder="Filter Codex"
-          class="toolbar__codex-filter"
-        />
-      </label>
+      </template>
     </div>
   </div>
 </template>
@@ -83,8 +85,7 @@ const detachments = computed(() => {
   background-color: #333;
   color: white;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
 
   input,
   select {
@@ -106,6 +107,22 @@ const detachments = computed(() => {
     }
   }
 
+  &__row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px;
+  }
+
+  &__row + &__row {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  &__faction {
+    justify-content: center;
+  }
+
   &__group {
     align-items: center;
     display: flex;
@@ -124,6 +141,11 @@ const detachments = computed(() => {
     .over {
       color: #ff0000;
     }
+  }
+
+  &__faction-select,
+  &__detachment-select {
+    max-width: calc(50vw - 50px);
   }
 
   &__codex-filter {
