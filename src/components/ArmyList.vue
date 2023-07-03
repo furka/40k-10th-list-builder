@@ -8,16 +8,19 @@ const props = defineProps({
 });
 
 const scale = computed(() => {
-  return (props.appData.appHeight - 62) / props.appData.maxPoints;
+  return (props.appData.appHeight - 62) / props.appData.currentList.maxPoints;
 });
 const points = computed(() => {
-  return props.appData.units.reduce((acc, curr) => acc + curr.points, 0);
+  return props.appData.currentList.units.reduce(
+    (acc, curr) => acc + curr.points,
+    0
+  );
 });
 </script>
 
 <template>
   <draggable
-    v-model="props.appData.units"
+    v-model="props.appData.currentList.units"
     group="units"
     @start="drag = true"
     @end="drag = false"

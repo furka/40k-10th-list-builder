@@ -1,12 +1,18 @@
 <script setup>
 import { computed } from "vue";
-import PrintableArmyList from "./PrintableArmyList.vue";
+import ViewListModal from "./ViewListModal.vue";
+import OpenListModal from "./OpenListModal.vue";
+import NewIcon from "../assets/file-line-icon.svg";
+
 const props = defineProps({
   appData: Object,
 });
 
 const points = computed(() => {
-  return props.appData.units.reduce((acc, curr) => acc + curr.points, 0);
+  return props.appData.currentList.units.reduce(
+    (acc, curr) => acc + curr.points,
+    0
+  );
 });
 
 const factions = computed(() => {
@@ -15,7 +21,7 @@ const factions = computed(() => {
 
 const detachments = computed(() => {
   return props.appData.compendium
-    .find((faction) => faction.name === props.appData.faction)
+    .find((faction) => faction.name === props.appData.currentList.faction)
     ?.detachments?.map((detachment) => detachment.name);
 });
 </script>
@@ -23,23 +29,25 @@ const detachments = computed(() => {
 <template>
   <div class="toolbar">
     <div class="toolbar__row">
-      <div class="toolbar__points toolbar__group">
-        <PrintableArmyList :app-data="props.appData" />
-        <label>
-          <span :class="{ over: points > props.appData.maxPoints }">
-            {{ points }}
-          </span>
-          /
-          <input
-            type="number"
-            min="500"
-            step="500"
-            v-model.number="props.appData.maxPoints"
-            class="toolbar__points-input"
-          />
-        </label>
+      <div class="toolbar__group">
+        <button class="toolbar__button" @click="$emit('newList')">
+          <NewIcon class="toolbar__icon" />
+          <span> New List</span>
+        </button>
+        <OpenListModal :app-data="props.appData" />
+        <ViewListModal :app-data="props.appData" />
       </div>
-      <div class="toolbar_faction toolbar__group">
+
+      <div class="toolbar__group toolbar__group--list-name">
+        <input
+          type="text"
+          v-model="props.appData.currentList.name"
+          placeholder="Name your list"
+          class="toolbar__list-name"
+        />
+      </div>
+
+      <div class="toolbar__group">
         <label>
           <input type="checkbox" v-model="props.appData.editCollection" />
           Edit Collection
@@ -47,34 +55,52 @@ const detachments = computed(() => {
       </div>
 
       <div class="toolbar__group">
-        <label>
-          <input
-            type="text"
-            v-model="props.appData.codexFilter"
-            placeholder="Filter Codex"
-            class="toolbar__codex-filter"
-          />
-        </label>
+        <input
+          type="text"
+          v-model="props.appData.codexFilter"
+          placeholder="Filter Datasheets"
+          class="toolbar__codex-filter"
+        />
       </div>
     </div>
 
-    <div class="toolbar__row toolbar__faction">
-      <select v-model="props.appData.faction" class="toolbar__faction-select">
-        <option v-for="(faction, index) in factions">
-          {{ faction }}
-        </option>
-      </select>
-      <template v-if="detachments?.length > 0">
-        <span>—</span>
+    <div class="toolbar__row">
+      <div class="toolbar__group toolbar__group--points">
+        <label>
+          <span :class="{ over: points > props.appData.currentList.maxPoints }">
+            {{ points }}
+          </span>
+          /
+          <input
+            type="number"
+            min="500"
+            step="500"
+            v-model.number="props.appData.currentList.maxPoints"
+            class="toolbar__points-input"
+          />
+        </label>
+      </div>
+      <div class="toolbar__group toolbar__group--faction">
         <select
-          v-model="props.appData.detachment"
-          class="toolbar__detachment-select"
+          v-model="props.appData.currentList.faction"
+          class="toolbar__faction-select"
         >
-          <option v-for="(faction, index) in detachments">
+          <option v-for="(faction, index) in factions">
             {{ faction }}
           </option>
         </select>
-      </template>
+        <template v-if="detachments?.length > 0">
+          <span>—</span>
+          <select
+            v-model="props.appData.currentList.detachment"
+            class="toolbar__detachment-select"
+          >
+            <option v-for="(faction, index) in detachments">
+              {{ faction }}
+            </option>
+          </select>
+        </template>
+      </div>
     </div>
   </div>
 </template>
@@ -107,6 +133,23 @@ const detachments = computed(() => {
     }
   }
 
+  &__button {
+    align-items: center;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+  }
+
+  &__icon {
+    fill: currentColor;
+    height: 23px;
+    width: 23px;
+  }
+
   &__row {
     display: flex;
     flex-direction: row;
@@ -119,10 +162,6 @@ const detachments = computed(() => {
     background-color: rgba(255, 255, 255, 0.1);
   }
 
-  &__faction {
-    justify-content: center;
-  }
-
   &__group {
     align-items: center;
     display: flex;
@@ -131,16 +170,29 @@ const detachments = computed(() => {
     font-size: var(--font-size);
     justify-content: flex-end;
     margin-inline: 8px;
+
+    &--list-name {
+      flex-grow: 1;
+    }
+
+    &--points {
+      display: flex;
+      justify-content: center;
+      min-width: 230px;
+
+      .over {
+        color: #ff0000;
+      }
+    }
+
+    &--faction {
+      flex-grow: 1;
+      justify-content: center;
+    }
   }
 
-  &__points {
-    display: flex;
-    justify-content: space-between;
-    min-width: 230px;
-
-    .over {
-      color: #ff0000;
-    }
+  &__list-name {
+    width: 100%;
   }
 
   &__faction-select,
@@ -149,7 +201,7 @@ const detachments = computed(() => {
   }
 
   &__codex-filter {
-    width: 5em;
+    width: 7em;
   }
 
   &__points-input {

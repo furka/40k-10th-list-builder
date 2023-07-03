@@ -26,7 +26,7 @@ function onCollectionBlur(collection) {
 }
 
 const count = computed(() => {
-  return props.appData.units.filter(
+  return props.appData.currentList.units.filter(
     (unit) => unit.name === props.dataSheet.name && !unit.bonus
   )?.length;
 });
@@ -49,7 +49,7 @@ const owned = computed(() => {
 });
 
 const modelsTaken = computed(() => {
-  return props.appData.units
+  return props.appData.currentList.units
     .filter((u) => u.name === props.dataSheet.name)
     .reduce((acc, curr) => acc + curr.models, 0);
 });
@@ -66,8 +66,9 @@ function enoughInCollection(option) {
 
 function enhancementTaken(enhancement) {
   return (
-    props.appData.units.filter((u) => u.optionName === enhancement.name)
-      ?.length > 0
+    props.appData.currentList.units.filter(
+      (u) => u.optionName === enhancement.name
+    )?.length > 0
   );
 }
 
@@ -116,6 +117,7 @@ function optionAvailable(option) {
 
       <div
         v-if="!props.dataSheet.enhancements && !props.appData.editCollection"
+        class="data-sheet__count"
       >
         <template v-if="collection.owned < 999">
           {{ modelsTaken }} / {{ collection.owned }}
@@ -155,6 +157,7 @@ function optionAvailable(option) {
 
   &__title {
     align-items: center;
+    align-items: flex-end;
     background-color: rgba(0, 0, 0, 0.65);
     color: #fff;
     display: flex;
@@ -191,6 +194,10 @@ function optionAvailable(option) {
     padding: 2px;
     text-align: left;
     width: 3em;
+  }
+
+  &__count {
+    flex-shrink: 0;
   }
 
   &__option-spacer {

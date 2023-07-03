@@ -15,7 +15,7 @@ function addUnit(unit, size) {
 
 const codex = computed(() => {
   return props.appData.compendium.find(
-    (faction) => faction.name === props.appData.faction
+    (faction) => faction.name === props.appData.currentList.faction
   );
 });
 
@@ -33,7 +33,7 @@ const dataSheets = computed(() => {
 
 const enhancements = computed(() => {
   return codex.value.detachments?.find(
-    (d) => d.name === props.appData.detachment
+    (d) => d.name === props.appData.currentList.detachment
   )?.enhancements;
 });
 
@@ -91,6 +91,7 @@ function onScrollWheel(e) {
   padding: 12px;
   position: relative;
   writing-mode: vertical-lr;
+  flex-grow: 1;
 
   &__bin {
     bottom: 0;
