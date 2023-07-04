@@ -34,6 +34,8 @@ const appData = reactive({
   compendium: FACTIONS,
 });
 
+console.log(FACTIONS);
+
 const handleResize = () => {
   appData.appHeight = window.innerHeight;
   appData.appWidth = window.innerWidth;
