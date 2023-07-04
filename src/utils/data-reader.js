@@ -13,36 +13,43 @@ function getKeywords(name) {
   return "";
 }
 
-const lines = MFM.trim().split(/\r?\n/);
+const split = MFM.split(
+  /Munitorum Field Manual © Copyright Games Workshop Limited \d\d\d\d\./
+);
+const lines = split[1].trim().split(/\r?\n/);
+
 export const FACTIONS = [];
-let currentCodex;
+export const DATA_SHEETS = [
+  { name: "Enhancements", enhancements: true, sizes: [] },
+];
+export const MFM_VERSION = split[0].trim().split(/\r?\n/)[2];
+
 let currentDatasheet;
+let currentFaction;
 let currentDetachment;
+let forgeWorld = false;
 let appendOption;
 
 lines.forEach((line) => {
   if (Number(line)) {
     // ignore page numbers
+  } else if (line === "FORGE WORLD POINTS VALUES") {
+    // forge world section
+    forgeWorld = true;
   } else if (line === "DETACHMENT ENHANCEMENTS") {
     // detachments section
-    currentDetachment = {};
-    currentDatasheet = {
-      name: "Enhancements",
-      enhancements: true,
-      sizes: [],
-    };
-    currentDetachment.enhancements = currentDatasheet;
-    currentCodex.detachments.push(currentDetachment);
+    currentDatasheet = DATA_SHEETS.find((d) => d.name === "Enhancements");
+    forgeWorld = false;
   } else if (line.toUpperCase() === line) {
     // new faction
-    currentCodex = {
-      name: line,
-      detachments: [],
-      "data-sheets": [],
-    };
+    currentFaction = line.trim();
     currentDetachment = null;
     currentDatasheet = null;
-    FACTIONS.push(currentCodex);
+    forgeWorld = false;
+    FACTIONS.push({
+      name: currentFaction,
+      detachments: [],
+    });
   } else if (line.includes("pts")) {
     // points line
     const match = line.match(/^([^\.]*)([ \.]*)(\+\s?)?(\d*) pts$/);
@@ -64,18 +71,26 @@ lines.forEach((line) => {
       if (models) {
         option.models = Number(models[1]);
       } else if (option.name) {
-        option.name += ` ${match[1]}`;
+        option.name += ` ${match[1]}`.trim();
       } else {
-        option.name = match[1];
+        option.name = match[1].trim();
+      }
+
+      if (currentDetachment) {
+        option.detachment = currentDetachment;
+        option.enhancement = true;
       }
 
       currentDatasheet.sizes.push(option);
     } else {
       console.log("unknown line syntax", line);
     }
-  } else if (currentDetachment) {
+  } else if (currentDatasheet && currentDatasheet.name === "Enhancements") {
     // detachment name
-    currentDetachment.name = line;
+    currentDetachment = line.trim();
+    FACTIONS.find((f) => f.name === currentFaction)?.detachments.push({
+      name: currentDetachment,
+    });
   } else if (currentDatasheet && currentDatasheet.sizes.length < 1) {
     // account for multi-line datasheet names
     currentDatasheet.name += ` ${line}`;
@@ -84,8 +99,10 @@ lines.forEach((line) => {
   } else {
     // start new datasheet
     currentDatasheet = {
-      name: line,
+      name: line.trim(),
+      faction: currentFaction,
       max: 3,
+      forgeWorld,
       sizes: [],
     };
 
@@ -101,6 +118,6 @@ lines.forEach((line) => {
       currentDatasheet.max = 6;
     }
 
-    currentCodex["data-sheets"].push(currentDatasheet);
+    DATA_SHEETS.push(currentDatasheet);
   }
 });

@@ -1,3 +1,58 @@
+MUNITORUM
+FIELD MANUAL
+VERSION 1.1
+Welcome to the Munitorum Field Manual. This document contains the most up-to-date points values that should be used in
+your games, covering all the factions in Warhammer 40,000.
+You can use this document to determine the points (pts) value
+of each unit in your army. Each entry lists the increments to
+a unit’s size that incur different points costs. This may change
+with the addition of each individual model (e.g. 1 model, 2
+models, 3 models, etc.) or it may be presented with a lower
+and upper limit to a unit’s Starting Strength (e.g. one cost for
+5 models, another cost for 10 models). In the latter case, your
+units can contain a number of models in between these limits,
+but you must still pay the maximum points cost for a unit
+that starts the game with more than its minimum number of
+models. You can learn more about using points to muster your
+army on pages 55-56 of the Core Rules.
+This document lists the points values for every unit that, at
+the time of publication, is supported for Warhammer 40,000 –
+including those available from Forge World – and these replace
+any points values published previously. It will be updated
+periodically to reflect the latest publications and to support
+game balance. New and revised entries are marked in red.
+CONTENTS
+Adepta Sororitas �������������������������������������������������������������������������� 2
+Adeptus Custodes ����������������������������������������������������������������������� 3
+Adeptus Mechanicus ������������������������������������������������������������������� 4
+Adeptus Titanicus ������������������������������������������������������������������������ 5
+Aeldari������������������������������������������������������������������������������������������� 6
+Agents of the Imperium �������������������������������������������������������������� 8
+Astra Militarum����������������������������������������������������������������������������� 9
+Black Templars ��������������������������������������������������������������������������� 11
+Blood Angels ������������������������������������������������������������������������������ 12
+Chaos Daemons ������������������������������������������������������������������������� 13
+Chaos Knights����������������������������������������������������������������������������� 14
+Chaos Space Marines ���������������������������������������������������������������� 15
+Dark Angels��������������������������������������������������������������������������������� 16
+Death Guard������������������������������������������������������������������������������� 17
+Deathwatch��������������������������������������������������������������������������������� 18
+Drukhari �������������������������������������������������������������������������������������� 19
+Genestealer Cults ���������������������������������������������������������������������� 20
+Grey Knights������������������������������������������������������������������������������� 21
+Imperial Knights������������������������������������������������������������������������� 22
+Leagues of Votann ��������������������������������������������������������������������� 23
+Necrons ��������������������������������������������������������������������������������������� 24
+Orks���������������������������������������������������������������������������������������������� 25
+Space Marines���������������������������������������������������������������������������� 27
+Space Wolves ����������������������������������������������������������������������������� 29
+T’au Empire �������������������������������������������������������������������������������� 30
+Thousand Sons��������������������������������������������������������������������������� 31
+Tyranids��������������������������������������������������������������������������������������� 32
+World Eaters ������������������������������������������������������������������������������� 33
+PRODUCED BY THE WARHAMMER DESIGN STUDIO
+Munitorum Field Manual © Copyright Games Workshop Limited 2023.
+1
 ADEPTA SORORITAS
 Aestred Thurga and Agathae Dolan
 2 models ............................................................70 pts
@@ -137,6 +192,37 @@ Witchseekers
 5 models ............................................................75 pts
 9 models ..........................................................135 pts
 10 models .......................................................150 pts
+FORGE WORLD POINTS VALUES
+Agamatus Custodians
+3 models ..........................................................280 pts
+6 models ..........................................................560 pts
+Aquilon Custodians
+3 models ..........................................................230 pts
+6 models ..........................................................460 pts
+Ares Gunship
+1 model ............................................................580 pts
+Caladius Grav-tank
+1 model ............................................................215 pts
+Contemptor-Achillus Dreadnought
+1 model ............................................................155 pts
+Contemptor-Galatus Dreadnought
+1 model ............................................................175 pts
+Coronus Grav-carrier
+1 model ............................................................200 pts
+Custodian Guard with Adrasite
+and Pyrithite Spears
+5 models ..........................................................325 pts
+Orion Assault Dropship
+1 model ............................................................690 pts
+Pallas Grav-attack
+1 model ............................................................120 pts
+Sagittarum Custodians
+5 models ..........................................................250 pts
+Telemon Heavy Dreadnought
+1 model ............................................................235 pts
+Venatari Custodians
+3 models ..........................................................235 pts
+6 models ..........................................................470 pts
 DETACHMENT ENHANCEMENTS
 Shield Host
 Ceaseless Hunter ............................................30 pts
@@ -225,6 +311,17 @@ Excoriating Emanation...................................25 pts
 Master Annihilator ...........................................35 pts
 Omni-steriliser .................................................20 pts
 4
+ADEPTUS TITANICUS
+FORGE WORLD POINTS VALUES
+Reaver Titan
+1 model .........................................................2200 pts
+Warbringer Nemesis Titan
+1 model .........................................................2600 pts
+Warhound Titan
+1 model .........................................................1100 pts
+Warlord Titan
+1 model .........................................................3500 pts
+5
 AELDARI
 Asurmen
 1 model ............................................................120 pts
@@ -368,13 +465,41 @@ Wraithlord
 1 model ............................................................160 pts
 Yvraine
 1 model ............................................................100 pts
+6
+FORGE WORLD POINTS VALUES
+Cobra
+1 model ............................................................415 pts
+Hornet
+1 model ..............................................................80 pts
+Irillyth
+1 model ............................................................105 pts
+Lynx
+1 model ............................................................155 pts
+Nightwing
+1 model ............................................................150 pts
+Scorpion
+1 model ............................................................410 pts
+Skathach Wraithknight
+1 model ............................................................385 pts
+Shadow Spectres
+5 Shadow Spectres .........................................80 pts
+10 Shadow Spectres ....................................160 pts
+Shadow Spectre Exarch ...............................+20 pts
+Phantom Titan
+1 model .........................................................2100 pts
+Revenant Titan
+1 model .........................................................1100 pts
+Warp Hunter
+1 model ............................................................130 pts
+Wraithseer
+1 model ............................................................160 pts
 DETACHMENT ENHANCEMENTS
 Battle Host
 Fate’s Messenger ............................................15 pts
 Reader of the Runes .......................................20 pts
 The Phoenix Gem.............................................25 pts
 The Weeping Stones .......................................15 pts
-5
+7
 AGENTS OF THE IMPERIUM
 Callidus Assassin
 1 model ............................................................115 pts
@@ -419,7 +544,7 @@ Vindicare Assassin
 Voidsmen-at-Arms
 5 models ............................................................40 pts
 10 models .........................................................80 pts
-6
+8
 ASTRA MILITARUM
 Aegis Defence Line
 1 model ............................................................145 pts
@@ -553,13 +678,78 @@ Valkyrie
 1 model ............................................................200 pts
 Wyvern
 1 model ..............................................................90 pts
+FORGE WORLD POINTS VALUES
+Avenger Strike Fighter
+1 model ............................................................130 pts
+Carnodon
+1 model ............................................................160 pts
+Colossus
+1 model ............................................................130 pts
+Crassus
+1 model ............................................................180 pts
+Cyclops Demolition Vehicle
+1 model ..............................................................25 pts
+Death Korps Marshal
+1 model ..............................................................60 pts
+9
+Death Rider Squadron
+5 models ............................................................70 pts
+10 models .......................................................140 pts
+Death Rider Squadron Commander
+1 model ..............................................................60 pts
+Earthshaker Carriage Battery
+1 model ..............................................................70 pts
+Hades Breaching Drill
+1 model ............................................................110 pts
+Macharius
+1 model ............................................................310 pts
+Macharius Vanquisher
+1 model ............................................................285 pts
+Macharius Vulcan
+1 model ............................................................310 pts
+Malcador
+1 model ............................................................250 pts
+Malcador Annihilator
+1 model ............................................................270 pts
+Malcador Defender
+1 model ............................................................310 pts
+Malcador Infernus
+1 model ............................................................235 pts
+Marauder Bomber
+1 model ............................................................345 pts
+Marauder Destroyer
+1 model ............................................................375 pts
+Medusa Carriage Battery
+1 model ..............................................................65 pts
+Praetor
+1 model ............................................................225 pts
+Rapier Laser Destroyer Battery
+1 model ..............................................................30 pts
+2 models ............................................................60 pts
+3 models ............................................................90 pts
+Stormblade
+1 model ............................................................415 pts
+Tarantula Battery
+1 model ..............................................................35 pts
+2 models ............................................................70 pts
+3 models ..........................................................105 pts
+Thunderbolt Heavy Fighter
+1 model ............................................................190 pts
+Trojan Support Vehicle
+1 model ..............................................................80 pts
+Valdor
+1 model ............................................................285 pts
+Voss-pattern Lightning
+1 model ............................................................130 pts
+Vulture Gunship
+1 model ............................................................225 pts
 DETACHMENT ENHANCEMENTS
 Combined Regiment
 Death Mask of Ollanius ..................................10 pts
 Drill Commander ..............................................20 pts
 Grand Strategist ...............................................15 pts
 Kurov’s Aquila ...................................................40 pts
-7
+10
 BLACK TEMPLARS
 Black Templars Gladiator Lancer
 1 model ............................................................160 pts
@@ -604,7 +794,7 @@ Perdition’s Edge ...............................................15 pts
 Sigismund’s Seal .............................................20 pts
 Tännhauser’s Bones .......................................35 pts
 Witchseeker Bolts ...........................................10 pts
-8
+11
 BLOOD ANGELS
 Astorath
 1 model ............................................................100 pts
@@ -654,7 +844,7 @@ Archangel’s Shard ...........................................25 pts
 Artisan of War ...................................................20 pts
 Icon of the Angel ..............................................10 pts
 Visage of Death ................................................15 pts
-9
+12
 CHAOS DAEMONS
 Beasts of Nurgle
 1 model ..............................................................75 pts
@@ -784,7 +974,7 @@ A’rgath, the King of Blades ............................20 pts
 Soulstealer ........................................................15 pts
 The Endless Gift ...............................................30 pts
 The Everstave ...................................................25 pts
-10
+13
 CHAOS KNIGHTS
 Knight Abominant
 1 model ............................................................395 pts
@@ -806,13 +996,32 @@ War Dog Karnivore
 1 model ............................................................160 pts
 War Dog Stalker
 1 model ............................................................135 pts
+FORGE WORLD POINTS VALUES
+Chaos Acastus Knight Asterius
+1 model ............................................................730 pts
+Chaos Acastus Knight Porphyrion
+1 model ............................................................645 pts
+Chaos Cerastus Knight Acheron
+1 model ............................................................405 pts
+Chaos Cerastus Knight Atrapos
+1 model ............................................................405 pts
+Chaos Cerastus Knight Castigator
+1 model ............................................................420 pts
+Chaos Cerastus Knight Lancer
+1 model ............................................................405 pts
+Chaos Questoris Knight Magaera
+1 model ............................................................405 pts
+Chaos Questoris Knight Styrix
+1 model ............................................................440 pts
+War Dog Moirax
+1 model ............................................................170 pts
 DETACHMENT ENHANCEMENTS
 Traitoris Lance
 Lord of Dread ....................................................35 pts
 Aura of Terror.....................................................25 pts
 The Traitor’s Mark .............................................30 pts
 Panoply of the Cursed Knight ......................40 pts
-11
+14
 CHAOS SPACE MARINES
 Abaddon the Despoiler
 1 model ............................................................280 pts
@@ -930,7 +1139,7 @@ Intoxicating Elixir .............................................15 pts
 Liber Hereticus ................................................40 pts
 Orbs of Unlife ....................................................25 pts
 Talisman of Burning Blood ............................20 pts
-12
+15
 DARK ANGELS
 Asmodai
 1 model ..............................................................70 pts
@@ -979,7 +1188,7 @@ Heavenfall Blade .............................................20 pts
 Pennant of Remembrance ............................10 pts
 Shroud of Heroes ............................................25 pts
 Stubborn Tenacity ...........................................15 pts
-13
+16
 DEATH GUARD
 Biologus Putrifier
 1 model ..............................................................60 pts
@@ -1058,7 +1267,7 @@ Deadly Pathogen .............................................15 pts
 Living Plague ....................................................20 pts
 Shamblerot .......................................................25 pts
 The Droning .......................................................10 pts
-14
+17
 DEATHWATCH
 Corvus Blackstar
 1 model ............................................................180 pts
@@ -1095,7 +1304,7 @@ Beacon Angelis ................................................30 pts
 Osseus Key .......................................................20 pts
 The Tome of Ectoclades .................................40 pts
 Thief of Secrets ................................................15 pts
-15
+18
 DRUKHARI
 Archon
 1 model ..............................................................85 pts
@@ -1154,13 +1363,16 @@ Wracks
 10 models .......................................................130 pts
 Wyches
 10 models .......................................................110 pts
+FORGE WORLD POINTS VALUES
+Tantalus
+1 model ............................................................230 pts
 DETACHMENT ENHANCEMENTS
 Realspace Raiders
 Crucible of Malediction ..................................10 pts
 Blood Dancer ....................................................20 pts
 Labyrinthine Cunning ....................................30 pts
 The Art of Pain...................................................25 pts
-16
+19
 GENESTEALER CULTS
 Aberrants
 5 models ..........................................................165 pts
@@ -1219,7 +1431,7 @@ Focus of Adoration ..........................................10 pts
 Inscrutable Cunning .......................................30 pts
 Meticulous Planner .........................................40 pts
 Prowling Agitant ...............................................15 pts
-17
+20
 GREY KNIGHTS
 Brother-Captain
 1 model ..............................................................95 pts
@@ -1283,13 +1495,18 @@ Servitors
 Strike Squad
 5 models ..........................................................135 pts
 10 models .......................................................270 pts
+FORGE WORLD POINTS VALUES
+Grey Knights Thunderhawk Gunship
+1 model ............................................................805 pts
+Land Raider Banisher
+1 model ............................................................255 pts
 DETACHMENT ENHANCEMENTS
 Teleport Strike Force
 Domina Liber Daemonica..............................20 pts
 First to the Fray ................................................35 pts
 Inescapable Wrath ..........................................15 pts
 Sigil of Exigence ..............................................30 pts
-18
+21
 IMPERIAL KNIGHTS
 Armiger Helverin
 1 model ............................................................145 pts
@@ -1313,6 +1530,25 @@ Knight Valiant
 1 model ............................................................490 pts
 Knight Warden
 1 model ............................................................420 pts
+FORGE WORLD POINTS VALUES
+Acastus Knight Asterius
+1 model ............................................................730 pts
+Acastus Knight Porphyrion
+1 model ............................................................645 pts
+Armiger Moirax
+1 model ............................................................170 pts
+Cerastus Knight Acheron
+1 model ............................................................385 pts
+Cerastus Knight Atrapos
+1 model ............................................................385 pts
+Cerastus Knight Castigator
+1 model ............................................................425 pts
+Cerastus Knight Lancer
+1 model ............................................................430 pts
+Questoris Knight Magaera
+1 model ............................................................390 pts
+Questoris Knight Styrix
+1 model ............................................................425 pts
 DETACHMENT ENHANCEMENTS
 Noble Lance
 Banner of Macharius Triumphant ...............30 pts
@@ -1320,7 +1556,7 @@ Mysterious Guardian ......................................35 pts
 Mythic Hero ......................................................25 pts
 Revered Knight ................................................20 pts
 Unyielding Paragon ........................................40 pts
-19
+22
 LEAGUES OF VOTANN
 Brôkhyr Iron-master
 5 models ............................................................75 pts
@@ -1356,7 +1592,7 @@ A Long List .........................................................15 pts
 Appraising Glare ..............................................20 pts
 Grim Demeanour .............................................20 pts
 Wayfarer’s Grace .............................................25 pts
-20
+23
 NECRONS
 Annihilation Barge
 1 model ............................................................115 pts
@@ -1475,13 +1711,25 @@ Triarch Stalker
 1 model ............................................................125 pts
 Vargard Obyron
 1 model ..............................................................85 pts
+FORGE WORLD POINTS VALUES
+Canoptek Acanthrites
+3 models ............................................................85 pts
+6 models ..........................................................170 pts
+Canoptek Tomb Sentinel
+1 model ............................................................115 pts
+Canoptek Tomb Stalker
+1 model ............................................................130 pts
+Seraptek Heavy Construct
+1 model ............................................................470 pts
+Tesseract Ark
+1 model ............................................................130 pts
 DETACHMENT ENHANCEMENTS
 Awakened Dynasty
 Hypermaterial Ablator ....................................25 pts
 Sempiternal Weave .........................................10 pts
 The Sovereign Coronal ...................................30 pts
 Veil of Darkness ...............................................20 pts
-21
+24
 ORKS
 Battlewagon
 1 model ............................................................185 pts
@@ -1616,14 +1864,36 @@ Wurrboy
 1 model ..............................................................60 pts
 Zodgrod Wortsnagga
 1 model ..............................................................80 pts
-22
+25
+FORGE WORLD POINTS VALUES
+Big Trakk
+1 model ..............................................................75 pts
+Grot Mega-tank
+1 model ............................................................110 pts
+Grot Tanks
+4 models ..........................................................155 pts
+8 models ..........................................................310 pts
+Gargantuan Squiggoth
+1 model ............................................................440 pts
+Kill Tank
+1 model ............................................................305 pts
+Mega Dread
+1 model ............................................................225 pts
+Meka-dread
+1 model ............................................................230 pts
+Nobz on Warbikes
+3 models ..........................................................125 pts
+Squiggoth
+1 model ............................................................150 pts
+Warboss on Warbike
+1 model ..............................................................85 pts
 DETACHMENT ENHANCEMENTS
 Waaagh! Tribe
 Follow Me Ladz.................................................25 pts
 Headwoppa’s Killchoppa ...............................20 pts
 Kunnin’ But Brutal ...........................................15 pts
 Supa-Cybork Body ..........................................15 pts
-23
+26
 SPACE MARINES
 Adrax Agatone
 1 model ............................................................100 pts
@@ -1775,7 +2045,7 @@ Land Speeder
 1 model ..............................................................80 pts
 Land Speeder Storm
 1 model ..............................................................70 pts
-24
+27
 Land Speeder Tornado
 1 model ..............................................................95 pts
 Land Speeder Typhoon
@@ -1904,13 +2174,18 @@ Vulkan He’stan
 1 model ..............................................................95 pts
 Whirlwind
 1 model ............................................................125 pts
+FORGE WORLD POINTS VALUES
+Astraeus
+1 model ............................................................525 pts
+Thunderhawk Gunship
+1 model ............................................................840 pts
 DETACHMENT ENHANCEMENTS
 Gladius Task Force
 Adept of the Codex ..........................................20 pts
 Artificer Armour ................................................10 pts
 Bolter Discipline ..............................................25 pts
 The Honour Vehement ...................................15 pts
-25
+28
 SPACE WOLVES
 Arjac Rockfist
 1 model ............................................................105 pts
@@ -2001,7 +2276,7 @@ Black Death .......................................................25 pts
 Frost Weapon....................................................15 pts
 The Pelt of Balewolf.........................................10 pts
 Wolf Tail Talisman ............................................20 pts
-26
+29
 T’AU EMPIRE
 Aun’Shi
 1 model ..............................................................60 pts
@@ -2091,13 +2366,33 @@ Tidewall Shieldline
 Tidewall Defence Platform ..........................+20 pts
 Vespid Stingwings
 5 models ............................................................75 pts
+FORGE WORLD POINTS VALUES
+AX-1-0 Tiger Shark
+1 model ............................................................315 pts
+Barracuda
+1 model ............................................................220 pts
+Manta
+1 model .........................................................2100 pts
+Remora Stealth Drones
+2 models ..........................................................160 pts
+R’varna Battlesuit
+1 model ............................................................235 pts
+Ta’unar Supremacy Armour
+1 model ............................................................685 pts
+Tetras
+2 models ............................................................80 pts
+4 models ..........................................................160 pts
+Tiger Shark
+1 model ............................................................275 pts
+Y’vahra Battlesuit
+1 model ............................................................235 pts
 DETACHMENT ENHANCEMENTS
 Kauyon
 Exemplar of the Kauyon ................................15 pts
 Precision of the Patient Hunter ...................20 pts
 Puretide Engram Neurochip .........................25 pts
 Through Unity, Devastation ..........................20 pts
-27
+30
 THOUSAND SONS
 Ahriman
 1 model ............................................................110 pts
@@ -2167,7 +2462,7 @@ Arcane Vortex ...................................................15 pts
 Athenaean Scrolls ...........................................20 pts
 Lord of Forbidden Lore ...................................25 pts
 Umbralefic Crystal ..........................................20 pts
-28
+31
 TYRANIDS
 Barbgaunts
 5 models ............................................................50 pts
@@ -2279,13 +2574,22 @@ Winged Tyranid Prime
 Zoanthropes
 3 models ............................................................90 pts
 6 models ..........................................................180 pts
+FORGE WORLD POINTS VALUES
+Barbed Hierodule
+1 model ............................................................305 pts
+Harridan
+1 model ............................................................655 pts
+Hierophant
+1 model ............................................................810 pts
+Scythed Hierodule
+1 model ............................................................305 pts
 DETACHMENT ENHANCEMENTS
 Invasion Fleet
 Adaptive Biology .............................................25 pts
 Alien Cunning ...................................................30 pts
 Perfectly Adapted ............................................15 pts
 Synaptic Linchpin ...........................................10 pts
-29
+32
 WORLD EATERS
 Angron
 1 model ............................................................415 pts
@@ -2344,4 +2648,4 @@ Battle-lust ..........................................................15 pts
 Berzerker Glaive ..............................................25 pts
 Favoured of Khorne ........................................30 pts
 Helm of Brazen Ire ..........................................25 pts
-30
+33

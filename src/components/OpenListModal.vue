@@ -1,7 +1,9 @@
 <script setup>
 import { ref, computed } from "vue";
+import { MFM_VERSION } from "../utils/data-reader";
 import OpenIcon from "../assets/computer-folder-open-icon.svg";
 import DeleteIcon from "../assets/recycle-bin-line-icon.svg";
+import RiskIcon from "../assets/risk-icon.svg";
 import ModalWithButton from "./ModalWithButton.vue";
 
 const props = defineProps({
@@ -39,10 +41,20 @@ function deleteList(list) {
               <template v-if="list.name">
                 <b>{{ list.name }}</b> —
               </template>
-              {{ list.faction }} — {{ list.detachment }} —
+              {{ list.faction }} —
+              <template v-if="list.detachment">
+                {{ list.detachment }} —
+              </template>
               {{ points(list.units) }} pts
             </button>
           </form>
+          <span
+            v-if="list.mfm_version !== MFM_VERSION"
+            title="List created using old point values"
+            class="open-modal__warning"
+          >
+            <RiskIcon />
+          </span>
           <button
             class="open-modal__delete"
             @click="deleteList(list)"
@@ -85,6 +97,14 @@ function deleteList(list) {
       background-color: #f00;
     }
 
+    svg {
+      height: 24px;
+      width: 24px;
+    }
+  }
+
+  &__warning {
+    margin-inline: 8px;
     svg {
       height: 24px;
       width: 24px;

@@ -1,8 +1,10 @@
 <script setup>
 import { computed } from "vue";
+import { MFM_VERSION } from "../utils/data-reader";
 import ViewListModal from "./ViewListModal.vue";
 import OpenListModal from "./OpenListModal.vue";
 import NewIcon from "../assets/file-line-icon.svg";
+import UpdateMFMPointsModal from "./UpdateMFMPointsModal.vue";
 
 const props = defineProps({
   appData: Object,
@@ -16,13 +18,17 @@ const points = computed(() => {
 });
 
 const factions = computed(() => {
-  return props.appData.compendium.map((faction) => faction.name);
+  return props.appData.factions.map((f) => f.name);
 });
 
 const detachments = computed(() => {
-  return props.appData.compendium
-    .find((faction) => faction.name === props.appData.currentList.faction)
-    ?.detachments?.map((detachment) => detachment.name);
+  return props.appData.factions
+    .find((f) => f.name === props.appData.currentList.faction)
+    ?.detachments?.map((d) => d.name);
+});
+
+const outOfDate = computed(() => {
+  return props.appData.currentList.mfm_version !== MFM_VERSION;
 });
 </script>
 
@@ -66,6 +72,11 @@ const detachments = computed(() => {
 
     <div class="toolbar__row">
       <div class="toolbar__group toolbar__group--points">
+        <UpdateMFMPointsModal
+          class="toolbar__warning"
+          v-if="outOfDate"
+          :app-data="props.appData"
+        />
         <label>
           <span :class="{ over: points > props.appData.currentList.maxPoints }">
             {{ points }}
@@ -100,6 +111,12 @@ const detachments = computed(() => {
             </option>
           </select>
         </template>
+      </div>
+      <div class="toolbar__group">
+        <label>
+          <input type="checkbox" v-model="props.appData.showForgeWorld" />
+          Forge World
+        </label>
       </div>
     </div>
   </div>
@@ -148,6 +165,10 @@ const detachments = computed(() => {
     fill: currentColor;
     height: 23px;
     width: 23px;
+  }
+
+  &__warning {
+    margin-inline-end: 24px;
   }
 
   &__row {

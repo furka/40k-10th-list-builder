@@ -13,17 +13,19 @@ function addUnit(unit, size) {
   emit("add", unit, size);
 }
 
-const codex = computed(() => {
-  return props.appData.compendium.find(
-    (faction) => faction.name === props.appData.currentList.faction
-  );
-});
-
 const dataSheets = computed(() => {
-  return codex.value?.["data-sheets"]
+  return props.appData.compendium
+    ?.filter((sheet) => sheet.faction === props.appData.currentList.faction)
     ?.filter((sheet) =>
       sheet.name.toLowerCase().includes(props.appData.codexFilter.toLowerCase())
     )
+    .filter((sheet) => {
+      if (props.appData.showForgeWorld) {
+        return true;
+      } else {
+        return !sheet.forgeWorld;
+      }
+    })
     .sort((a, b) => {
       const aa = a.name.toLowerCase();
       const bb = b.name.toLowerCase();
@@ -32,9 +34,9 @@ const dataSheets = computed(() => {
 });
 
 const enhancements = computed(() => {
-  return codex.value.detachments?.find(
-    (d) => d.name === props.appData.currentList.detachment
-  )?.enhancements;
+  return props.appData.compendium.find(
+    (sheet) => sheet.name === "Enhancements"
+  );
 });
 
 const codexEl = ref(null);

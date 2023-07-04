@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 import ArmyList from "./components/ArmyList.vue";
 import ArmyCodex from "./components/ArmyCodex.vue";
 import ToolBar from "./components/ToolBar.vue";
-import { FACTIONS } from "./utils/data-reader";
+import { DATA_SHEETS, FACTIONS, MFM_VERSION } from "./utils/data-reader";
 import PACKAGE from "../package.json";
 import PrintableArmyList from "./components/PrintableArmyList.vue";
 
@@ -29,9 +29,11 @@ const appData = reactive({
   codexFilter: "",
   armyName: "",
   editCollection: false,
+  showForgeWorld: false,
   appHeight: window.innerHeight,
   appWidth: window.innerWidth,
-  compendium: FACTIONS,
+  compendium: DATA_SHEETS,
+  factions: FACTIONS,
 });
 
 const handleResize = () => {
@@ -59,6 +61,7 @@ function createNewList(faction, detachment) {
     modifiedDate: Date.now(),
     units: [],
     version: PACKAGE.version,
+    mfm_version: MFM_VERSION,
   };
 }
 
@@ -113,7 +116,10 @@ onUnmounted(() => {
       <ArmyList :app-data="appData" />
       <ArmyCodex :app-data="appData" @add="addUnit" />
     </div>
-    <div class="version">version {{ PACKAGE.version }}</div>
+    <div class="version">
+      <span> app version {{ PACKAGE.version }} </span>
+      <span> Munitorum Field Manual {{ MFM_VERSION.toLowerCase() }} </span>
+    </div>
   </div>
   <PrintableArmyList :app-data="appData" class="print" />
 </template>
@@ -143,9 +149,15 @@ onUnmounted(() => {
     right: 0;
     color: #fff;
     font-size: 12px;
-    background-color: rgba(0, 0, 0, 0.75);
-    padding: 0 4px;
     pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    span {
+      padding: 0 4px;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
   }
 }
 

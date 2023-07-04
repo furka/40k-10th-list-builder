@@ -25,6 +25,16 @@ function onCollectionBlur(collection) {
   collection.owned = Math.min(999, Math.max(0, Number(collection.owned)));
 }
 
+const options = computed(() => {
+  if (props.dataSheet.name === "Enhancements") {
+    return props.dataSheet.sizes.filter(
+      (s) => s.detachment === props.appData.currentList.detachment
+    );
+  }
+
+  return props.dataSheet.sizes;
+});
+
 const count = computed(() => {
   return props.appData.currentList.units.filter(
     (unit) => unit.name === props.dataSheet.name && !unit.bonus
@@ -90,13 +100,14 @@ function optionAvailable(option) {
 </script>
 
 <template>
-  <div class="data-sheet" v-if="owned">
+  <div class="data-sheet" v-if="owned && options.length">
     <div class="data-sheet__title" :class="{ maxed: maxed }">
       <span class="data-sheet__name">
         <template v-if="count > 0"> ({{ count }}) </template>
         {{ props.dataSheet.name }}
         <span v-if="props.dataSheet.epicHero" title="Epic Hero">[E]</span>
         <span v-if="props.dataSheet.battleLine" title="Battleline">[B]</span>
+        <span v-if="props.dataSheet.forgeWorld" title="Forgeworld">[F]</span>
       </span>
 
       <label
@@ -126,7 +137,7 @@ function optionAvailable(option) {
     </div>
     <ul>
       <li
-        v-for="(option, index) in props.dataSheet.sizes"
+        v-for="(option, index) in options"
         @click="
           optionAvailable(option) ? $emit('add', props.dataSheet, option) : null
         "
