@@ -150,6 +150,10 @@ const outOfDate = computed(() => {
     }
   }
 
+  select {
+    max-width: calc(50vw - 240px);
+  }
+
   &__button {
     align-items: center;
     background: transparent;
