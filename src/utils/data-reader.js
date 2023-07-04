@@ -3,7 +3,7 @@ import MFM from "../data/munitorum-field-manual/MFM.txt?raw";
 import { DATA } from "../data/datasheets/index";
 
 function getKeywords(name) {
-  const regex = new RegExp(`${name}\\r\\nKEYWORDS:(.*)`, "mi");
+  const regex = new RegExp(`${name}[\\s\\S]?[\\s\\S]?KEYWORDS:(.*)`, "mi");
   const match = DATA.match(regex);
 
   if (match) {
