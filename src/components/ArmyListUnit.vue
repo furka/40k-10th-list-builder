@@ -1,5 +1,6 @@
 <script setup>
 import { ref, computed } from "vue";
+import RiskIcon from "../assets/risk-icon.svg";
 
 const props = defineProps({
   unit: Object,
@@ -25,7 +26,19 @@ const name = computed(() => {
 </script>
 
 <template>
-  <div class="army-list-unit" :data-id="props.unit.id" :title="name">
+  <div
+    class="army-list-unit"
+    :data-id="props.unit.id"
+    :title="name"
+    :class="{ error: props.unit.error }"
+  >
+    <span
+      class="army-list-unit__warning"
+      title="This option is no longer valid"
+      v-if="unit.error"
+    >
+      <RiskIcon class="army-list-unit__warning-icon" />
+    </span>
     <span class="army-list-unit__name">
       {{ name }}
     </span>
@@ -45,6 +58,10 @@ const name = computed(() => {
   position: relative;
   z-index: 1;
 
+  &.error {
+    background-color: rgb(89, 0, 0);
+  }
+
   &:hover {
     z-index: 2;
   }
@@ -61,8 +78,18 @@ const name = computed(() => {
     white-space: nowrap;
 
     &:hover {
-      background-color: rgb(0 89 46);
+      background-color: inherit;
       overflow: initial;
+    }
+  }
+
+  &__warning {
+    cursor: help;
+    padding: 4px;
+
+    &-icon {
+      height: 24px;
+      width: 24px;
     }
   }
 }

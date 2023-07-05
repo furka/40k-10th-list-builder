@@ -18,19 +18,20 @@ remaining dice become your Fate dice for the battle.
 These results cannot be changed or re-rolled further,
 unless a rule specifically states otherwise. Keep your
 Fate dice to one side – this is your Fate dice pool.
-Before making a dice roll for a model or unit from your
-army with the Strands of Fate ability, if you have one
-or more dice in your Fate dice pool, you can use one
-of those Fate dice. To do so, select one of those Fate
-dice to substitute that dice roll. The dice that is being
-substituted is not rolled; instead, the value of the
-selected Fate dice is used as if it had been rolled (this
-counts as an unmodified dice roll of that value for all
-rules purposes). Each Fate dice can only be used in
-this way once. After using a Fate dice, remove it from
-your Fate dice pool and roll all remaining dice that are
-part of that dice roll (if any). You can use Fate dice for
-any of the following types of dice roll:
+Once per phase, before making a dice roll for a model
+or unit from your army with the Strands of Fate ability,
+if you have one or more dice in your Fate dice pool,
+you can use one of those Fate dice. To do so, select
+one of those Fate dice to substitute that dice roll. The
+dice that is being substituted is not rolled; instead,
+the value of the selected Fate dice is used as if it had
+been rolled (this counts as an unmodified dice roll
+of that value for all rules purposes). Each Fate dice
+can only be used in this way once. After using a Fate
+dice, remove it from your Fate dice pool and roll all
+remaining dice that are part of that dice roll (if any).
+You can use Fate dice for any of the following types
+of dice roll:
 ■ Advance roll
 ■ Battle-shock test
 ■ Charge roll
@@ -561,8 +562,8 @@ the following:
 UNIT COMPOSITION
 ■ 1 Voidreaver Felarch
 ■ 4-9 Corsair Voidreavers
-Every model is equipped with: shuriken pistol; Aeldari power
-sword
+Every model is equipped with: shuriken pistol; Aeldari
+power sword.
 CORSAIR VOIDREAVERS
 The skilled and agile warriors known as Voidreavers make up the bulk
 of most Corsair warbands. With precise volleys of lethal shuriken fire

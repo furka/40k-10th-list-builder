@@ -34,11 +34,13 @@ function getPoints(unit) {
   if (unit.optionName) {
     option = data_sheet.sizes.find((s) => s.name === unit.optionName.trim());
   } else if (unit.models) {
-    option = data_sheet.sizes.find((s) => (s.models = unit.models));
+    option = data_sheet.sizes.find((s) => s.models === unit.models);
   }
 
   if (option) {
     unit.points = option.points;
+  } else {
+    unit.error = true;
   }
 }
 </script>
