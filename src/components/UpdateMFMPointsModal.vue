@@ -2,6 +2,7 @@
 import RiskIcon from "../assets/risk-icon.svg";
 import ModalWithButton from "./ModalWithButton.vue";
 import { MFM_VERSION } from "../utils/data-reader";
+import { computed } from "vue";
 
 const props = defineProps({
   appData: Object,
@@ -19,6 +20,12 @@ function upgradeMFMVersion(list) {
   try {
     list.units.forEach((unit) => {
       const points = getPoints(unit);
+
+      if (points < 0) {
+        unit.error = true;
+      } else {
+        unit.points = points;
+      }
     });
 
     list.mfm_version = MFM_VERSION;
@@ -38,11 +45,28 @@ function getPoints(unit) {
   }
 
   if (option) {
-    unit.points = option.points;
-  } else {
-    unit.error = true;
+    return option.points;
   }
+
+  return -1;
 }
+
+const changes = computed(() => {
+  return props.appData.currentList.units
+    .map((u) => {
+      const points = getPoints(u);
+
+      return {
+        name: u.name,
+        old: u.points,
+        new: points,
+        models: u.models,
+        optionName: u.optionName,
+      };
+    })
+    .filter((i) => i.new !== i.old);
+});
+// TODO: list expected changes in modal
 </script>
 
 <template>
@@ -62,6 +86,24 @@ function getPoints(unit) {
         Do you wish to automatically update the units in your army list to their
         latest point values?
       </p>
+      <ul>
+        <li
+          v-for="(change, index) in changes"
+          :class="{ error: change.new < 0 }"
+        >
+          <template v-if="change.optionName">
+            {{ change.optionName }} —
+          </template>
+          <template v-else> ({{ change.models }})</template>
+          {{ change.name }}:
+          <b>
+            <template v-if="change.new < 0"> Option no longer valid </template>
+            <template v-else>
+              {{ change.old }} pts -> {{ change.new }} pts
+            </template>
+          </b>
+        </li>
+      </ul>
       <br />
       <br />
       <br />
@@ -84,6 +126,20 @@ function getPoints(unit) {
 
     &:hover {
       background-color: rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  ul {
+    list-style: none;
+    margin-top: 64px;
+    padding: 0;
+  }
+
+  li {
+    color: rgb(0 89 46);
+
+    &.error {
+      color: rgb(89, 0, 0);
     }
   }
 }

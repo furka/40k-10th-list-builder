@@ -16,6 +16,14 @@ const points = computed(() => {
     0
   );
 });
+
+const space = computed(() => {
+  return (
+    Math.max(0, props.appData.currentList.maxPoints - points.value) *
+      scale.value +
+    "px"
+  );
+});
 </script>
 
 <template>
@@ -44,5 +52,6 @@ const points = computed(() => {
   justify-content: flex-end;
   max-width: calc(100vw - 300px);
   width: 250px;
+  padding-top: v-bind("space");
 }
 </style>
