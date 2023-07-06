@@ -13,24 +13,36 @@ function addUnit(unit, size) {
   emit("add", unit, size);
 }
 
+function factionFilter(sheet) {
+  return sheet.faction === props.appData.currentList.faction;
+}
+
+function userFilter(sheet) {
+  return sheet.name
+    .toLowerCase()
+    .includes(props.appData.codexFilter.toLowerCase());
+}
+
+function forgeWorldFilter(sheet) {
+  if (props.appData.showForgeWorld) {
+    return true;
+  } else {
+    return !sheet.forgeWorld;
+  }
+}
+
+function dataSheetSort(a, b) {
+  const aa = a.name.toLowerCase();
+  const bb = b.name.toLowerCase();
+  return aa < bb ? -1 : aa > bb ? 1 : 0;
+}
+
 const dataSheets = computed(() => {
   return props.appData.compendium
-    ?.filter((sheet) => sheet.faction === props.appData.currentList.faction)
-    ?.filter((sheet) =>
-      sheet.name.toLowerCase().includes(props.appData.codexFilter.toLowerCase())
-    )
-    .filter((sheet) => {
-      if (props.appData.showForgeWorld) {
-        return true;
-      } else {
-        return !sheet.forgeWorld;
-      }
-    })
-    .sort((a, b) => {
-      const aa = a.name.toLowerCase();
-      const bb = b.name.toLowerCase();
-      return aa < bb ? -1 : aa > bb ? 1 : 0;
-    });
+    ?.filter(factionFilter)
+    .filter(userFilter)
+    .filter(forgeWorldFilter)
+    .sort(dataSheetSort);
 });
 
 const enhancements = computed(() => {
@@ -39,8 +51,8 @@ const enhancements = computed(() => {
   );
 });
 
+// horizontal scroll using scrollwheel
 const codexEl = ref(null);
-
 function onScrollWheel(e) {
   e.preventDefault();
   codexEl.value.scrollLeft += e.deltaY;
@@ -52,8 +64,6 @@ function onScrollWheel(e) {
     <draggable
       v-model="props.appData.bin"
       group="units"
-      @start="drag = true"
-      @end="drag = false"
       animation="150"
       item-key="id"
       class="codex__bin"
@@ -86,6 +96,7 @@ function onScrollWheel(e) {
   background-image: url(../assets/bg.png);
   background-size: 100% 100%;
   display: flex;
+  flex-grow: 1;
   flex-wrap: wrap;
   gap: 12px;
   overflow-x: auto;
@@ -93,7 +104,6 @@ function onScrollWheel(e) {
   padding: 12px;
   position: relative;
   writing-mode: vertical-lr;
-  flex-grow: 1;
 
   &__bin {
     bottom: 0;

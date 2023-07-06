@@ -5,12 +5,12 @@ import RiskIcon from "../assets/risk-icon.svg";
 const props = defineProps({
   unit: Object,
   scale: Number,
-  index: Number,
 });
 
 const height = computed(() => {
   return `${Math.floor(props.unit.points * props.scale)}px`;
 });
+
 const name = computed(() => {
   let name = "";
 

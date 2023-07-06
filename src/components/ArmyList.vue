@@ -7,9 +7,11 @@ const props = defineProps({
   appData: Object,
 });
 
+// scale the army list based on the current viewport
 const scale = computed(() => {
   return (props.appData.appHeight - 62) / props.appData.currentList.maxPoints;
 });
+
 const points = computed(() => {
   return props.appData.currentList.units.reduce(
     (acc, curr) => acc + curr.points,
@@ -17,7 +19,7 @@ const points = computed(() => {
   );
 });
 
-const space = computed(() => {
+const emptySpace = computed(() => {
   return (
     Math.max(0, props.appData.currentList.maxPoints - points.value) *
       scale.value +
@@ -30,14 +32,12 @@ const space = computed(() => {
   <draggable
     v-model="props.appData.currentList.units"
     group="units"
-    @start="drag = true"
-    @end="drag = false"
     animation="150"
     item-key="id"
     class="army-list"
   >
     <template #item="{ element, index }">
-      <ArmyListUnit :unit="element" :index="index" :scale="scale" />
+      <ArmyListUnit :unit="element" :scale="scale" />
     </template>
   </draggable>
 </template>
@@ -51,7 +51,7 @@ const space = computed(() => {
   flex-shrink: 0;
   justify-content: flex-end;
   max-width: calc(100vw - 300px);
+  padding-top: v-bind("emptySpace");
   width: 250px;
-  padding-top: v-bind("space");
 }
 </style>

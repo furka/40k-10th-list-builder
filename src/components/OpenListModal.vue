@@ -86,12 +86,12 @@ function deleteList(list) {
   }
 
   &__delete {
-    margin-inline-start: 16px;
-    border: none;
     background: transparent;
-    cursor: pointer;
-    padding: 3px;
     border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    margin-inline-start: 16px;
+    padding: 3px;
 
     &:hover {
       background-color: #f00;
@@ -112,12 +112,12 @@ function deleteList(list) {
   }
 
   &__button {
-    padding: 0;
-    border: none;
     background: transparent;
+    border: none;
     cursor: pointer;
     font-family: var(--font-family);
     font-size: 16px;
+    padding: 0;
 
     &:hover {
       background-color: rgba(0, 0, 0, 0.1);

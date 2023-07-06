@@ -66,7 +66,6 @@ const changes = computed(() => {
     })
     .filter((i) => i.new !== i.old);
 });
-// TODO: list expected changes in modal
 </script>
 
 <template>
@@ -120,9 +119,9 @@ const changes = computed(() => {
 .update-modal {
   &__yes {
     background-color: transparent;
-    font-size: 24px;
     border-radius: 8px;
     cursor: pointer;
+    font-size: 24px;
 
     &:hover {
       background-color: rgba(0, 0, 0, 0.1);

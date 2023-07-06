@@ -34,11 +34,11 @@ function openDialog() {
   align-items: center;
   background: transparent;
   border: none;
+  color: white;
   cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  color: white;
 
   &__icon {
     fill: currentColor;

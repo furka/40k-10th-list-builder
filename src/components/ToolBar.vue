@@ -158,11 +158,11 @@ const outOfDate = computed(() => {
     align-items: center;
     background: transparent;
     border: none;
+    color: white;
     cursor: pointer;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    color: white;
   }
 
   &__icon {
@@ -176,10 +176,10 @@ const outOfDate = computed(() => {
   }
 
   &__row {
+    align-items: center;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
     padding: 2px;
   }
 
@@ -240,9 +240,9 @@ const outOfDate = computed(() => {
 
   label {
     align-items: center;
+    cursor: pointer;
     display: flex;
     flex-direction: row;
-    cursor: pointer;
   }
 }
 </style>
