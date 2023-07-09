@@ -76,7 +76,7 @@ const changes = computed(() => {
     <template v-slot:content>
       <h2>Upgrade to Minutorum Field Manual {{ MFM_VERSION }}?</h2>
       <p>
-        This list was crated using the Minutorum Field Manual
+        This list was created using the Minutorum Field Manual
         <b>{{ props.appData.currentList.mfm_version || "1.0" }}</b> but the
         latest version is <b>{{ MFM_VERSION }}</b
         >.
