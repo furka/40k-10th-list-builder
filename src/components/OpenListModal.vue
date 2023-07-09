@@ -35,6 +35,19 @@ function deleteList(list) {
     <template v-slot:content>
       <h2>Saved lists</h2>
       <ul>
+        <li>
+          <span>
+            <template v-if="appData.currentList.name">
+              <b>{{ appData.currentList.name }}</b> —
+            </template>
+            {{ appData.currentList.faction }} —
+            <template v-if="appData.currentList.detachment">
+              {{ appData.currentList.detachment }} —
+            </template>
+            {{ points(appData.currentList.units) }} pts
+          </span>
+          <b>(current)</b>
+        </li>
         <li v-for="(list, index) in props.appData.lists">
           <form method="dialog">
             <button @click="selectList(list)" class="open-modal__button">
@@ -48,20 +61,22 @@ function deleteList(list) {
               {{ points(list.units) }} pts
             </button>
           </form>
-          <span
-            v-if="list.mfm_version !== MFM_VERSION"
-            title="List created using old point values"
-            class="open-modal__warning"
-          >
-            <RiskIcon />
+          <span>
+            <span
+              v-if="list.mfm_version !== MFM_VERSION"
+              title="List created using old point values"
+              class="open-modal__warning"
+            >
+              <RiskIcon />
+            </span>
+            <button
+              class="open-modal__delete"
+              @click="deleteList(list)"
+              title="DELETE LIST?"
+            >
+              <DeleteIcon />
+            </button>
           </span>
-          <button
-            class="open-modal__delete"
-            @click="deleteList(list)"
-            title="DELETE LIST?"
-          >
-            <DeleteIcon />
-          </button>
         </li>
       </ul>
     </template>
@@ -79,6 +94,7 @@ function deleteList(list) {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 32px;
   }
 
   li + li {
@@ -105,10 +121,16 @@ function deleteList(list) {
 
   &__warning {
     margin-inline: 8px;
+    cursor: help;
     svg {
       height: 24px;
       width: 24px;
     }
+  }
+
+  form {
+    flex-grow: 1;
+    display: flex;
   }
 
   &__button {
@@ -118,6 +140,9 @@ function deleteList(list) {
     font-family: var(--font-family);
     font-size: 16px;
     padding: 0;
+    height: 32px;
+    flex-grow: 1;
+    text-align: start;
 
     &:hover {
       background-color: rgba(0, 0, 0, 0.1);
