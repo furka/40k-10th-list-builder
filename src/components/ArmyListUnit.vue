@@ -3,6 +3,7 @@ import { ref, computed } from "vue";
 import RiskIcon from "../assets/risk-icon.svg";
 
 const props = defineProps({
+  appData: Object,
   unit: Object,
   scale: Number,
 });
@@ -23,6 +24,25 @@ const name = computed(() => {
   }
   return name;
 });
+
+const valid = computed(() => {
+  if (props.unit.error) {
+    return false;
+  }
+
+  if (props.unit.name === "Enhancements") {
+    const availableEnhancements = props.appData.compendium
+      ?.find((u) => u.name === "Enhancements")
+      ?.sizes.filter(
+        (s) => s.detachment === props.appData.currentList.detachment
+      )
+      .map((e) => e.name);
+
+    return availableEnhancements.includes(props.unit.optionName);
+  }
+
+  return true;
+});
 </script>
 
 <template>
@@ -30,13 +50,9 @@ const name = computed(() => {
     class="army-list-unit"
     :data-id="props.unit.id"
     :title="name"
-    :class="{ error: props.unit.error }"
+    :class="{ error: !valid }"
   >
-    <span
-      class="army-list-unit__warning"
-      title="This option is no longer valid"
-      v-if="unit.error"
-    >
+    <span class="army-list-unit__warning" title="Invalid unit" v-if="!valid">
       <RiskIcon class="army-list-unit__warning-icon" />
     </span>
     <span class="army-list-unit__name">
@@ -86,11 +102,16 @@ const name = computed(() => {
   &__warning {
     cursor: help;
     padding: 4px;
+    position: absolute;
 
     &-icon {
       height: 24px;
       width: 24px;
     }
+  }
+
+  &__warning + &__name {
+    margin-inline-start: 32px;
   }
 }
 .sortable-ghost {

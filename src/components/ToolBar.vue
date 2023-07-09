@@ -113,7 +113,7 @@ const outOfDate = computed(() => {
         </template>
       </div>
       <div class="toolbar__group">
-        <label>
+        <label title="Show Forge World units">
           <input type="checkbox" v-model="props.appData.showForgeWorld" />
           Forge World
         </label>

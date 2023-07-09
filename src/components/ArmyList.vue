@@ -37,7 +37,7 @@ const emptySpace = computed(() => {
     class="army-list"
   >
     <template #item="{ element, index }">
-      <ArmyListUnit :unit="element" :scale="scale" />
+      <ArmyListUnit :unit="element" :scale="scale" :app-data="props.appData" />
     </template>
   </draggable>
 </template>
