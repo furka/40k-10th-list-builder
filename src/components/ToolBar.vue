@@ -177,8 +177,10 @@ const outOfDate = computed(() => {
 
   &__row {
     align-items: center;
+    box-sizing: border-box;
     display: flex;
     flex-direction: row;
+    height: 44px;
     justify-content: space-between;
     padding: 2px;
   }
@@ -243,6 +245,7 @@ const outOfDate = computed(() => {
     cursor: pointer;
     display: flex;
     flex-direction: row;
+    font-size: var(--font-size);
   }
 }
 </style>
