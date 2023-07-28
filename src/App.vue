@@ -1,5 +1,5 @@
 <script setup>
-import { reactive, onMounted, onUnmounted, watch, computed } from "vue";
+import { reactive, onMounted, onUnmounted, watch, ref } from "vue";
 import { v4 as uuidv4 } from "uuid";
 import ArmyList from "./components/ArmyList.vue";
 import ArmyCodex from "./components/ArmyCodex.vue";
@@ -29,6 +29,7 @@ const appData = reactive({
   codexFilter: "",
   armyName: "",
   editCollection: false,
+  sortOrder: ref("default"),
   showForgeWorld: false,
   appHeight: window.innerHeight,
   appWidth: window.innerWidth,
@@ -93,12 +94,14 @@ watch(
   () => appData.currentList.faction,
   () => {
     appData.codexFilter = "";
+    appData.sortOrder= ref("default");
     appData.editCollection = false;
     appData.currentList.detachment = FACTIONS.find(
       (f) => f.name === appData.currentList.faction
     ).detachments[0]?.name;
   }
 );
+
 
 onMounted(() => {
   window.addEventListener("resize", handleResize);

@@ -45,12 +45,17 @@ const outOfDate = computed(() => {
       </div>
 
       <div class="toolbar__group toolbar__group--list-name">
-        <input
-          type="text"
-          v-model="props.appData.currentList.name"
-          placeholder="Name your list"
-          class="toolbar__list-name"
-        />
+        <input type="text" v-model="props.appData.currentList.name" placeholder="Name your list"
+          class="toolbar__list-name" />
+      </div>
+
+      <div class="toolbar__group">
+        Sort:
+        <select v-model="props.appData.sortOrder">
+          <option>alphabetical</option>
+          <option>points max</option>
+          <option>points min</option>
+        </select>
       </div>
 
       <div class="toolbar__group">
@@ -61,51 +66,32 @@ const outOfDate = computed(() => {
       </div>
 
       <div class="toolbar__group">
-        <input
-          type="text"
-          v-model="props.appData.codexFilter"
-          placeholder="Filter Datasheets"
-          class="toolbar__codex-filter"
-        />
+        <input type="text" v-model="props.appData.codexFilter" placeholder="Filter Datasheets"
+          class="toolbar__codex-filter" />
       </div>
     </div>
 
     <div class="toolbar__row">
       <div class="toolbar__group toolbar__group--points">
-        <UpdateMFMPointsModal
-          class="toolbar__warning"
-          v-if="outOfDate"
-          :app-data="props.appData"
-        />
+        <UpdateMFMPointsModal class="toolbar__warning" v-if="outOfDate" :app-data="props.appData" />
         <label>
           <span :class="{ over: points > props.appData.currentList.maxPoints }">
             {{ points }}
           </span>
           /
-          <input
-            type="number"
-            min="500"
-            step="500"
-            v-model.number="props.appData.currentList.maxPoints"
-            class="toolbar__points-input"
-          />
+          <input type="number" min="500" step="500" v-model.number="props.appData.currentList.maxPoints"
+            class="toolbar__points-input" />
         </label>
       </div>
       <div class="toolbar__group toolbar__group--faction">
-        <select
-          v-model="props.appData.currentList.faction"
-          class="toolbar__faction-select"
-        >
+        <select v-model="props.appData.currentList.faction" class="toolbar__faction-select">
           <option v-for="(faction, index) in factions">
             {{ faction }}
           </option>
         </select>
         <template v-if="detachments?.length > 0">
           <span>—</span>
-          <select
-            v-model="props.appData.currentList.detachment"
-            class="toolbar__detachment-select"
-          >
+          <select v-model="props.appData.currentList.detachment" class="toolbar__detachment-select">
             <option v-for="(faction, index) in detachments">
               {{ faction }}
             </option>
@@ -185,7 +171,7 @@ const outOfDate = computed(() => {
     padding: 2px;
   }
 
-  &__row + &__row {
+  &__row+&__row {
     background-color: rgba(255, 255, 255, 0.1);
   }
 
