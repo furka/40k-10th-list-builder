@@ -45,12 +45,14 @@ const emptySpace = computed(() => {
 
 <template>
   <div class="sidebar">
-    <div class="sidebar-sort-label">Sort By:</div>
-    <span class="sidebar-sort-box">
-      <button @click="props.appData.currentList.units.sort(sortPointsMax)">Points Max</button>
-      <button @click="props.appData.currentList.units.sort(sortPointsMin)">Points Min</button>
-      <button @click="props.appData.currentList.units.sort(sortName)">Name</button>
-    </span>
+    <div class="sidebar-sort-box">
+      <div class="sidebar-sort-label">Sort By:</div>
+      <span class="sidebar-sort-buttons">
+        <button @click="props.appData.currentList.units.sort(sortPointsMax)">Points Max</button>
+        <button @click="props.appData.currentList.units.sort(sortPointsMin)">Points Min</button>
+        <button @click="props.appData.currentList.units.sort(sortName)">Name</button>
+      </span>
+    </div>
     <draggable v-model="props.appData.currentList.units" group="units" animation="150" item-key="id"
       class="sidebar-army-list">
       <template #item="{ element }">
@@ -63,24 +65,31 @@ const emptySpace = computed(() => {
 <style scoped lang="scss">
 .sidebar {
   width: 250px;
+  background-image: url(../assets/bg-dark.png);
+  background-size: 100% 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
 
   &-army-list {
     display: flex;
     flex-direction: column;
     flex-shrink: 0;
     justify-content: flex-end;
-    background-image: url(../assets/bg-dark.png);
     max-width: calc(100vw - 300px);
-    background-size: 100% 100%;
-    padding-top: v-bind("emptySpace");
   }
 
   &-sort-box {
-    display: flex;
-    justify-content: space-around;
     background-color: #333;
     color: white;
   }
+
+  &-sort-buttons {
+    display: flex;
+    justify-content: space-around;
+  }
+
 
   &-sort-label {
     display: flex;
