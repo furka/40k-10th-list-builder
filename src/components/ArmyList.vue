@@ -19,21 +19,6 @@ const points = computed(() => {
   );
 });
 
-
-function sortName(a, b) {
-  const aa = a.name.toLowerCase();
-  const bb = b.name.toLowerCase();
-  return aa < bb ? -1 : aa > bb ? 1 : 0;
-}
-
-function sortPointsMin(a, b) {
-  return a.points < b.points ? -1 : a.points > b.points ? 1 : 0;
-}
-
-function sortPointsMax(a, b) {
-  return a.points < b.points ? 1 : a.points > b.points ? -1 : 0;
-}
-
 const emptySpace = computed(() => {
   return (
     Math.max(0, props.appData.currentList.maxPoints - points.value) *
@@ -41,6 +26,17 @@ const emptySpace = computed(() => {
     "px"
   );
 });
+
+// sort functions
+function sortName(a, b) {
+  const aa = a.name.toLowerCase();
+  const bb = b.name.toLowerCase();
+  return aa < bb ? -1 : aa > bb ? 1 : 0;
+}
+
+function sortPoints(a, b) {
+  return a.points < b.points ? 1 : a.points > b.points ? -1 : 0;
+}[]
 </script>
 
 <template>
@@ -48,8 +44,8 @@ const emptySpace = computed(() => {
     <div class="sidebar-sort-box">
       <div class="sidebar-sort-label">Sort By:</div>
       <span class="sidebar-sort-buttons">
-        <button @click="props.appData.currentList.units.sort(sortPointsMax)">Points Max</button>
-        <button @click="props.appData.currentList.units.sort(sortPointsMin)">Points Min</button>
+        <button @click="props.appData.currentList.units.sort(sortPoints)">Points Max</button>
+        <button @click="props.appData.currentList.units.sort(sortPoints).reverse()">Points Min</button>
         <button @click="props.appData.currentList.units.sort(sortName)">Name</button>
       </span>
     </div>
@@ -78,6 +74,7 @@ const emptySpace = computed(() => {
     flex-shrink: 0;
     justify-content: flex-end;
     max-width: calc(100vw - 300px);
+    padding-top: v-bind("emptySpace");
   }
 
   &-sort-box {
