@@ -13,19 +13,9 @@ const scale = computed(() => {
   return (props.appData.appHeight - 132) / props.appData.currentList.maxPoints;
 });
 
-const points = computed(() => {
-  return props.appData.currentList.units.reduce(
-    (acc, curr) => acc + curr.points,
-    0
-  );
-});
-
-const emptySpace = computed(() => {
-  return (
-    Math.max(0, props.appData.currentList.maxPoints - points.value) *
-    scale.value +
-    "px"
-  );
+//constrain the height of the army list box so we can't flex off the bottom
+const listHeight = computed(() => {
+  return (props.appData.appHeight - 132) + "px"
 });
 
 // sort functions
@@ -37,7 +27,7 @@ function sortName(a, b) {
 
 function sortPoints(a, b) {
   return a.points < b.points ? 1 : a.points > b.points ? -1 : 0;
-}[]
+}
 </script>
 
 <template>
@@ -66,22 +56,23 @@ function sortPoints(a, b) {
   background-size: 100% 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-
 
   &-army-list {
     display: flex;
     flex-direction: column;
-    flex-shrink: 0;
     justify-content: flex-end;
+    margin-top: auto;
     max-width: calc(100vw - 300px);
-    padding-top: v-bind("emptySpace");
+    width: 250px;
+    height: v-bind("listHeight")
   }
 
   &-sort-box {
     background-color: #333;
     color: white;
     height: 44px;
+    display: flex;
+    flex-direction: column;
   }
 
   &-sort-buttons {
