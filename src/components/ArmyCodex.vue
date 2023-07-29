@@ -31,18 +31,69 @@ function forgeWorldFilter(sheet) {
   }
 }
 
-function dataSheetSort(a, b) {
+function sortOrder() {
+  if (props.appData.sortOrder === 'points max') {
+    return dataSheetSortPointsMax
+  }
+  if (props.appData.sortOrder === 'points min') {
+    return dataSheetSortPointsMin
+  }
+  return dataSheetSortName
+}
+
+
+function dataSheetSortName(a, b) {
   const aa = a.name.toLowerCase();
   const bb = b.name.toLowerCase();
   return aa < bb ? -1 : aa > bb ? 1 : 0;
 }
+
+function dataSheetSortPointsMax(a, b) {
+  const maxa = listPointsMax(a.sizes)
+  const maxb = listPointsMax(b.sizes)
+  return maxa < maxb ? -1 : maxa > maxb ? 1 : 0;
+}
+
+function dataSheetSortPointsMin(a, b) {
+  const mina = listPointsMin(a.sizes)
+  const minb = listPointsMin(b.sizes)
+  return mina < minb ? -1 : mina > minb ? 1 : 0;
+}
+
+function listPointsMax(sizes){
+  var max = 0
+  var bonus = 0
+  sizes.forEach(s => {
+    if (s.bonus) {
+      bonus += s.points
+    } else {
+      if (s.points > max) {
+        max = s.points
+      }
+    }
+  });
+  return max+bonus
+
+}
+
+function listPointsMin(sizes){
+  var min = 9999
+  sizes.forEach(s => {
+    if (!s.bonus && s.points < min) {
+        min = s.points
+      }
+  });
+  return min
+
+}
+
 
 const dataSheets = computed(() => {
   return props.appData.compendium
     ?.filter(factionFilter)
     .filter(userFilter)
     .filter(forgeWorldFilter)
-    .sort(dataSheetSort);
+    .sort(sortOrder());
 });
 
 const enhancements = computed(() => {
@@ -61,31 +112,15 @@ function onScrollWheel(e) {
 
 <template>
   <div class="codex" @wheel="onScrollWheel" ref="codexEl">
-    <draggable
-      v-model="props.appData.bin"
-      group="units"
-      animation="150"
-      item-key="id"
-      class="codex__bin"
-    >
+    <draggable v-model="props.appData.bin" group="units" animation="150" item-key="id" class="codex__bin">
       <template #item="{ element, index }">
         <ArmyListUnit :unit="element" :index="index" :scale="scale" />
       </template>
     </draggable>
 
-    <DataSheet
-      v-for="(unit, index) in dataSheets"
-      :dataSheet="unit"
-      :app-data="appData"
-      @add="addUnit"
-    />
+    <DataSheet v-for="(unit, index) in dataSheets" :dataSheet="unit" :app-data="appData" @add="addUnit" />
 
-    <DataSheet
-      v-if="enhancements"
-      :dataSheet="enhancements"
-      :app-data="appData"
-      @add="addUnit"
-    />
+    <DataSheet v-if="enhancements" :dataSheet="enhancements" :app-data="appData" @add="addUnit" />
   </div>
 </template>
 
