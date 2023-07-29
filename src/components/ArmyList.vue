@@ -8,8 +8,9 @@ const props = defineProps({
 });
 
 // scale the army list based on the current viewport
+//compensate for set height of toolbar (88) and sortbox (44)
 const scale = computed(() => {
-  return (props.appData.appHeight - 62) / props.appData.currentList.maxPoints;
+  return (props.appData.appHeight - 132) / props.appData.currentList.maxPoints;
 });
 
 const points = computed(() => {
@@ -80,6 +81,7 @@ function sortPoints(a, b) {
   &-sort-box {
     background-color: #333;
     color: white;
+    height: 44px;
   }
 
   &-sort-buttons {
