@@ -1,5 +1,7 @@
 <script setup>
 import { computed, watch } from "vue";
+import { SORT_EXPENSIVE_FIRST } from "../data/constants";
+import { sortOptionsPtsDescending } from "../utils/sort-functions";
 const props = defineProps({
   dataSheet: Object,
   appData: Object,
@@ -32,7 +34,13 @@ const options = computed(() => {
     );
   }
 
-  return props.dataSheet.sizes;
+  const sizes = [...props.dataSheet.sizes];
+
+  if (props.appData.sortOrder === SORT_EXPENSIVE_FIRST) {
+    sizes.sort(sortOptionsPtsDescending);
+  }
+
+  return sizes;
 });
 
 const count = computed(() => {

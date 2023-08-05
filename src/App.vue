@@ -3,10 +3,11 @@ import { reactive, onMounted, onUnmounted, watch, ref } from "vue";
 import { v4 as uuidv4 } from "uuid";
 import ArmyList from "./components/ArmyList.vue";
 import ArmyCodex from "./components/ArmyCodex.vue";
-import ToolBar from "./components/ToolBar.vue";
 import { DATA_SHEETS, FACTIONS, MFM_VERSION } from "./utils/data-reader";
 import PACKAGE from "../package.json";
 import PrintableArmyList from "./components/PrintableArmyList.vue";
+import { SORT_ALPHABETICAL } from "./data/constants";
+import AppToolBar from "./components/AppToolBar.vue";
 
 function save(key, val = appData[key]) {
   localStorage.setItem(key, JSON.stringify(val));
@@ -29,7 +30,7 @@ const appData = reactive({
   codexFilter: "",
   armyName: "",
   editCollection: false,
-  sortOrder: ref("default"),
+  sortOrder: SORT_ALPHABETICAL,
   showForgeWorld: false,
   appHeight: window.innerHeight,
   appWidth: window.innerWidth,
@@ -94,14 +95,13 @@ watch(
   () => appData.currentList.faction,
   () => {
     appData.codexFilter = "";
-    appData.sortOrder= ref("default");
+    appData.sortOrder = SORT_ALPHABETICAL;
     appData.editCollection = false;
     appData.currentList.detachment = FACTIONS.find(
       (f) => f.name === appData.currentList.faction
     ).detachments[0]?.name;
   }
 );
-
 
 onMounted(() => {
   window.addEventListener("resize", handleResize);
@@ -114,7 +114,7 @@ onUnmounted(() => {
 
 <template>
   <div class="app">
-    <ToolBar class="app__toolbar" :app-data="appData" @new-list="newList" />
+    <AppToolBar class="app__toolbar" :app-data="appData" @new-list="newList" />
     <div class="app__body">
       <ArmyList :app-data="appData" />
       <ArmyCodex :app-data="appData" @add="addUnit" />
@@ -130,7 +130,7 @@ onUnmounted(() => {
 <style scoped lang="scss">
 .app {
   --font-family: Calibri, sans-serif;
-  --toolbar-height: 88px;
+  --toolbar-height: 44px;
   background-color: #111;
   font-family: var(--font-family);
   position: relative;

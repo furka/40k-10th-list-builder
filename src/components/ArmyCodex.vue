@@ -2,7 +2,14 @@
 import DataSheet from "./DataSheet.vue";
 import draggable from "vuedraggable";
 import ArmyListUnit from "./ArmyListUnit.vue";
+import CodexToolBar from "./CodexToolBar.vue";
 import { computed, ref } from "vue";
+import { SORT_CHEAPEST_FIRST, SORT_EXPENSIVE_FIRST } from "../data/constants";
+import {
+  sortDataSheetAlphabetical,
+  sortDataSheetPtsAscending,
+  sortDataSheetPtsDescending,
+} from "../utils/sort-functions";
 
 const props = defineProps({
   appData: Object,
@@ -32,61 +39,14 @@ function forgeWorldFilter(sheet) {
 }
 
 function sortOrder() {
-  if (props.appData.sortOrder === 'points max') {
-    return dataSheetSortPointsMax
+  if (props.appData.sortOrder === SORT_EXPENSIVE_FIRST) {
+    return sortDataSheetPtsDescending;
   }
-  if (props.appData.sortOrder === 'points min') {
-    return dataSheetSortPointsMin
+  if (props.appData.sortOrder === SORT_CHEAPEST_FIRST) {
+    return sortDataSheetPtsAscending;
   }
-  return dataSheetSortName
+  return sortDataSheetAlphabetical;
 }
-
-
-function dataSheetSortName(a, b) {
-  const aa = a.name.toLowerCase();
-  const bb = b.name.toLowerCase();
-  return aa < bb ? -1 : aa > bb ? 1 : 0;
-}
-
-function dataSheetSortPointsMax(a, b) {
-  const maxa = listPointsMax(a.sizes)
-  const maxb = listPointsMax(b.sizes)
-  return maxa < maxb ? -1 : maxa > maxb ? 1 : 0;
-}
-
-function dataSheetSortPointsMin(a, b) {
-  const mina = listPointsMin(a.sizes)
-  const minb = listPointsMin(b.sizes)
-  return mina < minb ? -1 : mina > minb ? 1 : 0;
-}
-
-function listPointsMax(sizes){
-  var max = 0
-  var bonus = 0
-  sizes.forEach(s => {
-    if (s.bonus) {
-      bonus += s.points
-    } else {
-      if (s.points > max) {
-        max = s.points
-      }
-    }
-  });
-  return max+bonus
-
-}
-
-function listPointsMin(sizes){
-  var min = 9999
-  sizes.forEach(s => {
-    if (!s.bonus && s.points < min) {
-        min = s.points
-      }
-  });
-  return min
-
-}
-
 
 const dataSheets = computed(() => {
   return props.appData.compendium
@@ -111,42 +71,69 @@ function onScrollWheel(e) {
 </script>
 
 <template>
-  <div class="codex" @wheel="onScrollWheel" ref="codexEl">
-    <draggable v-model="props.appData.bin" group="units" animation="150" item-key="id" class="codex__bin">
-      <template #item="{ element, index }">
-        <ArmyListUnit :unit="element" :index="index" :scale="scale" />
-      </template>
-    </draggable>
+  <div class="codex">
+    <CodexToolBar class="codex__toolbar" :app-data="appData" />
+    <div class="codex__mfm" @wheel="onScrollWheel" ref="codexEl">
+      <draggable
+        v-model="props.appData.bin"
+        group="units"
+        animation="150"
+        item-key="id"
+        class="codex__bin"
+      >
+        <template #item="{ element, index }">
+          <ArmyListUnit :unit="element" :index="index" :scale="scale" />
+        </template>
+      </draggable>
 
-    <DataSheet v-for="(unit, index) in dataSheets" :dataSheet="unit" :app-data="appData" @add="addUnit" />
+      <DataSheet
+        v-for="(unit, index) in dataSheets"
+        :dataSheet="unit"
+        :app-data="appData"
+        @add="addUnit"
+      />
 
-    <DataSheet v-if="enhancements" :dataSheet="enhancements" :app-data="appData" @add="addUnit" />
+      <DataSheet
+        v-if="enhancements"
+        :dataSheet="enhancements"
+        :app-data="appData"
+        @add="addUnit"
+      />
+    </div>
   </div>
 </template>
 
 <style scoped lang="scss">
 .codex {
-  align-content: flex-start;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
   background-color: #fff;
   background-image: url(../assets/bg.png);
   background-size: 100% 100%;
-  display: flex;
-  flex-grow: 1;
-  flex-wrap: wrap;
-  gap: 12px;
   overflow-x: auto;
   overflow-y: hidden;
-  padding: 12px;
-  position: relative;
-  writing-mode: vertical-lr;
 
-  &__bin {
-    bottom: 0;
-    left: 0;
-    pointer-events: none;
-    position: absolute;
-    right: 0;
-    top: 0;
+  &__mfm {
+    align-content: flex-start;
+    display: flex;
+    flex-grow: 1;
+    flex-wrap: wrap;
+    gap: 12px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 12px;
+    position: relative;
+    writing-mode: vertical-lr;
+
+    &__bin {
+      bottom: 0;
+      left: 0;
+      pointer-events: none;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
   }
 }
 </style>

@@ -1,10 +1,11 @@
 <script setup>
-import { ref, computed } from "vue";
 import { MFM_VERSION } from "../utils/data-reader";
 import OpenIcon from "../assets/computer-folder-open-icon.svg";
 import DeleteIcon from "../assets/recycle-bin-line-icon.svg";
+import CopyIcon from "../assets/text-documents-line-icon.svg";
 import RiskIcon from "../assets/risk-icon.svg";
 import ModalWithButton from "./ModalWithButton.vue";
+import { computed } from "vue";
 
 const props = defineProps({
   appData: Object,
@@ -14,11 +15,30 @@ function points(units) {
   return units.reduce((acc, curr) => acc + curr.points, 0);
 }
 
+const lists = computed(() => {
+  return [props.appData.currentList, ...props.appData.lists];
+});
+
 function selectList(list) {
+  if (list === props.appData.currentList) {
+    return;
+  }
+
   const i = props.appData.lists.indexOf(list);
   props.appData.lists.splice(i, 1);
   props.appData.lists.unshift(props.appData.currentList);
   props.appData.currentList = list;
+}
+
+function copyList(list) {
+  let i;
+  if (list === props.appData.currentList) {
+    i = 0;
+  } else {
+    i = props.appData.lists.indexOf(list);
+  }
+  const clone = JSON.parse(JSON.stringify(list));
+  props.appData.lists.splice(i, 0, clone);
 }
 
 function deleteList(list) {
@@ -35,20 +55,7 @@ function deleteList(list) {
     <template v-slot:content>
       <h2>Saved lists</h2>
       <ul>
-        <li>
-          <span>
-            <template v-if="appData.currentList.name">
-              <b>{{ appData.currentList.name }}</b> —
-            </template>
-            {{ appData.currentList.faction }} —
-            <template v-if="appData.currentList.detachment">
-              {{ appData.currentList.detachment }} —
-            </template>
-            {{ points(appData.currentList.units) }} pts
-          </span>
-          <b>(current)</b>
-        </li>
-        <li v-for="(list, index) in props.appData.lists">
+        <li v-for="(list, index) in lists">
           <form method="dialog">
             <button @click="selectList(list)" class="open-modal__button">
               <template v-if="list.name">
@@ -59,6 +66,7 @@ function deleteList(list) {
                 {{ list.detachment }} —
               </template>
               {{ points(list.units) }} pts
+              <b v-if="index === 0"> (current)</b>
             </button>
           </form>
           <span>
@@ -70,9 +78,17 @@ function deleteList(list) {
               <RiskIcon />
             </span>
             <button
+              class="open-modal__copy"
+              @click="copyList(list)"
+              title="Duplicate list"
+            >
+              <CopyIcon />
+            </button>
+            <button
               class="open-modal__delete"
               @click="deleteList(list)"
               title="DELETE LIST?"
+              :disabled="index === 0"
             >
               <DeleteIcon />
             </button>
@@ -101,7 +117,8 @@ function deleteList(list) {
     border-top: 1px solid rgba(0, 0, 0, 0.1);
   }
 
-  &__delete {
+  &__delete,
+  &__copy {
     background: transparent;
     border-radius: 6px;
     border: none;
@@ -109,14 +126,18 @@ function deleteList(list) {
     margin-inline-start: 16px;
     padding: 3px;
 
-    &:hover {
-      background-color: #f00;
-    }
-
     svg {
       height: 24px;
       width: 24px;
     }
+
+    &[disabled] {
+      opacity: 0.5;
+    }
+  }
+
+  &__delete:not([disabled]):hover {
+    background-color: #f00;
   }
 
   &__warning {
