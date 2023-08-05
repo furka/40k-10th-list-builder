@@ -125,15 +125,14 @@ function onScrollWheel(e) {
     padding: 12px;
     position: relative;
     writing-mode: vertical-lr;
-
-    &__bin {
-      bottom: 0;
-      left: 0;
-      pointer-events: none;
-      position: absolute;
-      right: 0;
-      top: 0;
-    }
+  }
+  &__bin {
+    bottom: 0;
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    top: 0;
   }
 }
 </style>
