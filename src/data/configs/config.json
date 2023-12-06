@@ -1,0 +1,268 @@
+{
+  "ADEPTA SORORITAS": {
+    "battle-line": ["Battle Sisters Squad"],
+    "epic-hero": [
+      "Aestred Thurga and Agathae Dolan",
+      "Daemonifuge",
+      "Junith Eruita",
+      "Morvenn Vahl",
+      "Triumph of Saint Katherine"
+    ]
+  },
+  "ADEPTUS CUSTODES": {
+    "battle-line": ["Custodian Guard", "Prosecutors"],
+    "epic-hero": ["Aleya", "Trajann Valoris", "Valerian"]
+  },
+  "ADEPTUS MECHANICUS": {
+    "battle-line": ["Skitarii Rangers", "Skitarii Vanguard"],
+    "epic-hero": ["Belisarius Cawl"]
+  },
+  "ADEPTUS TITANICUS": { "battle-line": [], "epic-hero": [] },
+  "AELDARI": {
+    "battle-line": [
+      "Corsair Voidreavers",
+      "Guardian Defenders",
+      "Rangers",
+      "Storm Guardians"
+    ],
+    "epic-hero": [
+      "Asurmen",
+      "Avatar of Khaine",
+      "Baharroth",
+      "Eldrad Ulthran",
+      "Fuegan",
+      "Illic Nightspear",
+      "Jain Zar",
+      "Karandras",
+      "Maugan Ra",
+      "Prince Yriel",
+      "Solitaire",
+      "The Visarch",
+      "The Yncarne",
+      "Yvraine"
+    ]
+  },
+  "AGENTS OF THE IMPERIUM": {
+    "battle-line": ["Vigilant Squad", "Voidsmen-at-Arms"],
+    "epic-hero": [
+      "Callidus Assassin",
+      "Culexus Assassin",
+      "Eversor Assassin",
+      "Inquisitor Coteaz",
+      "Inquisitor Eisenhorn",
+      "Inquisitor Greyfax",
+      "Inquisitor Karamazov",
+      "Lord Inquisitor Kyria Draxus",
+      "Vindicare Assassin"
+    ]
+  },
+  "ASTRA MILITARUM": {
+    "battle-line": [
+      "Cadian Shock Troops",
+      "Catachan Jungle Fighters",
+      "Death Korps of Krieg",
+      "Infantry Squad"
+    ],
+    "epic-hero": [
+      "‘Iron Hand’ Straken",
+      "Lord Solar Leontus",
+      "Nork Deddog",
+      "Sergeant Harker",
+      "Sly Marbo",
+      "Ursula Creed"
+    ]
+  },
+  "BLACK TEMPLARS": {
+    "battle-line": [
+      "Crusader Squad",
+      "Primaris Crusader Squad 1 Sword Brother, 5 Initiates"
+    ],
+    "epic-hero": ["High Marshal Helbrecht", "The Emperor’s Champion"]
+  },
+  "BLOOD ANGELS": {
+    "battle-line": [],
+    "epic-hero": [
+      "Astorath",
+      "Brother Corbulo",
+      "Captain Tycho",
+      "Chief Librarian Mephiston",
+      "Commander Dante",
+      "Gabriel Seth",
+      "Lemartes",
+      "The Sanguinor",
+      "Tycho the Lost"
+    ]
+  },
+  "CHAOS DAEMONS": {
+    "battle-line": [
+      "Bloodletters",
+      "Daemonettes",
+      "Nurglings",
+      "Plaguebearers"
+    ],
+    "epic-hero": [
+      "Be’lakor",
+      "Epidemius",
+      "Horticulous Slimux",
+      "Kairos Fateweaver",
+      "Karanak",
+      "Rotigus",
+      "Shalaxi Helbane",
+      "Skarbrand",
+      "Skulltaker",
+      "Syll’esske",
+      "The Blue Scribes",
+      "The Changeling",
+      "The Masque of Slaanesh"
+    ]
+  },
+  "CHAOS KNIGHTS": {
+    "battle-line": [
+      "War Dog Brigand",
+      "War Dog Executioner",
+      "War Dog Huntsman",
+      "War Dog Karnivore",
+      "War Dog Stalker"
+    ],
+    "epic-hero": []
+  },
+  "CHAOS SPACE MARINES": {
+    "battle-line": ["Cultist Mob", "Legionaries"],
+    "epic-hero": [
+      "Abaddon the Despoiler",
+      "Cypher",
+      "Haarken Worldclaimer",
+      "Huron Blackheart",
+      "Lucius the Eternal",
+      "Vashtorr the Arkifane"
+    ]
+  },
+  "DARK ANGELS": {
+    "battle-line": [],
+    "epic-hero": [
+      "Asmodai",
+      "Azrael",
+      "Belial",
+      "Ezekiel",
+      "Lazarus",
+      "Lion El’Jonson",
+      "Sammael"
+    ]
+  },
+  "DEATH GUARD": {
+    "battle-line": ["Plague Marines"],
+    "epic-hero": ["Mortarion", "Typhus"]
+  },
+  "DEATHWATCH": { "battle-line": [], "epic-hero": ["Watch Captain Artemis"] },
+  "DRUKHARI": {
+    "battle-line": ["Kabalite Warriors", "Reavers", "Wracks", "Wyches"],
+    "epic-hero": ["Drazhar", "Lelith Hesperax", "Urien Rakarth"]
+  },
+  "GENESTEALER CULTS": {
+    "battle-line": ["Acolyte Hybrids", "Neophyte Hybrids"],
+    "epic-hero": ["Patriarch"]
+  },
+  "GREY KNIGHTS": {
+    "battle-line": ["Brotherhood Terminator Squad", "Strike Squad"],
+    "epic-hero": [
+      "Brother-Captain Stern",
+      "Castellan Crowe",
+      "Grand Master Voldus",
+      "Kaldor Draigo"
+    ]
+  },
+  "IMPERIAL KNIGHTS": {
+    "battle-line": ["Armiger Helverin", "Armiger Warglaive"],
+    "epic-hero": []
+  },
+  "LEAGUES OF VOTANN": {
+    "battle-line": ["Hearthkyn Warriors"],
+    "epic-hero": ["Ûthar the Destined"]
+  },
+  "NECRONS": {
+    "battle-line": ["Immortals", "Necron Warriors"],
+    "epic-hero": [
+      "C’tan Shard of the Deceiver",
+      "C’tan Shard of the Nightbringer",
+      "C’tan Shard of the Void Dragon",
+      "Illuminor Szeras",
+      "Imotekh the Stormlord",
+      "Orikan the Diviner",
+      "The Silent King",
+      "Trazyn the Infinite"
+    ]
+  },
+  "ORKS": {
+    "battle-line": ["Beast Snagga Boyz", "Boyz"],
+    "epic-hero": [
+      "Boss Snikrot",
+      "Boss Zagstruk",
+      "Ghazghkull Thraka",
+      "Kaptin Badrukk",
+      "Mad Dok Grotsnik",
+      "Mozrog Skragbad",
+      "Zodgrod Wortsnagga"
+    ]
+  },
+  "SPACE MARINES": {
+    "battle-line": [
+      "Assault Intercessor Squad",
+      "Heavy Intercessor Squad",
+      "Intercessor Squad",
+      "Tactical Squad"
+    ],
+    "epic-hero": [
+      "Adrax Agatone",
+      "Captain Sicarius",
+      "Chief Librarian Tigurius",
+      "Darnath Lysander",
+      "Iron Father Feirros",
+      "Kayvaan Shrike",
+      "Kor’sarro Khan",
+      "Pedro Kantor",
+      "Roboute Guilliman",
+      "Tor Garadon",
+      "Uriel Ventris",
+      "Vulkan He’stan"
+    ]
+  },
+  "SPACE WOLVES": {
+    "battle-line": [],
+    "epic-hero": [
+      "Arjac Rockfist",
+      "Bjorn the Fell-Handed",
+      "Canis Wolfborn",
+      "Harald Deathwolf",
+      "Krom Dragongaze",
+      "Logan Grimnar",
+      "Logan Grimnar on Stormrider",
+      "Lukas the Trickster",
+      "Murderfang",
+      "Njal Stormcaller",
+      "Ragnar Blackmane",
+      "Ulrik the Slayer"
+    ]
+  },
+  "T’AU EMPIRE": {
+    "battle-line": ["Breacher Team", "Strike Team"],
+    "epic-hero": [
+      "Aun’Shi",
+      "Commander Farsight",
+      "Commander Shadowsun",
+      "Darkstrider",
+      "Longstrike"
+    ]
+  },
+  "THOUSAND SONS": {
+    "battle-line": ["Tzaangors"],
+    "epic-hero": ["Ahriman", "Ahriman on Disc of Tzeentch", "Magnus the Red"]
+  },
+  "TYRANIDS": {
+    "battle-line": ["Gargoyles", "Hormagaunts", "Termagants"],
+    "epic-hero": ["Deathleaper", "Old One Eye", "The Swarmlord"]
+  },
+  "WORLD EATERS": {
+    "battle-line": ["Jakhals", "Khorne Berzerkers"],
+    "epic-hero": ["Angron", "Khârn the Betrayer", "Lord Invocatus"]
+  }
+}

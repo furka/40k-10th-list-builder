@@ -1,17 +1,5 @@
 import MFM from "../data/munitorum-field-manual/MFM.txt?raw";
-
-import { DATA } from "../data/datasheets/index";
-
-function getKeywords(name) {
-  const regex = new RegExp(`${name}[\\s\\S]?[\\s\\S]?KEYWORDS:(.*)`, "mi");
-  const match = DATA.match(regex);
-
-  if (match) {
-    return match[1].toLowerCase();
-  }
-
-  return "";
-}
+import { CONFIGS } from "../data/configs";
 
 const split = MFM.split(
   /Munitorum Field Manual © Copyright Games Workshop Limited \d\d\d\d\./
@@ -106,14 +94,12 @@ lines.forEach((line) => {
       sizes: [],
     };
 
-    const keywords = getKeywords(currentDatasheet.name);
-
-    if (keywords.includes("epic hero")) {
+    if (CONFIGS["epic-hero"].includes(currentDatasheet.name)) {
       currentDatasheet.epicHero = true;
       currentDatasheet.max = 1;
     }
 
-    if (keywords.includes("battleline")) {
+    if (CONFIGS["battle-line"].includes(currentDatasheet.name)) {
       currentDatasheet.battleLine = true;
       currentDatasheet.max = 6;
     }
