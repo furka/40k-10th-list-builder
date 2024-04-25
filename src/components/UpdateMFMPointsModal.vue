@@ -85,24 +85,36 @@ const changes = computed(() => {
         Do you wish to automatically update the units in your army list to their
         latest point values?
       </p>
-      <ul>
-        <li
-          v-for="(change, index) in changes"
-          :class="{ error: change.new < 0 }"
-        >
-          <template v-if="change.optionName">
-            {{ change.optionName }} —
-          </template>
-          <template v-else> ({{ change.models }})</template>
-          {{ change.name }}:
-          <b>
-            <template v-if="change.new < 0"> Option no longer valid </template>
-            <template v-else>
-              {{ change.old }} pts -> {{ change.new }} pts
+      <template v-if="changes.length">
+        <ul>
+          <li
+            v-for="(change, index) in changes"
+            :class="{ error: change.new < 0 }"
+          >
+            <template v-if="change.optionName">
+              {{ change.optionName }} —
             </template>
-          </b>
-        </li>
-      </ul>
+            <template v-else> ({{ change.models }})</template>
+            {{ change.name }}:
+            <b>
+              <template v-if="change.new < 0">
+                Option no longer valid
+              </template>
+              <template v-else>
+                {{ change.old }} pts -> {{ change.new }} pts
+              </template>
+            </b>
+          </li>
+        </ul>
+      </template>
+      <template v-else>
+        <ul>
+          <li>
+            <b> No points changes in this list 👍 </b>
+          </li>
+        </ul>
+      </template>
+
       <br />
       <br />
       <br />

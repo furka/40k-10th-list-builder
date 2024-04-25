@@ -30,7 +30,7 @@ lines.forEach((line) => {
     forgeWorld = false;
   } else if (line.toUpperCase() === line) {
     // new faction
-    currentFaction = line.trim();
+    currentFaction = line.trim().replace("INDEX: ", "").replace("CODEX: ", "");
     currentDetachment = null;
     currentDatasheet = null;
     forgeWorld = false;
