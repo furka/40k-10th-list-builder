@@ -8,17 +8,17 @@
       "Morvenn Vahl",
       "Triumph of Saint Katherine"
     ],
-    "dedicated-transport": ["Rhino", "Sororitas Repressor"]
+    "dedicated-transport": ["Immolator", "Sororitas Rhino"]
   },
   "ADEPTUS CUSTODES": {
     "battle-line": ["Custodian Guard", "Prosecutors"],
     "epic-hero": ["Aleya", "Trajann Valoris", "Valerian"],
-    "dedicated-transport": ["Coronus Grav-Carrier", "Venerable Land Raider"]
+    "dedicated-transport": ["Anathema Psykana Rhino"]
   },
   "ADEPTUS MECHANICUS": {
     "battle-line": ["Skitarii Rangers", "Skitarii Vanguard"],
     "epic-hero": ["Belisarius Cawl"],
-    "dedicated-transport": ["Skorpius Dunerider", "Skorpius Disintegrator"]
+    "dedicated-transport": ["Skorpius Dunerider"]
   },
   "ADEPTUS TITANICUS": { "battle-line": [], "epic-hero": [], "dedicated-transport": []},
   "AELDARI": {
@@ -44,7 +44,7 @@
       "The Yncarne",
       "Yvraine"
     ],
-    "dedicated-transport": ["Wave Serpent"]
+    "dedicated-transport": ["Starweaver", "Wave Serpent"]
   },
   "AGENTS OF THE IMPERIUM": {
     "battle-line": ["Vigilant Squad", "Voidsmen-at-Arms"],
@@ -76,7 +76,7 @@
       "Sly Marbo",
       "Ursula Creed"
     ],
-    "dedicated-transport": ["Chimera", "Taurox"]
+    "dedicated-transport": ["Chimera", "Taurox", "Taurox Prime"]
   },
   "BLACK TEMPLARS": {
     "battle-line": [
@@ -84,7 +84,7 @@
       "Primaris Crusader Squad 1 Sword Brother, 5 Initiates"
     ],
     "epic-hero": ["High Marshal Helbrecht", "The Emperor’s Champion"],
-    "dedicated-transport": ["Land Raider Crusader", "Land Raider Redeemer"]
+    "dedicated-transport": ["Black Templars Impulsor"]
   },
   "BLOOD ANGELS": {
     "battle-line": [],
@@ -146,7 +146,7 @@
       "Lucius the Eternal",
       "Vashtorr the Arkifane"
     ],
-    "dedicated-transport": []
+    "dedicated-transport": ["Chaos Rhino"]
   },
   "DARK ANGELS": {
     "battle-line": [],
@@ -164,7 +164,7 @@
   "DEATH GUARD": {
     "battle-line": ["Plague Marines"],
     "epic-hero": ["Mortarion", "Typhus"],
-    "dedicated-transport": []
+    "dedicated-transport": ["Death Guard Rhino"]
   },
   "DEATHWATCH": { "battle-line": [], "epic-hero": ["Watch Captain Artemis"], "dedicated-transport": []},
   "DRUKHARI": {
@@ -185,7 +185,7 @@
       "Grand Master Voldus",
       "Kaldor Draigo"
     ],
-    "dedicated-transport": []
+    "dedicated-transport": ["Goliath Truck"]
   },
   "IMPERIAL KNIGHTS": {
     "battle-line": ["Armiger Helverin", "Armiger Warglaive"],
@@ -209,7 +209,7 @@
       "The Silent King",
       "Trazyn the Infinite"
     ],
-    "dedicated-transport": []
+    "dedicated-transport": ["Sagitaur"]
   },
   "ORKS": {
     "battle-line": ["Beast Snagga Boyz", "Boyz"],
@@ -222,7 +222,7 @@
       "Mozrog Skragbad",
       "Zodgrod Wortsnagga"
     ],
-    "dedicated-transport": []
+    "dedicated-transport": ["Trukk"]
   },
   "SPACE MARINES": {
     "battle-line": [
@@ -245,7 +245,7 @@
       "Uriel Ventris",
       "Vulkan He’stan"
     ],
-    "dedicated-transport": ["Drop Pod", "Impulsor", "Rhino"]
+    "dedicated-transport": ["Impulsor", "Razorback", "Rhino"]
   },
   "SPACE WOLVES": {
     "battle-line": [],
@@ -279,16 +279,16 @@
   "THOUSAND SONS": {
     "battle-line": ["Tzaangors"],
     "epic-hero": ["Ahriman", "Ahriman on Disc of Tzeentch", "Magnus the Red"],
-    "dedicated-transport": []
+    "dedicated-transport": ["Thousand Sons Rhino"]
   },
   "TYRANIDS": {
     "battle-line": ["Gargoyles", "Hormagaunts", "Termagants"],
     "epic-hero": ["Deathleaper", "Old One Eye", "The Swarmlord"],
-    "dedicated-transport": []
+    "dedicated-transport": ["Tyrannocyte"]
   },
   "WORLD EATERS": {
     "battle-line": ["Jakhals", "Khorne Berzerkers"],
     "epic-hero": ["Angron", "Khârn the Betrayer", "Lord Invocatus"],
-    "dedicated-transport": []
+    "dedicated-transport": ["World Eaters Rhino"]
   }
 }
