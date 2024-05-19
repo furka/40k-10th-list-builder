@@ -7,17 +7,20 @@
       "Junith Eruita",
       "Morvenn Vahl",
       "Triumph of Saint Katherine"
-    ]
+    ],
+    "dedicated-transport": ["Rhino", "Sororitas Repressor"]
   },
   "ADEPTUS CUSTODES": {
     "battle-line": ["Custodian Guard", "Prosecutors"],
-    "epic-hero": ["Aleya", "Trajann Valoris", "Valerian"]
+    "epic-hero": ["Aleya", "Trajann Valoris", "Valerian"],
+    "dedicated-transport": ["Coronus Grav-Carrier", "Venerable Land Raider"]
   },
   "ADEPTUS MECHANICUS": {
     "battle-line": ["Skitarii Rangers", "Skitarii Vanguard"],
-    "epic-hero": ["Belisarius Cawl"]
+    "epic-hero": ["Belisarius Cawl"],
+    "dedicated-transport": ["Skorpius Dunerider", "Skorpius Disintegrator"]
   },
-  "ADEPTUS TITANICUS": { "battle-line": [], "epic-hero": [] },
+  "ADEPTUS TITANICUS": { "battle-line": [], "epic-hero": [], "dedicated-transport": []},
   "AELDARI": {
     "battle-line": [
       "Corsair Voidreavers",
@@ -40,7 +43,8 @@
       "The Visarch",
       "The Yncarne",
       "Yvraine"
-    ]
+    ],
+    "dedicated-transport": ["Wave Serpent"]
   },
   "AGENTS OF THE IMPERIUM": {
     "battle-line": ["Vigilant Squad", "Voidsmen-at-Arms"],
@@ -54,7 +58,8 @@
       "Inquisitor Karamazov",
       "Lord Inquisitor Kyria Draxus",
       "Vindicare Assassin"
-    ]
+    ],
+    "dedicated-transport": []
   },
   "ASTRA MILITARUM": {
     "battle-line": [
@@ -70,14 +75,16 @@
       "Sergeant Harker",
       "Sly Marbo",
       "Ursula Creed"
-    ]
+    ],
+    "dedicated-transport": ["Chimera", "Taurox"]
   },
   "BLACK TEMPLARS": {
     "battle-line": [
       "Crusader Squad",
       "Primaris Crusader Squad 1 Sword Brother, 5 Initiates"
     ],
-    "epic-hero": ["High Marshal Helbrecht", "The Emperor’s Champion"]
+    "epic-hero": ["High Marshal Helbrecht", "The Emperor’s Champion"],
+    "dedicated-transport": ["Land Raider Crusader", "Land Raider Redeemer"]
   },
   "BLOOD ANGELS": {
     "battle-line": [],
@@ -91,7 +98,8 @@
       "Lemartes",
       "The Sanguinor",
       "Tycho the Lost"
-    ]
+    ],
+    "dedicated-transport": []
   },
   "CHAOS DAEMONS": {
     "battle-line": [
@@ -114,7 +122,8 @@
       "The Blue Scribes",
       "The Changeling",
       "The Masque of Slaanesh"
-    ]
+    ],
+    "dedicated-transport": []
   },
   "CHAOS KNIGHTS": {
     "battle-line": [
@@ -124,7 +133,8 @@
       "War Dog Karnivore",
       "War Dog Stalker"
     ],
-    "epic-hero": []
+    "epic-hero": [],
+    "dedicated-transport": []
   },
   "CHAOS SPACE MARINES": {
     "battle-line": ["Cultist Mob", "Legionaries"],
@@ -135,7 +145,8 @@
       "Huron Blackheart",
       "Lucius the Eternal",
       "Vashtorr the Arkifane"
-    ]
+    ],
+    "dedicated-transport": []
   },
   "DARK ANGELS": {
     "battle-line": [],
@@ -147,20 +158,24 @@
       "Lazarus",
       "Lion El’Jonson",
       "Sammael"
-    ]
+    ],
+    "dedicated-transport": []
   },
   "DEATH GUARD": {
     "battle-line": ["Plague Marines"],
-    "epic-hero": ["Mortarion", "Typhus"]
+    "epic-hero": ["Mortarion", "Typhus"],
+    "dedicated-transport": []
   },
-  "DEATHWATCH": { "battle-line": [], "epic-hero": ["Watch Captain Artemis"] },
+  "DEATHWATCH": { "battle-line": [], "epic-hero": ["Watch Captain Artemis"], "dedicated-transport": []},
   "DRUKHARI": {
     "battle-line": ["Kabalite Warriors", "Reavers", "Wracks", "Wyches"],
-    "epic-hero": ["Drazhar", "Lelith Hesperax", "Urien Rakarth"]
+    "epic-hero": ["Drazhar", "Lelith Hesperax", "Urien Rakarth"],
+    "dedicated-transport": ["Raider", "Venom"]
   },
   "GENESTEALER CULTS": {
     "battle-line": ["Acolyte Hybrids", "Neophyte Hybrids"],
-    "epic-hero": ["Patriarch"]
+    "epic-hero": ["Patriarch"],
+    "dedicated-transport": []
   },
   "GREY KNIGHTS": {
     "battle-line": ["Brotherhood Terminator Squad", "Strike Squad"],
@@ -169,15 +184,18 @@
       "Castellan Crowe",
       "Grand Master Voldus",
       "Kaldor Draigo"
-    ]
+    ],
+    "dedicated-transport": []
   },
   "IMPERIAL KNIGHTS": {
     "battle-line": ["Armiger Helverin", "Armiger Warglaive"],
-    "epic-hero": []
+    "epic-hero": [],
+    "dedicated-transport": []
   },
   "LEAGUES OF VOTANN": {
     "battle-line": ["Hearthkyn Warriors"],
-    "epic-hero": ["Ûthar the Destined"]
+    "epic-hero": ["Ûthar the Destined"],
+    "dedicated-transport": []
   },
   "NECRONS": {
     "battle-line": ["Immortals", "Necron Warriors"],
@@ -190,7 +208,8 @@
       "Orikan the Diviner",
       "The Silent King",
       "Trazyn the Infinite"
-    ]
+    ],
+    "dedicated-transport": []
   },
   "ORKS": {
     "battle-line": ["Beast Snagga Boyz", "Boyz"],
@@ -202,7 +221,8 @@
       "Mad Dok Grotsnik",
       "Mozrog Skragbad",
       "Zodgrod Wortsnagga"
-    ]
+    ],
+    "dedicated-transport": []
   },
   "SPACE MARINES": {
     "battle-line": [
@@ -224,7 +244,8 @@
       "Tor Garadon",
       "Uriel Ventris",
       "Vulkan He’stan"
-    ]
+    ],
+    "dedicated-transport": ["Drop Pod", "Impulsor", "Rhino"]
   },
   "SPACE WOLVES": {
     "battle-line": [],
@@ -241,7 +262,8 @@
       "Njal Stormcaller",
       "Ragnar Blackmane",
       "Ulrik the Slayer"
-    ]
+    ],
+    "dedicated-transport": []
   },
   "T’AU EMPIRE": {
     "battle-line": ["Breacher Team", "Strike Team"],
@@ -251,18 +273,22 @@
       "Commander Shadowsun",
       "Darkstrider",
       "Longstrike"
-    ]
+    ],
+    "dedicated-transport": ["Devilfish"]
   },
   "THOUSAND SONS": {
     "battle-line": ["Tzaangors"],
-    "epic-hero": ["Ahriman", "Ahriman on Disc of Tzeentch", "Magnus the Red"]
+    "epic-hero": ["Ahriman", "Ahriman on Disc of Tzeentch", "Magnus the Red"],
+    "dedicated-transport": []
   },
   "TYRANIDS": {
     "battle-line": ["Gargoyles", "Hormagaunts", "Termagants"],
-    "epic-hero": ["Deathleaper", "Old One Eye", "The Swarmlord"]
+    "epic-hero": ["Deathleaper", "Old One Eye", "The Swarmlord"],
+    "dedicated-transport": []
   },
   "WORLD EATERS": {
     "battle-line": ["Jakhals", "Khorne Berzerkers"],
-    "epic-hero": ["Angron", "Khârn the Betrayer", "Lord Invocatus"]
+    "epic-hero": ["Angron", "Khârn the Betrayer", "Lord Invocatus"],
+    "dedicated-transport": []
   }
 }
