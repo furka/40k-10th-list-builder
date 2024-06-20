@@ -115,6 +115,7 @@ function optionAvailable(option) {
         {{ props.dataSheet.name }}
         <span v-if="props.dataSheet.epicHero" title="Epic Hero">[E]</span>
         <span v-if="props.dataSheet.battleLine" title="Battleline">[B]</span>
+        <span v-if="props.dataSheet.dedicatedTransport" title="Dedicated Transport">[T]</span>
         <span v-if="props.dataSheet.forgeWorld" title="Forgeworld">[F]</span>
       </span>
 
