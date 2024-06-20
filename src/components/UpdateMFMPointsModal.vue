@@ -38,6 +38,10 @@ function getPoints(unit) {
   const data_sheet = props.appData.compendium.find((d) => d.name === unit.name);
   let option;
 
+  if (!data_sheet) {
+    return -1;
+  }
+
   if (unit.optionName) {
     option = data_sheet.sizes.find((s) => s.name === unit.optionName.trim());
   } else if (unit.models) {
@@ -62,6 +66,8 @@ const changes = computed(() => {
         new: points,
         models: u.models,
         optionName: u.optionName,
+        up: u.points < points && points > 0,
+        down: u.points > points && points > 0,
       };
     })
     .filter((i) => i.new !== i.old);
@@ -89,8 +95,10 @@ const changes = computed(() => {
         <ul>
           <li
             v-for="(change, index) in changes"
-            :class="{ error: change.new < 0 }"
+            :class="{ error: change.new < 0, up: change.up }"
           >
+            <template v-if="change.up">▲ </template>
+            <template v-if="change.down">▼ </template>
             <template v-if="change.optionName">
               {{ change.optionName }} —
             </template>
@@ -149,8 +157,12 @@ const changes = computed(() => {
   li {
     color: rgb(0 89 46);
 
-    &.error {
+    &.up {
       color: rgb(89, 0, 0);
+    }
+
+    &.error {
+      color: rgb(89, 76, 0);
     }
   }
 }

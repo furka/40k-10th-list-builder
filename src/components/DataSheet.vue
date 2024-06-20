@@ -2,6 +2,8 @@
 import { computed, watch } from "vue";
 import { SORT_EXPENSIVE_FIRST } from "../data/constants";
 import { sortOptionsPtsDescending } from "../utils/sort-functions";
+import { getDataSheet } from "../utils/get-data-sheet";
+
 const props = defineProps({
   dataSheet: Object,
   appData: Object,
@@ -49,8 +51,18 @@ const count = computed(() => {
   )?.length;
 });
 
+const battleLineUnitsCount = computed(() => {
+  return props.appData.currentList.units.filter(
+    (unit) => getDataSheet(unit, props.appData).battleLine
+  ).length;
+});
+
 const maxed = computed(() => {
-  const max = props.dataSheet.max || 3;
+  let max = props.dataSheet.max || 3;
+  if (props.dataSheet.dedicatedTransport) {
+    max = battleLineUnitsCount.value;
+  }
+
   return count.value >= max;
 });
 
@@ -115,7 +127,11 @@ function optionAvailable(option) {
         {{ props.dataSheet.name }}
         <span v-if="props.dataSheet.epicHero" title="Epic Hero">[E]</span>
         <span v-if="props.dataSheet.battleLine" title="Battleline">[B]</span>
-        <span v-if="props.dataSheet.dedicatedTransport" title="Dedicated Transport">[T]</span>
+        <span
+          v-if="props.dataSheet.dedicatedTransport"
+          title="Dedicated Transport"
+          >[T]</span
+        >
         <span v-if="props.dataSheet.forgeWorld" title="Forgeworld">[F]</span>
       </span>
 

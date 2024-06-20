@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed } from "vue";
 import RiskIcon from "../assets/risk-icon.svg";
+import { getDataSheet } from "../utils/get-data-sheet";
 
 const props = defineProps({
   appData: Object,
@@ -25,9 +26,23 @@ const name = computed(() => {
   return name;
 });
 
-const valid = computed(() => {
+const inValid = computed(() => {
   if (props.unit.error) {
-    return false;
+    return "Invalid Unit";
+  }
+
+  if (getDataSheet(props.unit, props.appData).dedicatedTransport) {
+    const battleLineCount = props.appData.currentList.units.filter(
+      (u) => getDataSheet(u, props.appData).battleLine
+    ).length;
+    const transportCount = props.appData.currentList.units.filter(
+      (u) => getDataSheet(u, props.appData).dedicatedTransport
+    ).length;
+    if (transportCount > battleLineCount) {
+      return `Too many dedicated transports. (${
+        transportCount - battleLineCount
+      } too many)`;
+    }
   }
 
   if (props.unit.name === "Enhancements") {
@@ -38,10 +53,12 @@ const valid = computed(() => {
       )
       .map((e) => e.name);
 
-    return availableEnhancements.includes(props.unit.optionName);
+    if (!availableEnhancements.includes(props.unit.optionName)) {
+      return "Enhancement not available in this detachment";
+    }
   }
 
-  return true;
+  return false;
 });
 </script>
 
@@ -50,9 +67,9 @@ const valid = computed(() => {
     class="army-list-unit"
     :data-id="props.unit.id"
     :title="name"
-    :class="{ error: !valid }"
+    :class="{ error: inValid }"
   >
-    <span class="army-list-unit__warning" title="Invalid unit" v-if="!valid">
+    <span class="army-list-unit__warning" :title="inValid" v-if="inValid">
       <RiskIcon class="army-list-unit__warning-icon" />
     </span>
     <span class="army-list-unit__name">
