@@ -175,7 +175,7 @@
   "GENESTEALER CULTS": {
     "battle-line": ["Acolyte Hybrids", "Neophyte Hybrids"],
     "epic-hero": ["Patriarch"],
-    "dedicated-transport": []
+    "dedicated-transport": ["Goliath Truck"]
   },
   "GREY KNIGHTS": {
     "battle-line": ["Brotherhood Terminator Squad", "Strike Squad"],
@@ -185,7 +185,7 @@
       "Grand Master Voldus",
       "Kaldor Draigo"
     ],
-    "dedicated-transport": ["Goliath Truck"]
+    "dedicated-transport": ["Grey Knights Razorback", "Grey Knights Rhino"]
   },
   "IMPERIAL KNIGHTS": {
     "battle-line": ["Armiger Helverin", "Armiger Warglaive"],
@@ -195,7 +195,7 @@
   "LEAGUES OF VOTANN": {
     "battle-line": ["Hearthkyn Warriors"],
     "epic-hero": ["Ûthar the Destined"],
-    "dedicated-transport": []
+    "dedicated-transport": ["Sagitaur"]
   },
   "NECRONS": {
     "battle-line": ["Immortals", "Necron Warriors"],
@@ -209,7 +209,7 @@
       "The Silent King",
       "Trazyn the Infinite"
     ],
-    "dedicated-transport": ["Sagitaur"]
+    "dedicated-transport": ["Ghost Ark"]
   },
   "ORKS": {
     "battle-line": ["Beast Snagga Boyz", "Boyz"],
