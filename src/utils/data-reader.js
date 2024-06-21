@@ -106,6 +106,7 @@ lines.forEach((line) => {
 
     if (CONFIGS["dedicated-transport"].includes(currentDatasheet.name)) {
       currentDatasheet.dedicatedTransport = true;
+      currentDatasheet.max = 6;
     }
 
     DATA_SHEETS.push(currentDatasheet);

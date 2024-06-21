@@ -1,7 +1,6 @@
 <script setup>
-import { ref, computed } from "vue";
+import { computed } from "vue";
 import RiskIcon from "../assets/risk-icon.svg";
-import { getDataSheet } from "../utils/get-data-sheet";
 
 const props = defineProps({
   appData: Object,
@@ -29,20 +28,6 @@ const name = computed(() => {
 const inValid = computed(() => {
   if (props.unit.error) {
     return "Invalid Unit";
-  }
-
-  if (getDataSheet(props.unit, props.appData).dedicatedTransport) {
-    const battleLineCount = props.appData.currentList.units.filter(
-      (u) => getDataSheet(u, props.appData).battleLine
-    ).length;
-    const transportCount = props.appData.currentList.units.filter(
-      (u) => getDataSheet(u, props.appData).dedicatedTransport
-    ).length;
-    if (transportCount > battleLineCount) {
-      return `Too many dedicated transports. (${
-        transportCount - battleLineCount
-      } too many)`;
-    }
   }
 
   if (props.unit.name === "Enhancements") {
