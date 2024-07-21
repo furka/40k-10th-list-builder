@@ -19,15 +19,21 @@ const lists = computed(() => {
   return [props.appData.currentList, ...props.appData.lists];
 });
 
-function selectList(list) {
+async function selectList(list) {
   if (list === props.appData.currentList) {
     return;
   }
 
+  const detachment = list.detachment;
   const i = props.appData.lists.indexOf(list);
   props.appData.lists.splice(i, 1);
   props.appData.lists.unshift(props.appData.currentList);
   props.appData.currentList = list;
+
+  // not sure, why but changing the list of options and default value of the
+  // dropdown at the same time causes the wrong value to be selected
+  await new Promise((r) => requestAnimationFrame(r));
+  props.appData.currentList.detachment = detachment;
 }
 
 function copyList(list) {

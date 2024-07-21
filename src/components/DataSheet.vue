@@ -116,6 +116,7 @@ function optionAvailable(option) {
         {{ props.dataSheet.name }}
         <span v-if="props.dataSheet.epicHero" title="Epic Hero">[E]</span>
         <span v-if="props.dataSheet.battleLine" title="Battleline">[B]</span>
+        <span v-if="props.dataSheet.character" title="Character">[C]</span>
         <span
           v-if="props.dataSheet.dedicatedTransport"
           title="Dedicated Transport"
@@ -127,7 +128,7 @@ function optionAvailable(option) {
       <label
         v-if="!props.dataSheet.enhancements && props.appData.editCollection"
       >
-        Owned:
+        Models owned:
         <input
           class="data-sheet__owned"
           type="number"
@@ -194,6 +195,10 @@ function optionAvailable(option) {
 
   &__name {
     line-height: 20px;
+
+    > span {
+      cursor: help;
+    }
   }
 
   label {

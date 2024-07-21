@@ -36,6 +36,7 @@ function sortPointsDesc() {
     </template>
     <template v-slot:content>
       <form method="dialog">
+        <h1>Sort Army List</h1>
         <button @click="sortAlphabetical">{{ SORT_ALPHABETICAL }}</button>
         <button @click="sortPointsAsc">{{ SORT_CHEAPEST_FIRST }}</button>
         <button @click="sortPointsDesc">{{ SORT_EXPENSIVE_FIRST }}</button>
@@ -49,6 +50,17 @@ function sortPointsDesc() {
   form {
     display: flex;
     flex-direction: column;
+  }
+
+  h1 {
+    padding: 8px 16px;
+    font-family: var(--font-family);
+    font-size: 16px;
+    font-weight: normal;
+    color: #888;
+    margin: 0;
+    border-bottom: 1px solid #888;
+    text-align: center;
   }
 
   button {

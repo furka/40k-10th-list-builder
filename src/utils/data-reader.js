@@ -94,19 +94,31 @@ lines.forEach((line) => {
       sizes: [],
     };
 
-    if (CONFIGS["epic-hero"].includes(currentDatasheet.name)) {
+    if (CONFIGS["epic-hero"].includes(currentDatasheet.name.toLowerCase())) {
       currentDatasheet.epicHero = true;
       currentDatasheet.max = 1;
     }
 
-    if (CONFIGS["battle-line"].includes(currentDatasheet.name)) {
+    if (CONFIGS["battle-line"].includes(currentDatasheet.name.toLowerCase())) {
       currentDatasheet.battleLine = true;
       currentDatasheet.max = 6;
     }
 
-    if (CONFIGS["dedicated-transport"].includes(currentDatasheet.name)) {
+    if (
+      CONFIGS["dedicated-transport"].includes(
+        currentDatasheet.name.toLowerCase()
+      )
+    ) {
       currentDatasheet.dedicatedTransport = true;
       currentDatasheet.max = 6;
+    }
+
+    if (CONFIGS["character"].includes(currentDatasheet.name.toLowerCase())) {
+      currentDatasheet.character = true;
+    }
+
+    if (CONFIGS["sub-factions"][currentFaction]) {
+      currentDatasheet.subFaction = CONFIGS["sub-factions"][currentFaction];
     }
 
     DATA_SHEETS.push(currentDatasheet);

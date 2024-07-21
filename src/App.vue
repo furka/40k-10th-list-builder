@@ -6,7 +6,7 @@ import ArmyCodex from "./components/ArmyCodex.vue";
 import { DATA_SHEETS, FACTIONS, MFM_VERSION } from "./utils/data-reader";
 import PACKAGE from "../package.json";
 import PrintableArmyList from "./components/PrintableArmyList.vue";
-import { SORT_ALPHABETICAL } from "./data/constants";
+import { GROUP_NONE, SORT_ALPHABETICAL } from "./data/constants";
 import AppToolBar from "./components/AppToolBar.vue";
 
 function save(key, val = appData[key]) {
@@ -22,20 +22,21 @@ function restore(key) {
 }
 
 const appData = reactive({
-  units: restore("units") || [],
-  currentList: restore("currentList") || createNewList(),
-  lists: restore("lists") || [],
-  bin: [],
-  collection: restore("collection") || [],
-  codexFilter: "",
-  armyName: "",
-  editCollection: false,
-  sortOrder: SORT_ALPHABETICAL,
-  showForgeWorld: false,
   appHeight: window.innerHeight,
   appWidth: window.innerWidth,
+  armyName: "",
+  bin: [],
+  codexFilter: "",
+  collection: restore("collection") ?? [],
   compendium: DATA_SHEETS,
+  currentList: restore("currentList") ?? createNewList(),
+  editCollection: false,
   factions: FACTIONS,
+  group: restore("group") ?? GROUP_NONE,
+  lists: restore("lists") ?? [],
+  showForgeWorld: restore("showForgeWorld") ?? true,
+  sortOrder: restore("sortOrder") ?? SORT_ALPHABETICAL,
+  units: restore("units") ?? [],
 });
 
 const handleResize = () => {
@@ -46,24 +47,24 @@ const handleResize = () => {
 function addUnit(unit, size) {
   appData.currentList.units.unshift({
     id: uuidv4(),
-    name: unit.name,
-    points: size.points,
-    models: size.models,
-    optionName: size.name,
     bonus: size.bonus,
+    models: size.models,
+    name: unit.name,
+    optionName: size.name,
+    points: size.points,
   });
 }
 
 function createNewList(faction, detachment) {
   return {
-    name: "",
-    faction: faction || FACTIONS[0].name,
     detachment: detachment || FACTIONS[0].detachments[0].name,
+    faction: faction || FACTIONS[0].name,
     maxPoints: 2000,
+    mfm_version: MFM_VERSION,
     modifiedDate: Date.now(),
+    name: "",
     units: [],
     version: PACKAGE.version,
-    mfm_version: MFM_VERSION,
   };
 }
 
@@ -75,10 +76,13 @@ function newList() {
 }
 
 watch(appData, () => {
-  save("units");
-  save("currentList");
-  save("lists");
   save("collection");
+  save("currentList");
+  save("group");
+  save("lists");
+  save("showForgeWorld");
+  save("sortOrder");
+  save("units");
 });
 
 watch(
@@ -95,7 +99,6 @@ watch(
   () => appData.currentList.faction,
   () => {
     appData.codexFilter = "";
-    appData.sortOrder = SORT_ALPHABETICAL;
     appData.editCollection = false;
     appData.currentList.detachment = FACTIONS.find(
       (f) => f.name === appData.currentList.faction
@@ -142,8 +145,10 @@ onUnmounted(() => {
 
   &__body {
     display: flex;
-    justify-content: center;
     height: calc(100svh - var(--toolbar-height));
+    justify-content: center;
+    position: relative;
+    z-index: 1;
   }
 
   .version {
@@ -156,6 +161,7 @@ onUnmounted(() => {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    z-index: 2;
 
     span {
       padding: 0 4px;

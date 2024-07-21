@@ -80,7 +80,7 @@ const changes = computed(() => {
       <RiskIcon class="modal-button__icon" /> <span> Update </span>
     </template>
     <template v-slot:content>
-      <h2>Upgrade to Minutorum Field Manual {{ MFM_VERSION }}?</h2>
+      <h2>Upgrade Army List to Minutorum Field Manual {{ MFM_VERSION }}?</h2>
       <p>
         This list was created using the Minutorum Field Manual
         <b>{{ props.appData.currentList.mfm_version || "1.0" }}</b> but the
@@ -88,7 +88,7 @@ const changes = computed(() => {
         >.
       </p>
       <p>
-        Do you wish to automatically update the units in your army list to their
+        Do you wish to automatically update the units in your Army List to their
         latest point values?
       </p>
       <template v-if="changes.length">

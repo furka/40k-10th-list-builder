@@ -825,19 +825,15 @@ Chaplain Grimaldus
 Crusader Squad
 1 Sword Brother and 4 Initiates ...................85 pts
 1 Sword Brother and 9 Initiates .................150 pts
-1 Sword Brother, 4 Initiates
-and 5 Neophytes ...........................................135 pts
-1 Sword Brother, 9 Initiates
-and 10 Neophytes ........................................270 pts
+1 Sword Brother, 4 Initiates and 5 Neophytes ...........................................135 pts
+1 Sword Brother, 9 Initiates and 10 Neophytes ........................................270 pts
 High Marshal Helbrecht
 1 model ............................................................120 pts
 Marshal
 1 model ..............................................................80 pts
 Primaris Crusader Squad
-1 Sword Brother, 5 Initiates
-and 4 Neophytes ...........................................140 pts
-1 Sword Brother, 11 Initiates
-and 8 Neophytes ...........................................280 pts
+1 Sword Brother, 5 Initiates and 4 Neophytes ...........................................140 pts
+1 Sword Brother, 11 Initiates and 8 Neophytes ...........................................280 pts
 Primaris Sword Brethren
 5 models ..........................................................150 pts
 10 models .......................................................300 pts

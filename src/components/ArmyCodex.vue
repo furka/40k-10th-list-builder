@@ -4,7 +4,11 @@ import draggable from "vuedraggable";
 import ArmyListUnit from "./ArmyListUnit.vue";
 import CodexToolBar from "./CodexToolBar.vue";
 import { computed, ref } from "vue";
-import { SORT_CHEAPEST_FIRST, SORT_EXPENSIVE_FIRST } from "../data/constants";
+import {
+  GROUP_NONE,
+  SORT_CHEAPEST_FIRST,
+  SORT_EXPENSIVE_FIRST,
+} from "../data/constants";
 import {
   sortDataSheetAlphabetical,
   sortDataSheetPtsAscending,
@@ -62,6 +66,51 @@ const enhancements = computed(() => {
   );
 });
 
+const groupedUnits = computed(() => {
+  if (props.appData.group === GROUP_NONE) {
+    return [
+      { title: "", units: dataSheets.value },
+      {
+        title: "Detachment Enhancements",
+        units: [enhancements.value],
+      },
+    ].filter((group) => group.units.length > 0);
+  } else {
+    return [
+      {
+        title: "Character",
+        units: dataSheets.value.filter((u) => u.character),
+      },
+      {
+        title: "Battle Line",
+        units: dataSheets.value.filter((u) => u.battleLine),
+      },
+      {
+        title: "Dedicated Transport",
+        units: dataSheets.value.filter((u) => u.dedicatedTransport),
+      },
+      {
+        title: "Other",
+        units: dataSheets.value.filter(
+          (u) =>
+            !u.battleLine &&
+            !u.dedicatedTransport &&
+            !u.character &&
+            !u.forgeWorld
+        ),
+      },
+      {
+        title: "Forge World",
+        units: dataSheets.value.filter((u) => u.forgeWorld),
+      },
+      {
+        title: "Detachment Enhancements",
+        units: [enhancements.value],
+      },
+    ].filter((group) => group.units.length > 0);
+  }
+});
+
 // horizontal scroll using scrollwheel
 const codexEl = ref(null);
 function onScrollWheel(e) {
@@ -74,6 +123,7 @@ function onScrollWheel(e) {
   <div class="codex">
     <CodexToolBar class="codex__toolbar" :app-data="appData" />
     <div class="codex__mfm" @wheel="onScrollWheel" ref="codexEl">
+      <!-- Draggable area for deleting units from army list -->
       <draggable
         v-model="props.appData.bin"
         group="units"
@@ -86,45 +136,60 @@ function onScrollWheel(e) {
         </template>
       </draggable>
 
-      <DataSheet
-        v-for="(unit, index) in dataSheets"
-        :dataSheet="unit"
-        :app-data="appData"
-        @add="addUnit"
-      />
-
-      <DataSheet
-        v-if="enhancements"
-        :dataSheet="enhancements"
-        :app-data="appData"
-        @add="addUnit"
-      />
+      <div class="codex__group" v-for="group in groupedUnits">
+        <h2 class="codex__group-title" v-if="group.title">
+          {{ group.title }}
+        </h2>
+        <div class="codex__group-units">
+          <DataSheet
+            v-for="(unit, index) in group.units"
+            :dataSheet="unit"
+            :app-data="appData"
+            @add="addUnit"
+          />
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped lang="scss">
 .codex {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
   background-color: #fff;
   background-image: url(../assets/bg.png);
   background-size: 100% 100%;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
   overflow-x: auto;
   overflow-y: hidden;
 
   &__mfm {
-    align-content: flex-start;
     display: flex;
+    flex-direction: column;
     flex-grow: 1;
-    flex-wrap: wrap;
-    gap: 12px;
     overflow-x: auto;
     overflow-y: hidden;
-    padding: 12px;
-    position: relative;
     writing-mode: vertical-lr;
+  }
+  &__group {
+    display: flex;
+    flex-direction: row;
+
+    &-title {
+      font-size: 18px;
+      margin: 12px 12px 0 12px;
+      text-transform: uppercase;
+      writing-mode: initial;
+    }
+    &-units {
+      align-content: flex-start;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 12px;
+      position: relative;
+    }
   }
   &__bin {
     bottom: 0;

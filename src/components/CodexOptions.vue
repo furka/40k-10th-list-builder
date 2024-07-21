@@ -5,6 +5,8 @@ import {
   SORT_ALPHABETICAL,
   SORT_CHEAPEST_FIRST,
   SORT_EXPENSIVE_FIRST,
+  GROUP_NONE,
+  GROUP_ROLE,
 } from "../data/constants";
 
 const props = defineProps({
@@ -38,6 +40,14 @@ const props = defineProps({
             <option>{{ SORT_EXPENSIVE_FIRST }}</option>
           </select>
         </label>
+
+        <label>
+          Group:
+          <select v-model="props.appData.group">
+            <option>{{ GROUP_NONE }}</option>
+            <option>{{ GROUP_ROLE }}</option>
+          </select>
+        </label>
       </div>
     </template>
   </DropDown>
@@ -67,6 +77,10 @@ const props = defineProps({
     &::placeholder {
       color: #aaa;
     }
+  }
+
+  select {
+    flex-grow: 1;
   }
 
   input[type="checkbox"] {
