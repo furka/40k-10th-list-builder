@@ -170,6 +170,7 @@ function onScrollWheel(e) {
     flex-grow: 1;
     overflow-x: auto;
     overflow-y: hidden;
+    position: relative;
     writing-mode: vertical-lr;
   }
   &__group {
