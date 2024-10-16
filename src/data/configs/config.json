@@ -115,17 +115,20 @@
     "dedicated-transport": ["Starweaver", "Wave Serpent"]
   },
   "AGENTS OF THE IMPERIUM": {
-    "battle-line": ["Vigilant Squad", "Voidsmen-at-Arms"],
+    "battle-line": [
+      "Deathwatch Kill Team",
+      "Imperial Navy Breachers",
+      "Vigilant Squad"
+    ],
     "character": [
       "Callidus Assassin",
       "Culexus Assassin",
       "Eversor Assassin",
-      "Inquisitor",
       "Inquisitor Coteaz",
-      "Inquisitor Eisenhorn",
+      "Inquisitor Draxus",
       "Inquisitor Greyfax",
-      "Inquisitor Karamazov",
-      "Lord Inquisitor Kyria Draxus",
+      "Inquisitor",
+      "Navigator",
       "Rogue Trader Entourage",
       "Vindicare Assassin"
     ],
@@ -134,13 +137,15 @@
       "Culexus Assassin",
       "Eversor Assassin",
       "Inquisitor Coteaz",
-      "Inquisitor Eisenhorn",
+      "Inquisitor Draxus",
       "Inquisitor Greyfax",
-      "Inquisitor Karamazov",
-      "Lord Inquisitor Kyria Draxus",
       "Vindicare Assassin"
     ],
-    "dedicated-transport": []
+    "dedicated-transport": [
+      "Imperial Rhino",
+      "Inquisitorial Chimera",
+      "Sisters of Battle Immolator"
+    ]
   },
   "ASTRA MILITARUM": {
     "battle-line": [

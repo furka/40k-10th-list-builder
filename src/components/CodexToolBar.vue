@@ -8,7 +8,9 @@ const props = defineProps({
 });
 
 const factions = computed(() => {
-  return props.appData.factions.map((f) => f.name);
+  const factions = props.appData.factions.map((f) => f.name);
+  factions.sort();
+  return factions;
 });
 
 const detachments = computed(() => {

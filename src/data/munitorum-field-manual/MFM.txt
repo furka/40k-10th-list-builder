@@ -1552,7 +1552,7 @@ First to the Fray ................................................35 pts
 Inescapable Wrath ..........................................15 pts
 Sigil of Exigence ..............................................30 pts
 19
-CODEX: IMPERIAL AGENTS
+CODEX: AGENTS OF THE IMPERIUM
 Callidus Assassin
 1 model ............................................................100 pts
 Corvus Blackstar
@@ -1628,7 +1628,7 @@ Amulet of Auto-chastisement ......................25 pts
 Beacon Angelis ................................................30 pts
 Blackweave Shroud ........................................15 pts
 Universal Anathema .......................................10 pts
-IMPERIAL AGENTS (ALLIES)
+AGENTS OF THE IMPERIUM (ALLIES)
 Callidus Assassin
 1 model ......................................................100 pts
 Corvus Blackstar
