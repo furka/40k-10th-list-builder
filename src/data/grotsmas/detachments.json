@@ -1,0 +1,128 @@
+{
+  "NECRONS": {
+    "name": "Shatterstar Arsenal",
+    "enhancements": [
+      {
+        "points": 30,
+        "name": "DREAD MAJESTY (AURA)"
+      },
+      {
+        "points": 15,
+        "name": "MINIATURISED NEBULOSCOPE"
+      },
+      {
+        "points": 10,
+        "name": "DEMANDING LEADER"
+      },
+      {
+        "points": 25,
+        "name": "CHRONO‑IMPEDANCE FIELDS"
+      }
+    ]
+  },
+  "DARK ANGELS": {
+    "name": "LION’S BLADE TASK FORCE",
+    "enhancements": [
+      {
+        "points": 15,
+        "name": "CALIBANITE ARMAMENTS"
+      },
+      {
+        "points": 15,
+        "name": "LORD OF THE HUNT"
+      },
+      {
+        "points": 25,
+        "name": "STALWART CHAMPION"
+      },
+      {
+        "points": 20,
+        "name": "FULGUS MAGNA"
+      }
+    ]
+  },
+  "TYRANIDS": {
+    "name": "WARRIOR BIOFORM ONSLAUGHT",
+    "enhancements": [
+      {
+        "points": 10,
+        "name": "SYNAPTIC TYRANT"
+      },
+      {
+        "points": 20,
+        "name": "OCULAR ADAPTATION"
+      },
+      {
+        "points": 20,
+        "name": "SENSORY ASSIMILATION"
+      },
+      {
+        "points": 30,
+        "name": "ELEVATED MIGHT"
+      }
+    ]
+  },
+  "DEATH GUARD": {
+    "name": "FLYBLOWN HOST",
+    "enhancements": [
+      {
+        "points": 15,
+        "name": "DRONING CHORUS"
+      },
+      {
+        "points": 20,
+        "name": "INSECTILE MURMURATION"
+      },
+      {
+        "points": 10,
+        "name": "REJUVENATING SWARM"
+      },
+      {
+        "points": 25,
+        "name": "PLAGUEVEIL"
+      }
+    ]
+  },
+  "ADEPTUS MECHANICUS": {
+    "name": "HALOSCREED BATTLE CLADE",
+    "enhancements": [
+      {
+        "points": 30,
+        "name": "TRANSORACULAR DYAD WAFERS"
+      },
+      {
+        "points": 35,
+        "name": "COGNITIVE REINFORCEMENT"
+      },
+      {
+        "points": 10,
+        "name": "SANCTIFIED ORDNANCE"
+      },
+      {
+        "points": 15,
+        "name": "INLOADED LETHALITY"
+      }
+    ]
+  },
+  "THOUSAND SONS": {
+    "name": "HEXWARP THRALLBAND",
+    "enhancements": [
+      {
+        "points": 20,
+        "name": "ARCANE MIGHT"
+      },
+      {
+        "points": 20,
+        "name": "EMPOWERED MANIFESTATION"
+      },
+      {
+        "points": 25,
+        "name": "EMPYRIC ONSLAUGHT"
+      },
+      {
+        "points": 15,
+        "name": "NOCTILITH MANTLE"
+      }
+    ]
+  }
+}

@@ -162,7 +162,7 @@ function optionAvailable(option) {
           {{ option.models }}
           {{ option.models === 1 ? "model" : "models" }}
         </span>
-        <span v-if="option.name">
+        <span v-if="option.name" class="data-sheet__option-name">
           {{ option.name }}
         </span>
         <span class="data-sheet__option-spacer"></span>
@@ -228,6 +228,10 @@ function optionAvailable(option) {
 
   &__count {
     flex-shrink: 0;
+  }
+
+  &__option-name {
+    text-transform: capitalize;
   }
 
   &__option-spacer {

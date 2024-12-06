@@ -27,8 +27,8 @@ const detachments = computed(() => {
         v-model="props.appData.currentList.faction"
         class="toolbar__faction-select"
       >
-        <option v-for="(faction, index) in factions">
-          {{ faction }}
+        <option v-for="(faction, index) in factions" :value="faction">
+          {{ faction.toLowerCase() }}
         </option>
       </select>
       <template v-if="detachments?.length > 0">
@@ -37,8 +37,8 @@ const detachments = computed(() => {
           v-model="props.appData.currentList.detachment"
           class="toolbar__detachment-select"
         >
-          <option v-for="(faction, index) in detachments">
-            {{ faction }}
+          <option v-for="(faction, index) in detachments" :value="faction">
+            {{ faction.toLowerCase() }}
           </option>
         </select>
       </template>
@@ -69,6 +69,7 @@ const detachments = computed(() => {
     &__faction-select,
     &__detachment-select {
       max-width: calc(50vw - 180px);
+      text-transform: capitalize;
     }
 
     &__group {
