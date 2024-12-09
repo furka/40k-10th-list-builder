@@ -67,7 +67,7 @@ const props = defineProps({
     align-items: center;
     display: flex;
     flex-direction: row;
-    flex-shrink: 0;
+    flex-shrink: 1;
     font-size: var(--font-size);
     justify-content: flex-end;
     margin-inline: 8px;
