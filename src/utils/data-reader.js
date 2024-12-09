@@ -1,6 +1,6 @@
 import MFM from "../data/munitorum-field-manual/MFM.txt?raw";
 import { CONFIGS } from "../data/configs";
-import GROTSMAS from "../data/grotsmas/detachments.json";
+import GROTMAS from "../data/grotmas/detachments.json";
 
 const split = MFM.split(
   /Munitorum Field Manual © Copyright Games Workshop Limited \d\d\d\d\./
@@ -54,6 +54,7 @@ lines.forEach((line) => {
       option.points = points;
 
       if (bonus) {
+        // bonus options can be taken an unlimited number of times
         option.bonus = true;
       }
 
@@ -126,16 +127,17 @@ lines.forEach((line) => {
   }
 });
 
-for (let key in GROTSMAS) {
+for (let key in GROTMAS) {
   const faction = FACTIONS.find((f) => f.name === key);
-  faction.detachments.push({ name: GROTSMAS[key].name });
+  faction.detachments.push({ name: GROTMAS[key].name });
   const enhancements = DATA_SHEETS.find((e) => e.enhancements);
-  GROTSMAS[key].enhancements.forEach((item) => {
+  GROTMAS[key].enhancements.forEach((item) => {
     enhancements.sizes.push({
       points: item.points,
       name: item.name.toLowerCase(),
-      detachment: GROTSMAS[key].name,
+      detachment: GROTMAS[key].name,
       enhancement: true,
+      bonus: item.bonus,
     });
   });
 }

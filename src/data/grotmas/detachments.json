@@ -124,5 +124,93 @@
         "name": "NOCTILITH MANTLE"
       }
     ]
+  },
+  "ADEPTUS CUSTODES": {
+    "name": "SOLAR SPEARHEAD",
+    "enhancements": [
+      {
+        "points": 25,
+        "name": "ADAMANTINE TALISMAN"
+      },
+      {
+        "points": 25,
+        "name": "AUGURY UPLINK"
+      },
+      {
+        "points": 15,
+        "name": "HONOURED FALLEN (AURA)"
+      },
+      {
+        "points": 10,
+        "name": "VETERAN OF THE KATAPHRAKTOI"
+      }
+    ]
+  },
+  "IMPERIAL KNIGHTS": {
+    "name": "QUESTOR FORGEPACT",
+    "enhancements": [
+      {
+        "points": 30,
+        "name": "OMNISSIAN CHAMPION"
+      },
+      {
+        "points": 20,
+        "name": "KNIGHT OF THE OPUS MACHINA"
+      },
+      {
+        "points": 35,
+        "name": "MAGOS QUESTORIS"
+      },
+      {
+        "points": 15,
+        "name": "VOCIFER MAGNIFICAT (AURA)"
+      }
+    ]
+  },
+  "CHAOS KNIGHTS": {
+    "name": "ICONOCLAST FIEFDOM",
+    "enhancements": [
+      {
+        "points": 20,
+        "name": "PROFANE ALTAR"
+      },
+      {
+        "points": 15,
+        "name": "PAVE THE WAY"
+      },
+      {
+        "points": 5,
+        "name": "TYRANT’S BANNER"
+      },
+      {
+        "points": 35,
+        "name": "DIABOLICAL RESILIENCE"
+      }
+    ]
+  },
+  "AGENTS OF THE IMPERIUM": {
+    "name": "VEILED BLADE ELIMINATION FORCE",
+    "enhancements": [
+      {
+        "points": 40,
+        "name": "DECOY TARGETS",
+        "bonus": true
+      },
+      {
+        "points": 40,
+        "name": "ESOTERIC EXPLOSIVES",
+        "bonus": true
+      },
+      {
+        "points": 35,
+        "name": "INTRANEURAL BIOTECH",
+        "bonus": true
+      },
+      {
+        "points": 45,
+        "name": "MICROMELTA ROUNDS",
+        "bonus": true
+      }
+    ]
   }
 }

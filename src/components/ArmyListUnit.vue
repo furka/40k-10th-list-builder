@@ -15,13 +15,23 @@ const height = computed(() => {
 const name = computed(() => {
   let name = "";
 
+  if (props.unit.bonus) {
+    name += "+ ";
+  }
+
   if (props.unit.models) {
     name += `(${props.unit.models}) `;
   }
-  name += props.unit.name;
-  if (props.unit.optionName) {
-    name += ` — ${props.unit.optionName}`;
+
+  console.log(props.unit);
+  if (props.unit.name === "Enhancements") {
+    name += `[Enh] ${props.unit.optionName}`;
+  } else if (props.unit.optionName) {
+    name += `${props.unit.name} — ${props.unit.optionName}`;
+  } else {
+    name += props.unit.name;
   }
+
   return name;
 });
 
@@ -93,6 +103,7 @@ const inValid = computed(() => {
     padding: 0 4px;
     text-align: center;
     text-overflow: ellipsis;
+    text-transform: capitalize;
     white-space: nowrap;
 
     &:hover {
