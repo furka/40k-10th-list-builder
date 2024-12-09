@@ -8,6 +8,7 @@ import PACKAGE from "../package.json";
 import PrintableArmyList from "./components/PrintableArmyList.vue";
 import { GROUP_NONE, SORT_ALPHABETICAL } from "./data/constants";
 import AppToolBar from "./components/AppToolBar.vue";
+import { deserializeList } from "./utils/serialize-list";
 
 function save(key, val = appData[key]) {
   localStorage.setItem(key, JSON.stringify(val));
@@ -38,6 +39,28 @@ const appData = reactive({
   sortOrder: restore("sortOrder") ?? SORT_ALPHABETICAL,
   units: restore("units") ?? [],
 });
+
+const searchParams = new URLSearchParams(window.location.search);
+
+if (searchParams.size) {
+  try {
+    const list = deserializeList(searchParams);
+    appData.lists.unshift(appData.currentList);
+    appData.currentList = list;
+    save("lists");
+    save("currentList");
+  } catch (e) {
+    console.error(e);
+  }
+  if (history.pushState) {
+    const url =
+      window.location.protocol +
+      "//" +
+      window.location.host +
+      window.location.pathname;
+    window.history.pushState({ path: url }, "", url);
+  }
+}
 
 const handleResize = () => {
   appData.appHeight = window.innerHeight;
@@ -78,8 +101,8 @@ function newList() {
 watch(appData, () => {
   save("collection");
   save("currentList");
-  save("group");
   save("lists");
+  save("group");
   save("showForgeWorld");
   save("sortOrder");
   save("units");

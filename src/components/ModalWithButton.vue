@@ -15,7 +15,7 @@ function openDialog() {
       <slot name="button"></slot>
     </button>
 
-    <dialog ref="dialog" class="modal">
+    <dialog ref="dialog" class="modal" @close="$emit('closed')">
       <div class="modal__content">
         <slot name="content"></slot>
       </div>

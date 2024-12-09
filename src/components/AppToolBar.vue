@@ -7,6 +7,7 @@ import NewIcon from "../assets/file-line-icon.svg";
 import UpdateMFMPointsModal from "./UpdateMFMPointsModal.vue";
 import SortArmyButton from "./SortArmyButton.vue";
 import ToolBar from "./ToolBar.vue";
+import ShareListModal from "./ShareListModal.vue";
 
 const props = defineProps({
   appData: Object,
@@ -50,6 +51,7 @@ const outOfDate = computed(() => {
 
     <div class="toolbar__group">
       <ViewListModal :app-data="props.appData" />
+      <ShareListModal :app-data="props.appData" />
     </div>
 
     <div class="toolbar__group toolbar__group--list-name">
