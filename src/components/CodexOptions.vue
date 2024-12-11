@@ -22,6 +22,11 @@ const props = defineProps({
     </template>
     <template v-slot:content>
       <div class="codex-options__content">
+        <label title="Show Points Changes In Last MFM">
+          <input type="checkbox" v-model="props.appData.showPointsChanges" />
+          Points Changes
+        </label>
+
         <label title="Show Forge World units">
           <input type="checkbox" v-model="props.appData.showForgeWorld" />
           Forge World

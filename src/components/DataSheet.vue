@@ -91,6 +91,13 @@ function enhancementTaken(enhancement) {
   );
 }
 
+function upOrDown(change) {
+  if (change.startsWith("+")) {
+    return "data-sheet__points--up";
+  }
+  return "data-sheet__points--down";
+}
+
 function optionAvailable(option) {
   if (option.bonus) {
     return true;
@@ -167,6 +174,12 @@ function optionAvailable(option) {
         </span>
         <span class="data-sheet__option-spacer"></span>
         <span class="data-sheet__points">
+          <span
+            v-if="option.change && appData.showPointsChanges"
+            :class="upOrDown(option.change)"
+          >
+            ({{ option.change }})
+          </span>
           <template v-if="option.bonus">+</template>
           {{ option.points }} pts
         </span>
@@ -242,6 +255,13 @@ function optionAvailable(option) {
 
   &__points {
     flex-shrink: 0;
+
+    &--up {
+      color: rgb(150, 0, 0);
+    }
+    &--down {
+      color: rgb(0, 145, 77);
+    }
   }
 
   ul {

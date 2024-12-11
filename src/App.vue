@@ -36,6 +36,7 @@ const appData = reactive({
   group: restore("group") ?? GROUP_NONE,
   lists: restore("lists") ?? [],
   showForgeWorld: restore("showForgeWorld") ?? true,
+  showPointsChanges: restore("showPointsChanges") ?? true,
   sortOrder: restore("sortOrder") ?? SORT_ALPHABETICAL,
   units: restore("units") ?? [],
 });
@@ -104,6 +105,7 @@ watch(appData, () => {
   save("lists");
   save("group");
   save("showForgeWorld");
+  save("showPointsChanges");
   save("sortOrder");
   save("units");
 });

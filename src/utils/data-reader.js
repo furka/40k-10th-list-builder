@@ -3,7 +3,7 @@ import { CONFIGS } from "../data/configs";
 import GROTMAS from "../data/grotmas/detachments.json";
 
 const split = MFM.split(
-  /Munitorum Field Manual © Copyright Games Workshop Limited \d\d\d\d\./
+  /Munitorum Field Manual © Copyright Games Workshop Limited \d\d\d\d/
 );
 const lines = split[1].trim().split(/\r?\n/);
 
@@ -22,6 +22,8 @@ let appendOption;
 lines.forEach((line) => {
   if (Number(line)) {
     // ignore page numbers
+  } else if (line === "CODEX SUPPLEMENT:") {
+    // ignore these labels
   } else if (line === "FORGE WORLD POINTS VALUES") {
     // forge world section
     forgeWorld = true;
@@ -41,14 +43,17 @@ lines.forEach((line) => {
     });
   } else if (line.includes("pts")) {
     // points line
-    const match = line.match(/^([^\.]*)([ \.]*)(\+\s?)?(\d*) pts$/);
+    const match = line.match(
+      /^([^\.]*)([ \.]*)(\([-+]\d*\))? ?(\+\s?)?(\d*) pts$/
+    );
 
     const option = appendOption || {};
     appendOption = null;
 
     if (match) {
-      const points = Number(match[4]);
-      const bonus = match[3];
+      const points = Number(match[5]);
+      const change = match[3];
+      const bonus = match[4];
       const models = match[1].trim().match(/(\d*) models?/);
 
       option.points = points;
@@ -64,6 +69,10 @@ lines.forEach((line) => {
         option.name += ` ${match[1]}`.trim();
       } else {
         option.name = match[1].trim();
+      }
+
+      if (change) {
+        option.change = change.split(/[\(\)]/)[1];
       }
 
       if (currentDetachment) {

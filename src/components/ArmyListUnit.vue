@@ -23,7 +23,6 @@ const name = computed(() => {
     name += `(${props.unit.models}) `;
   }
 
-  console.log(props.unit);
   if (props.unit.name === "Enhancements") {
     name += `[Enh] ${props.unit.optionName}`;
   } else if (props.unit.optionName) {
