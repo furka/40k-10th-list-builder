@@ -212,5 +212,47 @@
         "bonus": true
       }
     ]
+  },
+  "GREY KNIGHTS": {
+    "name": "WARPBANE TASK FORCE",
+    "enhancements": [
+      {
+        "points": 20,
+        "name": "MANDULIAN RELIQUARY"
+      },
+      {
+        "points": 15,
+        "name": "RADIANT CHAMPION"
+      },
+      {
+        "points": 25,
+        "name": "PHIAL OF THE ABYSS"
+      },
+      {
+        "points": 10,
+        "name": "PARAGON OF SANCTITY"
+      }
+    ]
+  },
+  "SPACE MARINES": {
+    "name": "LIBRARIUS CONCLAVE",
+    "enhancements": [
+      {
+        "points": 25,
+        "name": "PRESCIENCE"
+      },
+      {
+        "points": 30,
+        "name": "CELERITY"
+      },
+      {
+        "points": 20,
+        "name": "OBFUSCATION"
+      },
+      {
+        "points": 15,
+        "name": "FUSILLADE"
+      }
+    ]
   }
 }
