@@ -254,5 +254,68 @@
         "name": "FUSILLADE"
       }
     ]
+  },
+  "AELDARI": {
+    "name": "ARMOURED WARHOST",
+    "enhancements": [
+      {
+        "points": 25,
+        "name": "GUIDING PRESENCE"
+      },
+      {
+        "points": 30,
+        "name": "HARMONISATION MATRIX"
+      },
+      {
+        "points": 20,
+        "name": "SPIRIT STONE OF RAELYTH"
+      },
+      {
+        "points": 15,
+        "name": "GUILEFUL STRATEGIST"
+      }
+    ]
+  },
+  "CHAOS SPACE MARINES": {
+    "name": "CREATIONS OF BILE",
+    "enhancements": [
+      {
+        "points": 10,
+        "name": "SURGICAL PRECISION"
+      },
+      {
+        "points": 15,
+        "name": "LIVING CARAPACE"
+      },
+      {
+        "points": 25,
+        "name": "HELM OF ALL‑SEEING"
+      },
+      {
+        "points": 35,
+        "name": "PRIME TEST SUBJECT"
+      }
+    ]
+  },
+  "DRUKHARI": {
+    "name": "REAPER’S WAGER",
+    "enhancements": [
+      {
+        "points": 15,
+        "name": "ARCHRAIDER"
+      },
+      {
+        "points": 15,
+        "name": "WEBWAY WALKER"
+      },
+      {
+        "points": 25,
+        "name": "REAPER’S COWL"
+      },
+      {
+        "points": 20,
+        "name": "CONDUCTOR OF TORMENT"
+      }
+    ]
   }
 }
