@@ -136,17 +136,16 @@ lines.forEach((line) => {
   }
 });
 
-for (let key in GROTMAS) {
-  const faction = FACTIONS.find((f) => f.name === key);
-  faction.detachments.push({ name: GROTMAS[key].name });
+GROTMAS.forEach((detachment) => {
+  const { name, faction } = detachment;
   const enhancements = DATA_SHEETS.find((e) => e.enhancements);
-  GROTMAS[key].enhancements.forEach((item) => {
-    enhancements.sizes.push({
-      points: item.points,
-      name: item.name.toLowerCase(),
-      detachment: GROTMAS[key].name,
-      enhancement: true,
-      bonus: item.bonus,
-    });
+
+  FACTIONS.find((f) => f.name === faction)?.detachments.push({ name });
+
+  detachment.enhancements.forEach((item) => {
+    item.name = item.name.toLowerCase();
+    item.detachment = name;
+    item.enhancement = true;
+    enhancements.sizes.push(item);
   });
-}
+});

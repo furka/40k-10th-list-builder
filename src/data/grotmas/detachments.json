@@ -1,5 +1,6 @@
-{
-  "NECRONS": {
+[
+  {
+    "faction": "NECRONS",
     "name": "Shatterstar Arsenal",
     "enhancements": [
       {
@@ -20,7 +21,8 @@
       }
     ]
   },
-  "DARK ANGELS": {
+  {
+    "faction": "DARK ANGELS",
     "name": "LION’S BLADE TASK FORCE",
     "enhancements": [
       {
@@ -41,7 +43,8 @@
       }
     ]
   },
-  "TYRANIDS": {
+  {
+    "faction": "TYRANIDS",
     "name": "WARRIOR BIOFORM ONSLAUGHT",
     "enhancements": [
       {
@@ -62,7 +65,8 @@
       }
     ]
   },
-  "DEATH GUARD": {
+  {
+    "faction": "DEATH GUARD",
     "name": "FLYBLOWN HOST",
     "enhancements": [
       {
@@ -83,7 +87,8 @@
       }
     ]
   },
-  "ADEPTUS MECHANICUS": {
+  {
+    "faction": "ADEPTUS MECHANICUS",
     "name": "HALOSCREED BATTLE CLADE",
     "enhancements": [
       {
@@ -104,7 +109,8 @@
       }
     ]
   },
-  "THOUSAND SONS": {
+  {
+    "faction": "THOUSAND SONS",
     "name": "HEXWARP THRALLBAND",
     "enhancements": [
       {
@@ -125,7 +131,8 @@
       }
     ]
   },
-  "ADEPTUS CUSTODES": {
+  {
+    "faction": "ADEPTUS CUSTODES",
     "name": "SOLAR SPEARHEAD",
     "enhancements": [
       {
@@ -146,7 +153,8 @@
       }
     ]
   },
-  "IMPERIAL KNIGHTS": {
+  {
+    "faction": "IMPERIAL KNIGHTS",
     "name": "QUESTOR FORGEPACT",
     "enhancements": [
       {
@@ -167,7 +175,8 @@
       }
     ]
   },
-  "CHAOS KNIGHTS": {
+  {
+    "faction": "CHAOS KNIGHTS",
     "name": "ICONOCLAST FIEFDOM",
     "enhancements": [
       {
@@ -188,7 +197,8 @@
       }
     ]
   },
-  "AGENTS OF THE IMPERIUM": {
+  {
+    "faction": "AGENTS OF THE IMPERIUM",
     "name": "VEILED BLADE ELIMINATION FORCE",
     "enhancements": [
       {
@@ -213,7 +223,8 @@
       }
     ]
   },
-  "GREY KNIGHTS": {
+  {
+    "faction": "GREY KNIGHTS",
     "name": "WARPBANE TASK FORCE",
     "enhancements": [
       {
@@ -234,7 +245,8 @@
       }
     ]
   },
-  "SPACE MARINES": {
+  {
+    "faction": "SPACE MARINES",
     "name": "LIBRARIUS CONCLAVE",
     "enhancements": [
       {
@@ -255,7 +267,8 @@
       }
     ]
   },
-  "AELDARI": {
+  {
+    "faction": "AELDARI",
     "name": "ARMOURED WARHOST",
     "enhancements": [
       {
@@ -276,7 +289,8 @@
       }
     ]
   },
-  "CHAOS SPACE MARINES": {
+  {
+    "faction": "CHAOS SPACE MARINES",
     "name": "CREATIONS OF BILE",
     "enhancements": [
       {
@@ -297,7 +311,8 @@
       }
     ]
   },
-  "DRUKHARI": {
+  {
+    "faction": "DRUKHARI",
     "name": "REAPER’S WAGER",
     "enhancements": [
       {
@@ -317,5 +332,159 @@
         "name": "CONDUCTOR OF TORMENT"
       }
     ]
+  },
+  {
+    "faction": "LEAGUES OF VOTANN",
+    "name": "HEARTHBAND",
+    "enhancements": [
+      {
+        "points": 25,
+        "name": "BASTION SHIELD"
+      },
+      {
+        "points": 15,
+        "name": "QUAKE MULTIGENERATOR"
+      },
+      {
+        "points": 10,
+        "name": "IRONSKEIN"
+      },
+      {
+        "points": 30,
+        "name": "HIGH KÂHL"
+      }
+    ]
+  },
+  {
+    "faction": "CHAOS DAEMONS",
+    "name": "PLAGUE LEGION",
+    "enhancements": [
+      {
+        "points": 15,
+        "name": "CANKERBLIGHT (AURA)"
+      },
+      {
+        "points": 15,
+        "name": "MAGGOT MAWS"
+      },
+      {
+        "points": 35,
+        "name": "DRONING SHROUD (AURA)"
+      },
+      {
+        "points": 20,
+        "name": "FONT OF SPORES (AURA)"
+      }
+    ]
+  },
+  {
+    "faction": "CHAOS DAEMONS",
+    "name": "BLOOD LEGION",
+    "enhancements": [
+      {
+        "points": 35,
+        "name": "SLAUGHTERTHIRST (AURA)"
+      },
+      {
+        "points": 20,
+        "name": "FURY’S CAGE"
+      },
+      {
+        "points": 15,
+        "name": "BRAZENMAW"
+      },
+      {
+        "points": 10,
+        "name": "GATEWAY UNTO DAMNATION"
+      }
+    ]
+  },
+  {
+    "faction": "CHAOS DAEMONS",
+    "name": "SCINTILLATING LEGION",
+    "enhancements": [
+      {
+        "points": 10,
+        "name": "INESCAPABLE EYE"
+      },
+      {
+        "points": 10,
+        "name": "INFERNAL PUPPETEER"
+      },
+      {
+        "points": 20,
+        "name": "NEVERBLADE"
+      },
+      {
+        "points": 30,
+        "name": "IMPROBABLE SHIELD (AURA)"
+      }
+    ]
+  },
+  {
+    "faction": "CHAOS DAEMONS",
+    "name": "LEGION OF EXCESS",
+    "enhancements": [
+      {
+        "points": 30,
+        "name": "FALSE MAJESTY (AURA)"
+      },
+      {
+        "points": 30,
+        "name": "DREAMING CROWN (AURA)"
+      },
+      {
+        "points": 15,
+        "name": "AVATAR OF PERFECTION"
+      },
+      {
+        "points": 10,
+        "name": "SOUL GLUTTON"
+      }
+    ]
+  },
+  {
+    "faction": "ASTRA MILITARUM",
+    "name": "BRIDGEHEAD STRIKE",
+    "enhancements": [
+      {
+        "points": 25,
+        "name": "BOMBAST‑CLASS VOX‑ARRAY"
+      },
+      {
+        "points": 30,
+        "name": "PRIORITY‑DROP BEACON"
+      },
+      {
+        "points": 15,
+        "name": "SHROUD PROJECTOR"
+      },
+      {
+        "points": 15,
+        "name": "ADVANCE AUGURY"
+      }
+    ]
+  },
+  {
+    "faction": "ORKS",
+    "name": "TAKTIKAL BRIGADE",
+    "enhancements": [
+      {
+        "points": 15,
+        "name": "SKWAD LEADER"
+      },
+      {
+        "points": 35,
+        "name": "MEK KAPTIN"
+      },
+      {
+        "points": 15,
+        "name": "MORK’S KUNNIN’"
+      },
+      {
+        "points": 10,
+        "name": "GOB BOOMER"
+      }
+    ]
   }
-}
+]
