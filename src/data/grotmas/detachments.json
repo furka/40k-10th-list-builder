@@ -486,5 +486,49 @@
         "name": "GOB BOOMER"
       }
     ]
+  },
+  {
+    "faction": "ADEPTA SORORITAS",
+    "name": "CHAMPIONS OF FAITH",
+    "enhancements": [
+      {
+        "points": 15,
+        "name": "TRIPTYCH OF JUDGEMENT"
+      },
+      {
+        "points": 30,
+        "name": "MARK OF DEVOTION"
+      },
+      {
+        "points": 10,
+        "name": "EYES OF THE ORACLE"
+      },
+      {
+        "points": 25,
+        "name": "SANCTIFIED AMULET"
+      }
+    ]
+  },
+  {
+    "faction": "GENESTEALER CULTS",
+    "name": "FINAL DAY",
+    "enhancements": [
+      {
+        "points": 15,
+        "name": "SYNAPTIC AUGER"
+      },
+      {
+        "points": 10,
+        "name": "ENRAPTURED DAMNATION"
+      },
+      {
+        "points": 25,
+        "name": "VANGUARD TYRANT"
+      },
+      {
+        "points": 20,
+        "name": "INHUMAN INTEGRATION"
+      }
+    ]
   }
 ]

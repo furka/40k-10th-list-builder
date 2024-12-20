@@ -55,6 +55,10 @@ const maxed = computed(() => {
   return count.value >= max;
 });
 
+const max = computed(() => {
+  return props.dataSheet.max || 3;
+});
+
 const owned = computed(() => {
   if (props.dataSheet.enhancements) {
     return true;
@@ -71,6 +75,33 @@ const modelsTaken = computed(() => {
   return props.appData.currentList.units
     .filter((u) => u.name === props.dataSheet.name)
     .reduce((acc, curr) => acc + curr.models, 0);
+});
+
+const color = computed(() => {
+  let up = false;
+  let down = false;
+
+  options.value.forEach((o) => {
+    if (!o.change) {
+      return;
+    }
+    if (o.change.startsWith("+")) {
+      up = true;
+    }
+    if (o.change.startsWith("-")) {
+      down = true;
+    }
+  });
+
+  if (up && down) {
+    return "rgba(111, 97, 0, 0.85)";
+  } else if (up) {
+    return "rgba(150, 0, 0, 0.85)";
+  } else if (down) {
+    return "rgba(0, 145, 77, 0.85)";
+  } else {
+    return "rgba(0, 0, 0, 0.65)";
+  }
 });
 
 function enoughInCollection(option) {
@@ -117,9 +148,13 @@ function optionAvailable(option) {
 
 <template>
   <div class="data-sheet" v-if="owned && options.length">
-    <div class="data-sheet__title" :class="{ maxed: maxed }">
+    <div
+      class="data-sheet__title"
+      :class="{ maxed: maxed }"
+      :style="appData.showPointsChanges ? `background-color: ${color};` : ''"
+    >
       <span class="data-sheet__name">
-        <template v-if="count > 0"> ({{ count }}) </template>
+        <template v-if="count > -1"> {{ count }}/{{ max }}</template>
         {{ props.dataSheet.name }}
         <span v-if="props.dataSheet.epicHero" title="Epic Hero">[E]</span>
         <span v-if="props.dataSheet.battleLine" title="Battleline">[B]</span>
@@ -191,7 +226,7 @@ function optionAvailable(option) {
 <style scoped lang="scss">
 .data-sheet {
   margin-bottom: 1px;
-  width: 250px;
+  width: 300px;
   writing-mode: horizontal-tb;
 
   &__title {
@@ -202,7 +237,7 @@ function optionAvailable(option) {
     display: flex;
     font-weight: bold;
     justify-content: space-between;
-    padding: 4px;
+    padding: 2px 4px;
     position: relative;
   }
 

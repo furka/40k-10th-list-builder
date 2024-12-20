@@ -78,7 +78,7 @@ function deleteList(list) {
           <span>
             <span
               v-if="list.mfm_version !== MFM_VERSION"
-              title="List created using old point values"
+              :title="`List has outdated point values (MFM ${list.mfm_version})`"
               class="open-modal__warning"
             >
               <RiskIcon />

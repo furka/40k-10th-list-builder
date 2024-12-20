@@ -68,8 +68,12 @@ const detachments = computed(() => {
 
     &__faction-select,
     &__detachment-select {
-      max-width: calc(50vw - 180px);
+      max-width: calc(50vw - 300px);
       text-transform: capitalize;
+
+      @media (max-width: 1160px) {
+        max-width: calc(50vw - 185px);
+      }
     }
 
     &__group {

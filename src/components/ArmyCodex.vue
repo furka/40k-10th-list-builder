@@ -121,21 +121,20 @@ function onScrollWheel(e) {
 
 <template>
   <div class="codex">
+    <!-- Draggable area for deleting units from army list -->
+    <draggable
+      v-model="props.appData.bin"
+      group="units"
+      animation="150"
+      item-key="id"
+      class="codex__bin"
+    >
+      <template #item="{ element, index }">
+        <ArmyListUnit :unit="element" :index="index" :scale="scale" />
+      </template>
+    </draggable>
     <CodexToolBar class="codex__toolbar" :app-data="appData" />
     <div class="codex__mfm" @wheel="onScrollWheel" ref="codexEl">
-      <!-- Draggable area for deleting units from army list -->
-      <draggable
-        v-model="props.appData.bin"
-        group="units"
-        animation="150"
-        item-key="id"
-        class="codex__bin"
-      >
-        <template #item="{ element, index }">
-          <ArmyListUnit :unit="element" :index="index" :scale="scale" />
-        </template>
-      </draggable>
-
       <div class="codex__group" v-for="group in groupedUnits">
         <h2 class="codex__group-title" v-if="group.title">
           {{ group.title }}
@@ -163,6 +162,7 @@ function onScrollWheel(e) {
   flex-grow: 1;
   overflow-x: auto;
   overflow-y: hidden;
+  position: relative;
 
   &__mfm {
     display: flex;
