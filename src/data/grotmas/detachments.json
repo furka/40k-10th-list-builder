@@ -552,5 +552,27 @@
         "name": "ORDAINED SACRIFICE"
       }
     ]
+  },
+  {
+    "faction": "T’AU EMPIRE",
+    "name": "AUXILIARY CADRE",
+    "enhancements": [
+      {
+        "points": 15,
+        "name": "STUDENT OF KAUYON"
+      },
+      {
+        "points": 20,
+        "name": "ADMIRED LEADER"
+      },
+      {
+        "points": 15,
+        "name": "FANATICAL CONVERT"
+      },
+      {
+        "points": 25,
+        "name": "TRANSPONDER LOCK MODULE"
+      }
+    ]
   }
 ]
