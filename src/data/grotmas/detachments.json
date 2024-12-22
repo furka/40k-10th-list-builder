@@ -530,5 +530,27 @@
         "name": "INHUMAN INTEGRATION"
       }
     ]
+  },
+  {
+    "faction": "BLOOD ANGELS",
+    "name": "ANGELIC INHERITORS",
+    "enhancements": [
+      {
+        "points": 20,
+        "name": "PRESCIENT FLASH"
+      },
+      {
+        "points": 15,
+        "name": "TROUBLING VISIONS"
+      },
+      {
+        "points": 20,
+        "name": "BLAZING ICON"
+      },
+      {
+        "points": 25,
+        "name": "ORDAINED SACRIFICE"
+      }
+    ]
   }
 ]
