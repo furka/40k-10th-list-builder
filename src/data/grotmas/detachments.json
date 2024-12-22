@@ -574,5 +574,27 @@
         "name": "TRANSPONDER LOCK MODULE"
       }
     ]
+  },
+  {
+    "faction": "BLACK TEMPLARS",
+    "name": "WRATHFUL PROCESSION",
+    "enhancements": [
+      {
+        "points": 25,
+        "name": "PYREBRAND"
+      },
+      {
+        "points": 30,
+        "name": "SACRED RAGE"
+      },
+      {
+        "points": 15,
+        "name": "TARAMOND’S CENSER"
+      },
+      {
+        "points": 10,
+        "name": "BENEDICTION OF FURY"
+      }
+    ]
   }
 ]
