@@ -596,5 +596,49 @@
         "name": "BENEDICTION OF FURY"
       }
     ]
+  },
+  {
+    "faction": "WORLD EATERS",
+    "name": "VESSELS OF WRATH",
+    "enhancements": [
+      {
+        "points": 25,
+        "name": "ARCHSLAUGHTERER"
+      },
+      {
+        "points": 20,
+        "name": "VOXDIABOLUS"
+      },
+      {
+        "points": 15,
+        "name": "AVENGER’S CROWN"
+      },
+      {
+        "points": 10,
+        "name": "GATEWAYS TO GLORY"
+      }
+    ]
+  },
+  {
+    "faction": "SPACE WOLVES",
+    "name": "CHAMPIONS OF FENRIS",
+    "enhancements": [
+      {
+        "points": 30,
+        "name": "WOLVES’ WISDOM"
+      },
+      {
+        "points": 15,
+        "name": "FOES’ FATE"
+      },
+      {
+        "points": 15,
+        "name": "FANGRUNE PENDANT"
+      },
+      {
+        "points": 20,
+        "name": "LONGSTRIDER"
+      }
+    ]
   }
 ]
