@@ -79,15 +79,17 @@ const groupedUnits = computed(() => {
     return [
       {
         title: "Character",
-        units: dataSheets.value.filter((u) => u.character),
+        units: dataSheets.value.filter((u) => u.character && !u.ynnari),
       },
       {
         title: "Battle Line",
-        units: dataSheets.value.filter((u) => u.battleLine),
+        units: dataSheets.value.filter((u) => u.battleLine && !u.ynnari),
       },
       {
         title: "Dedicated Transport",
-        units: dataSheets.value.filter((u) => u.dedicatedTransport),
+        units: dataSheets.value.filter(
+          (u) => u.dedicatedTransport && !u.ynnari
+        ),
       },
       {
         title: "Other",
@@ -96,8 +98,13 @@ const groupedUnits = computed(() => {
             !u.battleLine &&
             !u.dedicatedTransport &&
             !u.character &&
-            !u.forgeWorld
+            !u.forgeWorld &&
+            !u.ynnari
         ),
+      },
+      {
+        title: "Ynnari",
+        units: dataSheets.value.filter((u) => u.ynnari),
       },
       {
         title: "Forge World",

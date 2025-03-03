@@ -67,19 +67,21 @@
       "Corsair Voidreavers",
       "Guardian Defenders",
       "Rangers",
-      "Storm Guardians"
+      "Storm Guardians",
+      "Ynnari Kabalite Warriors",
+      "Ynnari Wyches"
     ],
     "character": [
       "Asurmen",
-      "Autarch",
       "Autarch Skyrunner",
       "Autarch Wayleaper",
+      "Autarch",
       "Avatar Of Khaine",
       "Baharroth",
       "Death Jester",
       "Eldrad Ulthran",
-      "Farseer",
       "Farseer Skyrunner",
+      "Farseer",
       "Fuegan",
       "Illic Nightspear",
       "Jain Zar",
@@ -92,8 +94,10 @@
       "The Visarch",
       "The Yncarne",
       "Troupe Master",
-      "Warlock",
       "Warlock Skyrunner",
+      "Warlock",
+      "Ynnari Archon",
+      "Ynnari Succubus",
       "Yvraine"
     ],
     "epic-hero": [
@@ -105,6 +109,7 @@
       "Illic Nightspear",
       "Jain Zar",
       "Karandras",
+      "Lhykhis",
       "Maugan Ra",
       "Prince Yriel",
       "Solitaire",
@@ -112,7 +117,12 @@
       "The Yncarne",
       "Yvraine"
     ],
-    "dedicated-transport": ["Starweaver", "Wave Serpent"]
+    "dedicated-transport": [
+      "Starweaver",
+      "Wave Serpent",
+      "Ynnari Raider",
+      "Ynnari Venom"
+    ]
   },
   "AGENTS OF THE IMPERIUM": {
     "battle-line": [
@@ -151,31 +161,33 @@
     "battle-line": [
       "Cadian Shock Troops",
       "Catachan Jungle Fighters",
-      "Death Korps of Krieg",
-      "Infantry Squad"
+      "Death Korps of Krieg"
     ],
     "character": [
-      "‘Iron Hand’ Straken",
       "Cadian Castellan",
       "Cadian Command Squad",
+      "Catachan Command Squad",
       "Commissar",
       "Gaunt’s Ghosts",
+      "Krieg Command Squad",
+      "Leman Russ Commander",
+      "Lord Marshal Dreir",
       "Lord Solar Leontus",
       "Militarum Tempestus Command Squad",
       "Ministorum Priest",
-      "Platoon Command Squad",
+      "Nork Deddog",
+      "Ogryn Bodyguard",
       "Primaris Psyker",
-      "Sergeant Harker",
+      "Rogal Dorn Commander",
       "Sly Marbo",
-      "Tank Commander",
       "Tech-Priest Enginseer",
       "Ursula Creed"
     ],
     "epic-hero": [
-      "‘Iron Hand’ Straken",
+      "Gaunt’s Ghosts",
+      "Lord Marshal Dreir",
       "Lord Solar Leontus",
       "Nork Deddog",
-      "Sergeant Harker",
       "Sly Marbo",
       "Ursula Creed"
     ],

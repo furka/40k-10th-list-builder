@@ -127,7 +127,7 @@ watch(
     appData.editCollection = false;
     appData.currentList.detachment = FACTIONS.find(
       (f) => f.name === appData.currentList.faction
-    ).detachments[0]?.name;
+    )?.detachments[0]?.name;
   }
 );
 

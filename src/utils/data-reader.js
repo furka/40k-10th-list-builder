@@ -1,9 +1,8 @@
 import MFM from "../data/munitorum-field-manual/MFM.txt?raw";
 import { CONFIGS } from "../data/configs";
-import GROTMAS from "../data/grotmas/detachments.json";
 
 const split = MFM.split(
-  /Munitorum Field Manual © Copyright Games Workshop Limited \d\d\d\d/
+  /Munitorum Field Manual © Copyright Games Workshop Limited \d\d\d\d\./
 );
 const lines = split[1].trim().split(/\r?\n/);
 
@@ -17,6 +16,7 @@ let currentDatasheet;
 let currentFaction;
 let currentDetachment;
 let forgeWorld = false;
+let ynnari = false;
 let appendOption;
 
 lines.forEach((line) => {
@@ -27,16 +27,24 @@ lines.forEach((line) => {
   } else if (line === "FORGE WORLD POINTS VALUES") {
     // forge world section
     forgeWorld = true;
+  } else if (line === "YNNARI") {
+    // ynnari section
+    ynnari = true;
   } else if (line === "DETACHMENT ENHANCEMENTS") {
     // detachments section
     currentDatasheet = DATA_SHEETS.find((d) => d.name === "Enhancements");
     forgeWorld = false;
   } else if (line.toUpperCase() === line) {
     // new faction
-    currentFaction = line.trim().replace("INDEX: ", "").replace("CODEX: ", "");
+    currentFaction = line
+      .trim()
+      .replace("INDEX: ", "")
+      .replace("CODEX: ", "")
+      .toUpperCase();
     currentDetachment = null;
     currentDatasheet = null;
     forgeWorld = false;
+    ynnari = false;
     FACTIONS.push({
       name: currentFaction,
       detachments: [],
@@ -86,7 +94,7 @@ lines.forEach((line) => {
     }
   } else if (currentDatasheet && currentDatasheet.name === "Enhancements") {
     // detachment name
-    currentDetachment = line.trim();
+    currentDetachment = line.trim().toUpperCase();
     FACTIONS.find((f) => f.name === currentFaction)?.detachments.push({
       name: currentDetachment,
     });
@@ -104,6 +112,10 @@ lines.forEach((line) => {
       forgeWorld,
       sizes: [],
     };
+
+    if (ynnari) {
+      currentDatasheet.ynnari = true;
+    }
 
     if (CONFIGS["epic-hero"].includes(currentDatasheet.name.toLowerCase())) {
       currentDatasheet.epicHero = true;
@@ -134,18 +146,4 @@ lines.forEach((line) => {
 
     DATA_SHEETS.push(currentDatasheet);
   }
-});
-
-GROTMAS.forEach((detachment) => {
-  const { name, faction } = detachment;
-  const enhancements = DATA_SHEETS.find((e) => e.enhancements);
-
-  FACTIONS.find((f) => f.name === faction)?.detachments.push({ name });
-
-  detachment.enhancements.forEach((item) => {
-    item.name = item.name.toLowerCase();
-    item.detachment = name;
-    item.enhancement = true;
-    enhancements.sizes.push(item);
-  });
 });
