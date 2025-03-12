@@ -343,7 +343,6 @@
       "Cypher",
       "Haarken Worldclaimer",
       "Huron Blackheart",
-      "Lucius the Eternal",
       "Vashtorr the Arkifane"
     ],
     "dedicated-transport": ["Chaos Rhino"]
@@ -415,6 +414,19 @@
     ],
     "epic-hero": ["Drazhar", "Lelith Hesperax", "Urien Rakarth"],
     "dedicated-transport": ["Raider", "Venom"]
+  },
+  "EMPEROR’S CHILDREN": {
+    "battle-line": ["Infractors", "Tormentors"],
+    "character": [
+      "Daemon Prince of Slaanesh",
+      "Daemon Prince of Slaanesh with Wings",
+      "Fulgrim",
+      "Lord Exultant",
+      "Lord Kakophonist",
+      "Lucius the Eternal"
+    ],
+    "epic-hero": ["Fulgrim", "Lucius the Eternal"],
+    "dedicated-transport": ["Chaos Rhino"]
   },
   "GENESTEALER CULTS": {
     "battle-line": ["Acolyte Hybrids", "Neophyte Hybrids"],

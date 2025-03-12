@@ -76,6 +76,45 @@ const groupedUnits = computed(() => {
       },
     ].filter((group) => group.units.length > 0);
   } else {
+    const characters = { title: "Characters", units: [] };
+    const battleLine = { title: "Battle Line", units: [] };
+    const transports = { title: "Dedicated Transport", units: [] };
+    const other = { title: "Other", units: [] };
+    const allies = { title: "Allies", units: [] };
+    const forgeWorld = { title: "Forge World", units: [] };
+
+    const groups = [
+      characters,
+      battleLine,
+      transports,
+      other,
+      allies,
+      forgeWorld,
+      {
+        title: "Detachment Enhancements",
+        units: [enhancements.value],
+      },
+    ];
+
+    dataSheets.value.forEach((sheet) => {
+      if (sheet.allies) {
+        allies.title = sheet.allies;
+        allies.units.push(sheet);
+      } else if (sheet.character) {
+        characters.units.push(sheet);
+      } else if (sheet.battleLine) {
+        battleLine.units.push(sheet);
+      } else if (sheet.dedicatedTransport) {
+        transports.units.push(sheet);
+      } else if (sheet.forgeWorld) {
+        forgeWorld.units.push(sheet);
+      } else {
+        other.units.push(sheet);
+      }
+    });
+
+    return groups.filter((group) => group.units.length > 0);
+
     return [
       {
         title: "Character",

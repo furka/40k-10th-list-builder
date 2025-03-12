@@ -16,7 +16,7 @@ let currentDatasheet;
 let currentFaction;
 let currentDetachment;
 let forgeWorld = false;
-let ynnari = false;
+let allies = false;
 let appendOption;
 
 lines.forEach((line) => {
@@ -27,9 +27,9 @@ lines.forEach((line) => {
   } else if (line === "FORGE WORLD POINTS VALUES") {
     // forge world section
     forgeWorld = true;
-  } else if (line === "YNNARI") {
-    // ynnari section
-    ynnari = true;
+  } else if (["YNNARI", "LEGIONS OF EXCESS"].includes(line)) {
+    // allies section
+    allies = line;
   } else if (line === "DETACHMENT ENHANCEMENTS") {
     // detachments section
     currentDatasheet = DATA_SHEETS.find((d) => d.name === "Enhancements");
@@ -44,7 +44,7 @@ lines.forEach((line) => {
     currentDetachment = null;
     currentDatasheet = null;
     forgeWorld = false;
-    ynnari = false;
+    allies = false;
     FACTIONS.push({
       name: currentFaction,
       detachments: [],
@@ -113,8 +113,8 @@ lines.forEach((line) => {
       sizes: [],
     };
 
-    if (ynnari) {
-      currentDatasheet.ynnari = true;
+    if (allies) {
+      currentDatasheet.allies = allies;
     }
 
     if (CONFIGS["epic-hero"].includes(currentDatasheet.name.toLowerCase())) {
