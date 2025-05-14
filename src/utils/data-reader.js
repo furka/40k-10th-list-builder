@@ -27,7 +27,11 @@ lines.forEach((line) => {
   } else if (line === "FORGE WORLD POINTS VALUES") {
     // forge world section
     forgeWorld = true;
-  } else if (["YNNARI", "LEGIONS OF EXCESS"].includes(line)) {
+  } else if (
+    ["YNNARI", "LEGIONS OF EXCESS", "PLAGUE LEGIONS", "BLOOD LEGIONS"].includes(
+      line
+    )
+  ) {
     // allies section
     allies = line;
   } else if (line === "DETACHMENT ENHANCEMENTS") {
