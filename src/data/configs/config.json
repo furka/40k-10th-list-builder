@@ -27,7 +27,7 @@
     "dedicated-transport": ["Immolator", "Sororitas Rhino"]
   },
   "ADEPTUS CUSTODES": {
-    "battle-line": ["Custodian Guard", "Prosecutors"],
+    "battle-line": ["Custodian Guard"],
     "character": [
       "Aleya",
       "Blade Champion",
@@ -66,7 +66,6 @@
     "battle-line": [
       "Corsair Voidreavers",
       "Guardian Defenders",
-      "Rangers",
       "Storm Guardians",
       "Ynnari Kabalite Warriors",
       "Ynnari Wyches"
@@ -376,12 +375,13 @@
     "battle-line": ["Plague Marines"],
     "character": [
       "Biologus Putrifier",
-      "Death Guard Chaos Lord",
-      "Death Guard Chaos Lord In Terminator Armour",
-      "Death Guard Daemon Prince",
-      "Death Guard Daemon Prince With Wings",
-      "Death Guard Icon Bearer",
-      "Death Guard Sorcerer In Terminator Armour",
+      "Chaos Lord",
+      "Chaos Lord In Terminator Armour",
+      "Daemon Prince of Nurgle",
+      "Daemon Prince of Nurgle With Wings",
+      "Icon Bearer",
+      "Sorcerer In Terminator Armour",
+      "Lord of Poxes",
       "Foul Blightspawn",
       "Lord Of Contagion",
       "Lord Of Virulence",
@@ -393,7 +393,7 @@
       "Typhus"
     ],
     "epic-hero": ["Mortarion", "Typhus"],
-    "dedicated-transport": ["Death Guard Rhino"]
+    "dedicated-transport": ["Chaos Rhino"]
   },
   "DEATHWATCH": {
     "battle-line": ["Deathwatch Veterans"],
@@ -737,12 +737,13 @@
       "Angron",
       "Khârn The Betrayer",
       "Lord Invocatus",
-      "World Eaters Daemon Prince",
-      "World Eaters Daemon Prince With Wings",
-      "World Eaters Lord On Juggernaut",
-      "World Eaters Master Of Executions"
+      "Daemon Prince of Khorne",
+      "Daemon Prince of Khorne With Wings",
+      "Lord On Juggernaut",
+      "Master Of Executions",
+      "Slaughterbound"
     ],
     "epic-hero": ["Angron", "Khârn the Betrayer", "Lord Invocatus"],
-    "dedicated-transport": ["World Eaters Rhino"]
+    "dedicated-transport": ["Chaos Rhino"]
   }
 }
