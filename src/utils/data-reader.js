@@ -1,7 +1,14 @@
 import MFM from "../data/munitorum-field-manual/MFM.txt?raw";
 import { CONFIGS } from "../data/configs";
+import { fixes } from "../data/munitorum-field-manual/fixes";
 
-const split = MFM.split(
+let fixed = MFM.replace(/\r\n/g, "\n");
+
+fixes.forEach((fix) => {
+  fixed = fixed.replaceAll(fix.in.replace(/\r\n/g, "\n"), fix.out);
+});
+
+const split = fixed.split(
   /Munitorum Field Manual © Copyright Games Workshop Limited \d\d\d\d\./
 );
 const lines = split[1].trim().split(/\r?\n/);
@@ -28,9 +35,13 @@ lines.forEach((line) => {
     // forge world section
     forgeWorld = true;
   } else if (
-    ["YNNARI", "LEGIONS OF EXCESS", "PLAGUE LEGIONS", "BLOOD LEGIONS"].includes(
-      line
-    )
+    [
+      "YNNARI",
+      "LEGIONS OF EXCESS",
+      "PLAGUE LEGIONS",
+      "BLOOD LEGIONS",
+      "SCINTILLATING LEGIONS",
+    ].includes(line)
   ) {
     // allies section
     allies = line;
