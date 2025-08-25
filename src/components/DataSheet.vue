@@ -29,12 +29,6 @@ function onCollectionBlur(collection) {
 }
 
 const options = computed(() => {
-  if (props.dataSheet.name === "Enhancements") {
-    return props.dataSheet.sizes.filter(
-      (s) => s.detachment === props.appData.currentList.detachment
-    );
-  }
-
   const sizes = [...props.dataSheet.sizes];
 
   if (props.appData.sortOrder === SORT_EXPENSIVE_FIRST) {

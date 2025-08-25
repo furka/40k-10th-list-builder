@@ -1,6 +1,6 @@
 <script setup>
 import { computed } from "vue";
-import { MFM_VERSION } from "../utils/data-reader";
+import { MFM } from "../utils/mfm";
 import ViewListModal from "./ViewListModal.vue";
 import OpenListModal from "./OpenListModal.vue";
 import NewIcon from "../assets/file-line-icon.svg";
@@ -21,7 +21,7 @@ const points = computed(() => {
 });
 
 const outOfDate = computed(() => {
-  return props.appData.currentList.mfm_version !== MFM_VERSION;
+  return props.appData.currentList.mfm_version !== MFM.CURRENT.MFM_VERSION;
 });
 </script>
 

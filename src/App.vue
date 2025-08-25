@@ -3,7 +3,7 @@ import { reactive, onMounted, onUnmounted, watch, ref } from "vue";
 import { v4 as uuidv4 } from "uuid";
 import ArmyList from "./components/ArmyList.vue";
 import ArmyCodex from "./components/ArmyCodex.vue";
-import { DATA_SHEETS, FACTIONS, MFM_VERSION } from "./utils/data-reader";
+import { MFM } from "./utils/mfm";
 import PACKAGE from "../package.json";
 import PrintableArmyList from "./components/PrintableArmyList.vue";
 import { GROUP_NONE, SORT_ALPHABETICAL } from "./data/constants";
@@ -29,10 +29,10 @@ const appData = reactive({
   bin: [],
   codexFilter: "",
   collection: restore("collection") ?? [],
-  compendium: DATA_SHEETS,
+  compendium: MFM.CURRENT.DATA_SHEETS,
   currentList: restore("currentList") ?? createNewList(),
   editCollection: false,
-  factions: FACTIONS,
+  factions: MFM.CURRENT.FACTIONS,
   group: restore("group") ?? GROUP_NONE,
   lists: restore("lists") ?? [],
   showForgeWorld: restore("showForgeWorld") ?? true,
@@ -81,10 +81,10 @@ function addUnit(unit, size) {
 
 function createNewList(faction, detachment) {
   return {
-    detachment: detachment || FACTIONS[0].detachments[0].name,
-    faction: faction || FACTIONS[0].name,
+    detachment: detachment || MFM.CURRENT.FACTIONS[0].detachments[0].name,
+    faction: faction || MFM.CURRENT.FACTIONS[0].name,
     maxPoints: 2000,
-    mfm_version: MFM_VERSION,
+    mfm_version: MFM.CURRENT.MFM_VERSION,
     modifiedDate: Date.now(),
     name: "",
     units: [],
@@ -125,7 +125,7 @@ watch(
   () => {
     appData.codexFilter = "";
     appData.editCollection = false;
-    appData.currentList.detachment = FACTIONS.find(
+    appData.currentList.detachment = MFM.CURRENT.FACTIONS.find(
       (f) => f.name === appData.currentList.faction
     )?.detachments[0]?.name;
   }
@@ -149,7 +149,9 @@ onUnmounted(() => {
     </div>
     <div class="version">
       <span> app version {{ PACKAGE.version }} </span>
-      <span> Munitorum Field Manual {{ MFM_VERSION.toLowerCase() }} </span>
+      <span>
+        Munitorum Field Manual {{ MFM.CURRENT.MFM_VERSION.toLowerCase() }}
+      </span>
     </div>
   </div>
   <PrintableArmyList :app-data="appData" class="print" />

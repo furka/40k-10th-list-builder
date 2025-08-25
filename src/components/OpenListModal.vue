@@ -1,5 +1,5 @@
 <script setup>
-import { MFM_VERSION } from "../utils/data-reader";
+import { MFM } from "../utils/mfm";
 import OpenIcon from "../assets/computer-folder-open-icon.svg";
 import DeleteIcon from "../assets/recycle-bin-line-icon.svg";
 import CopyIcon from "../assets/text-documents-line-icon.svg";
@@ -77,7 +77,7 @@ function deleteList(list) {
           </form>
           <span>
             <span
-              v-if="list.mfm_version !== MFM_VERSION"
+              v-if="list.mfm_version !== MFM.CURRENT.MFM_VERSION"
               :title="`List has outdated point values (MFM ${list.mfm_version})`"
               class="open-modal__warning"
             >

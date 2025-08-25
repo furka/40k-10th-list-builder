@@ -1,7 +1,7 @@
 <script setup>
 import RiskIcon from "../assets/risk-icon.svg";
 import ModalWithButton from "./ModalWithButton.vue";
-import { MFM_VERSION } from "../utils/data-reader";
+import { MFM } from "../utils/mfm";
 import { computed } from "vue";
 
 const props = defineProps({
@@ -13,7 +13,7 @@ function onConfirmClicked() {
 }
 
 function upgradeMFMVersion(list) {
-  if (list.mfm_version === MFM_VERSION) {
+  if (list.mfm_version === MFM.CURRENT.MFM_VERSION) {
     return; // already using the correct version
   }
 
@@ -28,9 +28,9 @@ function upgradeMFMVersion(list) {
       }
     });
 
-    list.mfm_version = MFM_VERSION;
+    list.mfm_version = MFM.CURRENT.MFM_VERSION;
   } catch (e) {
-    console.error(`Failed to upgrade list to ${MFM_VERSION}`, e);
+    console.error(`Failed to upgrade list to ${MFM.CURRENT.MFM_VERSION}`, e);
   }
 }
 
@@ -80,11 +80,14 @@ const changes = computed(() => {
       <RiskIcon class="modal-button__icon" /> <span> Update </span>
     </template>
     <template v-slot:content>
-      <h2>Upgrade Army List to Minutorum Field Manual {{ MFM_VERSION }}?</h2>
+      <h2>
+        Upgrade Army List to Minutorum Field Manual
+        {{ MFM.CURRENT.MFM_VERSION }}?
+      </h2>
       <p>
         This list was created using the Minutorum Field Manual
         <b>{{ props.appData.currentList.mfm_version || "1.0" }}</b> but the
-        latest version is <b>{{ MFM_VERSION }}</b
+        latest version is <b>{{ MFM.CURRENT.MFM_VERSION }}</b
         >.
       </p>
       <p>

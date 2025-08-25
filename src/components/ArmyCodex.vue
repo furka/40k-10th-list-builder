@@ -61,20 +61,23 @@ const dataSheets = computed(() => {
 });
 
 const enhancements = computed(() => {
-  return props.appData.compendium.find(
+  const { name, sizes } = props.appData.compendium.find(
     (sheet) => sheet.name === "Enhancements"
   );
+
+  return {
+    name,
+    sizes: sizes.filter(
+      (s) => s.detachment === props.appData.currentList.detachment
+    ),
+    enhancements: true,
+  };
 });
 
 const groupedUnits = computed(() => {
+  const data = [];
   if (props.appData.group === GROUP_NONE) {
-    return [
-      { title: "", units: dataSheets.value },
-      {
-        title: "Detachment Enhancements",
-        units: [enhancements.value],
-      },
-    ].filter((group) => group.units.length > 0);
+    data.push({ title: "", units: dataSheets.value });
   } else {
     const characters = { title: "Characters", units: [] };
     const battleLine = { title: "Battle Line", units: [] };
@@ -83,18 +86,7 @@ const groupedUnits = computed(() => {
     const allies = { title: "Allies", units: [] };
     const forgeWorld = { title: "Forge World", units: [] };
 
-    const groups = [
-      characters,
-      battleLine,
-      transports,
-      other,
-      allies,
-      forgeWorld,
-      {
-        title: "Detachment Enhancements",
-        units: [enhancements.value],
-      },
-    ];
+    data.push(characters, battleLine, transports, other, allies, forgeWorld);
 
     dataSheets.value.forEach((sheet) => {
       if (sheet.allies) {
@@ -112,49 +104,16 @@ const groupedUnits = computed(() => {
         other.units.push(sheet);
       }
     });
-
-    return groups.filter((group) => group.units.length > 0);
-
-    return [
-      {
-        title: "Character",
-        units: dataSheets.value.filter((u) => u.character && !u.ynnari),
-      },
-      {
-        title: "Battle Line",
-        units: dataSheets.value.filter((u) => u.battleLine && !u.ynnari),
-      },
-      {
-        title: "Dedicated Transport",
-        units: dataSheets.value.filter(
-          (u) => u.dedicatedTransport && !u.ynnari
-        ),
-      },
-      {
-        title: "Other",
-        units: dataSheets.value.filter(
-          (u) =>
-            !u.battleLine &&
-            !u.dedicatedTransport &&
-            !u.character &&
-            !u.forgeWorld &&
-            !u.ynnari
-        ),
-      },
-      {
-        title: "Ynnari",
-        units: dataSheets.value.filter((u) => u.ynnari),
-      },
-      {
-        title: "Forge World",
-        units: dataSheets.value.filter((u) => u.forgeWorld),
-      },
-      {
-        title: "Detachment Enhancements",
-        units: [enhancements.value],
-      },
-    ].filter((group) => group.units.length > 0);
   }
+
+  if (enhancements.value.sizes.length) {
+    data.push({
+      title: "Detachment Enhancements",
+      units: [enhancements.value],
+    });
+  }
+
+  return data.filter((group) => group.units.length > 0);
 });
 
 // horizontal scroll using scrollwheel
@@ -181,19 +140,26 @@ function onScrollWheel(e) {
     </draggable>
     <CodexToolBar class="codex__toolbar" :app-data="appData" />
     <div class="codex__mfm" @wheel="onScrollWheel" ref="codexEl">
-      <div class="codex__group" v-for="group in groupedUnits">
-        <h2 class="codex__group-title" v-if="group.title">
-          {{ group.title }}
-        </h2>
-        <div class="codex__group-units">
-          <DataSheet
-            v-for="(unit, index) in group.units"
-            :dataSheet="unit"
-            :app-data="appData"
-            @add="addUnit"
-          />
+      <template v-if="dataSheets.length > 0">
+        <div class="codex__group" v-for="group in groupedUnits">
+          <h2 class="codex__group-title" v-if="group.title">
+            {{ group.title }}
+          </h2>
+          <div class="codex__group-units">
+            <DataSheet
+              v-for="(unit, index) in group.units"
+              :dataSheet="unit"
+              :app-data="appData"
+              @add="addUnit"
+            />
+          </div>
         </div>
-      </div>
+      </template>
+      <template v-else>
+        <div class="codex__no-units">
+          Forge World units are hidden, you can show them in the options
+        </div>
+      </template>
     </div>
   </div>
 </template>
@@ -245,6 +211,10 @@ function onScrollWheel(e) {
     position: absolute;
     right: 0;
     top: 0;
+  }
+  &__no-units {
+    padding: 12px;
+    writing-mode: initial;
   }
 }
 </style>

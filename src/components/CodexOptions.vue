@@ -22,7 +22,7 @@ const props = defineProps({
     </template>
     <template v-slot:content>
       <div class="codex-options__content">
-        <label title="Show Points Changes In Last MFM">
+        <label title="Show points changes compared to previous MFM">
           <input type="checkbox" v-model="props.appData.showPointsChanges" />
           Points Changes
         </label>
@@ -32,12 +32,14 @@ const props = defineProps({
           Forge World
         </label>
 
-        <label title="Set which units are in your personal collection">
+        <label
+          title="Set which units are available in your personal collection"
+        >
           <input type="checkbox" v-model="props.appData.editCollection" />
           Edit Collection
         </label>
 
-        <label>
+        <label title="Sort Datasheets">
           Sort:
           <select v-model="props.appData.sortOrder">
             <option>{{ SORT_ALPHABETICAL }}</option>
@@ -46,7 +48,7 @@ const props = defineProps({
           </select>
         </label>
 
-        <label>
+        <label title="Group Datasheets">
           Group:
           <select v-model="props.appData.group">
             <option>{{ GROUP_NONE }}</option>
