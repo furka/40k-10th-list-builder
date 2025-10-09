@@ -23,143 +23,169 @@ export const parse = function (MFM) {
   let forgeWorld = false;
   let allies = false;
   let appendOption;
+  let legends = false;
 
   lines.forEach((line) => {
-    if (Number(line)) {
-      // ignore page numbers
-    } else if (line === "CODEX SUPPLEMENT:") {
-      // ignore these labels
-    } else if (line === "FORGE WORLD POINTS VALUES") {
-      // forge world section
-      forgeWorld = true;
-    } else if (
-      [
-        "YNNARI",
-        "LEGIONS OF EXCESS",
-        "PLAGUE LEGIONS",
-        "BLOOD LEGIONS",
-        "SCINTILLATING LEGIONS",
-      ].includes(line)
-    ) {
-      // allies section
-      allies = line;
-    } else if (line === "DETACHMENT ENHANCEMENTS") {
-      // detachments section
-      currentDatasheet = DATA_SHEETS.find((d) => d.name === "Enhancements");
-      forgeWorld = false;
-    } else if (line.toUpperCase() === line) {
-      // new faction
-      currentFaction = line
-        .trim()
-        .replace("INDEX: ", "")
-        .replace("CODEX: ", "")
-        .toUpperCase();
-      currentDetachment = null;
-      currentDatasheet = null;
-      forgeWorld = false;
-      allies = false;
-      FACTIONS.push({
-        name: currentFaction,
-        detachments: [],
-      });
-    } else if (line.includes("pts")) {
-      // points line
-      const match = line.match(
-        /^(.*?)([ \.]*)(\([-+]\d*\))? ?(\+\s?)?(\d*) pts$/
-      );
-
-      const option = appendOption || {};
-      appendOption = null;
-
-      if (match) {
-        const points = Number(match[5]);
-        const change = match[3];
-        const bonus = match[4];
-        const models = match[1].trim().match(/(\d*) models?/);
-
-        option.points = points;
-
-        if (bonus) {
-          // bonus options can be taken an unlimited number of times
-          option.bonus = true;
+    try {
+      if (Number(line)) {
+        // ignore page numbers
+      } else if (line === "CODEX SUPPLEMENT:") {
+        // ignore these labels
+      } else if (line === "FORGE WORLD POINTS VALUES") {
+        // forge world section
+        forgeWorld = true;
+      } else if (line === "LEGENDS FIELD MANUAL") {
+        legends = true;
+      } else if (
+        [
+          "YNNARI",
+          "LEGIONS OF EXCESS",
+          "PLAGUE LEGIONS",
+          "BLOOD LEGIONS",
+          "SCINTILLATING LEGIONS",
+        ].includes(line)
+      ) {
+        // allies section
+        allies = line;
+      } else if (line === "DETACHMENT ENHANCEMENTS") {
+        // detachments section
+        currentDatasheet = DATA_SHEETS.find((d) => d.name === "Enhancements");
+        forgeWorld = false;
+      } else if (line.toUpperCase() === line) {
+        // new faction
+        currentDetachment = null;
+        currentDatasheet = null;
+        forgeWorld = false;
+        allies = false;
+        currentFaction = line
+          .trim()
+          .replace("INDEX: ", "")
+          .replace("CODEX: ", "")
+          .toUpperCase();
+        if (!FACTIONS.find((f) => f.name === currentFaction)) {
+          FACTIONS.push({
+            name: currentFaction,
+            detachments: [],
+          });
         }
+      } else if (line.includes("pts")) {
+        // points line
+        const match = line.match(
+          /^(.*?)([ \.]*)(\([-+]\d*\))? ?(\+\s?)?(\d*) pts$/
+        );
 
-        if (models) {
-          option.models = Number(models[1]);
-        } else if (option.name) {
-          option.name += ` ${match[1]}`.trim();
+        const option = appendOption || {};
+        appendOption = null;
+
+        if (match) {
+          const points = Number(match[5]);
+          const change = match[3];
+          const bonus = match[4];
+          const models = match[1].trim().match(/(\d*) models?/);
+
+          option.points = points;
+
+          if (bonus) {
+            // bonus options can be taken an unlimited number of times
+            option.bonus = true;
+          }
+
+          if (models) {
+            option.models = Number(models[1]);
+          } else if (option.name) {
+            option.name += ` ${match[1]}`.trim();
+          } else {
+            option.name = match[1].trim();
+          }
+
+          if (change) {
+            option.change = change.split(/[\(\)]/)[1];
+          }
+
+          if (currentDetachment) {
+            option.detachment = currentDetachment;
+            option.enhancement = true;
+          }
+
+          currentDatasheet.sizes.push(option);
         } else {
-          option.name = match[1].trim();
+          console.log("unknown line syntax", line);
         }
-
-        if (change) {
-          option.change = change.split(/[\(\)]/)[1];
-        }
-
-        if (currentDetachment) {
-          option.detachment = currentDetachment;
-          option.enhancement = true;
-        }
-
-        currentDatasheet.sizes.push(option);
+      } else if (currentDatasheet && currentDatasheet.name === "Enhancements") {
+        // detachment name
+        currentDetachment = line.trim().toUpperCase();
+        FACTIONS.find((f) => f.name === currentFaction)?.detachments.push({
+          name: currentDetachment,
+        });
+      } else if (currentDatasheet && currentDatasheet.sizes.length < 1) {
+        // account for multi-line datasheet names
+        currentDatasheet.name += ` ${line}`;
+      } else if (line.match(/^\d/)) {
+        appendOption = { name: line };
       } else {
-        console.log("unknown line syntax", line);
+        // start new datasheet
+        currentDatasheet = {
+          name: line.trim(),
+          faction: currentFaction,
+          max: 3,
+          forgeWorld,
+          legends,
+          sizes: [],
+        };
+
+        if (allies) {
+          currentDatasheet.allies = allies;
+        }
+
+        if (
+          CONFIGS["epic-hero"].includes(currentDatasheet.name.toLowerCase())
+        ) {
+          currentDatasheet.epicHero = true;
+        }
+
+        if (
+          CONFIGS["battle-line"].includes(currentDatasheet.name.toLowerCase())
+        ) {
+          currentDatasheet.battleLine = true;
+        }
+
+        if (
+          CONFIGS["fortification"].includes(currentDatasheet.name.toLowerCase())
+        ) {
+          currentDatasheet.fortification = true;
+        }
+
+        if (
+          CONFIGS["dedicated-transport"].includes(
+            currentDatasheet.name.toLowerCase()
+          )
+        ) {
+          currentDatasheet.dedicatedTransport = true;
+        }
+
+        if (
+          CONFIGS["character"].includes(currentDatasheet.name.toLowerCase())
+        ) {
+          currentDatasheet.character = true;
+        }
+
+        if (CONFIGS["sub-factions"][currentFaction]) {
+          currentDatasheet.subFaction = CONFIGS["sub-factions"][currentFaction];
+        }
+
+        DATA_SHEETS.push(currentDatasheet);
       }
-    } else if (currentDatasheet && currentDatasheet.name === "Enhancements") {
-      // detachment name
-      currentDetachment = line.trim().toUpperCase();
-      FACTIONS.find((f) => f.name === currentFaction)?.detachments.push({
-        name: currentDetachment,
-      });
-    } else if (currentDatasheet && currentDatasheet.sizes.length < 1) {
-      // account for multi-line datasheet names
-      currentDatasheet.name += ` ${line}`;
-    } else if (line.match(/^\d/)) {
-      appendOption = { name: line };
-    } else {
-      // start new datasheet
-      currentDatasheet = {
-        name: line.trim(),
-        faction: currentFaction,
-        max: 3,
+    } catch (e) {
+      console.log("error on line:", line, {
+        currentDatasheet,
+        appendOption,
+        legends,
         forgeWorld,
-        sizes: [],
-      };
-
-      if (allies) {
-        currentDatasheet.allies = allies;
-      }
-
-      if (CONFIGS["epic-hero"].includes(currentDatasheet.name.toLowerCase())) {
-        currentDatasheet.epicHero = true;
-        currentDatasheet.max = 1;
-      }
-
-      if (
-        CONFIGS["battle-line"].includes(currentDatasheet.name.toLowerCase())
-      ) {
-        currentDatasheet.battleLine = true;
-        currentDatasheet.max = 6;
-      }
-
-      if (
-        CONFIGS["dedicated-transport"].includes(
-          currentDatasheet.name.toLowerCase()
-        )
-      ) {
-        currentDatasheet.dedicatedTransport = true;
-        currentDatasheet.max = 6;
-      }
-
-      if (CONFIGS["character"].includes(currentDatasheet.name.toLowerCase())) {
-        currentDatasheet.character = true;
-      }
-
-      if (CONFIGS["sub-factions"][currentFaction]) {
-        currentDatasheet.subFaction = CONFIGS["sub-factions"][currentFaction];
-      }
-
-      DATA_SHEETS.push(currentDatasheet);
+        allies,
+        currentFaction,
+        currentDetachment,
+      });
+      throw e;
     }
   });
 

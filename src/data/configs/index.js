@@ -2,10 +2,12 @@ import configs from "./config.json";
 
 export const CONFIGS = {
   "battle-line": [],
-  character: [],
-  "epic-hero": [],
   "dedicated-transport": [],
+  "epic-hero": [],
   "sub-factions": {},
+  character: [],
+  conditional: {},
+  fortification: [],
 };
 
 for (const key in configs) {
@@ -20,7 +22,19 @@ for (const key in configs) {
     ...config["dedicated-transport"].map((i) => i.toLowerCase())
   );
 
+  if (config["fortification"]) {
+    CONFIGS["fortification"].push(
+      ...config["fortification"].map((i) => i.toLowerCase())
+    );
+  }
+
   if (config["sub-faction"]) {
     CONFIGS["sub-factions"][key] = config["sub-faction"];
+  }
+  if (config["conditional"]) {
+    CONFIGS["conditional"] = {
+      ...CONFIGS["conditional"],
+      ...config["conditional"],
+    };
   }
 }

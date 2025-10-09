@@ -11,6 +11,7 @@ import AppToolBar from "./components/AppToolBar.vue";
 import { deserializeList } from "./utils/serialize-list";
 
 function save(key, val = appData[key]) {
+  console.log("saving", key, val);
   localStorage.setItem(key, JSON.stringify(val));
 }
 
@@ -35,11 +36,19 @@ const appData = reactive({
   factions: MFM.CURRENT.FACTIONS,
   group: restore("group") ?? GROUP_NONE,
   lists: restore("lists") ?? [],
-  showForgeWorld: restore("showForgeWorld") ?? true,
+  showForgeWorld: restore("showForgeWorld") ?? false,
+  showLegends: restore("showLegends") ?? false,
   showPointsChanges: restore("showPointsChanges") ?? true,
   sortOrder: restore("sortOrder") ?? SORT_ALPHABETICAL,
   units: restore("units") ?? [],
 });
+
+if (appData.currentList?.detachment) {
+  appData.currentList.detachment = appData.currentList.detachment.toUpperCase();
+}
+if (appData.currentList?.faction) {
+  appData.currentList.faction = appData.currentList.faction.toUpperCase();
+}
 
 const searchParams = new URLSearchParams(window.location.search);
 
@@ -99,16 +108,23 @@ function newList() {
   appData.currentList = createNewList(faction, detachment);
 }
 
-watch(appData, () => {
-  save("collection");
-  save("currentList");
-  save("lists");
-  save("group");
-  save("showForgeWorld");
-  save("showPointsChanges");
-  save("sortOrder");
-  save("units");
-});
+function track(val) {
+  watch(
+    () => appData[val],
+    () => save(val),
+    { deep: true }
+  );
+}
+
+track("collection");
+track("currentList");
+track("lists");
+track("group");
+track("showForgeWorld");
+track("showLegends");
+track("showPointsChanges");
+track("sortOrder");
+track("units");
 
 watch(
   () => appData.bin,
@@ -126,7 +142,8 @@ watch(
     appData.codexFilter = "";
     appData.editCollection = false;
     appData.currentList.detachment = MFM.CURRENT.FACTIONS.find(
-      (f) => f.name === appData.currentList.faction
+      (f) =>
+        f.name?.toLowerCase() === appData.currentList.faction?.toLowerCase()
     )?.detachments[0]?.name;
   }
 );

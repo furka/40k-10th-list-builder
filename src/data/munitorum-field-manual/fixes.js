@@ -32,17 +32,35 @@ include Agents of the Imperium units in your army even if they do not have the F
 Army Faction step. When doing so, use the points values shown on the following page.
 ARMY FACTION:
 AGENTS OF THE IMPERIUM`,
-    out: "CODEX: AGENTS OF THE IMPERIUM",
+    out: "CODEX: IMPERIAL AGENTS",
   },
   {
     in: `EVERY MODEL HAS
 IMPERIUM KEYWORD`,
-    out: "AGENTS OF THE IMPERIUM (ALLIES)",
+    out: "IMPERIAL AGENTS (ALLIES)",
   },
   {
     in: `CODEX: SPACE WOLVES
 The points below allow players to enjoy Codex: Space Wolves in non-tournament settings. Until the full release of this
 Codex, players should continue using the Index: Space Wolves points and rules for tournaments and other similar events.`,
     out: "CODEX: SPACE WOLVES (CODEX)",
+  },
+  {
+    in: `LEGENDS FIELD MANUAL
+WARHAMMER LEGENDS
+The points values shown below are for all of your favourite Warhammer Legends datasheets and are designed to be used
+in Legends Approved battles. Before playing a Legends Approved battle, remember to confirm with all players or event
+organisers if Warhammer Legends datasheets will be in play.
+You can use the points values of the following Legends units with units and points values from the Munitorum Field Manual
+when assembling your armies. You can learn more about using points to muster your army on pages 55-56 of the Core Rules.`,
+    out: "LEGENDS FIELD MANUAL",
+  },
+  {
+    in: `X-101`,
+    out: `x-101`,
+  },
+  {
+    in: `UR-025`,
+    out: `ur-025`,
   },
 ];

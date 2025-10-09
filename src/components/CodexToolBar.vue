@@ -15,7 +15,11 @@ const factions = computed(() => {
 
 const detachments = computed(() => {
   return props.appData.factions
-    .find((f) => f.name === props.appData.currentList.faction)
+    .find(
+      (f) =>
+        f.name?.toUpperCase() ===
+        props.appData.currentList.faction?.toUpperCase()
+    )
     ?.detachments?.map((d) => d.name);
 });
 </script>
@@ -37,8 +41,11 @@ const detachments = computed(() => {
           v-model="props.appData.currentList.detachment"
           class="toolbar__detachment-select"
         >
-          <option v-for="(faction, index) in detachments" :value="faction">
-            {{ faction.toLowerCase() }}
+          <option
+            v-for="(detachment, index) in detachments"
+            :value="detachment"
+          >
+            {{ detachment.toLowerCase() }}
           </option>
         </select>
       </template>

@@ -32,6 +32,11 @@ const props = defineProps({
           Forge World
         </label>
 
+        <label title="Show Legends units">
+          <input type="checkbox" v-model="props.appData.showLegends" />
+          Legends
+        </label>
+
         <label
           title="Set which units are available in your personal collection"
         >

@@ -1,7 +1,9 @@
 <script setup>
 import { computed } from "vue";
-import { SORT_EXPENSIVE_FIRST } from "../data/constants";
+import { GROUP_NONE, SORT_EXPENSIVE_FIRST } from "../data/constants";
 import { sortOptionsPtsDescending } from "../utils/sort-functions";
+import { isBattleLine } from "../utils/is-battleline";
+import { unitMax } from "../utils/unit-max";
 
 const props = defineProps({
   dataSheet: Object,
@@ -45,12 +47,12 @@ const count = computed(() => {
 });
 
 const maxed = computed(() => {
-  let max = props.dataSheet.max || 3;
+  const max = unitMax(props.dataSheet, props.appData.currentList.detachment);
   return count.value >= max;
 });
 
 const max = computed(() => {
-  return props.dataSheet.max || 3;
+  return unitMax(props.dataSheet, props.appData.currentList.detachment);
 });
 
 const owned = computed(() => {
@@ -150,15 +152,27 @@ function optionAvailable(option) {
       <span class="data-sheet__name">
         <template v-if="count > -1"> {{ count }}/{{ max }}</template>
         {{ props.dataSheet.name }}
+        <template v-if="props.appData.group === GROUP_NONE">
+          <span
+            v-if="
+              isBattleLine(
+                props.dataSheet,
+                props.appData.currentList.detachment
+              )
+            "
+            title="Battleline"
+            >[B]</span
+          >
+          <span v-if="props.dataSheet.character" title="Character">[C]</span>
+          <span
+            v-if="props.dataSheet.dedicatedTransport"
+            title="Dedicated Transport"
+            >[T]</span
+          >
+          <span v-if="props.dataSheet.forgeWorld" title="Forgeworld">[F]</span>
+        </template>
         <span v-if="props.dataSheet.epicHero" title="Epic Hero">[E]</span>
-        <span v-if="props.dataSheet.battleLine" title="Battleline">[B]</span>
-        <span v-if="props.dataSheet.character" title="Character">[C]</span>
-        <span
-          v-if="props.dataSheet.dedicatedTransport"
-          title="Dedicated Transport"
-          >[T]</span
-        >
-        <span v-if="props.dataSheet.forgeWorld" title="Forgeworld">[F]</span>
+        <span v-if="props.dataSheet.legends" title="Legends">[L]</span>
       </span>
 
       <label

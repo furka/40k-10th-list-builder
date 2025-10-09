@@ -1,6 +1,7 @@
 <script setup>
 import { computed } from "vue";
 import RiskIcon from "../assets/risk-icon.svg";
+import { unitMax } from "../utils/unit-max";
 
 const props = defineProps({
   appData: Object,
@@ -39,11 +40,23 @@ const inValid = computed(() => {
     return "Invalid Unit";
   }
 
+  const count = props.appData.currentList.units.filter(
+    (u) => u.name === props.unit.name
+  ).length;
+  if (count > unitMax(props.unit, props.appData.currentList.detachment)) {
+    return `Only ${unitMax(
+      props.unit,
+      props.appData.currentList.detachment
+    )} of this unit allowed`;
+  }
+
   if (props.unit.name === "Enhancements") {
     const availableEnhancements = props.appData.compendium
       ?.find((u) => u.name === "Enhancements")
       ?.sizes.filter(
-        (s) => s.detachment === props.appData.currentList.detachment
+        (s) =>
+          s.detachment?.toUpperCase() ===
+          props.appData.currentList.detachment?.toUpperCase()
       )
       .map((e) => e.name);
 

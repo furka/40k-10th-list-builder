@@ -14,6 +14,7 @@ import {
   sortDataSheetPtsAscending,
   sortDataSheetPtsDescending,
 } from "../utils/sort-functions";
+import { isBattleLine } from "../utils/is-battleline";
 
 const props = defineProps({
   appData: Object,
@@ -42,6 +43,14 @@ function forgeWorldFilter(sheet) {
   }
 }
 
+function legendsFilter(sheet) {
+  if (props.appData.showLegends) {
+    return true;
+  } else {
+    return !sheet.legends;
+  }
+}
+
 function sortOrder() {
   if (props.appData.sortOrder === SORT_EXPENSIVE_FIRST) {
     return sortDataSheetPtsDescending;
@@ -57,6 +66,7 @@ const dataSheets = computed(() => {
     ?.filter(factionFilter)
     .filter(userFilter)
     .filter(forgeWorldFilter)
+    .filter(legendsFilter)
     .sort(sortOrder());
 });
 
@@ -68,7 +78,9 @@ const enhancements = computed(() => {
   return {
     name,
     sizes: sizes.filter(
-      (s) => s.detachment === props.appData.currentList.detachment
+      (s) =>
+        s.detachment?.toLowerCase() ===
+        props.appData.currentList.detachment?.toLowerCase()
     ),
     enhancements: true,
   };
@@ -85,8 +97,17 @@ const groupedUnits = computed(() => {
     const other = { title: "Other", units: [] };
     const allies = { title: "Allies", units: [] };
     const forgeWorld = { title: "Forge World", units: [] };
+    const fortifications = { title: "Fortifications", units: [] };
 
-    data.push(characters, battleLine, transports, other, allies, forgeWorld);
+    data.push(
+      characters,
+      battleLine,
+      transports,
+      other,
+      allies,
+      forgeWorld,
+      fortifications
+    );
 
     dataSheets.value.forEach((sheet) => {
       if (sheet.allies) {
@@ -94,12 +115,14 @@ const groupedUnits = computed(() => {
         allies.units.push(sheet);
       } else if (sheet.character) {
         characters.units.push(sheet);
-      } else if (sheet.battleLine) {
+      } else if (isBattleLine(sheet, props.appData.currentList.detachment)) {
         battleLine.units.push(sheet);
       } else if (sheet.dedicatedTransport) {
         transports.units.push(sheet);
       } else if (sheet.forgeWorld) {
         forgeWorld.units.push(sheet);
+      } else if (sheet.fortification) {
+        fortifications.units.push(sheet);
       } else {
         other.units.push(sheet);
       }

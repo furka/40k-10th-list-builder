@@ -5,6 +5,7 @@
       "Aestred Thurga And Agathae Dolan",
       "Canoness",
       "Canoness with Jump Pack",
+      "Celestian Sacresant Aveline",
       "Daemonifuge",
       "Dialogus",
       "Dogmata",
@@ -18,13 +19,21 @@
       "Triumph Of Saint Katherine"
     ],
     "epic-hero": [
-      "Aestred Thurga and Agathae Dolan",
+      "Aestred Thurga And Agathae Dolan",
       "Daemonifuge",
       "Junith Eruita",
       "Morvenn Vahl",
-      "Triumph of Saint Katherine"
+      "Saint Celestine",
+      "Triumph Of Saint Katherine"
     ],
-    "dedicated-transport": ["Immolator", "Sororitas Rhino"]
+    "dedicated-transport": ["Immolator", "Repressor", "Sororitas Rhino"],
+    "fortification": ["Battle Sanctum"],
+    "legends": [
+      "Battle Sanctum",
+      "Crusaders",
+      "Death Cult Assassins",
+      "Repressor"
+    ]
   },
   "ADEPTUS CUSTODES": {
     "battle-line": ["Custodian Guard"],
@@ -39,7 +48,9 @@
       "Valerian"
     ],
     "epic-hero": ["Aleya", "Trajann Valoris", "Valerian"],
-    "dedicated-transport": ["Anathema Psykana Rhino"]
+    "dedicated-transport": ["Anathema Psykana Rhino"],
+    "legends": [],
+    "conditional": { "NULL MAIDEN VIGIL": { "battle-line": ["Prosecutors"] } }
   },
   "ADEPTUS MECHANICUS": {
     "battle-line": ["Skitarii Rangers", "Skitarii Vanguard"],
@@ -51,16 +62,19 @@
       "Tech-priest Dominus",
       "Tech-priest Enginseer",
       "Tech-priest Manipulus",
-      "Technoarcheologist"
+      "Technoarcheologist",
+      "X-101"
     ],
     "epic-hero": ["Belisarius Cawl"],
-    "dedicated-transport": ["Skorpius Dunerider"]
+    "dedicated-transport": ["Skorpius Dunerider", "Terrax-Pattern Termite"],
+    "legends": ["Servitors", "Terrax-Pattern Termite", "X-101"]
   },
   "ADEPTUS TITANICUS": {
     "battle-line": [],
     "character": [],
     "epic-hero": [],
-    "dedicated-transport": []
+    "dedicated-transport": [],
+    "legends": []
   },
   "AELDARI": {
     "battle-line": [
@@ -71,20 +85,24 @@
       "Ynnari Wyches"
     ],
     "character": [
+      "Amallyn Shadowguide",
       "Asurmen",
+      "Autarch",
       "Autarch Skyrunner",
       "Autarch Wayleaper",
-      "Autarch",
       "Avatar Of Khaine",
       "Baharroth",
+      "Bonesinger",
       "Death Jester",
       "Eldrad Ulthran",
-      "Farseer Skyrunner",
       "Farseer",
+      "Farseer Skyrunner",
       "Fuegan",
       "Illic Nightspear",
+      "Irillyth",
       "Jain Zar",
       "Karandras",
+      "Lhykhis",
       "Maugan Ra",
       "Prince Yriel",
       "Shadowseer",
@@ -93,7 +111,6 @@
       "The Visarch",
       "The Yncarne",
       "Troupe Master",
-      "Warlock Skyrunner",
       "Warlock",
       "Ynnari Archon",
       "Ynnari Succubus",
@@ -121,9 +138,38 @@
       "Wave Serpent",
       "Ynnari Raider",
       "Ynnari Venom"
+    ],
+    "fortification": ["Webway Gate"],
+    "conditional": { "WINDRIDER HOST": { "battle-line": ["Windriders"] } },
+    "legends": [
+      "Amallyn Shadowguide",
+      "Autarch Skyrunner",
+      "Bonesinger",
+      "Cobra",
+      "Corsair Cloud Dancer Band",
+      "Corsair Reaver Band",
+      "Corsair Skyreaver Band",
+      "Firestorm",
+      "Hornet",
+      "Illic Nightspear",
+      "Irillyth",
+      "Karandras",
+      "Lynx",
+      "Nightwing",
+      "Phoenix",
+      "Prince Yriel",
+      "Scorpion",
+      "Shadow Spectres",
+      "Skathach Wraithknight",
+      "Vampire Hunter",
+      "Vampire Raider",
+      "Warp Hunter",
+      "Wasp Assault Walker",
+      "Webway Gate",
+      "Wraithseer"
     ]
   },
-  "AGENTS OF THE IMPERIUM": {
+  "IMPERIAL AGENTS": {
     "battle-line": [
       "Deathwatch Kill Team",
       "Imperial Navy Breachers",
@@ -133,13 +179,24 @@
       "Callidus Assassin",
       "Culexus Assassin",
       "Eversor Assassin",
+      "Inquisitor",
       "Inquisitor Coteaz",
       "Inquisitor Draxus",
+      "Inquisitor Eisenhorn",
       "Inquisitor Greyfax",
-      "Inquisitor",
+      "Inquisitor In Terminator Armour",
+      "Inquisitor Karamazov",
+      "Janus Draik",
+      "Jokaero Weaponsmith",
+      "Kill Team Cassius",
+      "Ministorum Priest",
       "Navigator",
+      "Neyam Shai Murad",
       "Rogue Trader Entourage",
-      "Vindicare Assassin"
+      "UR-025",
+      "Vindicare Assassin",
+      "Watch Captain Artemis",
+      "Watch Master"
     ],
     "epic-hero": [
       "Callidus Assassin",
@@ -148,12 +205,32 @@
       "Inquisitor Coteaz",
       "Inquisitor Draxus",
       "Inquisitor Greyfax",
-      "Vindicare Assassin"
+      "Vindicare Assassin",
+      "Watch Captain Artemis"
     ],
     "dedicated-transport": [
       "Imperial Rhino",
       "Inquisitorial Chimera",
       "Sisters of Battle Immolator"
+    ],
+    "legends": [
+      "Daemonhost",
+      "Damned Legionnaires",
+      "Deathwatch Terminator Squad",
+      "Fortis Kill Team",
+      "Indomitor Kill Team",
+      "Inquisitor Eisenhorn",
+      "Inquisitor In Terminator Armour",
+      "Inquisitor Karamazov",
+      "Janus Draik",
+      "Jokaero Weaponsmith",
+      "Kill Team Cassius",
+      "Neyam Shai Murad",
+      "Proteus Kill Team",
+      "Sanctifiers",
+      "Spectrus Kill Team",
+      "UR-025",
+      "Veteran Bike Squad"
     ]
   },
   "ASTRA MILITARUM": {
@@ -167,7 +244,10 @@
       "Cadian Command Squad",
       "Catachan Command Squad",
       "Commissar",
-      "Gaunt’s Ghosts",
+      "Death Rider Commissar",
+      "Gaunt's Ghosts",
+      "Hell's Last",
+      "Iron Hand Straken",
       "Krieg Command Squad",
       "Leman Russ Commander",
       "Lord Marshal Dreir",
@@ -177,45 +257,85 @@
       "Nork Deddog",
       "Ogryn Bodyguard",
       "Primaris Psyker",
+      "Provisionally Prepared",
+      "Quartermaster Cadre Squad",
+      "Rein And Raus",
       "Rogal Dorn Commander",
+      "Sergeant Harker",
       "Sly Marbo",
       "Tech-Priest Enginseer",
       "Ursula Creed"
     ],
     "epic-hero": [
-      "Gaunt’s Ghosts",
+      "Gaunt's Ghosts",
       "Lord Marshal Dreir",
       "Lord Solar Leontus",
       "Nork Deddog",
       "Sly Marbo",
       "Ursula Creed"
     ],
-    "dedicated-transport": ["Chimera", "Taurox", "Taurox Prime"]
+    "dedicated-transport": [
+      "Chimera",
+      "Storm Chimera",
+      "Taurox",
+      "Taurox Prime"
+    ],
+    "fortification": [
+      "Aegis Defence Line",
+      "Earthshaker Platform",
+      "Hydra Platform",
+      "Manticore Platform",
+      "Sabre Weapons Battery"
+    ],
+    "legends": [
+      "Death Rider Commissar",
+      "Earthshaker Platform",
+      "Hydra Platform",
+      "Iron Hand Straken",
+      "Manticore Platform",
+      "Provisionally Prepared",
+      "Quartermaster Cadre Squad",
+      "Rein And Raus",
+      "Sabre Weapons Battery",
+      "Sergeant Harker",
+      "Storm Chimera"
+    ]
   },
   "BLACK TEMPLARS": {
-    "battle-line": ["Crusader Squad", "Primaris Crusader Squad"],
+    "battle-line": ["Crusader Squad"],
     "character": [
       "Castellan",
       "Chaplain Grimaldus",
+      "Crusade Ancient",
+      "Execrator",
       "High Marshal Helbrecht",
       "Marshal",
-      "The Emperor’s Champion"
+      "The Emperor's Champion"
     ],
-    "epic-hero": ["High Marshal Helbrecht", "The Emperor’s Champion"],
+    "epic-hero": [
+      "Chaplain Grimaldus",
+      "High Marshal Helbrecht",
+      "The Emperor's Champion"
+    ],
     "dedicated-transport": ["Black Templars Impulsor"],
+    "legends": [],
     "sub-faction": "SPACE MARINES"
   },
   "BLOOD ANGELS": {
     "battle-line": [],
     "character": [
       "Astorath",
+      "Blood Angels Captain",
       "Brother Corbulo",
       "Captain Tycho",
       "Chief Librarian Mephiston",
       "Commander Dante",
+      "Death Company Captain",
+      "Death Company Captain With Jump Pack",
       "Gabriel Seth",
       "Lemartes",
       "Sanguinary Priest",
+      "Sanguinary Priest On Bike",
       "Sanguinary Priest With Jump Pack",
       "The Sanguinor",
       "Tycho The Lost"
@@ -232,6 +352,14 @@
       "Tycho the Lost"
     ],
     "dedicated-transport": [],
+    "legends": [
+      "Brother Corbulo",
+      "Captain Tycho",
+      "Gabriel Seth",
+      "Sanguinary Priest On Bike",
+      "Sanguinary Priest With Jump Pack",
+      "Tycho The Lost"
+    ],
     "sub-faction": "SPACE MARINES"
   },
   "CHAOS DAEMONS": {
@@ -244,74 +372,145 @@
       "Plaguebearers"
     ],
     "character": [
-      "Be’lakor",
+      "Aetaos'rau'keres",
+      "An'ggrath the Unbound",
+      "Be'lakor",
       "Bloodmaster",
       "Bloodthirster",
       "Changecaster",
+      "Chaos Lord",
+      "Chaos Lord In Terminator Armour",
+      "Chaos Lord On Disc Of Tzeentch",
+      "Chaos Lord On Juggernaut",
+      "Chaos Lord On Palanquin Of Nurgle",
+      "Chaos Lord On Steed Of Slaanesh",
+      "Chaos Lord with Jump Pack",
       "Contorted Epitome",
+      "Cultist Firebrand",
       "Daemon Prince Of Chaos",
       "Daemon Prince Of Chaos With Wings",
+      "Dark Apostle",
+      "Dark Commune",
       "Epidemius",
       "Exalted Flamer",
       "Fateskimmer",
       "Fluxmaster",
       "Great Unclean One",
+      "Herald Of Slaanesh On Steed Of Slaanesh",
       "Horticulous Slimux",
       "Infernal Enrapturess",
       "Kairos Fateweaver",
       "Karanak",
       "Keeper Of Secrets",
       "Lord Of Change",
+      "Master Of Possession",
       "Poxbringer",
+      "Renegade Enforcer",
       "Rendmaster On Blood Throne",
+      "Rogue Psyker",
       "Rotigus",
+      "Scabeiathrax The Bloated",
       "Shalaxi Helbane",
       "Skarbrand",
       "Skullmaster",
       "Skulltaker",
       "Sloppity Bilepiper",
+      "Sorcerer",
+      "Sorcerer In Terminator Armour",
+      "Sorcerer On Disc Of Tzeentch",
+      "Sorcerer On Palanquin Of Nurgle",
+      "Sorcerer On Steed Of Slaanesh",
       "Spoilpox Scrivener",
-      "Syll’esske",
+      "Syll'esske",
       "The Blue Scribes",
       "The Changeling",
       "The Masque Of Slaanesh",
+      "Tormentbringer",
       "Tormentbringer On Exalted Seeker Chariot",
-      "Tranceweaver"
+      "Tranceweaver",
+      "Zarakynel"
     ],
-    "epic-hero": [
-      "Be’lakor",
-      "Epidemius",
-      "Horticulous Slimux",
-      "Kairos Fateweaver",
+    "epic-hero": ["Be'lakor", "Epidemius"],
+    "dedicated-transport": [],
+    "fortification": ["Feculent Gnarlmaw", "Skull Altar"],
+    "legends": [
+      "Aetaos'rau'keres",
+      "An'ggrath the Unbound",
+      "Chaos Lord On Disc Of Tzeentch",
+      "Chaos Lord On Juggernaut",
+      "Chaos Lord On Palanquin Of Nurgle",
+      "Chaos Lord On Steed Of Slaanesh",
+      "Cultist Mob with Firearms",
+      "Exalted Seeker Chariot",
+      "Furies",
+      "Gellerpox Infected",
+      "Giant Chaos Spawn",
+      "Hellflayer",
+      "Herald Of Slaanesh On Steed Of Slaanesh",
       "Karanak",
-      "Rotigus",
-      "Shalaxi Helbane",
-      "Skarbrand",
-      "Skulltaker",
-      "Syll’esske",
-      "The Blue Scribes",
-      "The Changeling",
-      "The Masque of Slaanesh"
-    ],
-    "dedicated-transport": []
+      "Mutoid Vermin",
+      "Negavolt Cultists",
+      "Plague Toads",
+      "Pox Riders",
+      "Renegade Enforcer",
+      "Renegade Heavy Weapons Squad",
+      "Renegade Ogryn Beast Handler",
+      "Renegade Ogryn Brutes",
+      "Renegade Plague Ogryns",
+      "Rogue Psyker",
+      "Scabeiathrax The Bloated",
+      "Seeker Chariot",
+      "Sorcerer On Disc Of Tzeentch",
+      "Sorcerer On Palanquin Of Nurgle",
+      "Sorcerer On Steed Of Slaanesh",
+      "Spined Chaos Beast",
+      "Tormentbringer On Exalted Seeker Chariot",
+      "Zarakynel"
+    ]
   },
   "CHAOS KNIGHTS": {
-    "battle-line": [
-      "War Dog Brigand",
-      "War Dog Executioner",
-      "War Dog Huntsman",
-      "War Dog Karnivore"
-    ],
+    "battle-line": ["Cultist Mob"],
     "character": [
+      "Chaos Cerastus Knight Acheron",
+      "Chaos Cerastus Knight Atrapos",
+      "Chaos Cerastus Knight Castigator",
+      "Chaos Cerastus Knight Lancer",
+      "Chaos Questoris Knight Magaera",
+      "Chaos Questoris Knight Styrix",
+      "Cultist Firebrand",
+      "Dark Commune",
       "Knight Abominant",
       "Knight Desecrator",
       "Knight Despoiler",
       "Knight Rampager",
+      "Knight Ruinator",
       "Knight Tyrant",
+      "Renegade Enforcer",
+      "Rogue Psyker",
+      "Traitor Enforcer",
       "War Dog Stalker"
     ],
     "epic-hero": [],
-    "dedicated-transport": []
+    "dedicated-transport": [],
+    "legends": ["Renegade Enforcer", "Rogue Psyker"],
+    "conditional": {
+      "HOUNDPACK LANCE": {
+        "battle-line": [
+          "War Dog Brigand",
+          "War Dog Executioner",
+          "War Dog Huntsman",
+          "War Dog Karnivore",
+          "War Dog Stalker"
+        ],
+        "character": [
+          "War Dog Brigand",
+          "War Dog Executioner",
+          "War Dog Huntsman",
+          "War Dog Karnivore",
+          "War Dog Stalker"
+        ]
+      }
+    }
   },
   "CHAOS SPACE MARINES": {
     "battle-line": ["Cultist Mob", "Legionaries"],
@@ -319,11 +518,17 @@
       "Abaddon The Despoiler",
       "Chaos Lord",
       "Chaos Lord In Terminator Armour",
+      "Chaos Lord On Bike",
+      "Chaos Lord On Disc Of Tzeentch",
+      "Chaos Lord On Juggernaut",
+      "Chaos Lord On Palanquin Of Nurgle",
+      "Chaos Lord On Steed Of Slaanesh",
       "Chaos Lord with Jump Pack",
       "Cultist Firebrand",
       "Cypher",
       "Dark Apostle",
       "Dark Commune",
+      "Exalted Champion",
       "Fabius Bile",
       "Haarken Worldclaimer",
       "Heretic Astartes Daemon Prince",
@@ -332,8 +537,14 @@
       "Lord Discordant On Helstalker",
       "Master Of Executions",
       "Master Of Possession",
+      "Renegade Enforcer",
+      "Rogue Psyker",
       "Sorcerer",
       "Sorcerer In Terminator Armour",
+      "Sorcerer On Bike",
+      "Sorcerer On Disc Of Tzeentch",
+      "Sorcerer On Palanquin Of Nurgle",
+      "Sorcerer On Steed Of Slaanesh",
       "Traitor Enforcer",
       "Vashtorr The Arkifane",
       "Warpsmith"
@@ -341,11 +552,26 @@
     "epic-hero": [
       "Abaddon the Despoiler",
       "Cypher",
+      "Fabius Bile",
       "Haarken Worldclaimer",
       "Huron Blackheart",
       "Vashtorr the Arkifane"
     ],
-    "dedicated-transport": ["Chaos Rhino"]
+    "dedicated-transport": ["Chaos Rhino"],
+    "legends": [
+      "Chaos Lord On Bike",
+      "Chaos Lord On Disc Of Tzeentch",
+      "Chaos Lord On Juggernaut",
+      "Chaos Lord On Palanquin Of Nurgle",
+      "Chaos Lord On Steed Of Slaanesh",
+      "Exalted Champion",
+      "Renegade Enforcer",
+      "Rogue Psyker",
+      "Sorcerer On Bike",
+      "Sorcerer On Disc Of Tzeentch",
+      "Sorcerer On Palanquin Of Nurgle",
+      "Sorcerer On Steed Of Slaanesh"
+    ]
   },
   "DARK ANGELS": {
     "battle-line": [],
@@ -353,10 +579,11 @@
       "Asmodai",
       "Azrael",
       "Belial",
+      "Deathwing Strikemaster",
       "Ezekiel",
       "Lazarus",
-      "Lion El’jonson",
-      "Ravenwing Command Squad",
+      "Lion El'jonson",
+      "Ravenwing Talonmaster",
       "Sammael"
     ],
     "epic-hero": [
@@ -365,45 +592,64 @@
       "Belial",
       "Ezekiel",
       "Lazarus",
-      "Lion El’Jonson",
+      "Lion El'Jonson",
       "Sammael"
     ],
     "dedicated-transport": [],
+    "legends": ["Deathwing Strikemaster", "Ravenwing Talonmaster"],
+    "conditional": {
+      "COMPANY OF HUNTERS": { "battle-line": ["Outrider Squad"] }
+    },
     "sub-faction": "SPACE MARINES"
   },
   "DEATH GUARD": {
-    "battle-line": ["Plague Marines"],
+    "battle-line": ["Plague Marines", "Plaguebearers"],
     "character": [
       "Biologus Putrifier",
-      "Chaos Lord",
-      "Chaos Lord In Terminator Armour",
+      "Chaos Lord On Palanquin Of Nurgle",
       "Daemon Prince of Nurgle",
       "Daemon Prince of Nurgle With Wings",
-      "Icon Bearer",
-      "Sorcerer In Terminator Armour",
-      "Lord of Poxes",
       "Foul Blightspawn",
+      "Great Unclean One",
+      "Icon Bearer",
       "Lord Of Contagion",
+      "Lord of Poxes",
       "Lord Of Virulence",
       "Malignant Plaguecaster",
       "Mortarion",
       "Noxious Blightbringer",
       "Plague Surgeon",
+      "Rotigus",
+      "Sorcerer On Palanquin Of Nurgle",
       "Tallyman",
       "Typhus"
     ],
-    "epic-hero": ["Mortarion", "Typhus"],
-    "dedicated-transport": ["Chaos Rhino"]
+    "epic-hero": [
+      "Daemon Prince of Nurgle",
+      "Daemon Prince of Nurgle With Wings",
+      "Great Unclean One",
+      "Mortarion",
+      "Rotigus",
+      "Typhus"
+    ],
+    "dedicated-transport": ["Chaos Rhino", "Terrax-Pattern Termite"],
+    "fortification": ["Miasmic Malignifier"],
+    "legends": [
+      "Chaos Lord On Palanquin Of Nurgle",
+      "Sorcerer On Palanquin Of Nurgle",
+      "Terrax-Pattern Termite"
+    ]
   },
   "DEATHWATCH": {
     "battle-line": ["Deathwatch Veterans"],
-    "character": ["Kill Team Cassius", "Watch Captain Artemis", "Watch Master"],
-    "epic-hero": ["Watch Captain Artemis"],
+    "character": ["Watch Captain Artemis", "Watch Master"],
+    "epic-hero": ["Watch Captain Artemis", "Watch Master"],
     "dedicated-transport": [],
+    "legends": [],
     "sub-faction": "SPACE MARINES"
   },
   "DRUKHARI": {
-    "battle-line": ["Kabalite Warriors", "Reavers", "Wracks", "Wyches"],
+    "battle-line": ["Kabalite Warriors", "Wracks", "Wyches"],
     "character": [
       "Archon",
       "Beastmaster",
@@ -414,26 +660,41 @@
       "Urien Rakarth"
     ],
     "epic-hero": ["Drazhar", "Lelith Hesperax", "Urien Rakarth"],
-    "dedicated-transport": ["Raider", "Venom"]
+    "dedicated-transport": ["Raider", "Venom"],
+    "legends": [
+      "Corsair Cloud Dancer Band",
+      "Corsair Reaver Band",
+      "Corsair Skyreaver Band",
+      "Corsair Voidreavers",
+      "Corsair Voidscarred",
+      "Raven Strike Fighter",
+      "Reaper",
+      "Tantalus"
+    ]
   },
-  "EMPEROR’S CHILDREN": {
-    "battle-line": ["Infractors", "Tormentors"],
+  "EMPEROR'S CHILDREN": {
+    "battle-line": ["Daemonettes", "Infractors", "Noise Marines", "Tormentors"],
     "character": [
       "Daemon Prince of Slaanesh",
       "Daemon Prince of Slaanesh with Wings",
       "Fulgrim",
+      "Keeper of Secrets",
       "Lord Exultant",
       "Lord Kakophonist",
-      "Lucius the Eternal"
+      "Lucius the Eternal",
+      "Shalaxi Helbane",
+      "Sorcerer"
     ],
-    "epic-hero": ["Fulgrim", "Lucius the Eternal"],
-    "dedicated-transport": ["Chaos Rhino"]
+    "epic-hero": ["Fulgrim", "Lucius the Eternal", "Shalaxi Helbane"],
+    "dedicated-transport": ["Chaos Rhino"],
+    "legends": []
   },
   "GENESTEALER CULTS": {
     "battle-line": ["Acolyte Hybrids", "Neophyte Hybrids"],
     "character": [
       "Abominant",
       "Acolyte Iconward",
+      "Benefictus",
       "Biophagus",
       "Clamavus",
       "Jackal Alphus",
@@ -447,7 +708,23 @@
       "Sanctus"
     ],
     "epic-hero": ["Patriarch"],
-    "dedicated-transport": ["Goliath Truck"]
+    "dedicated-transport": ["Goliath Truck", "Storm Chimera"],
+    "fortification": [
+      "Aegis Defence Line",
+      "Earthshaker Platform",
+      "Hydra Platform",
+      "Manticore Platform",
+      "Sabre Weapons Battery",
+      "Tectonic Fragdrill"
+    ],
+    "legends": [
+      "Earthshaker Platform",
+      "Hydra Platform",
+      "Manticore Platform",
+      "Sabre Weapons Battery",
+      "Storm Chimera",
+      "Tectonic Fragdrill"
+    ]
   },
   "GREY KNIGHTS": {
     "battle-line": ["Brotherhood Terminator Squad", "Strike Squad"],
@@ -462,7 +739,8 @@
       "Grand Master",
       "Grand Master In Nemesis Dreadknight",
       "Grand Master Voldus",
-      "Kaldor Draigo"
+      "Kaldor Draigo",
+      "Venerable Dreadnought"
     ],
     "epic-hero": [
       "Brother-Captain Stern",
@@ -470,49 +748,77 @@
       "Grand Master Voldus",
       "Kaldor Draigo"
     ],
-    "dedicated-transport": ["Grey Knights Razorback", "Grey Knights Rhino"]
+    "dedicated-transport": ["Grey Knights Razorback", "Grey Knights Rhino"],
+    "legends": ["Grey Knights Dreadnought", "Grey Knights Relic Razorback"]
   },
   "IMPERIAL KNIGHTS": {
     "battle-line": ["Armiger Helverin", "Armiger Warglaive"],
     "character": [
       "Canis Rex",
+      "Cerastus Knight Acheron",
+      "Cerastus Knight Atrapos",
+      "Cerastus Knight Castigator",
+      "Cerastus Knight Lancer",
       "Knight Castellan",
       "Knight Crusader",
+      "Knight Defender",
       "Knight Errant",
       "Knight Gallant",
       "Knight Paladin",
       "Knight Preceptor",
       "Knight Valiant",
       "Knight Warden",
+      "Questoris Knight Magaera",
+      "Questoris Knight Styrix",
       "Sir Hekhtur"
     ],
     "epic-hero": ["Canis Rex", "Sir Hekhtur"],
-    "dedicated-transport": []
+    "dedicated-transport": [],
+    "legends": [],
+    "conditional": {
+      "SPEARHEAD-AT-ARMS": {
+        "battle-line": [
+          "Armiger Helverin",
+          "Armiger Warglaive",
+          "Armiger Moirax"
+        ]
+      }
+    }
   },
   "LEAGUES OF VOTANN": {
     "battle-line": ["Hearthkyn Warriors"],
     "character": [
+      "Arkanyst Evaluator",
       "Brôkhyr Iron-master",
+      "Buri Aegnirssen",
       "Einhyr Champion",
       "Grimnyr",
       "Kâhl",
+      "Memnyr Strategist",
       "Ûthar the Destined"
     ],
-    "epic-hero": ["Ûthar the Destined"],
-    "dedicated-transport": ["Sagitaur"]
+    "epic-hero": ["Buri Aegnirssen", "Ûthar the Destined"],
+    "dedicated-transport": ["Kapricus Carrier", "Sagitaur"],
+    "legends": [],
+    "conditional": {
+      "DÊLVE ASSAULT SHIFT": { "battle-line": ["Cthonian Beserks"] }
+    }
   },
   "NECRONS": {
     "battle-line": ["Immortals", "Necron Warriors"],
     "character": [
-      "C’tan Shard Of The Deceiver",
-      "C’tan Shard Of The Nightbringer",
-      "C’tan Shard Of The Void Dragon",
+      "Anrakyr The Traveller",
+      "C'tan Shard Of The Deceiver",
+      "C'tan Shard Of The Nightbringer",
+      "C'tan Shard Of The Void Dragon",
       "Catacomb Command Barge",
       "Chronomancer",
       "Hexmark Destroyer",
       "Illuminor Szeras",
       "Imotekh The Stormlord",
       "Lokhust Lord",
+      "Lord",
+      "Nemesor Zahndrekh",
       "Orikan The Diviner",
       "Overlord",
       "Overlord with translocation shroud",
@@ -522,20 +828,36 @@
       "Skorpekh Lord",
       "Technomancer",
       "The Silent King",
-      "Transcendent C’tan",
-      "Trazyn The Infinite"
+      "Transcendent C'tan",
+      "Trazyn The Infinite",
+      "Vargard Obyron"
     ],
     "epic-hero": [
-      "C’tan Shard of the Deceiver",
-      "C’tan Shard of the Nightbringer",
-      "C’tan Shard of the Void Dragon",
+      "C'tan Shard of the Deceiver",
+      "C'tan Shard of the Nightbringer",
+      "C'tan Shard of the Void Dragon",
       "Illuminor Szeras",
       "Imotekh the Stormlord",
       "Orikan the Diviner",
       "The Silent King",
       "Trazyn the Infinite"
     ],
-    "dedicated-transport": ["Ghost Ark"]
+    "dedicated-transport": ["Ghost Ark"],
+    "fortification": [
+      "Convergence Of Dominion",
+      "Gauss Pylon",
+      "Sentry Pylon",
+      "Tomb Citadel Walls"
+    ],
+    "legends": [
+      "Anrakyr The Traveller",
+      "Gauss Pylon",
+      "Lord",
+      "Nemesor Zahndrekh",
+      "Sentry Pylon",
+      "Tomb Citadel Walls",
+      "Vargard Obyron"
+    ]
   },
   "ORKS": {
     "battle-line": ["Beast Snagga Boyz", "Boyz"],
@@ -544,30 +866,52 @@
       "Beastboss On Squigosaur",
       "Big Mek",
       "Big Mek In Mega Armour",
+      "Big Mek On Warbike",
+      "Big Mek With Kustom Force Field",
       "Big Mek With Shokk Attack Gun",
       "Boss Snikrot",
+      "Boss Zagstruk",
+      "Da Red Gobbo",
       "Deffkilla Wartrike",
       "Ghazghkull Thraka",
+      "Grotmas Gitz",
+      "Kaptin Badrukk",
+      "Mad Dok Grotsnik",
       "Mek",
       "Mozrog Skragbad",
+      "Nob With Waaagh! Banner",
       "Painboss",
       "Painboy",
+      "Painboy On Warbike",
+      "Ufthak Blackhawk",
       "Warboss",
       "Warboss In Mega Armour",
+      "Warboss On Warbike",
       "Weirdboy",
       "Wurrboy",
       "Zodgrod Wortsnagga"
     ],
     "epic-hero": [
       "Boss Snikrot",
-      "Boss Zagstruk",
       "Ghazghkull Thraka",
-      "Kaptin Badrukk",
-      "Mad Dok Grotsnik",
       "Mozrog Skragbad",
       "Zodgrod Wortsnagga"
     ],
-    "dedicated-transport": ["Trukk"]
+    "dedicated-transport": ["Trukk"],
+    "fortification": ["Big'ed Bossbunka", "Mekboy Workshop"],
+    "legends": [
+      "Big Mek On Warbike",
+      "Big Mek With Kustom Force Field",
+      "Boss Zagstruk",
+      "Da Red Gobbo",
+      "Kaptin Badrukk",
+      "Mad Dok Grotsnik",
+      "Mekboy Workshop",
+      "Nob With Waaagh! Banner",
+      "Painboy On Warbike",
+      "Ufthak Blackhawk",
+      "Warboss On Warbike"
+    ]
   },
   "SPACE MARINES": {
     "battle-line": [
@@ -579,106 +923,129 @@
     "character": [
       "Adrax Agatone",
       "Aethon Shaan",
-      "Ancient In Terminator Armour",
       "Ancient",
-      "Apothecary Biologis",
+      "Ancient In Terminator Armour",
+      "Ancient On Bike",
       "Apothecary",
+      "Apothecary Biologis",
+      "Apothecary On Bike",
       "Bladeguard Ancient",
+      "Captain",
       "Captain In Gravis Armour",
       "Captain In Phobos Armour",
       "Captain In Terminator Armour",
+      "Captain On Bike",
       "Captain Sicarius",
       "Captain With Jump Pack",
-      "Captain",
+      "Carab Culln The Risen",
+      "Chaplain",
+      "Chaplain Cassius",
       "Chaplain In Terminator Armour",
       "Chaplain On Bike",
       "Chaplain With Jump Pack",
-      "Chaplain",
       "Chief Librarian Tigurius",
+      "Company Champion On Bike",
       "Darnath Lysander",
+      "Imperial Space Marine",
       "Iron Father Feirros",
       "Judiciar",
       "Kayvaan Shrike",
-      "Kor’sarro Khan",
+      "Kor'sarro Khan",
+      "Librarian",
       "Librarian In Phobos Armour",
       "Librarian In Terminator Armour",
-      "Librarian",
+      "Librarian On Bike",
+      "Librarian With Jump Pack",
+      "Lieutenant",
       "Lieutenant In Phobos Armour",
       "Lieutenant In Reiver Armour",
       "Lieutenant With Combi-weapon",
-      "Lieutenant",
       "Marneus Calgar",
       "Pedro Kantor",
+      "Primaris Company Champion",
       "Roboute Guilliman",
+      "Sergeant Chronus",
+      "Sergeant Telion",
       "Techmarine",
+      "Techmarine On Bike",
       "Tor Garadon",
       "Uriel Ventris",
-      "Vulkan He’stan"
+      "Vulkan He'stan"
     ],
     "epic-hero": [
       "Adrax Agatone",
       "Aethon Shaan",
       "Captain Sicarius",
+      "Carab Culln The Risen",
+      "Chaplain Cassius",
       "Chief Librarian Tigurius",
       "Darnath Lysander",
       "Iron Father Feirros",
       "Kayvaan Shrike",
-      "Kor’sarro Khan",
+      "Kor'sarro Khan",
+      "Marneus Calgar",
       "Pedro Kantor",
       "Roboute Guilliman",
       "Tor Garadon",
       "Uriel Ventris",
-      "Vulkan He’stan"
+      "Vulkan He'stan"
     ],
-    "dedicated-transport": ["Impulsor", "Razorback", "Rhino"]
+    "dedicated-transport": ["Drop Pod", "Impulsor", "Razorback", "Rhino"],
+    "fortification": ["Hammerfall Bunker"],
+    "legends": [
+      "Ancient On Bike",
+      "Apothecary On Bike",
+      "Captain On Bike",
+      "Carab Culln The Risen",
+      "Chaplain Cassius",
+      "Company Champion On Bike",
+      "Imperial Space Marine",
+      "Librarian On Bike",
+      "Librarian With Jump Pack",
+      "Primaris Company Champion",
+      "Sergeant Chronus",
+      "Sergeant Telion",
+      "Techmarine On Bike"
+    ]
   },
   "SPACE WOLVES": {
     "battle-line": ["Blood Claws", "Grey Hunters"],
     "character": [
       "Arjac Rockfist",
       "Bjorn The Fell-handed",
-      "Canis Wolfborn",
       "Cyberwolf",
-      "Harald Deathwolf",
       "Iron Priest",
-      "Krom Dragongaze",
+      "Iron Priest On Thunderwolf",
       "Logan Grimnar",
-      "Lukas The Trickster",
       "Murderfang",
       "Njal Stormcaller",
       "Ragnar Blackmane",
       "Ulrik The Slayer",
-      "Wolf Guard Battle Leader In Terminator Armour",
-      "Wolf Guard Battle Leader On Thunderwolf",
-      "Wolf Guard Pack Leader",
-      "Wolf Guard Pack Leader In Terminator Armour",
-      "Wolf Guard Pack Leader With Jump Pack",
-      "Wolf Lord On Thunderwolf",
-      "Logan Grimnar On Stormrider"
+      "Wolf Guard Battle Leader",
+      "Wolf Priest"
     ],
     "epic-hero": [
       "Arjac Rockfist",
       "Bjorn the Fell-Handed",
-      "Canis Wolfborn",
-      "Harald Deathwolf",
-      "Krom Dragongaze",
       "Logan Grimnar",
-      "Logan Grimnar on Stormrider",
-      "Lukas the Trickster",
       "Murderfang",
       "Njal Stormcaller",
       "Ragnar Blackmane",
       "Ulrik the Slayer"
     ],
     "dedicated-transport": [],
+    "legends": ["Iron Priest On Thunderwolf"],
     "sub-faction": "SPACE MARINES"
   },
-  "T’AU EMPIRE": {
+  "T'AU EMPIRE": {
     "battle-line": ["Breacher Team", "Strike Team"],
     "character": [
+      "Aun'shi",
+      "Aun'va",
       "Cadre Fireblade",
       "Commander Farsight",
       "Commander In Coldstar Battlesuit",
+      "Commander In Crisis Battlesuit",
       "Commander In Enforcer Battlesuit",
       "Commander Shadowsun",
       "Darkstrider",
@@ -687,34 +1054,64 @@
       "Kroot Flesh Shaper",
       "Kroot Lone-Spear",
       "Kroot Trail Shaper",
-      "Kroot War Shaper"
+      "Kroot War Shaper",
+      "Longstrike",
+      "Shas'o R'alai"
     ],
     "epic-hero": [
-      "Aun’Shi",
+      "Aun'Shi",
       "Commander Farsight",
       "Commander Shadowsun",
       "Darkstrider",
       "Longstrike"
     ],
-    "dedicated-transport": ["Devilfish"]
+    "dedicated-transport": ["Devilfish"],
+    "fortification": [
+      "Drone Sentry Turret",
+      "Remote Sensor Tower",
+      "Tidewall Droneport",
+      "Tidewall Gunrig",
+      "Tidewall Shieldline"
+    ],
+    "legends": [
+      "Aun'shi",
+      "Aun'va",
+      "Commander In Crisis Battlesuit",
+      "Drone Sentry Turret",
+      "Longstrike",
+      "Remote Sensor Tower",
+      "Shas'o R'alai"
+    ],
+    "conditional": {
+      "KROOT HUNTING PACK": { "battle-line": ["Kroot Carnivores"] }
+    }
   },
   "THOUSAND SONS": {
-    "battle-line": ["Tzaangors"],
+    "battle-line": [
+      "Blue Horrors",
+      "Pink Horrors",
+      "Rubric Marines",
+      "Tzaangors"
+    ],
+    "conditional": { "WARPMELD PACT": { "battle-line": ["Tzaangors"] } },
     "character": [
       "Ahriman",
-      "Ahriman On Disc Of Tzeentch",
+      "Chaos Lord On Disc Of Tzeentch",
+      "Daemon Prince of Tzeentch",
+      "Daemon Prince of Tzeentch with Wings",
       "Exalted Sorcerer",
       "Exalted Sorcerer On Disc Of Tzeentch",
       "Infernal Master",
+      "Kairos Fateweaver",
+      "Lord of Change",
       "Magnus The Red",
-      "Thousand Sons Daemon Prince",
-      "Thousand Sons Daemon Prince With Wings",
-      "Thousand Sons Sorcerer",
-      "Thousand Sons Sorcerer In Terminator Armour",
+      "Sorcerer",
+      "Sorcerer In Terminator Armour",
       "Tzaangor Shaman"
     ],
-    "epic-hero": ["Ahriman", "Ahriman on Disc of Tzeentch", "Magnus the Red"],
-    "dedicated-transport": ["Thousand Sons Rhino"]
+    "epic-hero": ["Ahriman", "Kairos Fateweaver", "Magnus the Red"],
+    "dedicated-transport": ["Chaos Rhino", "Terrax-Pattern Termite"],
+    "legends": ["Chaos Lord On Disc Of Tzeentch", "Terrax-Pattern Termite"]
   },
   "TYRANIDS": {
     "battle-line": ["Gargoyles", "Hormagaunts", "Termagants"],
@@ -722,6 +1119,8 @@
       "Broodlord",
       "Deathleaper",
       "Hive Tyrant",
+      "Hyperadapted Raveners",
+      "Malanthrope",
       "Neurotyrant",
       "Old One Eye",
       "Parasite Of Mortrex",
@@ -731,21 +1130,33 @@
       "Winged Tyranid Prime"
     ],
     "epic-hero": ["Deathleaper", "Old One Eye", "The Swarmlord"],
-    "dedicated-transport": ["Tyrannocyte"]
+    "dedicated-transport": ["Tyrannocyte"],
+    "legends": ["Malanthrope"]
   },
   "WORLD EATERS": {
-    "battle-line": ["Jakhals", "Khorne Berzerkers"],
+    "battle-line": ["Bloodletters", "Khorne Berzerkers"],
     "character": [
       "Angron",
-      "Khârn The Betrayer",
-      "Lord Invocatus",
+      "Bloodthirster",
       "Daemon Prince of Khorne",
       "Daemon Prince of Khorne With Wings",
+      "Khârn The Betrayer",
+      "Lord Invocatus",
       "Lord On Juggernaut",
       "Master Of Executions",
+      "Skarbrand",
       "Slaughterbound"
     ],
-    "epic-hero": ["Angron", "Khârn the Betrayer", "Lord Invocatus"],
-    "dedicated-transport": ["Chaos Rhino"]
+    "epic-hero": [
+      "Angron",
+      "Khârn the Betrayer",
+      "Lord Invocatus",
+      "Skarbrand"
+    ],
+    "dedicated-transport": ["Chaos Rhino", "Terrax-Pattern Termite"],
+    "legends": ["Terrax-Pattern Termite"],
+    "conditional": {
+      "CULT OF BLOOD": { "battle-line": ["Jakhals", "Goremongers"] }
+    }
   }
 }
