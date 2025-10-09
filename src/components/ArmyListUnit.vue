@@ -82,6 +82,7 @@ const inValid = computed(() => {
     <span class="army-list-unit__name">
       {{ name }}
     </span>
+    <span class="army-list-unit__points"> {{ props.unit.points }} pts </span>
   </div>
 </template>
 
@@ -94,7 +95,7 @@ const inValid = computed(() => {
   cursor: move;
   display: flex;
   flex-basis: v-bind("height");
-  justify-content: flex-start;
+  justify-content: space-between;
   position: relative;
   z-index: 1;
 
@@ -113,15 +114,21 @@ const inValid = computed(() => {
     font-weight: bold;
     overflow: hidden;
     padding: 0 4px;
-    text-align: center;
-    text-overflow: ellipsis;
-    text-transform: capitalize;
-    white-space: nowrap;
 
     &:hover {
       background-color: inherit;
       overflow: initial;
     }
+  }
+
+  &__points {
+    color: #fff;
+    font-family: sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 0 4px;
+    text-align: center;
+    white-space: nowrap;
   }
 
   &__warning {
