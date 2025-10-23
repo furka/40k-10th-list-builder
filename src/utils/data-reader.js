@@ -127,7 +127,6 @@ export const parse = function (MFM) {
         currentDatasheet = {
           name: line.trim(),
           faction: currentFaction,
-          max: 3,
           forgeWorld,
           legends,
           sizes: [],

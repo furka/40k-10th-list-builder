@@ -39,13 +39,15 @@ const inValid = computed(() => {
   if (props.unit.error) {
     return "Invalid Unit";
   }
+  const unit = props.appData.compendium.find((u) => u.name === props.unit.name);
 
   const count = props.appData.currentList.units.filter(
     (u) => u.name === props.unit.name
   ).length;
-  if (count > unitMax(props.unit, props.appData.currentList.detachment)) {
+
+  if (count > unitMax(unit, props.appData.currentList.detachment)) {
     return `Only ${unitMax(
-      props.unit,
+      unit,
       props.appData.currentList.detachment
     )} of this unit allowed`;
   }
