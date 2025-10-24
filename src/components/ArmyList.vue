@@ -4,12 +4,15 @@ import draggable from "vuedraggable";
 import ArmyListUnit from "./ArmyListUnit.vue";
 import { SORT_MANUAL } from "../data/constants";
 
+const TOOLBAR_HEIGHT = 44;
+const VERSION_BAR_HEIGHT = 20;
+
 const props = defineProps({
   appData: Object,
 });
 
 const scale = computed(() => {
-  return (props.appData.appHeight - 62) / props.appData.currentList.maxPoints;
+  return (props.appData.appHeight - (TOOLBAR_HEIGHT * 2) - VERSION_BAR_HEIGHT) / props.appData.currentList.maxPoints;
 });
 
 const points = computed(() => {

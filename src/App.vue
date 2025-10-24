@@ -207,11 +207,9 @@ onUnmounted(() => {
       <ArmyList :app-data="appData" />
       <ArmyCodex :app-data="appData" @add="addUnit" />
     </div>
-    <div class="version">
-      <span> app version {{ PACKAGE.version }} </span>
-      <span>
-        Munitorum Field Manual {{ MFM.CURRENT.MFM_VERSION.toLowerCase() }}
-      </span>
+    <div class="app__version-bar">
+      <span>app version {{ PACKAGE.version }}</span>
+      <span>Munitorum Field Manual {{ MFM.CURRENT.MFM_VERSION.toLowerCase() }}</span>
     </div>
   </div>
   <PrintableArmyList :app-data="appData" class="print" />
@@ -236,27 +234,27 @@ onUnmounted(() => {
 
   &__body {
     display: flex;
-    height: calc(100svh - (var(--toolbar-height) * 2));
+    height: calc(100svh - (var(--toolbar-height) * 2) - 20px);
     justify-content: center;
     position: relative;
     z-index: 1;
   }
 
-  .version {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    color: #fff;
-    font-size: 12px;
-    pointer-events: none;
+  &__version-bar {
+    height: 20px;
+    background-color: #222;
+    color: #999;
+    font-size: 11px;
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    z-index: 2;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 16px;
+    padding: 0 8px;
+    border-top: 1px solid #333;
+    box-sizing: border-box;
 
     span {
-      padding: 0 4px;
-      background-color: rgba(0, 0, 0, 0.5);
+      white-space: nowrap;
     }
   }
 }
