@@ -45,9 +45,10 @@ function copyToClipboard() {
 </script>
 
 <template>
-  <ModalWithButton class="share-modal" @closed="onClosed">
+  <ModalWithButton class="share-modal" @closed="onClosed" title="Share army list via URL">
     <template v-slot:button>
-      <ShareIcon class="modal-button__icon" /> <span> Share List </span>
+      <ShareIcon class="modal-button__icon" />
+      <span>Share</span>
     </template>
     <template v-slot:content>
       <div class="share-modal__content">

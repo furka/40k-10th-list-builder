@@ -15,7 +15,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <DropDown class="codex-options" position="right">
+  <DropDown class="codex-options" position="right" title="Codex display options">
     <template v-slot:button>
       <OptionsIcon class="dropdown__icon" />
       <span>Options</span>

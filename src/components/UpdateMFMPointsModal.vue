@@ -26,9 +26,10 @@ const changes = computed(() => {
 </script>
 
 <template>
-  <ModalWithButton class="update-modal">
+  <ModalWithButton class="update-modal" title="Update points to latest MFM version">
     <template v-slot:button>
-      <RiskIcon class="modal-button__icon" /> <span> Update </span>
+      <RiskIcon class="modal-button__icon" />
+      <span>Update</span>
     </template>
     <template v-slot:content>
       <h2>

@@ -9,9 +9,10 @@ const props = defineProps({
 </script>
 
 <template>
-  <ModalWithButton class="print-modal">
+  <ModalWithButton class="print-modal" title="View printable army list">
     <template v-slot:button>
-      <DocumentIcon class="modal-button__icon" /> <span> View List </span>
+      <DocumentIcon class="modal-button__icon" />
+      <span>View</span>
     </template>
     <template v-slot:content>
       <PrintableArmyList :app-data="props.appData" />

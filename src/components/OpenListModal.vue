@@ -59,9 +59,10 @@ function deleteList(list) {
 </script>
 
 <template>
-  <ModalWithButton class="open-modal">
+  <ModalWithButton class="open-modal" title="Open saved army lists">
     <template v-slot:button>
-      <OpenIcon class="modal-button__icon" /> <span> Saved Lists </span>
+      <OpenIcon class="modal-button__icon" />
+      <span>Saved</span>
     </template>
     <template v-slot:content>
       <h2>Saved lists</h2>
