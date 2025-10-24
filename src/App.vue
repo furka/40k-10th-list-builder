@@ -1,10 +1,9 @@
 <script setup>
-import { reactive, onMounted, onUnmounted, watch, ref } from "vue";
+import { reactive, onMounted, onUnmounted, watch, ref, computed } from "vue";
 import { v4 as uuidv4 } from "uuid";
 import ArmyList from "./components/ArmyList.vue";
 import ArmyCodex from "./components/ArmyCodex.vue";
 import { MFM } from "./utils/mfm";
-import PACKAGE from "../package.json";
 import PrintableArmyList from "./components/PrintableArmyList.vue";
 import { GROUP_NONE, SORT_MANUAL } from "./data/constants";
 import {
@@ -14,11 +13,11 @@ import {
 } from "./utils/sort-functions";
 import AppToolBar from "./components/AppToolBar.vue";
 import CodexToolBar from "./components/CodexToolBar.vue";
+import VersionBar from "./components/VersionBar.vue";
 import { deserializeList } from "./utils/serialize-list";
-import { autoUpgradeMFMVersion } from "./utils/update-list-mfm";
+import { autoUpgradeMFMVersion } from "./utils/mfm";
 
 function save(key, val = appData[key]) {
-  console.log("saving", key, val);
   localStorage.setItem(key, JSON.stringify(val));
 }
 
@@ -37,10 +36,8 @@ const appData = reactive({
   bin: [],
   codexFilter: "",
   collection: restore("collection") ?? [],
-  compendium: MFM.CURRENT.DATA_SHEETS,
   currentList: restore("currentList") ?? createNewList(),
   editCollection: false,
-  factions: MFM.CURRENT.FACTIONS,
   group: restore("group") ?? GROUP_NONE,
   lists: restore("lists") ?? [],
   showForgeWorld: restore("showForgeWorld") ?? false,
@@ -48,39 +45,58 @@ const appData = reactive({
   showPointsChanges: restore("showPointsChanges") ?? true,
   sortOrder: restore("sortOrder") ?? "A-Z",
   units: restore("units") ?? [],
+  get currentMFM() {
+    const version = this.currentList?.mfm_version;
+    return (version && MFM[version]) || MFM.CURRENT;
+  },
+  get compendium() {
+    return this.currentMFM.DATA_SHEETS;
+  },
+  get factions() {
+    return this.currentMFM.FACTIONS;
+  },
 });
 
-if (appData.currentList?.detachment) {
-  appData.currentList.detachment = appData.currentList.detachment.toUpperCase();
-}
-if (appData.currentList?.faction) {
-  appData.currentList.faction = appData.currentList.faction.toUpperCase();
-}
-
-appData.lists.forEach((list) => autoUpgradeMFMVersion(list));
-save("lists");
-
-const searchParams = new URLSearchParams(window.location.search);
-
-if (searchParams.size) {
-  try {
-    const list = deserializeList(searchParams);
-    appData.lists.unshift(appData.currentList);
-    appData.currentList = list;
-    save("lists");
-    save("currentList");
-  } catch (e) {
-    console.error(e);
+function initializeApp() {
+  // Normalize legacy data to uppercase
+  if (appData.currentList?.detachment) {
+    appData.currentList.detachment =
+      appData.currentList.detachment.toUpperCase();
   }
-  if (history.pushState) {
-    const url =
-      window.location.protocol +
-      "//" +
-      window.location.host +
-      window.location.pathname;
-    window.history.pushState({ path: url }, "", url);
+  if (appData.currentList?.faction) {
+    appData.currentList.faction = appData.currentList.faction.toUpperCase();
+  }
+
+  // Auto-upgrade lists to latest MFM if no point changes
+  autoUpgradeMFMVersion(appData.currentList);
+  appData.lists.forEach((list) => autoUpgradeMFMVersion(list));
+  save("lists");
+
+  // Load shared list from URL parameters
+  const searchParams = new URLSearchParams(window.location.search);
+  if (searchParams.size) {
+    try {
+      const list = deserializeList(searchParams);
+      appData.lists.unshift(appData.currentList);
+      appData.currentList = list;
+      save("lists");
+      save("currentList");
+    } catch (e) {
+      console.error(e);
+    }
+    // Clean up URL after importing shared list
+    if (history.pushState) {
+      const url =
+        window.location.protocol +
+        "//" +
+        window.location.host +
+        window.location.pathname;
+      window.history.pushState({ path: url }, "", url);
+    }
   }
 }
+
+initializeApp();
 
 const handleResize = () => {
   appData.appHeight = window.innerHeight;
@@ -94,7 +110,6 @@ function addUnit(unit, size) {
     models: size.models,
     name: unit.name,
     optionName: size.name,
-    points: size.points,
   });
 }
 
@@ -207,10 +222,7 @@ onUnmounted(() => {
       <ArmyList :app-data="appData" />
       <ArmyCodex :app-data="appData" @add="addUnit" />
     </div>
-    <div class="app__version-bar">
-      <span>app version {{ PACKAGE.version }}</span>
-      <span>Munitorum Field Manual {{ MFM.CURRENT.MFM_VERSION.toLowerCase() }}</span>
-    </div>
+    <VersionBar :app-data="appData" />
   </div>
   <PrintableArmyList :app-data="appData" class="print" />
 </template>
@@ -238,24 +250,6 @@ onUnmounted(() => {
     justify-content: center;
     position: relative;
     z-index: 1;
-  }
-
-  &__version-bar {
-    height: 20px;
-    background-color: #222;
-    color: #999;
-    font-size: 11px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 16px;
-    padding: 0 8px;
-    border-top: 1px solid #333;
-    box-sizing: border-box;
-
-    span {
-      white-space: nowrap;
-    }
   }
 }
 
