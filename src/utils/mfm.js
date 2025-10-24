@@ -7,7 +7,7 @@ import MFM33 from "../data/munitorum-field-manual/MFM3.3.txt?raw";
 import MFM34 from "../data/munitorum-field-manual/MFM3.4.txt?raw";
 import MFM35 from "../data/munitorum-field-manual/MFM3.5.txt?raw";
 
-const MFM = {};
+export const MFM = {};
 
 const imports = [MFM29, MFM32, MFM33, MFM34, MFM35];
 
@@ -33,7 +33,7 @@ imports.forEach((mod) => {
 
 deepFreeze(MFM);
 
-function getPreviousMFM(currentMFM) {
+export function getPreviousMFM(currentMFM) {
   if (!currentMFM) {
     return null;
   }
@@ -48,7 +48,7 @@ function getPreviousMFM(currentMFM) {
   return currentIndex > 0 ? MFM[versions[currentIndex - 1]] : null;
 }
 
-function getPoints(unit, mfm = MFM.CURRENT) {
+export function getPoints(unit, mfm = MFM.CURRENT) {
   const data_sheet = mfm.DATA_SHEETS.find((d) => d.name === unit.name);
   let option;
 
@@ -69,7 +69,7 @@ function getPoints(unit, mfm = MFM.CURRENT) {
   return -1;
 }
 
-function getUnitPointsDifference(
+export function getUnitPointsDifference(
   unit,
   currentMFM = MFM.CURRENT,
   previousMFM = MFM.PREVIOUS
@@ -84,13 +84,13 @@ function getUnitPointsDifference(
   return currentUnitPoints - previousUnitPoints;
 }
 
-function autoUpgradeMFMVersion(list) {
+export function autoUpgradeMFMVersion(list) {
   if (!changes(list).length) {
     list.mfm_version = MFM.CURRENT.MFM_VERSION;
   }
 }
 
-function changes(list) {
+export function changes(list) {
   return list.units
     .map((u) => {
       const listMFM = MFM[list.mfm_version] || MFM.CURRENT;
@@ -109,5 +109,3 @@ function changes(list) {
     })
     .filter((i) => i.new !== i.old);
 }
-
-export { MFM, getPreviousMFM, getPoints, getUnitPointsDifference, autoUpgradeMFMVersion, changes };
