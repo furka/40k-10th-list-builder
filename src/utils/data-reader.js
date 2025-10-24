@@ -79,7 +79,6 @@ export const parse = function (MFM) {
 
         if (match) {
           const points = Number(match[5]);
-          const change = match[3];
           const bonus = match[4];
           const models = match[1].trim().match(/(\d*) models?/);
 
@@ -96,10 +95,6 @@ export const parse = function (MFM) {
             option.name += ` ${match[1]}`.trim();
           } else {
             option.name = match[1].trim();
-          }
-
-          if (change) {
-            option.change = change.split(/[\(\)]/)[1];
           }
 
           if (currentDetachment) {
