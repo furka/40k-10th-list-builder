@@ -44,14 +44,16 @@ jobs:
         run: echo "version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
       - name: Create Release
         id: create-release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: softprops/action-gh-release@v1
         with:
           tag_name: v${{ steps.package-version.outputs.version }}
-          release_name: Release v${{ steps.package-version.outputs.version }}
+          name: Release v${{ steps.package-version.outputs.version }}
           draft: false
           prerelease: false
+          body: |
+            Deployment v${{ steps.package-version.outputs.version }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
@@ -66,5 +68,5 @@ jobs:
         if: success()
         run: |
           curl -H "Content-Type: application/json" \
-               -d "{\"content\": \"++DEPLOYMENT PROTOCOLS: COMPLETE++\n++OMNISSIAH BE PRAISED++\n\n<${{ steps.deployment.outputs.page_url }}>\n📦 Data-Vault Archive: <${{ steps.create-release.outputs.html_url }}>\"}" \
+               -d "{\"content\": \"++DEPLOYMENT PROTOCOLS: COMPLETE++\n++OMNISSIAH BE PRAISED++\n\n<${{ steps.deployment.outputs.page_url }}>\n📦 Data-Vault Archive: <${{ steps.create-release.outputs.url }}>\"}" \
                ${{ secrets.DISCORD_WEBHOOK_URL }}
