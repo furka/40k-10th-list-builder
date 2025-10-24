@@ -2,7 +2,6 @@
 import DataSheet from "./DataSheet.vue";
 import draggable from "vuedraggable";
 import ArmyListUnit from "./ArmyListUnit.vue";
-import CodexToolBar from "./CodexToolBar.vue";
 import { computed, ref } from "vue";
 import {
   GROUP_NONE,
@@ -161,7 +160,6 @@ function onScrollWheel(e) {
         <ArmyListUnit :unit="element" :index="index" :scale="scale" />
       </template>
     </draggable>
-    <CodexToolBar class="codex__toolbar" :app-data="appData" />
     <div class="codex__mfm" @wheel="onScrollWheel" ref="codexEl">
       <template v-if="dataSheets.length > 0">
         <div class="codex__group" v-for="group in groupedUnits">

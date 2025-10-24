@@ -1,6 +1,7 @@
 <script setup>
 import { computed } from "vue";
 import CodexOptions from "./CodexOptions.vue";
+import SortArmyButton from "./SortArmyButton.vue";
 import ToolBar from "./ToolBar.vue";
 
 const props = defineProps({
@@ -26,6 +27,10 @@ const detachments = computed(() => {
 
 <template>
   <ToolBar class="codex-toolbar">
+    <div class="toolbar__group toolbar__group--sort">
+      <SortArmyButton :app-data="props.appData" />
+    </div>
+
     <div class="toolbar__group toolbar__group--faction">
       <select
         v-model="props.appData.currentList.faction"
@@ -84,11 +89,18 @@ const detachments = computed(() => {
     }
 
     &__group {
+      &--sort {
+        display: flex;
+        justify-content: flex-end;
+        min-width: 250px;
+      }
+
       &--filter {
         @media (max-width: 1160px) {
           display: none;
         }
       }
+
       &--faction {
         flex-grow: 1;
         justify-content: center;

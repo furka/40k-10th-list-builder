@@ -5,7 +5,6 @@ import ViewListModal from "./ViewListModal.vue";
 import OpenListModal from "./OpenListModal.vue";
 import NewIcon from "../assets/file-line-icon.svg";
 import UpdateMFMPointsModal from "./UpdateMFMPointsModal.vue";
-import SortArmyButton from "./SortArmyButton.vue";
 import ToolBar from "./ToolBar.vue";
 import ShareListModal from "./ShareListModal.vue";
 
@@ -33,7 +32,6 @@ const outOfDate = computed(() => {
         v-if="outOfDate"
         :app-data="props.appData"
       />
-      <SortArmyButton :app-data="props.appData" />
       <label>
         <span :class="{ over: points > props.appData.currentList.maxPoints }">
           {{ points }}
@@ -45,6 +43,7 @@ const outOfDate = computed(() => {
           step="500"
           v-model.number="props.appData.currentList.maxPoints"
           class="toolbar__points-input"
+          :style="{ width: Math.max(3, props.appData.currentList.maxPoints.toString().length + 1) + 'ch' }"
         />
       </label>
     </div>
@@ -64,9 +63,9 @@ const outOfDate = computed(() => {
     </div>
 
     <div class="toolbar__group">
-      <button class="toolbar__button" @click="$emit('newList')">
+      <button class="toolbar__button" @click="$emit('newList')" title="Create a new army list">
         <NewIcon class="toolbar__icon" />
-        <span> New List</span>
+        <span>New</span>
       </button>
       <OpenListModal :app-data="props.appData" />
     </div>
@@ -76,10 +75,6 @@ const outOfDate = computed(() => {
 <style scoped lang="scss">
 .app-toolbar {
   .toolbar {
-    &__points-input {
-      width: 3em;
-    }
-
     &__list-name {
       width: 100%;
     }
@@ -92,7 +87,11 @@ const outOfDate = computed(() => {
       &--points {
         display: flex;
         justify-content: space-between;
-        min-width: 230px;
+        min-width: 250px;
+
+        label {
+          margin-left: auto;
+        }
 
         .over {
           color: #ff0000;
