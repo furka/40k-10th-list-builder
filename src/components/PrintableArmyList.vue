@@ -1,5 +1,6 @@
 <script setup>
 import { computed } from "vue";
+import { getPoints } from "../utils/mfm";
 
 const props = defineProps({
   appData: Object,
@@ -7,15 +8,23 @@ const props = defineProps({
 
 const PADSIZE = 10;
 
-const points = computed(() => {
-  return props.appData.currentList.units.reduce(
-    (acc, curr) => acc + curr.points,
-    0
+function getUnitPoints(unit) {
+  const unitPoints = getPoints(unit, props.appData.currentMFM);
+  return unitPoints > 0 ? unitPoints : 0;
+}
+
+const validUnits = computed(() => {
+  return props.appData.currentList.units.filter(
+    (unit) => getUnitPoints(unit) > 0
   );
 });
 
+const points = computed(() => {
+  return validUnits.value.reduce((acc, curr) => acc + getUnitPoints(curr), 0);
+});
+
 const maxUnitNameLength = computed(() => {
-  const length = props.appData.currentList.units.reduce(
+  const length = validUnits.value.reduce(
     (acc, curr) => Math.max(acc, formatUnit(curr).length),
     0
   );
@@ -36,11 +45,12 @@ function formatUnit(unit) {
 }
 
 function unitLine(unit) {
+  const unitPoints = getUnitPoints(unit);
   return (
     formatUnit(unit).padEnd(
-      maxUnitNameLength.value - String(unit.points).length,
+      maxUnitNameLength.value - String(unitPoints).length,
       "."
-    ) + `${unit.points} pts`
+    ) + `${unitPoints} pts`
   );
 }
 </script>
@@ -59,7 +69,7 @@ function unitLine(unit) {
     </h2>
 
     <ul>
-      <li v-for="(unit, index) in props.appData.currentList.units">
+      <li v-for="(unit, index) in validUnits">
         {{ unitLine(unit) }}
       </li>
     </ul>
