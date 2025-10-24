@@ -74,15 +74,18 @@ function deleteList(list) {
         <li v-for="(list, index) in lists">
           <form method="dialog">
             <button @click="selectList(list)" class="open-modal__button">
-              <template v-if="list.name">
-                <b>{{ list.name }}</b> —
-              </template>
-              {{ list.faction }} —
-              <template v-if="list.detachment">
-                {{ list.detachment }} —
-              </template>
-              {{ points(list.units, list) }} pts
-              <b v-if="index === 0"> (current)</b>
+              <span v-if="list.name" class="open-modal__list-name">
+                <b>{{ list.name }}</b>
+              </span>
+              <span class="open-modal__list-details">
+                <template v-if="list.name">—</template>
+                {{ list.faction }} —
+                <template v-if="list.detachment">
+                  {{ list.detachment }} —
+                </template>
+                {{ points(list.units, list) }} pts
+                <b v-if="index === 0"> (current)</b>
+              </span>
             </button>
           </form>
           <span class="open-modal__actions">
@@ -145,6 +148,7 @@ function deleteList(list) {
     display: flex;
     align-items: center;
     margin-left: 24px;
+    flex-shrink: 0;
   }
 
   &__mfm-version {
@@ -152,6 +156,7 @@ function deleteList(list) {
     font-size: 18px;
     margin-right: 8px;
     word-spacing: -8px;
+    white-space: nowrap;
 
     &--outdated {
       cursor: help;
@@ -200,6 +205,7 @@ function deleteList(list) {
   form {
     flex-grow: 1;
     display: flex;
+    min-width: 0;
   }
 
   &__button {
@@ -212,10 +218,25 @@ function deleteList(list) {
     height: 32px;
     flex-grow: 1;
     text-align: start;
+    display: flex;
+    min-width: 0;
 
     &:hover {
       background-color: rgba(0, 0, 0, 0.1);
     }
+  }
+
+  &__list-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex-shrink: 1;
+    min-width: 0;
+  }
+
+  &__list-details {
+    flex-shrink: 0;
+    white-space: nowrap;
   }
 }
 </style>
