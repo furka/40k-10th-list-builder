@@ -78,6 +78,10 @@ function unitLine(unit) {
 
 <style scoped lang="scss">
 .army-list {
+  h1 {
+    word-break: break-word;
+  }
+
   &__name {
     text-transform: capitalize;
   }
