@@ -50,8 +50,7 @@ jobs:
           name: Release v${{ steps.package-version.outputs.version }}
           draft: false
           prerelease: false
-          body: |
-            Deployment v${{ steps.package-version.outputs.version }}
+          generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Setup Pages
