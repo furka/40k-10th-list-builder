@@ -46,7 +46,7 @@ jobs:
         id: commits
         run: |
           git fetch --tags
-          PREV_TAG=$(git tag --sort=-version:refname | grep -v "^v${{ steps.package-version.outputs.version }}$" | head -1)
+          PREV_TAG=$(git tag --sort=-version:refname | head -1)
           if [ -z "$PREV_TAG" ]; then
             COMMITS=$(git log --format=%s -10)
           else
