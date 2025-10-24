@@ -22,7 +22,7 @@ const props = defineProps({
   flex-direction: row;
   height: 44px;
   justify-content: space-between;
-  padding: 2px;
+  gap: 4px;
   position: relative;
   z-index: 3;
 
@@ -48,29 +48,37 @@ const props = defineProps({
 
   &__button {
     align-items: center;
-    background: transparent;
-    border: none;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid white;
+    border-radius: 4px;
     color: white;
     cursor: pointer;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    gap: 8px;
     justify-content: center;
+    padding: 4px 8px;
+    margin: 0 4px;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.4);
+    }
   }
 
   &__icon {
     fill: currentColor;
-    height: 23px;
-    width: 23px;
+    height: 17px;
+    width: 17px;
   }
 
   &__group {
     align-items: center;
+    box-sizing: border-box;
     display: flex;
     flex-direction: row;
     flex-shrink: 1;
     font-size: var(--font-size);
     justify-content: flex-end;
-    margin-inline: 8px;
   }
 
   input[type="checkbox"] {

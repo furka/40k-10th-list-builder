@@ -2,6 +2,10 @@
 import { ref } from "vue";
 import CloseIcon from "../assets/close-line-icon.svg";
 
+const props = defineProps({
+  title: String,
+});
+
 const dialog = ref(null);
 
 function openDialog() {
@@ -17,7 +21,7 @@ function onClick(event) {
 
 <template>
   <div>
-    <button class="modal-button" @click="openDialog">
+    <button class="modal-button" @click="openDialog" :title="props.title">
       <slot name="button"></slot>
     </button>
 
@@ -43,18 +47,26 @@ function onClick(event) {
 <style lang="scss">
 .modal-button {
   align-items: center;
-  background: transparent;
-  border: none;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid white;
+  border-radius: 4px;
   color: white;
   cursor: pointer;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  gap: 8px;
   justify-content: center;
+  padding: 4px 8px;
+  margin: 0 4px;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.4);
+  }
 
   &__icon {
     fill: currentColor;
-    height: 23px;
-    width: 23px;
+    height: 17px;
+    width: 17px;
   }
 }
 

@@ -7,6 +7,7 @@ const props = defineProps({
     type: String,
     default: "left",
   },
+  title: String,
 });
 
 const dialog = ref(null);
@@ -17,10 +18,14 @@ let refresh = reactive({
   count: 0,
 });
 
-async function openDialog() {
-  dialog.value.show();
-  await new Promise((r) => requestAnimationFrame(r));
-  refresh.count += 1;
+async function toggleDialog() {
+  if (dialog.value.open) {
+    dialog.value.close();
+  } else {
+    dialog.value.show();
+    await new Promise((r) => requestAnimationFrame(r));
+    refresh.count += 1;
+  }
 }
 
 const offset = computed(() => {
@@ -44,7 +49,7 @@ useDetectOutsideClick(component, () => {
 
 <template>
   <div class="dropdown" ref="component">
-    <button class="dropdown__button" @click="openDialog" ref="button">
+    <button class="dropdown__button" @click="toggleDialog" ref="button" :title="props.title">
       <slot name="button"></slot>
     </button>
 
@@ -62,19 +67,27 @@ useDetectOutsideClick(component, () => {
 
   &__button {
     align-items: center;
-    background: transparent;
-    border: none;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid white;
+    border-radius: 4px;
     color: white;
     cursor: pointer;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    gap: 8px;
     justify-content: center;
+    padding: 4px 8px;
+    margin: 0 4px;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.4);
+    }
   }
 
   &__icon {
     fill: currentColor;
-    height: 23px;
-    width: 23px;
+    height: 17px;
+    width: 17px;
   }
 
   &__positioner {
