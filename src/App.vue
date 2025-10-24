@@ -126,9 +126,9 @@ function applySortToList() {
   if (sortOrder === "A-Z") {
     units.sort(sortDataSheetAlphabetical);
   } else if (sortOrder === "Expensive first") {
-    units.sort(sortListPoints);
+    units.sort(sortListPoints(appData.currentMFM, false));
   } else if (sortOrder === "Cheap first") {
-    units.sort(sortListPoints).reverse();
+    units.sort(sortListPoints(appData.currentMFM, true));
   } else if (sortOrder === "By Role") {
     units.sort(sortListByRole(compendium));
   }

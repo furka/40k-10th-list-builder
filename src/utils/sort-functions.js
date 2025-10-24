@@ -1,3 +1,5 @@
+import { getPoints } from "./mfm";
+
 export const sortDataSheetAlphabetical = function (a, b) {
   a = a.name.toLowerCase();
   b = b.name.toLowerCase();
@@ -30,8 +32,19 @@ export const sortOptionsPtsDescending = function (a, b) {
   return a < b ? 1 : a > b ? -1 : 0;
 };
 
-export const sortListPoints = function (a, b) {
-  return a.points < b.points ? 1 : a.points > b.points ? -1 : 0;
+export const sortListPoints = function (currentMFM, ascending = false) {
+  return function (a, b) {
+    const aPoints = getPoints(a, currentMFM);
+    const bPoints = getPoints(b, currentMFM);
+
+    if (aPoints === bPoints) {
+      return sortDataSheetAlphabetical(a, b);
+    }
+
+    return ascending
+      ? aPoints < bPoints ? -1 : 1
+      : aPoints < bPoints ? 1 : -1;
+  };
 };
 
 export const sortListByRole = function (compendium) {
