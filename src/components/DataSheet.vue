@@ -4,6 +4,7 @@ import { GROUP_NONE, SORT_EXPENSIVE_FIRST } from "../data/constants";
 import { sortOptionsPtsDescending } from "../utils/sort-functions";
 import { isBattleLine } from "../utils/is-battleline";
 import { unitMax } from "../utils/unit-max";
+import { getPreviousMFM, getUnitPointsDifference } from "../utils/mfm";
 
 const props = defineProps({
   dataSheet: Object,
@@ -31,7 +32,31 @@ function onCollectionBlur(collection) {
 }
 
 const options = computed(() => {
-  const sizes = [...props.dataSheet.sizes];
+  const currentMFM = props.appData.currentMFM;
+  const previousMFM = getPreviousMFM(currentMFM);
+
+  const sizes = [...props.dataSheet.sizes].map((size) => {
+    const unit = {
+      name: props.dataSheet.name,
+      optionName: size.name,
+      models: size.models,
+      points: size.points,
+    };
+
+    const pointsDiff = previousMFM
+      ? getUnitPointsDifference(unit, currentMFM, previousMFM)
+      : 0;
+
+    return {
+      ...size,
+      pointsChange:
+        pointsDiff !== 0
+          ? pointsDiff > 0
+            ? `+${pointsDiff}`
+            : `${pointsDiff}`
+          : null,
+    };
+  });
 
   if (props.appData.sortOrder === SORT_EXPENSIVE_FIRST) {
     sizes.sort(sortOptionsPtsDescending);
@@ -78,13 +103,13 @@ const color = computed(() => {
   let down = false;
 
   options.value.forEach((o) => {
-    if (!o.change) {
+    if (!o.pointsChange) {
       return;
     }
-    if (o.change.startsWith("+")) {
+    if (o.pointsChange.startsWith("+")) {
       up = true;
     }
-    if (o.change.startsWith("-")) {
+    if (o.pointsChange.startsWith("-")) {
       down = true;
     }
   });
@@ -218,10 +243,10 @@ function optionAvailable(option) {
         <span class="data-sheet__option-spacer"></span>
         <span class="data-sheet__points">
           <span
-            v-if="option.change && appData.showPointsChanges"
-            :class="upOrDown(option.change)"
+            v-if="option.pointsChange && appData.showPointsChanges"
+            :class="upOrDown(option.pointsChange)"
           >
-            ({{ option.change }})
+            ({{ option.pointsChange }})
           </span>
           <template v-if="option.bonus">+</template>
           {{ option.points }} pts
