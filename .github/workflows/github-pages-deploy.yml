@@ -79,11 +79,25 @@ jobs:
       - name: Send Discord notification
         if: success()
         run: |
-          COMMITS=$(cat <<'EOF'
+          COMMITS_RAW=$(cat <<'EOF'
           ${{ steps.commits.outputs.log }}
           EOF
           )
-          COMMITS_FORMATTED=$(echo "$COMMITS" | sed 's/^/• /' | sed ':a;N;$!ba;s/\n/\\n/g')
-          curl -H "Content-Type: application/json" \
-               -d "{\"content\": \"++DEPLOYMENT PROTOCOLS: COMPLETE++\n++OMNISSIAH BE PRAISED++\n++VERSION: ${{ steps.package-version.outputs.version }}++\n\n<${{ steps.deployment.outputs.page_url }}>\n\n📦 Data-Vault Archive: <${{ steps.create-release.outputs.url }}>\n\n**++DATA-MANIFEST UPDATES++**\n\`\`\`\n$COMMITS_FORMATTED\n\`\`\`\"}" \
-               ${{ secrets.DISCORD_WEBHOOK_URL }}
+          COMMITS_FORMATTED=$(echo "$COMMITS_RAW" | sed 's/^/• /')
+
+          PAYLOAD=$(jq -n \
+            --arg content "++DEPLOYMENT PROTOCOLS: COMPLETE++
+          ++OMNISSIAH BE PRAISED++
+          ++VERSION: ${{ steps.package-version.outputs.version }}++
+
+          <${{ steps.deployment.outputs.page_url }}>
+
+          📦 Data-Vault Archive: <${{ steps.create-release.outputs.url }}>
+
+          **++DATA-MANIFEST UPDATES++**
+          \`\`\`
+          $COMMITS_FORMATTED
+          \`\`\`" \
+            '{content: $content}')
+
+          curl -H "Content-Type: application/json" -d "$PAYLOAD" ${{ secrets.DISCORD_WEBHOOK_URL }}
