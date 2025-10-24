@@ -15,20 +15,27 @@ imports.forEach((mod) => {
   const { FACTIONS, DATA_SHEETS, MFM_VERSION } = parse(mod);
   MFM[MFM_VERSION] = { FACTIONS, DATA_SHEETS, MFM_VERSION };
 
-  if (!MFM.CURRENT) {
-    MFM.CURRENT = MFM[MFM_VERSION];
-  } else if (MFM_VERSION > MFM.CURRENT.MFM_VERSION) {
-    MFM.CURRENT = MFM[MFM_VERSION];
+  if (!MFM.LATEST) {
+    MFM.LATEST = MFM[MFM_VERSION];
+  } else if (MFM_VERSION > MFM.LATEST.MFM_VERSION) {
+    MFM.LATEST = MFM[MFM_VERSION];
   }
 
   if (!MFM.PREVIOUS) {
     MFM.PREVIOUS = MFM[MFM_VERSION];
   } else if (
     MFM_VERSION > MFM.PREVIOUS.MFM_VERSION &&
-    MFM_VERSION < MFM.CURRENT.MFM_VERSION
+    MFM_VERSION < MFM.LATEST.MFM_VERSION
   ) {
     MFM.PREVIOUS = MFM[MFM_VERSION];
   }
+});
+
+Object.defineProperty(MFM, "CURRENT", {
+  get() {
+    return MFM.LATEST; // TODO: allow user to select different mfm
+  },
+  enumerable: true,
 });
 
 deepFreeze(MFM);

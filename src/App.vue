@@ -9,6 +9,7 @@ import PrintableArmyList from "./components/PrintableArmyList.vue";
 import { GROUP_NONE, SORT_ALPHABETICAL } from "./data/constants";
 import AppToolBar from "./components/AppToolBar.vue";
 import { deserializeList } from "./utils/serialize-list";
+import { autoUpgradeMFMVersion } from "./utils/update-list-mfm";
 
 function save(key, val = appData[key]) {
   console.log("saving", key, val);
@@ -49,6 +50,9 @@ if (appData.currentList?.detachment) {
 if (appData.currentList?.faction) {
   appData.currentList.faction = appData.currentList.faction.toUpperCase();
 }
+
+appData.lists.forEach((list) => autoUpgradeMFMVersion(list));
+save("lists");
 
 const searchParams = new URLSearchParams(window.location.search);
 

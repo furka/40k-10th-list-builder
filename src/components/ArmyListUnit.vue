@@ -45,6 +45,10 @@ const inValid = computed(() => {
     (u) => u.name === props.unit.name
   ).length;
 
+  if (!unit) {
+    return "Unit not found in compendium";
+  }
+
   if (count > unitMax(unit, props.appData.currentList.detachment)) {
     return `Only ${unitMax(
       unit,

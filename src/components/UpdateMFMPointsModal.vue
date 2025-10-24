@@ -3,6 +3,10 @@ import RiskIcon from "../assets/risk-icon.svg";
 import ModalWithButton from "./ModalWithButton.vue";
 import { MFM } from "../utils/mfm";
 import { computed } from "vue";
+import {
+  upgradeMFMVersion,
+  changes as getMFMChanges,
+} from "../utils/update-list-mfm";
 
 const props = defineProps({
   appData: Object,
@@ -12,65 +16,12 @@ function onConfirmClicked() {
   upgradeMFMVersion(props.appData.currentList);
 }
 
-function upgradeMFMVersion(list) {
-  if (list.mfm_version === MFM.CURRENT.MFM_VERSION) {
-    return; // already using the correct version
-  }
-
-  try {
-    list.units.forEach((unit) => {
-      const points = getPoints(unit);
-
-      if (points < 0) {
-        unit.error = true;
-      } else {
-        unit.points = points;
-      }
-    });
-
-    list.mfm_version = MFM.CURRENT.MFM_VERSION;
-  } catch (e) {
-    console.error(`Failed to upgrade list to ${MFM.CURRENT.MFM_VERSION}`, e);
-  }
-}
-
-function getPoints(unit) {
-  const data_sheet = props.appData.compendium.find((d) => d.name === unit.name);
-  let option;
-
-  if (!data_sheet) {
-    return -1;
-  }
-
-  if (unit.optionName) {
-    option = data_sheet.sizes.find((s) => s.name === unit.optionName.trim());
-  } else if (unit.models) {
-    option = data_sheet.sizes.find((s) => s.models === unit.models);
-  }
-
-  if (option) {
-    return option.points;
-  }
-
-  return -1;
+function mfmVersion(version) {
+  return (version || "").replace("VERSION ", "");
 }
 
 const changes = computed(() => {
-  return props.appData.currentList.units
-    .map((u) => {
-      const points = getPoints(u);
-
-      return {
-        name: u.name,
-        old: u.points,
-        new: points,
-        models: u.models,
-        optionName: u.optionName,
-        up: u.points < points && points > 0,
-        down: u.points > points && points > 0,
-      };
-    })
-    .filter((i) => i.new !== i.old);
+  return getMFMChanges(props.appData.currentList);
 });
 </script>
 
@@ -81,18 +32,15 @@ const changes = computed(() => {
     </template>
     <template v-slot:content>
       <h2>
-        Upgrade Army List to Minutorum Field Manual
-        {{ MFM.CURRENT.MFM_VERSION }}?
+        Upgrade List to Munitorum Field Manual
+        {{ mfmVersion(MFM.CURRENT.MFM_VERSION) }}?
       </h2>
       <p>
-        This list was created using the Minutorum Field Manual
-        <b>{{ props.appData.currentList.mfm_version || "1.0" }}</b> but the
-        latest version is <b>{{ MFM.CURRENT.MFM_VERSION }}</b
+        This list was created using MFM
+        <b>{{ mfmVersion(props.appData.currentList.mfm_version || "1.0") }}</b
+        >, but the latest version is MFM
+        <b>{{ mfmVersion(MFM.CURRENT.MFM_VERSION) }}</b
         >.
-      </p>
-      <p>
-        Do you wish to automatically update the units in your Army List to their
-        latest point values?
       </p>
       <template v-if="changes.length">
         <ul>
@@ -100,8 +48,8 @@ const changes = computed(() => {
             v-for="(change, index) in changes"
             :class="{ error: change.new < 0, up: change.up }"
           >
-            <template v-if="change.up">▲ </template>
-            <template v-if="change.down">▼ </template>
+            <template v-if="change.difference > 0">▲ </template>
+            <template v-if="change.difference < 0">▼ </template>
             <template v-if="change.optionName">
               {{ change.optionName }} —
             </template>

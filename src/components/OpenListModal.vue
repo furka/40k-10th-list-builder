@@ -6,6 +6,7 @@ import CopyIcon from "../assets/text-documents-line-icon.svg";
 import RiskIcon from "../assets/risk-icon.svg";
 import ModalWithButton from "./ModalWithButton.vue";
 import { computed } from "vue";
+import { changes } from "../utils/update-list-mfm";
 
 const props = defineProps({
   appData: Object,
@@ -13,6 +14,10 @@ const props = defineProps({
 
 function points(units) {
   return units.reduce((acc, curr) => acc + curr.points, 0);
+}
+
+function mfmVersion(list) {
+  return (list.mfm_version || "").replace("VERSION ", "");
 }
 
 const lists = computed(() => {
@@ -75,14 +80,22 @@ function deleteList(list) {
               <b v-if="index === 0"> (current)</b>
             </button>
           </form>
-          <span>
+          <span class="open-modal__actions">
             <span
-              v-if="list.mfm_version !== MFM.CURRENT.MFM_VERSION"
-              :title="`List has outdated point values (MFM ${list.mfm_version})`"
-              class="open-modal__warning"
+              class="open-modal__mfm-version"
+              :class="
+                changes(list).length ? 'open-modal__mfm-version--outdated' : ''
+              "
+              :title="
+                list.mfm_version !== MFM.CURRENT.MFM_VERSION
+                  ? `List created using old MFM version and has potentially outdated points values`
+                  : ''
+              "
             >
-              <RiskIcon />
+              <span class="open-modal__mfm-label">MFM</span>
+              {{ mfmVersion(list) }}
             </span>
+
             <button
               class="open-modal__copy"
               @click="copyList(list)"
@@ -121,6 +134,30 @@ function deleteList(list) {
 
   li + li {
     border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    margin-left: 24px;
+  }
+
+  &__mfm-version {
+    color: #666;
+    font-size: 18px;
+    margin-right: 8px;
+    word-spacing: -8px;
+
+    &--outdated {
+      cursor: help;
+      font-weight: bold;
+      color: #c66;
+    }
+  }
+
+  &__mfm-label {
+    font-size: 12px;
+    font-weight: bold;
   }
 
   &__delete,
