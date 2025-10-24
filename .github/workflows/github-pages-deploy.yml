@@ -67,4 +67,4 @@ jobs:
         run: |
           curl -H "Content-Type: application/json" \
                -d "{\"content\": \"++DEPLOYMENT PROTOCOLS: COMPLETE++\n++OMNISSIAH BE PRAISED++\n\n<${{ steps.deployment.outputs.page_url }}>\n📦 Data-Vault Archive: <${{ steps.create-release.outputs.html_url }}>\"}" \
-               https://discord.com/api/webhooks/1431411605861568562/fAE6mmyQpSZV_AMyjk1Xwdw01X49QrZy6DCTybPMPEClKD9GCbiAmIdO0wHlUdGh9jBY
+               ${{ secrets.DISCORD_WEBHOOK_URL }}
