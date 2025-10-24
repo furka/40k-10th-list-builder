@@ -42,6 +42,18 @@ jobs:
       - name: Get version from package.json
         id: package-version
         run: echo "version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
+      - name: Get commits since last release
+        id: commits
+        run: |
+          PREV_TAG=$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || echo "")
+          if [ -z "$PREV_TAG" ]; then
+            COMMITS=$(git log --oneline --no-decorate | head -10)
+          else
+            COMMITS=$(git log --oneline --no-decorate ${PREV_TAG}..HEAD)
+          fi
+          echo "log<<EOF" >> $GITHUB_OUTPUT
+          echo "$COMMITS" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
       - name: Create Release
         id: create-release
         uses: softprops/action-gh-release@v1
@@ -66,6 +78,8 @@ jobs:
       - name: Send Discord notification
         if: success()
         run: |
+          COMMITS="${{ steps.commits.outputs.log }}"
+          COMMITS_FORMATTED=$(echo "$COMMITS" | sed 's/^/• /')
           curl -H "Content-Type: application/json" \
-               -d "{\"content\": \"++DEPLOYMENT PROTOCOLS: COMPLETE++\n++OMNISSIAH BE PRAISED++\n\n<${{ steps.deployment.outputs.page_url }}>\n📦 Data-Vault Archive: <${{ steps.create-release.outputs.url }}>\"}" \
+               -d "{\"content\": \"++DEPLOYMENT PROTOCOLS: COMPLETE++\n++OMNISSIAH BE PRAISED++\n\n<${{ steps.deployment.outputs.page_url }}>\n\n📦 Data-Vault Archive: <${{ steps.create-release.outputs.url }}>\n\n**++DATA-MANIFEST UPDATES++**\n\`\`\`\n$COMMITS_FORMATTED\n\`\`\`\"}" \
                ${{ secrets.DISCORD_WEBHOOK_URL }}
