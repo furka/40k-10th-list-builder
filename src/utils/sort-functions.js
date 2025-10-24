@@ -33,3 +33,34 @@ export const sortOptionsPtsDescending = function (a, b) {
 export const sortListPoints = function (a, b) {
   return a.points < b.points ? 1 : a.points > b.points ? -1 : 0;
 };
+
+export const sortListByRole = function (compendium) {
+  return function (a, b) {
+    const getDataSheet = (unitName) => {
+      return compendium.find((ds) => ds.name === unitName);
+    };
+
+    const getRolePriority = (unit) => {
+      const dataSheet = getDataSheet(unit.name);
+      if (!dataSheet) return 5;
+
+      if (dataSheet.character || dataSheet.epicHero) return 1;
+      if (unit.name === "Enhancements") return 2;
+      if (dataSheet.battleLine) return 3;
+      if (dataSheet.dedicatedTransport) return 4;
+      if (dataSheet.allies) return 6;
+      if (dataSheet.forgeWorld) return 7;
+      if (dataSheet.fortification) return 8;
+      return 5;
+    };
+
+    const priorityA = getRolePriority(a);
+    const priorityB = getRolePriority(b);
+
+    if (priorityA !== priorityB) {
+      return priorityA - priorityB;
+    }
+
+    return sortDataSheetAlphabetical(a, b);
+  };
+};

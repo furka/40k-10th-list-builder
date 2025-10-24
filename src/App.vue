@@ -6,8 +6,14 @@ import ArmyCodex from "./components/ArmyCodex.vue";
 import { MFM } from "./utils/mfm";
 import PACKAGE from "../package.json";
 import PrintableArmyList from "./components/PrintableArmyList.vue";
-import { GROUP_NONE, SORT_ALPHABETICAL } from "./data/constants";
+import { GROUP_NONE, SORT_MANUAL } from "./data/constants";
+import {
+  sortDataSheetAlphabetical,
+  sortListPoints,
+  sortListByRole,
+} from "./utils/sort-functions";
 import AppToolBar from "./components/AppToolBar.vue";
+import CodexToolBar from "./components/CodexToolBar.vue";
 import { deserializeList } from "./utils/serialize-list";
 import { autoUpgradeMFMVersion } from "./utils/update-list-mfm";
 
@@ -40,7 +46,7 @@ const appData = reactive({
   showForgeWorld: restore("showForgeWorld") ?? false,
   showLegends: restore("showLegends") ?? false,
   showPointsChanges: restore("showPointsChanges") ?? true,
-  sortOrder: restore("sortOrder") ?? SORT_ALPHABETICAL,
+  sortOrder: restore("sortOrder") ?? SORT_MANUAL,
   units: restore("units") ?? [],
 });
 
@@ -90,6 +96,26 @@ function addUnit(unit, size) {
     optionName: size.name,
     points: size.points,
   });
+}
+
+function applySortToList() {
+  const { sortOrder, currentList, compendium } = appData;
+
+  if (sortOrder === SORT_MANUAL) {
+    return;
+  }
+
+  const units = currentList.units;
+
+  if (sortOrder === "A-Z") {
+    units.sort(sortDataSheetAlphabetical);
+  } else if (sortOrder === "Expensive first") {
+    units.sort(sortListPoints);
+  } else if (sortOrder === "Cheap first") {
+    units.sort(sortListPoints).reverse();
+  } else if (sortOrder === "By Role") {
+    units.sort(sortListByRole(compendium));
+  }
 }
 
 function createNewList(faction, detachment) {
@@ -152,6 +178,16 @@ watch(
   }
 );
 
+watch(
+  () => appData.currentList.units.length,
+  () => applySortToList()
+);
+
+watch(
+  () => appData.sortOrder,
+  () => applySortToList()
+);
+
 onMounted(() => {
   window.addEventListener("resize", handleResize);
 });
@@ -164,6 +200,7 @@ onUnmounted(() => {
 <template>
   <div class="app">
     <AppToolBar class="app__toolbar" :app-data="appData" @new-list="newList" />
+    <CodexToolBar class="app__codex-toolbar" :app-data="appData" />
     <div class="app__body">
       <ArmyList :app-data="appData" />
       <ArmyCodex :app-data="appData" @add="addUnit" />
@@ -191,9 +228,13 @@ onUnmounted(() => {
     height: var(--toolbar-height);
   }
 
+  &__codex-toolbar {
+    height: var(--toolbar-height);
+  }
+
   &__body {
     display: flex;
-    height: calc(100svh - var(--toolbar-height));
+    height: calc(100svh - (var(--toolbar-height) * 2));
     justify-content: center;
     position: relative;
     z-index: 1;
