@@ -47,13 +47,13 @@ const appData = reactive({
   units: restore("units") ?? [],
   get currentMFM() {
     const version = this.currentList?.mfm_version;
-    return (version && MFM[version]) || MFM.CURRENT;
+    return MFM[version] ?? null;
   },
   get compendium() {
-    return this.currentMFM.DATA_SHEETS;
+    return (this.currentMFM || MFM.CURRENT).DATA_SHEETS;
   },
   get factions() {
-    return this.currentMFM.FACTIONS;
+    return (this.currentMFM || MFM.CURRENT).FACTIONS;
   },
 });
 

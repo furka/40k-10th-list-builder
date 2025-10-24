@@ -52,7 +52,8 @@ const inValid = computed(() => {
   ).length;
 
   if (!unit) {
-    return `Unit not available in MFM ${props.appData.currentMFM.MFM_VERSION}`;
+    const version = props.appData.currentMFM?.MFM_VERSION || "unknown";
+    return `Unit not available in MFM ${version}`;
   }
 
   if (count > unitMax(unit, props.appData.currentList.detachment)) {

@@ -1,12 +1,11 @@
 <script setup>
-import { MFM, getPoints } from "../utils/mfm";
+import { MFM, getPoints, isListOutdated, changes } from "../utils/mfm";
 import OpenIcon from "../assets/computer-folder-open-icon.svg";
 import DeleteIcon from "../assets/recycle-bin-line-icon.svg";
 import CopyIcon from "../assets/text-documents-line-icon.svg";
 import RiskIcon from "../assets/risk-icon.svg";
 import ModalWithButton from "./ModalWithButton.vue";
 import { computed } from "vue";
-import { changes } from "../utils/mfm";
 
 const props = defineProps({
   appData: Object,
@@ -21,7 +20,7 @@ function points(units, list) {
 }
 
 function mfmVersion(list) {
-  return (list.mfm_version || "").replace("VERSION ", "");
+  return list.mfm_version?.replace("VERSION ", "") ?? "???";
 }
 
 const lists = computed(() => {
@@ -92,12 +91,10 @@ function deleteList(list) {
             <span
               class="open-modal__mfm-version"
               :class="
-                changes(list).length ? 'open-modal__mfm-version--outdated' : ''
+                isListOutdated(list) ? 'open-modal__mfm-version--outdated' : ''
               "
               :title="
-                list.mfm_version !== MFM.CURRENT.MFM_VERSION
-                  ? `List created using old MFM version and has potentially outdated points values`
-                  : ''
+                isListOutdated(list) ? `List has outdated MFM version` : ''
               "
             >
               <span class="open-modal__mfm-label">MFM</span>

@@ -39,7 +39,7 @@ export function getPreviousMFM(currentMFM) {
   }
 
   const versions = Object.keys(MFM)
-    .filter(key => key.startsWith('VERSION'))
+    .filter((key) => key.startsWith("VERSION"))
     .sort();
 
   const currentVersionKey = currentMFM.MFM_VERSION;
@@ -49,6 +49,10 @@ export function getPreviousMFM(currentMFM) {
 }
 
 export function getPoints(unit, mfm = MFM.CURRENT) {
+  if (!mfm || !mfm.DATA_SHEETS) {
+    return -1;
+  }
+
   const data_sheet = mfm.DATA_SHEETS.find((d) => d.name === unit.name);
   let option;
 
@@ -84,7 +88,16 @@ export function getUnitPointsDifference(
   return currentUnitPoints - previousUnitPoints;
 }
 
+export function hasInvalidMFM(list) {
+  const version = list.mfm_version;
+  return !version || !MFM[version];
+}
+
 export function autoUpgradeMFMVersion(list) {
+  if (hasInvalidMFM(list)) {
+    return;
+  }
+
   if (!changes(list).length) {
     list.mfm_version = MFM.CURRENT.MFM_VERSION;
   }
@@ -108,4 +121,8 @@ export function changes(list) {
       };
     })
     .filter((i) => i.new !== i.old);
+}
+
+export function isListOutdated(list) {
+  return hasInvalidMFM(list) || changes(list).length > 0;
 }

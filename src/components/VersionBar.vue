@@ -1,6 +1,6 @@
 <script setup>
 import { computed } from "vue";
-import { MFM, changes } from "../utils/mfm";
+import { MFM, isListOutdated } from "../utils/mfm";
 import PACKAGE from "../../package.json";
 import RiskIcon from "../assets/risk-icon.svg";
 
@@ -9,14 +9,19 @@ const props = defineProps({
 });
 
 const availableMFMVersions = computed(() => {
-  return Object.keys(MFM)
+  const versions = Object.keys(MFM)
     .filter((key) => key.startsWith("VERSION"))
-    .sort()
     .reverse();
-});
 
-const hasChanges = computed(() => {
-  return changes(props.appData.currentList).length > 0;
+  const currentVersion = props.appData.currentList.mfm_version;
+
+  if (!currentVersion) {
+    versions.push("unknown");
+  } else if (!versions.includes(currentVersion)) {
+    versions.push(currentVersion);
+  }
+
+  return versions;
 });
 </script>
 
@@ -29,14 +34,14 @@ const hasChanges = computed(() => {
           <option
             v-for="version in availableMFMVersions"
             :key="version"
-            :value="version"
+            :value="version === 'unknown' ? undefined : version"
           >
-            {{ version.toLowerCase() }}
+            {{ version === "unknown" ? version : version.toLowerCase() }}
           </option>
         </select>
       </label>
       <span
-        v-if="hasChanges"
+        v-if="isListOutdated(appData.currentList)"
         class="version-bar__warning"
         title="This list has point changes compared to the latest MFM version. Change the MFM version to the left to update."
       >
