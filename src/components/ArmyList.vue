@@ -29,7 +29,7 @@ const emptySpace = computed(() => {
 
 function handleDragChange(event) {
   if (event.moved) {
-    props.appData.sortOrder = SORT_MANUAL;
+    props.appData.currentList.sortOrder = SORT_MANUAL;
   }
 }
 </script>

@@ -46,7 +46,7 @@ const appData = reactive({
   showForgeWorld: restore("showForgeWorld") ?? false,
   showLegends: restore("showLegends") ?? false,
   showPointsChanges: restore("showPointsChanges") ?? true,
-  sortOrder: restore("sortOrder") ?? SORT_MANUAL,
+  sortOrder: restore("sortOrder") ?? "A-Z",
   units: restore("units") ?? [],
 });
 
@@ -99,7 +99,8 @@ function addUnit(unit, size) {
 }
 
 function applySortToList() {
-  const { sortOrder, currentList, compendium } = appData;
+  const { currentList, compendium } = appData;
+  const sortOrder = currentList.sortOrder || SORT_MANUAL;
 
   if (sortOrder === SORT_MANUAL) {
     return;
@@ -126,6 +127,7 @@ function createNewList(faction, detachment) {
     mfm_version: MFM.CURRENT.MFM_VERSION,
     modifiedDate: Date.now(),
     name: "",
+    sortOrder: SORT_MANUAL,
     units: [],
     version: PACKAGE.version,
   };
@@ -184,7 +186,7 @@ watch(
 );
 
 watch(
-  () => appData.sortOrder,
+  () => appData.currentList.sortOrder,
   () => applySortToList()
 );
 
