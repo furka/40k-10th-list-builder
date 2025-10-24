@@ -81,5 +81,5 @@ jobs:
           COMMITS="${{ steps.commits.outputs.log }}"
           COMMITS_FORMATTED=$(echo "$COMMITS" | sed 's/^/• /')
           curl -H "Content-Type: application/json" \
-               -d "{\"content\": \"++DEPLOYMENT PROTOCOLS: COMPLETE++\n++OMNISSIAH BE PRAISED++\n\n<${{ steps.deployment.outputs.page_url }}>\n\n📦 Data-Vault Archive: <${{ steps.create-release.outputs.url }}>\n\n**++DATA-MANIFEST UPDATES++**\n\`\`\`\n$COMMITS_FORMATTED\n\`\`\`\"}" \
+               -d "{\"content\": \"++DEPLOYMENT PROTOCOLS: COMPLETE++\n++OMNISSIAH BE PRAISED++\n++VERSION: ${{ steps.package-version.outputs.version }}++\n\n<${{ steps.deployment.outputs.page_url }}>\n\n📦 Data-Vault Archive: <${{ steps.create-release.outputs.url }}>\n\n**++DATA-MANIFEST UPDATES++**\n\`\`\`\n$COMMITS_FORMATTED\n\`\`\`\"}" \
                ${{ secrets.DISCORD_WEBHOOK_URL }}
