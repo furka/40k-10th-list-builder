@@ -45,11 +45,12 @@ jobs:
       - name: Get commits since last release
         id: commits
         run: |
-          PREV_TAG=$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || echo "")
+          git fetch --tags
+          PREV_TAG=$(git tag --sort=-version:refname | grep -v "^v${{ steps.package-version.outputs.version }}$" | head -1)
           if [ -z "$PREV_TAG" ]; then
-            COMMITS=$(git log --oneline --no-decorate | head -10)
+            COMMITS=$(git log --format=%s -10)
           else
-            COMMITS=$(git log --oneline --no-decorate ${PREV_TAG}..HEAD)
+            COMMITS=$(git log --format=%s ${PREV_TAG}..HEAD)
           fi
           echo "log<<EOF" >> $GITHUB_OUTPUT
           echo "$COMMITS" >> $GITHUB_OUTPUT
