@@ -2,6 +2,7 @@
 import { computed } from "vue";
 import RiskIcon from "../assets/risk-icon.svg";
 import { unitMax } from "../utils/unit-max";
+import { getPoints } from "../utils/mfm";
 
 const props = defineProps({
   appData: Object,
@@ -9,8 +10,13 @@ const props = defineProps({
   scale: Number,
 });
 
+const unitPoints = computed(() => {
+  const points = getPoints(props.unit, props.appData.currentMFM);
+  return points > 0 ? points : 0;
+});
+
 const height = computed(() => {
-  return `${Math.floor(props.unit.points * props.scale)}px`;
+  return `${Math.floor(unitPoints.value * props.scale)}px`;
 });
 
 const name = computed(() => {
@@ -46,7 +52,7 @@ const inValid = computed(() => {
   ).length;
 
   if (!unit) {
-    return "Unit not found in compendium";
+    return `Unit not available in MFM ${props.appData.currentMFM.MFM_VERSION}`;
   }
 
   if (count > unitMax(unit, props.appData.currentList.detachment)) {
@@ -88,7 +94,9 @@ const inValid = computed(() => {
     <span class="army-list-unit__name">
       {{ name }}
     </span>
-    <span class="army-list-unit__points"> {{ props.unit.points }} pts </span>
+    <span class="army-list-unit__points" v-if="unitPoints > 0">
+      {{ unitPoints }} pts
+    </span>
   </div>
 </template>
 

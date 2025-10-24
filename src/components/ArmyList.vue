@@ -3,6 +3,7 @@ import { computed } from "vue";
 import draggable from "vuedraggable";
 import ArmyListUnit from "./ArmyListUnit.vue";
 import { SORT_MANUAL } from "../data/constants";
+import { getPoints } from "../utils/mfm";
 
 const TOOLBAR_HEIGHT = 44;
 const VERSION_BAR_HEIGHT = 20;
@@ -17,7 +18,10 @@ const scale = computed(() => {
 
 const points = computed(() => {
   return props.appData.currentList.units.reduce(
-    (acc, curr) => acc + curr.points,
+    (acc, curr) => {
+      const unitPoints = getPoints(curr, props.appData.currentMFM);
+      return acc + (unitPoints > 0 ? unitPoints : 0);
+    },
     0
   );
 });

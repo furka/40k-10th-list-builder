@@ -1,19 +1,23 @@
 <script setup>
-import { MFM } from "../utils/mfm";
+import { MFM, getPoints } from "../utils/mfm";
 import OpenIcon from "../assets/computer-folder-open-icon.svg";
 import DeleteIcon from "../assets/recycle-bin-line-icon.svg";
 import CopyIcon from "../assets/text-documents-line-icon.svg";
 import RiskIcon from "../assets/risk-icon.svg";
 import ModalWithButton from "./ModalWithButton.vue";
 import { computed } from "vue";
-import { changes } from "../utils/update-list-mfm";
+import { changes } from "../utils/mfm";
 
 const props = defineProps({
   appData: Object,
 });
 
-function points(units) {
-  return units.reduce((acc, curr) => acc + curr.points, 0);
+function points(units, list) {
+  const mfm = (list.mfm_version && MFM[list.mfm_version]) || MFM.CURRENT;
+  return units.reduce((acc, curr) => {
+    const unitPoints = getPoints(curr, mfm);
+    return acc + (unitPoints > 0 ? unitPoints : 0);
+  }, 0);
 }
 
 function mfmVersion(list) {
@@ -77,7 +81,7 @@ function deleteList(list) {
               <template v-if="list.detachment">
                 {{ list.detachment }} —
               </template>
-              {{ points(list.units) }} pts
+              {{ points(list.units, list) }} pts
               <b v-if="index === 0"> (current)</b>
             </button>
           </form>

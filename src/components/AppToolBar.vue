@@ -1,10 +1,9 @@
 <script setup>
 import { computed } from "vue";
-import { MFM } from "../utils/mfm";
+import { getPoints } from "../utils/mfm";
 import ViewListModal from "./ViewListModal.vue";
 import OpenListModal from "./OpenListModal.vue";
 import NewIcon from "../assets/file-line-icon.svg";
-import UpdateMFMPointsModal from "./UpdateMFMPointsModal.vue";
 import ToolBar from "./ToolBar.vue";
 import ShareListModal from "./ShareListModal.vue";
 
@@ -14,24 +13,18 @@ const props = defineProps({
 
 const points = computed(() => {
   return props.appData.currentList.units.reduce(
-    (acc, curr) => acc + curr.points,
+    (acc, curr) => {
+      const unitPoints = getPoints(curr, props.appData.currentMFM);
+      return acc + (unitPoints > 0 ? unitPoints : 0);
+    },
     0
   );
-});
-
-const outOfDate = computed(() => {
-  return props.appData.currentList.mfm_version !== MFM.CURRENT.MFM_VERSION;
 });
 </script>
 
 <template>
   <ToolBar class="app-toolbar">
     <div class="toolbar__group toolbar__group--points">
-      <UpdateMFMPointsModal
-        class="toolbar__warning"
-        v-if="outOfDate"
-        :app-data="props.appData"
-      />
       <label>
         <span :class="{ over: points > props.appData.currentList.maxPoints }">
           {{ points }}
