@@ -7,6 +7,12 @@ const dialog = ref(null);
 function openDialog() {
   dialog.value.showModal();
 }
+
+function onClick(event) {
+  if (event.target === dialog.value) {
+    dialog.value.close();
+  }
+}
 </script>
 
 <template>
@@ -15,7 +21,12 @@ function openDialog() {
       <slot name="button"></slot>
     </button>
 
-    <dialog ref="dialog" class="modal" @close="$emit('closed')">
+    <dialog
+      ref="dialog"
+      class="modal"
+      @close="$emit('closed')"
+      @click="onClick"
+    >
       <div class="modal__content">
         <slot name="content"></slot>
       </div>
@@ -48,7 +59,7 @@ function openDialog() {
 }
 
 .modal {
-  border-radius: 32px;
+  background: none;
   border: none;
   box-sizing: border-box;
   font-family: monospace;
@@ -58,16 +69,21 @@ function openDialog() {
   min-height: 50vh;
   min-width: 50vh;
   overflow: hidden;
-  padding: 32px;
   position: relative;
+  padding: 0;
+  cursor: pointer;
 
   &[open] {
     display: flex;
   }
 
   &__content {
+    background: #fff;
+    padding: 32px;
+    border-radius: 32px;
     overflow-y: auto;
     flex-grow: 1;
+    cursor: auto;
   }
 
   &__close {
