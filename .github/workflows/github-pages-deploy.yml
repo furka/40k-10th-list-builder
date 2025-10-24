@@ -79,12 +79,6 @@ jobs:
       - name: Send Discord notification
         if: success()
         run: |
-          COMMITS_RAW=$(cat <<'EOF'
-          ${{ steps.commits.outputs.log }}
-          EOF
-          )
-          COMMITS_FORMATTED=$(echo "$COMMITS_RAW" | sed 's/^/• /')
-
           PAYLOAD=$(jq -n \
             --arg content "++DEPLOYMENT PROTOCOLS: COMPLETE++
           ++OMNISSIAH BE PRAISED++
@@ -92,12 +86,7 @@ jobs:
 
           <${{ steps.deployment.outputs.page_url }}>
 
-          📦 Data-Vault Archive: <${{ steps.create-release.outputs.url }}>
-
-          **++DATA-MANIFEST UPDATES++**
-          \`\`\`
-          $COMMITS_FORMATTED
-          \`\`\`" \
+          📦 Data-Vault Archive: <${{ steps.create-release.outputs.url }}>" \
             '{content: $content}')
 
           curl -H "Content-Type: application/json" -d "$PAYLOAD" ${{ secrets.DISCORD_WEBHOOK_URL }}
