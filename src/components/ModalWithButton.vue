@@ -56,7 +56,7 @@ function onClick(event) {
   flex-direction: row;
   gap: 8px;
   justify-content: center;
-  padding: 4px 8px;
+  padding: 6px 8px;
   margin: 0 4px;
 
   &:hover {

@@ -49,7 +49,12 @@ useDetectOutsideClick(component, () => {
 
 <template>
   <div class="dropdown" ref="component">
-    <button class="dropdown__button" @click="toggleDialog" ref="button" :title="props.title">
+    <button
+      class="dropdown__button"
+      @click="toggleDialog"
+      ref="button"
+      :title="props.title"
+    >
       <slot name="button"></slot>
     </button>
 
@@ -76,7 +81,7 @@ useDetectOutsideClick(component, () => {
     flex-direction: row;
     gap: 8px;
     justify-content: center;
-    padding: 4px 8px;
+    padding: 6px 8px;
     margin: 0 4px;
 
     &:hover {

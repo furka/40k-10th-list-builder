@@ -45,7 +45,11 @@ function copyToClipboard() {
 </script>
 
 <template>
-  <ModalWithButton class="share-modal" @closed="onClosed" title="Share army list via URL">
+  <ModalWithButton
+    class="share-modal"
+    @closed="onClosed"
+    title="Share army list via URL"
+  >
     <template v-slot:button>
       <ShareIcon class="modal-button__icon" />
       <span>Share</span>
@@ -79,7 +83,7 @@ function copyToClipboard() {
     border-radius: 12px;
     border: 3px solid black;
     font-size: 12px;
-    padding: 4px 8px;
+    padding: 6px 8px;
     margin-block-end: 16px;
     margin-block-start: 44px;
   }
@@ -95,7 +99,7 @@ function copyToClipboard() {
     cursor: pointer;
     font-size: 28px;
     margin-block-end: 16px;
-    padding: 4px 8px;
+    padding: 6px 8px;
     user-select: none;
 
     &:hover {
