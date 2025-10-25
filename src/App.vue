@@ -16,6 +16,7 @@ import CodexToolBar from "./components/CodexToolBar.vue";
 import VersionBar from "./components/VersionBar.vue";
 import { deserializeList } from "./utils/serialize-list";
 import { autoUpgradeMFMVersion } from "./utils/mfm";
+import PACKAGE from "../package.json";
 
 function save(key, val = appData[key]) {
   localStorage.setItem(key, JSON.stringify(val));
