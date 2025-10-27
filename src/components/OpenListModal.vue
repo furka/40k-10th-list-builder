@@ -79,6 +79,9 @@ function deleteList(list) {
               <span class="open-modal__list-details">
                 <template v-if="list.name">—</template>
                 {{ list.faction }} —
+                <template v-if="list.subFaction">
+                  {{ list.subFaction }} —
+                </template>
                 <template v-if="list.detachment">
                   {{ list.detachment }} —
                 </template>
