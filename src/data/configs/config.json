@@ -1467,7 +1467,7 @@
       "Malanthrope",
       "Neurotyrant",
       "Old One Eye",
-      "Parasite Of Mortrex",
+      "Parasite of Mortrex",
       "Tervigon",
       "The Swarmlord",
       "Winged Hive Tyrant",
@@ -1481,8 +1481,13 @@
     "dedicated-transport": [
       "Tyrannocyte"
     ],
+    "fortification": [],
     "legends": [
-      "Malanthrope"
+      "Barbed Hierodule",
+      "Dimachaeron",
+      "Malanthrope",
+      "Scythed Hierodule",
+      "Sky-slasher Swarms"
     ]
   },
   "WORLD EATERS": {
