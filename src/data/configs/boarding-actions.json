@@ -975,7 +975,7 @@
           "options": [{ "name": "Possessed", "models": [5] }]
         }
       ],
-      "enhancements": ["Tainted Blade", "Suffocating Cloud"]
+      "enhancements": ["Foul Constitution", "Fountaining Filth"]
     },
     "UNCLEAN UPRISING": {
       "units": [
@@ -992,7 +992,7 @@
           "options": [{ "name": "Plague Marines", "models": [5, 10] }]
         }
       ],
-      "enhancements": ["Living Blight", "Dark Blessings"]
+      "enhancements": ["Pox-Bearer", "Hand of Nurgle"]
     },
     "ARCH-CONTAMINATORS": {
       "units": [
@@ -1025,7 +1025,7 @@
           "options": [{ "name": "Possessed", "models": [5] }]
         }
       ],
-      "enhancements": ["Rotbringer’s Censer", "Foul Infestation"]
+      "enhancements": ["Miasmic Odour", "Disgusting Reinvigoration"]
     }
   },
   "THOUSAND SONS": {
