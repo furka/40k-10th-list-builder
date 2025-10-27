@@ -993,8 +993,7 @@
   },
   "IMPERIAL KNIGHTS": {
     "battle-line": [
-      "Armiger Helverin",
-      "Armiger Warglaive"
+      "Armiger Moirax"
     ],
     "character": [
       "Canis Rex",
@@ -1012,14 +1011,13 @@
       "Knight Valiant",
       "Knight Warden",
       "Questoris Knight Magaera",
-      "Questoris Knight Styrix",
-      "Sir Hekhtur"
+      "Questoris Knight Styrix"
     ],
     "epic-hero": [
-      "Canis Rex",
-      "Sir Hekhtur"
+      "Canis Rex"
     ],
     "dedicated-transport": [],
+    "fortification": [],
     "legends": [],
     "conditional": {
       "SPEARHEAD-AT-ARMS": {
