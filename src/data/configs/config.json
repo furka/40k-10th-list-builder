@@ -766,13 +766,16 @@
       "Biologus Putrifier",
       "Chaos Lord On Palanquin Of Nurgle",
       "Daemon Prince of Nurgle",
-      "Daemon Prince of Nurgle With Wings",
+      "Daemon Prince of Nurgle with Wings",
+      "Death Guard Chaos Lord",
+      "Death Guard Chaos Lord in Terminator Armour",
+      "Death Guard Sorcerer in Terminator Armour",
       "Foul Blightspawn",
       "Great Unclean One",
       "Icon Bearer",
-      "Lord Of Contagion",
+      "Lord of Contagion",
       "Lord of Poxes",
-      "Lord Of Virulence",
+      "Lord of Virulence",
       "Malignant Plaguecaster",
       "Mortarion",
       "Noxious Blightbringer",
@@ -783,24 +786,53 @@
       "Typhus"
     ],
     "epic-hero": [
-      "Daemon Prince of Nurgle",
-      "Daemon Prince of Nurgle With Wings",
-      "Great Unclean One",
       "Mortarion",
       "Rotigus",
       "Typhus"
     ],
     "dedicated-transport": [
       "Chaos Rhino",
-      "Terrax-Pattern Termite"
+      "Terrax-pattern Termite"
     ],
     "fortification": [
       "Miasmic Malignifier"
     ],
     "legends": [
+      "Cerberus",
       "Chaos Lord On Palanquin Of Nurgle",
+      "Chaos Thunderhawk",
+      "Death Guard Chaos Lord",
+      "Death Guard Chaos Lord in Terminator Armour",
+      "Death Guard Cultists",
+      "Death Guard Possessed",
+      "Death Guard Sorcerer in Terminator Armour",
+      "Deredeo Dreadnought",
+      "Falchion",
+      "Fellblade",
+      "Fire Raptor Gunship",
+      "Gellerpox Infected",
+      "Greater Blight Drone",
+      "Hell Blade",
+      "Hell Talon",
+      "Kratos",
+      "Land Raider Achilles",
+      "Land Raider Proteus",
+      "Leviathan Dreadnought",
+      "Mastodon",
+      "Mutoid Vermin",
+      "Rapier Carrier",
+      "Relic Contemptor Dreadnought",
+      "Sicaran Battle Tank",
+      "Sicaran Punisher",
+      "Sicaran Venator",
+      "Sokar-pattern Stormbird",
       "Sorcerer On Palanquin Of Nurgle",
-      "Terrax-Pattern Termite"
+      "Spartan",
+      "Storm Eagle Gunship",
+      "Terrax-pattern Termite",
+      "Typhon",
+      "Whirlwind Scorpius",
+      "Xiphon Interceptor"
     ]
   },
   "DEATHWATCH": {
