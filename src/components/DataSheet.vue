@@ -4,6 +4,7 @@ import { GROUP_NONE, SORT_EXPENSIVE_FIRST } from "../data/constants";
 import { sortOptionsPtsDescending } from "../utils/sort-functions";
 import { isBattleLine } from "../utils/is-battleline";
 import { unitMax } from "../utils/unit-max";
+import { isBoardingActionsSlotFull } from "../utils/boarding-actions";
 import { getPreviousMFM, getUnitPointsDifference } from "../utils/mfm";
 
 const props = defineProps({
@@ -72,12 +73,24 @@ const count = computed(() => {
 });
 
 const maxed = computed(() => {
-  const max = unitMax(props.dataSheet, props.appData.currentList.detachment);
+  const max = unitMax(props.dataSheet, props.appData);
+
+  if (props.appData.isBoardingActions) {
+    const slotFull = isBoardingActionsSlotFull(
+      props.dataSheet.name,
+      props.appData.currentList.detachment,
+      props.appData.currentList,
+      props.appData.compendium
+    );
+
+    return count.value >= max || slotFull;
+  }
+
   return count.value >= max;
 });
 
 const max = computed(() => {
-  return unitMax(props.dataSheet, props.appData.currentList.detachment);
+  return unitMax(props.dataSheet, props.appData);
 });
 
 const owned = computed(() => {

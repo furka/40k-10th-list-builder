@@ -15,14 +15,31 @@ const factions = computed(() => {
 });
 
 const detachments = computed(() => {
-  return props.appData.factions
-    .find(
-      (f) =>
-        f.name?.toUpperCase() ===
-        props.appData.currentList.faction?.toUpperCase()
-    )
-    ?.detachments?.map((d) => d.name);
+  const faction = props.appData.factions.find(
+    (f) =>
+      f.name?.toUpperCase() === props.appData.currentList.faction?.toUpperCase()
+  );
+
+  if (!faction?.detachments) return null;
+
+  const standardDetachments = faction.detachments
+    .filter((d) => !d.boardingActions)
+    .map((d) => d.name);
+
+  const boardingActionsDetachments = faction.detachments
+    .filter((d) => d.boardingActions)
+    .map((d) => d.name);
+
+  return {
+    standard: standardDetachments,
+    boardingActions: boardingActionsDetachments,
+  };
 });
+
+function getDetachmentDisplayName(detachmentName) {
+  const config = props.appData.boardingActions[props.appData.currentList.faction]?.[detachmentName];
+  return config?.displayName || detachmentName;
+}
 </script>
 
 <template>
@@ -40,17 +57,38 @@ const detachments = computed(() => {
           {{ faction.toLowerCase() }}
         </option>
       </select>
-      <template v-if="detachments?.length > 0">
+      <template
+        v-if="
+          detachments &&
+          (detachments.standard.length > 0 ||
+            detachments.boardingActions.length > 0)
+        "
+      >
         <span>—</span>
         <select
           v-model="props.appData.currentList.detachment"
           class="toolbar__detachment-select"
         >
           <option
-            v-for="(detachment, index) in detachments"
+            v-for="(detachment, index) in detachments.standard"
+            :key="'standard-' + index"
             :value="detachment"
           >
             {{ detachment.toLowerCase() }}
+          </option>
+          <option
+            v-if="detachments.boardingActions.length > 0"
+            disabled
+            class="ba-separator"
+          >
+            BOARDING ACTIONS
+          </option>
+          <option
+            v-for="(detachment, index) in detachments.boardingActions"
+            :key="'ba-' + index"
+            :value="detachment"
+          >
+            {{ getDetachmentDisplayName(detachment).toLowerCase() }}
           </option>
         </select>
       </template>
@@ -85,6 +123,11 @@ const detachments = computed(() => {
 
       @media (max-width: 1160px) {
         max-width: calc(50vw - 185px);
+      }
+
+      .ba-separator {
+        font-size: 0.75em;
+        color: #999;
       }
     }
 

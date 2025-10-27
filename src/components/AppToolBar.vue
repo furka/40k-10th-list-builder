@@ -12,31 +12,38 @@ const props = defineProps({
 });
 
 const points = computed(() => {
-  return props.appData.currentList.units.reduce(
-    (acc, curr) => {
-      const unitPoints = getPoints(curr, props.appData.currentMFM);
-      return acc + (unitPoints > 0 ? unitPoints : 0);
-    },
-    0
-  );
+  return props.appData.currentList.units.reduce((acc, curr) => {
+    const unitPoints = getPoints(curr, props.appData.currentMFM);
+    return acc + (unitPoints > 0 ? unitPoints : 0);
+  }, 0);
 });
 </script>
 
 <template>
   <ToolBar class="app-toolbar">
     <div class="toolbar__group toolbar__group--points">
-      <label>
-        <span :class="{ over: points > props.appData.currentList.maxPoints }">
+      <label :class="{ 'label--static': props.appData.isBoardingActions }">
+        <span :class="{ over: points > props.appData.effectiveMaxPoints }">
           {{ points }}
         </span>
         /
+        <span v-if="props.appData.isBoardingActions">{{
+          props.appData.effectiveMaxPoints
+        }}</span>
         <input
+          v-else
           type="number"
           min="500"
           step="500"
           v-model.number="props.appData.currentList.maxPoints"
           class="toolbar__points-input"
-          :style="{ width: Math.max(3, props.appData.currentList.maxPoints.toString().length + 1) + 'ch' }"
+          :style="{
+            width:
+              Math.max(
+                3,
+                props.appData.currentList.maxPoints.toString().length + 1
+              ) + 'ch',
+          }"
         />
       </label>
     </div>
@@ -56,7 +63,11 @@ const points = computed(() => {
     </div>
 
     <div class="toolbar__group">
-      <button class="toolbar__button" @click="$emit('newList')" title="Create a new army list">
+      <button
+        class="toolbar__button"
+        @click="$emit('newList')"
+        title="Create a new army list"
+      >
         <NewIcon class="toolbar__icon" />
         <span>New</span>
       </button>
@@ -84,6 +95,11 @@ const points = computed(() => {
 
         label {
           margin-left: auto;
+          cursor: pointer;
+        }
+
+        .label--static {
+          cursor: default;
         }
 
         .over {

@@ -17,6 +17,7 @@ import VersionBar from "./components/VersionBar.vue";
 import { deserializeList } from "./utils/serialize-list";
 import { autoUpgradeMFMVersion } from "./utils/mfm";
 import PACKAGE from "../package.json";
+import { BOARDING_ACTIONS } from "./data/configs";
 
 function save(key, val = appData[key]) {
   localStorage.setItem(key, JSON.stringify(val));
@@ -35,6 +36,7 @@ const appData = reactive({
   appWidth: window.innerWidth,
   armyName: "",
   bin: [],
+  boardingActions: BOARDING_ACTIONS,
   codexFilter: "",
   collection: restore("collection") ?? [],
   currentList: restore("currentList") ?? createNewList(),
@@ -54,7 +56,42 @@ const appData = reactive({
     return (this.currentMFM || MFM.CURRENT).DATA_SHEETS;
   },
   get factions() {
-    return (this.currentMFM || MFM.CURRENT).FACTIONS;
+    const baseFactions = (this.currentMFM || MFM.CURRENT).FACTIONS;
+
+    return baseFactions.map(faction => {
+      const baConfig = this.boardingActions[faction.name];
+      if (!baConfig) {
+        return faction;
+      }
+
+      const baDetachments = Object.keys(baConfig).map(detachmentName => ({
+        name: detachmentName,
+        boardingActions: true
+      }));
+
+      return {
+        ...faction,
+        detachments: [...faction.detachments, ...baDetachments]
+      };
+    });
+  },
+  get isBoardingActions() {
+    const faction = this.factions.find(f => f.name === this.currentList?.faction);
+    const detachment = faction?.detachments.find(d => d.name === this.currentList?.detachment);
+    return detachment?.boardingActions === true;
+  },
+  get boardingActionsConfig() {
+    if (!this.isBoardingActions) return null;
+    return this.boardingActions[this.currentList?.faction]?.[this.currentList?.detachment];
+  },
+  get effectiveMaxPoints() {
+    return this.isBoardingActions ? 500 : this.currentList.maxPoints;
+  },
+  get detachmentDisplayName() {
+    const detachment = this.currentList?.detachment;
+    if (!detachment) return '';
+    const config = this.boardingActions[this.currentList?.faction]?.[detachment];
+    return config?.displayName || detachment;
   },
 });
 
@@ -98,6 +135,8 @@ function initializeApp() {
 }
 
 initializeApp();
+
+console.log(appData);
 
 const handleResize = () => {
   appData.appHeight = window.innerHeight;

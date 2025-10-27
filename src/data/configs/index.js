@@ -1,4 +1,5 @@
 import configs from "./config.json";
+import boardingActionsConfig from "./boarding-actions.json";
 
 export const CONFIGS = {
   "battle-line": [],
@@ -9,6 +10,8 @@ export const CONFIGS = {
   conditional: {},
   fortification: [],
 };
+
+export const BOARDING_ACTIONS = boardingActionsConfig;
 
 for (const key in configs) {
   const config = configs[key];

@@ -2,7 +2,9 @@
 import { computed } from "vue";
 import RiskIcon from "../assets/risk-icon.svg";
 import { unitMax } from "../utils/unit-max";
+import { isBoardingActionsSlotFull, getBoardingActionsErrorMessage } from "../utils/boarding-actions";
 import { getPoints } from "../utils/mfm";
+import { nameEquals } from "../utils/name-match";
 
 const props = defineProps({
   appData: Object,
@@ -30,7 +32,7 @@ const name = computed(() => {
     name += `(${props.unit.models}) `;
   }
 
-  if (props.unit.name === "Enhancements") {
+  if (nameEquals(props.unit.name, "Enhancements")) {
     name += `[Enh] ${props.unit.optionName}`;
   } else if (props.unit.optionName) {
     name += `${props.unit.name} — ${props.unit.optionName}`;
@@ -45,10 +47,10 @@ const inValid = computed(() => {
   if (props.unit.error) {
     return "Invalid Unit";
   }
-  const unit = props.appData.compendium.find((u) => u.name === props.unit.name);
+  const unit = props.appData.compendium.find((u) => nameEquals(u.name, props.unit.name));
 
   const count = props.appData.currentList.units.filter(
-    (u) => u.name === props.unit.name
+    (u) => nameEquals(u.name, props.unit.name)
   ).length;
 
   if (!unit) {
@@ -56,16 +58,56 @@ const inValid = computed(() => {
     return `Unit not available in MFM ${version}`;
   }
 
-  if (count > unitMax(unit, props.appData.currentList.detachment)) {
-    return `Only ${unitMax(
-      unit,
-      props.appData.currentList.detachment
-    )} of this unit allowed`;
+  const max = unitMax(unit, props.appData);
+
+  if (props.appData.isBoardingActions) {
+    if (max === 0) {
+      return getBoardingActionsErrorMessage(
+        props.unit.name,
+        props.appData.currentList.detachment,
+        props.appData.currentList,
+        props.appData.compendium
+      );
+    }
+
+    if (count > max) {
+      return getBoardingActionsErrorMessage(
+        props.unit.name,
+        props.appData.currentList.detachment,
+        props.appData.currentList,
+        props.appData.compendium
+      );
+    }
+
+    const listExcludingCurrent = {
+      ...props.appData.currentList,
+      units: props.appData.currentList.units.filter(u => u.id !== props.unit.id)
+    };
+
+    const slotFull = isBoardingActionsSlotFull(
+      props.unit.name,
+      props.appData.currentList.detachment,
+      listExcludingCurrent,
+      props.appData.compendium
+    );
+
+    if (slotFull) {
+      return getBoardingActionsErrorMessage(
+        props.unit.name,
+        props.appData.currentList.detachment,
+        props.appData.currentList,
+        props.appData.compendium
+      );
+    }
+  } else {
+    if (count > max) {
+      return `Only ${max} of this unit allowed`;
+    }
   }
 
-  if (props.unit.name === "Enhancements") {
+  if (nameEquals(props.unit.name, "Enhancements")) {
     const availableEnhancements = props.appData.compendium
-      ?.find((u) => u.name === "Enhancements")
+      ?.find((u) => nameEquals(u.name, "Enhancements"))
       ?.sizes.filter(
         (s) =>
           s.detachment?.toUpperCase() ===

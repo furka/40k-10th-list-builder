@@ -13,7 +13,7 @@ const props = defineProps({
 });
 
 const scale = computed(() => {
-  return (props.appData.appHeight - (TOOLBAR_HEIGHT * 2) - VERSION_BAR_HEIGHT) / props.appData.currentList.maxPoints;
+  return (props.appData.appHeight - (TOOLBAR_HEIGHT * 2) - VERSION_BAR_HEIGHT) / props.appData.effectiveMaxPoints;
 });
 
 const points = computed(() => {
@@ -28,7 +28,7 @@ const points = computed(() => {
 
 const emptySpace = computed(() => {
   return (
-    Math.max(0, props.appData.currentList.maxPoints - points.value) *
+    Math.max(0, props.appData.effectiveMaxPoints - points.value) *
       scale.value +
     "px"
   );

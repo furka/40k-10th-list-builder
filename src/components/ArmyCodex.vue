@@ -14,6 +14,7 @@ import {
   sortDataSheetPtsDescending,
 } from "../utils/sort-functions";
 import { isBattleLine } from "../utils/is-battleline";
+import { nameEquals } from "../utils/name-match";
 
 const props = defineProps({
   appData: Object,
@@ -60,18 +61,56 @@ function sortOrder() {
   return sortDataSheetAlphabetical;
 }
 
+function applyBoardingActionsRules(sheets) {
+  if (!props.appData.isBoardingActions) {
+    return sheets;
+  }
+
+  const config = props.appData.boardingActionsConfig;
+  if (!config?.units) {
+    return [];
+  }
+
+  return sheets
+    .map(sheet => {
+      const unitConfig = config.units
+        .flatMap(slot => slot.options)
+        .find(option => nameEquals(option.name, sheet.name));
+
+      if (!unitConfig) {
+        return null;
+      }
+
+      if (!unitConfig.models) {
+        return sheet;
+      }
+
+      const filteredSizes = sheet.sizes.filter(size =>
+        unitConfig.models.includes(size.models)
+      );
+
+      return {
+        ...sheet,
+        sizes: filteredSizes.length > 0 ? filteredSizes : sheet.sizes
+      };
+    })
+    .filter(sheet => sheet !== null);
+}
+
 const dataSheets = computed(() => {
-  return props.appData.compendium
+  const sheets = props.appData.compendium
     ?.filter(factionFilter)
     .filter(userFilter)
     .filter(forgeWorldFilter)
     .filter(legendsFilter)
     .sort(sortOrder());
+
+  return applyBoardingActionsRules(sheets || []);
 });
 
 const enhancements = computed(() => {
   const { name, sizes } = props.appData.compendium.find(
-    (sheet) => sheet.name === "Enhancements"
+    (sheet) => nameEquals(sheet.name, "Enhancements")
   );
 
   return {

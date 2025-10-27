@@ -1,4 +1,5 @@
 import { getPoints } from "./mfm";
+import { nameEquals } from "./name-match";
 
 export const sortDataSheetAlphabetical = function (a, b) {
   a = a.name.toLowerCase();
@@ -50,7 +51,7 @@ export const sortListPoints = function (currentMFM, ascending = false) {
 export const sortListByRole = function (compendium) {
   return function (a, b) {
     const getDataSheet = (unitName) => {
-      return compendium.find((ds) => ds.name === unitName);
+      return compendium.find((ds) => nameEquals(ds.name, unitName));
     };
 
     const getRolePriority = (unit) => {
@@ -58,7 +59,7 @@ export const sortListByRole = function (compendium) {
       if (!dataSheet) return 5;
 
       if (dataSheet.character || dataSheet.epicHero) return 1;
-      if (unit.name === "Enhancements") return 2;
+      if (nameEquals(unit.name, "Enhancements")) return 2;
       if (dataSheet.battleLine) return 3;
       if (dataSheet.dedicatedTransport) return 4;
       if (dataSheet.allies) return 6;

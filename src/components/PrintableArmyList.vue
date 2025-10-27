@@ -63,7 +63,7 @@ function unitLine(unit) {
     <h2>
       <span class="army-list__name">
         {{ props.appData.currentList.faction }} —
-        {{ props.appData.currentList.detachment }}
+        {{ props.appData.detachmentDisplayName }}
       </span>
       — {{ points }} pts
     </h2>

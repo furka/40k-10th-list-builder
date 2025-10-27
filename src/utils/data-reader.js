@@ -1,4 +1,4 @@
-import { CONFIGS } from "../data/configs";
+import { CONFIGS, BOARDING_ACTIONS } from "../data/configs";
 import { fixes } from "../data/munitorum-field-manual/fixes";
 
 export const parse = function (MFM) {
@@ -182,6 +182,25 @@ export const parse = function (MFM) {
       throw e;
     }
   });
+
+  // Inject boarding actions enhancements
+  const enhancementsSheet = DATA_SHEETS.find(sheet => sheet.name === "Enhancements");
+  if (enhancementsSheet) {
+    Object.entries(BOARDING_ACTIONS).forEach(([factionName, detachments]) => {
+      Object.entries(detachments).forEach(([detachmentName, config]) => {
+        if (config.enhancements) {
+          config.enhancements.forEach(enhancementName => {
+            enhancementsSheet.sizes.push({
+              name: enhancementName,
+              detachment: detachmentName,
+              enhancement: true,
+              points: 0
+            });
+          });
+        }
+      });
+    });
+  }
 
   return {
     FACTIONS,

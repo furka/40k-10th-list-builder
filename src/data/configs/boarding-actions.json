@@ -1,0 +1,1814 @@
+{
+  "ADEPTA SORORITAS": {
+    "PIOUS PROTECTORS": {
+      "units": [
+        {
+          "options": [
+            { "name": "Canoness" },
+            { "name": "Daemonifuge" },
+            { "name": "Palatine" }
+          ]
+        },
+        {
+          "max": 2,
+          "duplicates": false,
+          "options": [
+            { "name": "Aestred Thurga And Agathae Dolan" },
+            { "name": "Dialogus" },
+            { "name": "Dogmata" },
+            { "name": "Hospitaller" },
+            { "name": "Imagifier" },
+            { "name": "Ministorum Priest" }
+          ]
+        },
+        {
+          "max": 3,
+          "options": [
+            {
+              "name": "Battle Sisters Squad",
+              "models": [10]
+            }
+          ]
+        },
+        {
+          "max": 3,
+          "options": [
+            {
+              "name": "Dominion Squad",
+              "models": [5, 10]
+            }
+          ]
+        },
+        {
+          "max": 3,
+          "options": [
+            {
+              "name": "Sisters Novitiate Squad",
+              "models": [10]
+            }
+          ]
+        },
+        {
+          "max": 3,
+          "duplicates": false,
+          "options": [
+            {
+              "name": "Arco-flagellants",
+              "models": [5, 10]
+            },
+            {
+              "name": "Celestian Sacresants",
+              "models": [5, 10]
+            },
+            {
+              "name": "Repentia Squad",
+              "models": [5, 10]
+            }
+          ]
+        },
+        {
+          "options": [
+            {
+              "name": "Seraphim Squad",
+              "models": [5]
+            },
+            {
+              "name": "Zephyrim Squad",
+              "models": [5]
+            }
+          ]
+        }
+      ],
+      "enhancements": ["Martial Discipline", "Limitless Resolve"]
+    },
+    "PENITENTS AND PILGRIMS": {
+      "units": [
+        {
+          "max": 2,
+          "options": [{ "name": "Ministorum Priest" }]
+        },
+        {
+          "max": 3,
+          "options": [
+            {
+              "name": "Arco-flagellants",
+              "models": [5, 10]
+            }
+          ]
+        },
+        {
+          "max": 3,
+          "options": [
+            {
+              "name": "Repentia Squad",
+              "models": [5, 10]
+            }
+          ]
+        }
+      ],
+      "enhancements": ["Fervent Ferocity", "Sanctification Rituals"]
+    }
+  },
+  "ADEPTUS CUSTODES": {
+    "VOYAGERS IN DARKNESS": {
+      "units": [
+        {
+          "max": 2,
+          "duplicates": false,
+          "options": [
+            { "name": "Blade Champion" },
+            { "name": "Shield-Captain" },
+            { "name": "Trajann Valoris" },
+            { "name": "Valerian" }
+          ]
+        },
+        {
+          "max": 3,
+          "options": [{ "name": "Custodian Guard", "models": [4, 5] }]
+        },
+        {
+          "max": 2,
+          "duplicates": false,
+          "options": [
+            { "name": "Allarus Custodians", "models": [2, 3] },
+            { "name": "Custodian Wardens", "models": [4, 5] }
+          ]
+        },
+        {
+          "max": 3,
+          "duplicates": false,
+          "exception": "requiresCustodianUnits",
+          "options": [
+            { "name": "Prosecutors", "models": [5, 10] },
+            { "name": "Vigilators", "models": [5, 10] },
+            { "name": "Witchseekers", "models": [5, 10] }
+          ]
+        }
+      ],
+      "enhancements": ["Voidstrider", "Mantle of the Emissary"]
+    },
+    "BLACK SHIP GUARDIANS": {
+      "units": [
+        {
+          "max": 2,
+          "duplicates": false,
+          "options": [{ "name": "Aleya" }, { "name": "Knight-Centura" }]
+        },
+        {
+          "max": 1,
+          "exception": "requiresMaxOneOtherCharacter",
+          "options": [{ "name": "Shield-Captain" }, { "name": "Valerian" }]
+        },
+        {
+          "max": 2,
+          "duplicates": false,
+          "options": [
+            {
+              "name": "Prosecutors",
+              "models": [5, 10]
+            },
+            {
+              "name": "Vigilators",
+              "models": [5, 10]
+            }
+          ]
+        },
+        {
+          "max": 1,
+          "options": [
+            {
+              "name": "Witchseekers",
+              "models": [5, 10]
+            }
+          ]
+        }
+      ],
+      "enhancements": ["The Vratine Aquila (Aura)", "Sinister Presence (Aura)"]
+    }
+  },
+  "ADEPTUS MECHANICUS": {
+    "ELECTROMARTYRS": {
+      "units": [
+        {
+          "max": 1,
+          "options": [
+            { "name": "Tech-Priest Dominus" },
+            { "name": "Tech-Priest Enginseer" },
+            { "name": "Tech-Priest Manipulus" },
+            { "name": "Technoarcheologist" }
+          ]
+        },
+        {
+          "max": 1,
+          "options": [{ "name": "Skitarii Marshal" }]
+        },
+        {
+          "max": 3,
+          "options": [
+            { "name": "Skitarii Rangers", "models": [5, 10] },
+            { "name": "Skitarii Vanguard", "models": [5, 10] }
+          ]
+        },
+        {
+          "max": 6,
+          "duplicates": false,
+          "options": [
+            { "name": "Corpuscarii Electro-Priests", "models": [5, 10] },
+            { "name": "Fulgurite Electro-Priests", "models": [5, 10] },
+            { "name": "Kataphron Breachers", "models": [3] },
+            { "name": "Kataphron Destroyers", "models": [3] },
+            { "name": "Sicarian Infiltrators", "models": [5, 10] },
+            { "name": "Sicarian Ruststalkers", "models": [5, 10] }
+          ]
+        }
+      ],
+      "enhancements": ["Remote Lockdown", "Multi-dimensional Auspex"]
+    },
+    "RESPONSE CLADE": {
+      "units": [
+        {
+          "max": 2,
+          "options": [{ "name": "Skitarii Marshal" }]
+        },
+        {
+          "max": 3,
+          "options": [
+            { "name": "Skitarii Rangers", "models": [5, 10] },
+            { "name": "Skitarii Vanguard", "models": [5, 10] }
+          ]
+        },
+        {
+          "max": 2,
+          "duplicates": false,
+          "options": [
+            { "name": "Sicarian Infiltrators", "models": [5, 10] },
+            { "name": "Sicarian Ruststalkers", "models": [5, 10] }
+          ]
+        }
+      ],
+      "enhancements": ["Admonissor Shunt", "Optimised Cogitators"]
+    },
+    "MACHINE CULT": {
+      "units": [
+        {
+          "max": 2,
+          "duplicates": false,
+          "options": [
+            { "name": "Tech-Priest Dominus" },
+            { "name": "Tech-Priest Enginseer" },
+            { "name": "Tech-Priest Manipulus" },
+            { "name": "Technoarcheologist" }
+          ]
+        },
+        {
+          "max": 4,
+          "duplicates": false,
+          "options": [
+            { "name": "Corpuscarii Electro-Priests", "models": [5, 10] },
+            { "name": "Fulgurite Electro-Priests", "models": [5, 10] },
+            { "name": "Kataphron Breachers", "models": [3] },
+            { "name": "Kataphron Destroyers", "models": [3] }
+          ]
+        }
+      ],
+      "enhancements": ["Beseech the Machine Spirits", "Harmonic Discordator"]
+    }
+  },
+  "SPACE MARINES": {
+    "BOARDING STRIKE": {
+      "units": [
+        {
+          "max": 3,
+          "options": [
+            { "name": "Assault Intercessor Squad", "models": [5, 10] },
+            { "name": "Blood Claws", "models": [5, 10] },
+            { "name": "Crusader Squad", "models": [5, 10] },
+            { "name": "Deathwatch Veterans", "models": [5, 10] },
+            { "name": "Grey Hunters", "models": [5, 10] },
+            { "name": "Heavy Intercessor Squad", "models": [5, 10] },
+            { "name": "Intercessor Squad", "models": [5, 10] },
+            { "name": "Tactical Squad", "models": [10] }
+          ]
+        },
+        {
+          "max": 10,
+          "duplicates": false,
+          "options": [
+            { "name": "Aggressor Squad", "models": [3] },
+            { "name": "Bladeguard Veteran Squad", "models": [3] },
+            { "name": "Company Heroes", "models": [5] },
+            {
+              "name": "Death Company Marines with Bolt Rifles",
+              "models": [5, 10]
+            },
+            { "name": "Death Company Marines", "models": [5, 10] },
+            { "name": "Infernus Squad", "models": [5, 10] },
+            { "name": "Inner Circle Companions", "models": [3] },
+            { "name": "Sternguard Veteran Squad", "models": [5, 10] },
+            { "name": "Wolf Guard", "models": [5, 10] },
+            { "name": "Wulfen", "models": [5, 10] }
+          ]
+        },
+        {
+          "max": 1,
+          "options": [
+            { "name": "Eradicator Squad", "models": [3] },
+            { "name": "Hellblaster Squad", "models": [5] }
+          ]
+        },
+        {
+          "max": 1,
+          "options": [
+            {
+              "name": "Assault Intercessors with Jump Packs",
+              "models": [5, 10]
+            },
+            {
+              "name": "Death Company Marines with Jump Packs",
+              "models": [5, 10]
+            },
+            { "name": "Fenrisian Wolves", "models": [5] },
+            { "name": "Sanguinary Guard", "models": [3] },
+            { "name": "Skyclaws", "models": [5, 10] },
+            {
+              "name": "Vanguard Veteran Squad with Jump Packs",
+              "models": [5, 10]
+            }
+          ]
+        },
+        {
+          "max": 3,
+          "duplicates": false,
+          "options": [
+            { "name": "Adrax Agatone" },
+            { "name": "Aethon Shaan" },
+            { "name": "Ancient" },
+            { "name": "Ancient On Bike" },
+            { "name": "Apothecary" },
+            { "name": "Apothecary Biologis" },
+            { "name": "Apothecary On Bike" },
+            { "name": "Astorath" },
+            { "name": "Bladeguard Ancient" },
+            { "name": "Blood Angels Captain" },
+            { "name": "Blood Angels Librarian Dreadnought" },
+            { "name": "Brother Corbulo" },
+            { "name": "Caanok Var" },
+            { "name": "Captain" },
+            { "name": "Captain in Gravis Armour" },
+            { "name": "Captain in Phobos Armour" },
+            { "name": "Captain On Bike" },
+            { "name": "Captain Sicarius" },
+            { "name": "Captain Tycho" },
+            { "name": "Captain with Jump Pack" },
+            { "name": "Chaplain" },
+            { "name": "Chaplain Cassius" },
+            { "name": "Chaplain On Bike" },
+            { "name": "Chaplain With Jump Pack" },
+            { "name": "Chief Librarian Mephiston" },
+            { "name": "Chief Librarian Tigurius" },
+            { "name": "Commander Dante" },
+            { "name": "Company Champion On Bike" },
+            { "name": "Darnath Lysander" },
+            { "name": "Death Company Captain" },
+            { "name": "Death Company Captain With Jump Pack" },
+            { "name": "Gabriel Seth" },
+            { "name": "High Marshal Helbrecht" },
+            { "name": "Imperial Space Marine" },
+            { "name": "Iron Father Feirros" },
+            { "name": "Iron Priest" },
+            { "name": "Iron Priest On Thunderwolf" },
+            { "name": "Judiciar" },
+            { "name": "Kayvaan Shrike" },
+            { "name": "Kor’sarro Khan" },
+            { "name": "Lazarus" },
+            { "name": "Lemartes" },
+            { "name": "Librarian" },
+            { "name": "Librarian in Phobos Armour" },
+            { "name": "Librarian On Bike" },
+            { "name": "Librarian With Jump Pack" },
+            { "name": "Lieutenant" },
+            { "name": "Lieutenant in Phobos Armour" },
+            { "name": "Lieutenant in Reiver Armour" },
+            { "name": "Lieutenant With Combi-weapon" },
+            { "name": "Lion El’Jonson" },
+            { "name": "Logan Grimnar" },
+            { "name": "Logan Grimnar On Stormrider" },
+            { "name": "Pedro Kantor" },
+            { "name": "Phobos Lieutenant" },
+            { "name": "Primaris Ancient" },
+            { "name": "Primaris Apothecary" },
+            { "name": "Primaris Chaplain" },
+            { "name": "Primaris Chaplain On Bike" },
+            { "name": "Primaris Company Champion" },
+            { "name": "Primaris Librarian" },
+            { "name": "Primaris Lieutenant" },
+            { "name": "Primaris Techmarine" },
+            { "name": "Ragnar Blackmane" },
+            { "name": "Roboute Guilliman" },
+            { "name": "Sanguinary Priest" },
+            { "name": "Sanguinary Priest On Bike" },
+            { "name": "Sanguinary Priest With Jump Pack" },
+            { "name": "Sergeant Chronus" },
+            { "name": "Sergeant Telion" },
+            { "name": "Suboden Khan" },
+            { "name": "Techmarine" },
+            { "name": "Techmarine On Bike" },
+            { "name": "The Emperor’s Champion" },
+            { "name": "The Sanguinor" },
+            { "name": "Tor Garadon" },
+            { "name": "Tycho The Lost" },
+            { "name": "Ulrik the Slayer" },
+            { "name": "Uriel Ventris" },
+            { "name": "Vulkan He’stan" },
+            { "name": "Wolf Guard Battle Leader" },
+            { "name": "Wolf Guard Battle Leader in Terminator Armour" },
+            { "name": "Wolf Guard Battle Leader On Thunderwolf" },
+            { "name": "Wolf Lord" },
+            { "name": "Wolf Lord On Thunderwolf" },
+            { "name": "Wolf Priest" },
+            { "name": "Wolf Priest On Bike" }
+          ]
+        }
+      ],
+      "enhancements": ["Adamantine Mantle", "Clavitine Reliquary"]
+    },
+    "PILUM STRIKE TEAM": {
+      "units": [
+        {
+          "max": 3,
+          "duplicates": false,
+          "options": [
+            { "name": "Kayvaan Shrike" },
+            { "name": "Lieutenant in Reiver Armour" },
+            { "name": "Lieutenant with Combi-weapon" },
+            { "name": "Captain in Phobos Armour" },
+            { "name": "Librarian in Phobos Armour" },
+            { "name": "Phobos Lieutenant" }
+          ]
+        },
+        {
+          "max": 3,
+          "options": [
+            { "name": "Incursor Squad", "models": [5, 10] },
+            { "name": "Infiltrator Squad", "models": [5, 10] },
+            { "name": "Reiver Squad", "models": [5, 10] }
+          ]
+        },
+        {
+          "max": 1,
+          "options": [{ "name": "Hounds of Morkai", "models": [5, 10] }]
+        }
+      ],
+      "enhancements": ["Omni-Structural Auspex", "Void Warrior"]
+    },
+    "TERMINATOR ASSAULT": {
+      "units": [
+        {
+          "max": 2,
+          "duplicates": false,
+          "options": [
+            { "name": "Arjac Rockfist" },
+            { "name": "Belial" },
+            { "name": "Darnath Lysander" },
+            { "name": "Logan Grimnar" },
+            { "name": "Njal Stormcaller" },
+            { "name": "Ancient in Terminator Armour" },
+            { "name": "Terminator Captain" },
+            { "name": "Chaplain in Terminator Armour" },
+            { "name": "Librarian in Terminator Armour" },
+            { "name": "Wolf Guard Battle Leader in Terminator Armour" },
+            { "name": "Wolf Guard Pack Leader in Terminator Armour" }
+          ]
+        },
+        {
+          "max": 2,
+          "options": [
+            { "name": "Deathwing Terminator Squad", "models": [5, 10] },
+            { "name": "Terminator Assault Squad", "models": [5, 10] },
+            { "name": "Terminator Squad", "models": [5, 10] },
+            { "name": "Wolf Guard Terminators", "models": [5, 10] }
+          ]
+        },
+        {
+          "max": 1,
+          "options": [{ "name": "Relic Terminator Squad", "models": [5, 10] }]
+        }
+      ],
+      "enhancements": ["The Emperor’s Wrath", "Steadfast Example"]
+    }
+  },
+  "ASTRA MILITARUM": {
+    "EMBARKED REGIMENT": {
+      "units": [
+        {
+          "max": 1,
+          "options": [
+            { "name": "Cadian Castellan" },
+            { "name": "Cadian Command Squad" },
+            { "name": "Gaunt’s Ghosts" },
+            { "name": "’Iron Hand’ Straken" },
+            { "name": "Platoon Command Squad" },
+            { "name": "Sly Marbo" },
+            { "name": "Ursula Creed" }
+          ]
+        },
+        {
+          "max": 1,
+          "options": [
+            { "name": "Commissar" },
+            { "name": "Nork Deddog" },
+            { "name": "Primaris Psyker" },
+            { "name": "Sergeant Harker" }
+          ]
+        },
+        {
+          "max": 3,
+          "options": [
+            { "name": "Cadian Shock Troops", "models": [10] },
+            { "name": "Catachan Jungle Fighters", "models": [10] },
+            { "name": "Death Korps of Krieg", "models": [10] }
+          ]
+        },
+        {
+          "max": 3,
+          "duplicates": false,
+          "options": [
+            { "name": "Bullgryn Squad", "models": [3] },
+            { "name": "Kasrkin", "models": [5, 10] },
+            { "name": "Ogryn Squad", "models": [3] }
+          ]
+        }
+      ],
+      "enhancements": ["Rigged Blind Grenades", "Shipboard Veteran"]
+    },
+    "TEMPESTUS BOARDING REGIMENT": {
+      "units": [
+        {
+          "max": 1,
+          "options": [{ "name": "Militarum Tempestus Command Squad" }]
+        },
+        {
+          "max": 1,
+          "options": [{ "name": "Commissar" }, { "name": "Primaris Psyker" }]
+        },
+        {
+          "max": 3,
+          "options": [{ "name": "Tempestus Scions", "models": [5, 10] }]
+        },
+        {
+          "max": 1,
+          "options": [{ "name": "Bullgryn Squad", "models": [3] }]
+        }
+      ],
+      "enhancements": ["Covert Breach", "Elimination Force"]
+    }
+  },
+  "GREY KNIGHTS": {
+    "VOID PURGE FORCE": {
+      "units": [
+        {
+          "max": 2,
+          "duplicates": false,
+          "options": [
+            { "name": "Brother-Captain" },
+            { "name": "Brother-Captain Stern" },
+            { "name": "Brotherhood Champion" },
+            { "name": "Brotherhood Chaplain" },
+            { "name": "Brotherhood Librarian" },
+            { "name": "Brotherhood Techmarine" },
+            { "name": "Castellan Crowe" },
+            { "name": "Grand Master" },
+            { "name": "Grand Master Voldus" },
+            { "name": "Kaldor Draigo" }
+          ]
+        },
+        {
+          "max": 3,
+          "options": [{ "name": "Strike Squad", "models": [5, 10] }]
+        },
+        {
+          "max": 2,
+          "duplicates": false,
+          "options": [
+            { "name": "Interceptor Squad", "models": [5, 10] },
+            { "name": "Purifier Squad", "models": [5] }
+          ]
+        },
+        {
+          "max": 1,
+          "options": [
+            { "name": "Brotherhood Terminator Squad", "models": [5] },
+            { "name": "Paladin Squad", "models": [5] }
+          ]
+        }
+      ],
+      "enhancements": ["Sigil of Warding", "Tactical Haruspexy"]
+    },
+    "BANESLAYER STRIKE": {
+      "units": [
+        {
+          "max": 2,
+          "duplicates": false,
+          "options": [
+            { "name": "Brother-Captain" },
+            { "name": "Brother-Captain Stern" },
+            { "name": "Brotherhood Chaplain" },
+            { "name": "Brotherhood Librarian" },
+            { "name": "Grand Master" },
+            { "name": "Grand Master Voldus" },
+            { "name": "Kaldor Draigo" }
+          ]
+        },
+        {
+          "max": 2,
+          "options": [
+            { "name": "Brotherhood Terminator Squad", "models": [5, 10] },
+            { "name": "Paladin Squad", "models": [5, 10] }
+          ]
+        }
+      ],
+      "enhancements": ["Shield of Admonishment", "Close and Sanction"]
+    }
+  },
+  "AGENTS OF THE IMPERIUM": {
+    "VOIDSHIP’S COMPANY": {
+      "units": [
+        {
+          "max": 2,
+          "options": [{ "name": "Rogue Trader Entourage", "models": [4] }]
+        },
+        {
+          "max": 3,
+          "options": [{ "name": "Imperial Navy Breachers", "models": [10] }]
+        },
+        {
+          "max": 6,
+          "options": [{ "name": "Voidsmen-at-Arms", "models": [6] }]
+        },
+        {
+          "max": 1,
+          "options": [{ "name": "Inquisitorial Agents", "models": [6, 12] }]
+        },
+        {
+          "max": 1,
+          "duplicates": false,
+          "options": [
+            { "name": "Inquisitor" },
+            { "name": "Inquisitor Coteaz" },
+            { "name": "Inquisitor Draxus" },
+            { "name": "Inquisitor Greyfax" }
+          ]
+        }
+      ],
+      "enhancements": ["Lathimon’s Flock", "Heirloom Blade"]
+    },
+    "INTERDICTION TEAM": {
+      "units": [
+        {
+          "max": 2,
+          "options": [{ "name": "Exaction Squad", "models": [11] }]
+        },
+        {
+          "max": 3,
+          "options": [
+            { "name": "Subductor Squad", "models": [11] },
+            { "name": "Vigilant Squad", "models": [11] }
+          ]
+        },
+        {
+          "max": 1,
+          "options": [{ "name": "Inquisitorial Agents", "models": [6, 12] }]
+        },
+        {
+          "max": 1,
+          "duplicates": false,
+          "options": [
+            { "name": "Inquisitor" },
+            { "name": "Inquisitor Coteaz" },
+            { "name": "Inquisitor Draxus" },
+            { "name": "Inquisitor Greyfax" }
+          ]
+        }
+      ],
+      "enhancements": ["Manhunter’s Helm", "Vasov’s Auto-Oppressor"]
+    }
+  },
+  "CHAOS DAEMONS": {
+    "DAEMONIC INCURSION (BA)": {
+      "displayName": "DAEMONIC INCURSION",
+      "units": [
+        {
+          "max": 2,
+          "duplicates": false,
+          "exception": "godExclusionRules",
+          "options": [
+            { "name": "Bloodmaster" },
+            { "name": "Karanak" },
+            { "name": "Skulltaker" },
+            { "name": "Changecaster" },
+            { "name": "Exalted Flamer" },
+            { "name": "The Changeling" },
+            { "name": "Epidemius" },
+            { "name": "Poxbringer" },
+            { "name": "Sloppity Bilepiper" },
+            { "name": "Spoilpox Scrivener" },
+            { "name": "Contorted Epitome" },
+            { "name": "Infernal Enrapturess" },
+            { "name": "The Masque of Slaanesh" },
+            { "name": "Tranceweaver" }
+          ]
+        },
+        {
+          "max": 3,
+          "exception": "godExclusionRules",
+          "options": [
+            { "name": "Bloodletters", "models": [10] },
+            { "name": "Blue Horrors", "models": [10] },
+            { "name": "Pink Horrors", "models": [10] },
+            { "name": "Plaguebearers", "models": [10] },
+            { "name": "Nurglings", "models": [3] },
+            { "name": "Daemonettes", "models": [10] }
+          ]
+        },
+        {
+          "max": 5,
+          "duplicates": false,
+          "exception": "godExclusionRules",
+          "options": [
+            { "name": "Flesh Hounds", "models": [5] },
+            { "name": "Flamers", "models": [3] },
+            { "name": "Screamers", "models": [3] },
+            { "name": "Beasts of Nurgle", "models": [1, 2] },
+            { "name": "Fiends", "models": [3] }
+          ]
+        }
+      ],
+      "enhancements": ["Spite Made Manifest", "Geller Breach"]
+    },
+    "INFERNAL ONSLAUGHT": {
+      "units": [
+        {
+          "max": 2,
+          "duplicates": false,
+          "options": [
+            { "name": "Bloodmaster" },
+            { "name": "Karanak" },
+            { "name": "Skulltaker" }
+          ]
+        },
+        {
+          "max": 3,
+          "options": [{ "name": "Bloodletters", "models": [10] }]
+        },
+        {
+          "max": 1,
+          "options": [{ "name": "Flesh Hounds", "models": [5, 10] }]
+        }
+      ],
+      "enhancements": ["Worthier Skulls", "Unholy Fury"]
+    },
+    "ROTTEN AND RUSTED": {
+      "units": [
+        {
+          "max": 2,
+          "duplicates": false,
+          "options": [
+            { "name": "Epidemius" },
+            { "name": "Poxbringer" },
+            { "name": "Sloppity Bilepiper" },
+            { "name": "Spoilpox Scrivener" }
+          ]
+        },
+        {
+          "max": 3,
+          "options": [
+            { "name": "Plaguebearers", "models": [10] },
+            { "name": "Nurglings", "models": [3] }
+          ]
+        },
+        {
+          "max": 1,
+          "options": [{ "name": "Beasts of Nurgle", "models": [1, 2] }]
+        }
+      ],
+      "enhancements": ["Virulent Corruption", "Endless Gift"]
+    },
+    "DREAD CARNIVAL": {
+      "units": [
+        {
+          "max": 2,
+          "duplicates": false,
+          "options": [
+            { "name": "Contorted Epitome" },
+            { "name": "Infernal Enrapturess" },
+            { "name": "The Masque of Slaanesh" },
+            { "name": "Tranceweaver" }
+          ]
+        },
+        {
+          "max": 3,
+          "options": [{ "name": "Daemonettes", "models": [10] }]
+        },
+        {
+          "max": 1,
+          "options": [{ "name": "Fiends", "models": [3] }]
+        }
+      ],
+      "enhancements": ["Fatal Caress", "Horrifying Visage"]
+    },
+    "PANDAEMONIAC INFERNO": {
+      "units": [
+        {
+          "max": 2,
+          "duplicates": false,
+          "options": [
+            { "name": "Changecaster" },
+            { "name": "Exalted Flamer" },
+            { "name": "The Changeling" }
+          ]
+        },
+        {
+          "max": 3,
+          "options": [
+            { "name": "Blue Horrors", "models": [10] },
+            { "name": "Pink Horrors", "models": [10] }
+          ]
+        },
+        {
+          "max": 2,
+          "duplicates": false,
+          "options": [
+            { "name": "Flamers", "models": [3] },
+            { "name": "Screamers", "models": [3] }
+          ]
+        }
+      ],
+      "enhancements": ["Fulgurating Presence", "Mutagenic Flames"]
+    }
+  },
+  "CHAOS SPACE MARINES": {
+    "INFERNAL REAVERS": {
+      "units": [
+        {
+          "max": 2,
+          "duplicates": false,
+          "options": [
+            { "name": "Chaos Lord" },
+            { "name": "Dark Apostle" },
+            { "name": "Dark Commune" },
+            { "name": "Exalted Champion" },
+            { "name": "Master of Executions" },
+            { "name": "Master of Possession" },
+            { "name": "Sorcerer" },
+            { "name": "Warpsmith" }
+          ]
+        },
+        {
+          "max": 3,
+          "options": [{ "name": "Legionaries", "models": [5, 10] }]
+        },
+        {
+          "max": 3,
+          "exception": "requiresLegionariesUnits",
+          "options": [
+            { "name": "Accursed Cultists", "models": [5] },
+            { "name": "Cultist Mob", "models": [10] },
+            { "name": "Fellgor Beastmen", "models": [10] },
+            { "name": "Traitor Guardsmen Squad", "models": [10] }
+          ]
+        },
+        {
+          "max": 2,
+          "duplicates": false,
+          "options": [
+            { "name": "Chaos Terminator Squad", "models": [5] },
+            { "name": "Chosen", "models": [5] }
+          ]
+        },
+        {
+          "max": 1,
+          "options": [
+            { "name": "Chaos Spawn", "models": [2] },
+            { "name": "Possessed", "models": [5] },
+            { "name": "Raptors", "models": [5, 10] },
+            { "name": "Warp Talons", "models": [5, 10] }
+          ]
+        }
+      ],
+      "enhancements": ["Barb-Lance", "Preternatural Instincts"]
+    },
+    "UNDERDECK UPRISING": {
+      "units": [
+        {
+          "max": 2,
+          "options": [{ "name": "Dark Apostle" }, { "name": "Dark Commune" }]
+        },
+        {
+          "max": 6,
+          "options": [
+            { "name": "Accursed Cultists", "models": [5] },
+            { "name": "Cultist Mob", "models": [10] },
+            { "name": "Fellgor Beastmen", "models": [10] },
+            { "name": "Traitor Guardsmen Squad", "models": [10] }
+          ]
+        }
+      ],
+      "enhancements": ["Daemonic Pact", "Zealot’s Wrath"]
+    },
+    "CHAMPIONS OF CHAOS": {
+      "units": [
+        {
+          "max": 3,
+          "duplicates": false,
+          "options": [
+            { "name": "Chaos Lord in Terminator Armour" },
+            { "name": "Exalted Champion" },
+            { "name": "Master of Executions" },
+            { "name": "Master of Possession" },
+            { "name": "Sorcerer in Terminator Armour" }
+          ]
+        },
+        {
+          "max": 2,
+          "options": [
+            { "name": "Chosen", "models": [5, 10] },
+            { "name": "Possessed", "models": [5, 10] },
+            { "name": "Chaos Terminators", "models": [5, 10] }
+          ]
+        },
+        {
+          "max": 1,
+          "options": [{ "name": "Obliterators", "models": [1, 2] }]
+        }
+      ],
+      "enhancements": ["Daemonbound Boon", "Merciless Fighter"]
+    }
+  },
+  "DEATH GUARD": {
+    "VECTORS OF DECAY": {
+      "units": [
+        {
+          "max": 2,
+          "duplicates": false,
+          "options": [
+            { "name": "Lord of Contagion" },
+            { "name": "Lord of Virulence" },
+            { "name": "Malignant Plaguecaster" },
+            { "name": "Typhus" }
+          ]
+        },
+        {
+          "max": 3,
+          "options": [{ "name": "Plague Marines", "models": [5, 10] }]
+        },
+        {
+          "max": 3,
+          "duplicates": false,
+          "options": [
+            { "name": "Blightlord Terminators", "models": [5] },
+            { "name": "Death Guard Chaos Spawn", "models": [2] },
+            { "name": "Deathshroud Terminators", "models": [3] }
+          ]
+        },
+        {
+          "max": 1,
+          "options": [{ "name": "Possessed", "models": [5] }]
+        }
+      ],
+      "enhancements": ["Tainted Blade", "Suffocating Cloud"]
+    },
+    "UNCLEAN UPRISING": {
+      "units": [
+        {
+          "max": 2,
+          "options": [{ "name": "Biologus Putrifier" }]
+        },
+        {
+          "max": 3,
+          "options": [{ "name": "Poxwalkers", "models": [10] }]
+        },
+        {
+          "max": 3,
+          "options": [{ "name": "Plague Marines", "models": [5, 10] }]
+        }
+      ],
+      "enhancements": ["Living Blight", "Dark Blessings"]
+    },
+    "ARCH-CONTAMINATORS": {
+      "units": [
+        {
+          "max": 2,
+          "duplicates": false,
+          "options": [
+            { "name": "Biologus Putrifier" },
+            { "name": "Foul Blightspawn" },
+            { "name": "Malignant Plaguecaster" },
+            { "name": "Plague Surgeon" },
+            { "name": "Tallyman" }
+          ]
+        },
+        {
+          "max": 3,
+          "options": [{ "name": "Plague Marines", "models": [5, 10] }]
+        },
+        {
+          "max": 3,
+          "duplicates": false,
+          "options": [
+            { "name": "Blightlord Terminators", "models": [5] },
+            { "name": "Death Guard Chaos Spawn", "models": [2] },
+            { "name": "Deathshroud Terminators", "models": [3] }
+          ]
+        },
+        {
+          "max": 1,
+          "options": [{ "name": "Possessed", "models": [5] }]
+        }
+      ],
+      "enhancements": ["Rotbringer’s Censer", "Foul Infestation"]
+    }
+  },
+  "THOUSAND SONS": {
+    "CHOSEN CABAL": {
+      "units": [
+        {
+          "max": 2,
+          "duplicates": false,
+          "options": [
+            { "name": "Ahriman" },
+            { "name": "Exalted Sorcerer" },
+            { "name": "Infernal Master" },
+            { "name": "Thousand Sons Sorcerer" }
+          ]
+        },
+        {
+          "max": 3,
+          "options": [{ "name": "Rubric Marines", "models": [5, 10] }]
+        },
+        {
+          "max": 2,
+          "duplicates": false,
+          "options": [
+            { "name": "Scarab Occult Terminators", "models": [5, 10] },
+            { "name": "Thousand Sons Chaos Spawn", "models": [2] }
+          ]
+        },
+        {
+          "max": 1,
+          "options": [{ "name": "Tzaangors", "models": [10] }]
+        }
+      ],
+      "enhancements": ["Warped Prophecy", "Fate’s Nullification"]
+    },
+    "DEVOTED THRALLS": {
+      "units": [
+        {
+          "max": 2,
+          "duplicates": false,
+          "options": [
+            { "name": "Exalted Sorcerer" },
+            { "name": "Infernal Master" },
+            { "name": "Thousand Sons Sorcerer" }
+          ]
+        },
+        {
+          "max": 3,
+          "options": [{ "name": "Tzaangors", "models": [10] }]
+        },
+        {
+          "max": 1,
+          "options": [{ "name": "Thousand Sons Chaos Spawn", "models": [2] }]
+        }
+      ],
+      "enhancements": ["Thrallmaster", "Prescient Authority"]
+    },
+    "FATESEEKERS": {
+      "units": [
+        {
+          "max": 2,
+          "duplicates": false,
+          "options": [
+            { "name": "Ahriman" },
+            { "name": "Exalted Sorcerer" },
+            { "name": "Infernal Master" },
+            { "name": "Thousand Sons Terminator Sorcerer" }
+          ]
+        },
+        {
+          "max": 2,
+          "options": [
+            { "name": "Scarab Occult Terminators", "models": [5, 10] },
+            { "name": "Thousand Sons Chaos Spawn", "models": [2] }
+          ]
+        }
+      ],
+      "enhancements": ["Predestined Champion", "Astral Predation"]
+    }
+  },
+  "WORLD EATERS": {
+    "BOARDING BUTCHERS": {
+      "units": [
+        {
+          "max": 2,
+          "options": [
+            { "name": "Kharn the Betrayer" },
+            { "name": "World Eaters Master of Executions" }
+          ]
+        },
+        {
+          "max": 3,
+          "exception": "requiresKhorneBerzerkersUnits",
+          "options": [
+            { "name": "Khorne Berzerkers", "models": [5, 10] },
+            { "name": "Jakhals", "models": [10] }
+          ]
+        },
+        {
+          "max": 1,
+          "options": [
+            { "name": "Eightbound", "models": [3] },
+            { "name": "Exalted Eightbound", "models": [3] }
+          ]
+        },
+        {
+          "max": 2,
+          "duplicates": false,
+          "options": [
+            { "name": "World Eaters Chaos Spawn", "models": [2] },
+            { "name": "World Eaters Terminator Squad", "models": [5] }
+          ]
+        }
+      ],
+      "enhancements": ["Chosen of Khorne", "Battle Lust"]
+    },
+    "SKULLSWORN": {
+      "units": [
+        {
+          "max": 2,
+          "options": [
+            { "name": "Kharn the Betrayer" },
+            { "name": "World Eaters Master of Executions" }
+          ]
+        },
+        {
+          "max": 2,
+          "options": [
+            { "name": "Eightbound", "models": [3] },
+            { "name": "Exalted Eightbound", "models": [3] },
+            { "name": "World Eaters Terminator Squad", "models": [5, 10] }
+          ]
+        }
+      ],
+      "enhancements": ["Frenzied", "Carmine Corona"]
+    }
+  },
+  "AELDARI": {
+    "KHAINE’S ARROW": {
+      "units": [
+        {
+          "max": 1,
+          "duplicates": false,
+          "exception": "requiresPhoenixLordAttachment",
+          "options": [
+            { "name": "Asurmen" },
+            { "name": "Autarch" },
+            { "name": "Autarch Wayleaper" },
+            { "name": "Baharroth" },
+            { "name": "Eldrad Ulthran" },
+            { "name": "Farseer" },
+            { "name": "Fuegan" },
+            { "name": "Jain Zar" },
+            { "name": "Karandras" },
+            { "name": "Maugan Ra" }
+          ]
+        },
+        {
+          "max": 1,
+          "options": [
+            { "name": "Warlock" },
+            { "name": "Warlock Conclave", "models": [2, 4] }
+          ]
+        },
+        {
+          "max": 4,
+          "duplicates": false,
+          "options": [
+            { "name": "Dire Avengers", "models": [5, 10] },
+            { "name": "Fire Dragons", "models": [5, 10] },
+            { "name": "Howling Banshees", "models": [5, 10] },
+            { "name": "Striking Scorpions", "models": [5, 10] }
+          ]
+        },
+        {
+          "max": 1,
+          "options": [
+            { "name": "Swooping Hawks", "models": [5, 10] },
+            { "name": "Warp Spiders", "models": [5] }
+          ]
+        },
+        {
+          "max": 1,
+          "options": [{ "name": "Dark Reapers", "models": [5, 10] }]
+        }
+      ],
+      "enhancements": ["Runes of Sanctuary (Psychic)", "Shieldmaster"]
+    },
+    "PROTECTOR HOST": {
+      "units": [
+        {
+          "max": 1,
+          "options": [
+            { "name": "Autarch" },
+            { "name": "Eldrad Ulthran" },
+            { "name": "Farseer" }
+          ]
+        },
+        {
+          "max": 1,
+          "options": [
+            { "name": "Warlock" },
+            { "name": "Warlock Conclave", "models": [2, 4] }
+          ]
+        },
+        {
+          "max": 3,
+          "options": [
+            { "name": "Guardian Defenders", "models": [11] },
+            { "name": "Storm Guardians", "models": [11] }
+          ]
+        },
+        {
+          "max": 2,
+          "options": [{ "name": "Dire Avengers", "models": [5, 10] }]
+        }
+      ],
+      "enhancements": ["Grace of Khaine", "Rallying Cry"]
+    },
+    "WEBWAY RAIDERS": {
+      "units": [
+        {
+          "max": 2,
+          "duplicates": false,
+          "options": [
+            { "name": "Autarch" },
+            { "name": "Autarch Wayleaper" },
+            { "name": "Eldrad Ulthran" },
+            { "name": "Farseer" }
+          ]
+        },
+        {
+          "max": 2,
+          "options": [
+            { "name": "Warlock" },
+            { "name": "Warlock Conclave", "models": [2, 4] }
+          ]
+        },
+        {
+          "max": 3,
+          "options": [{ "name": "Rangers", "models": [5] }]
+        }
+      ],
+      "enhancements": ["Phase Orb (Psychic)", "Swiftstrike"]
+    },
+    "CORSAIR FLEET": {
+      "units": [
+        {
+          "max": 2,
+          "options": [{ "name": "Corsair Voidscarred", "models": [5] }]
+        },
+        {
+          "max": 3,
+          "options": [{ "name": "Corsair Voidreavers", "models": [5, 10] }]
+        }
+      ],
+      "enhancements": ["Reaver Lord", "Void-Runner"]
+    }
+  },
+  "DRUKHARI": {
+    "FEAST OF PAIN": {
+      "units": [
+        {
+          "max": 2,
+          "duplicates": false,
+          "options": [
+            { "name": "Archon" },
+            { "name": "Drazhar" },
+            { "name": "Lelith Hesperax" },
+            { "name": "Succubus" }
+          ]
+        },
+        {
+          "max": 3,
+          "options": [
+            { "name": "Kabalite Warriors", "models": [10] },
+            { "name": "Wyches", "models": [10] }
+          ]
+        },
+        {
+          "max": 2,
+          "duplicates": false,
+          "options": [
+            { "name": "Incubi", "models": [5, 10] },
+            { "name": "Mandrakes", "models": [5, 10] }
+          ]
+        }
+      ],
+      "enhancements": ["Swiftblade", "Soul Trap"]
+    },
+    "CRUCIBLE OF MALEDICTION": {
+      "units": [
+        {
+          "max": 2,
+          "options": [{ "name": "Haemonculus" }, { "name": "Urien Rakarth" }]
+        },
+        {
+          "max": 3,
+          "options": [{ "name": "Wracks", "models": [5, 10] }]
+        },
+        {
+          "max": 1,
+          "options": [{ "name": "Grotesques", "models": [3] }]
+        }
+      ],
+      "enhancements": ["Crucible’s Fire", "Twisted Surgeon"]
+    },
+    "VOID RAIDERS": {
+      "units": [
+        {
+          "max": 2,
+          "duplicates": false,
+          "options": [
+            { "name": "Archon" },
+            { "name": "Lelith Hesperax" },
+            { "name": "Succubus" }
+          ]
+        },
+        {
+          "max": 3,
+          "options": [
+            { "name": "Kabalite Warriors", "models": [10] },
+            { "name": "Wyches", "models": [10] }
+          ]
+        },
+        {
+          "max": 1,
+          "options": [{ "name": "Mandrakes", "models": [5, 10] }]
+        }
+      ],
+      "enhancements": ["Merciless Butcher", "Shadow Field"]
+    },
+    "COURT OF THE ARCHON": {
+      "units": [
+        {
+          "max": 2,
+          "options": [{ "name": "Archon" }]
+        },
+        {
+          "max": 3,
+          "options": [{ "name": "Kabalite Warriors", "models": [10] }]
+        },
+        {
+          "max": 3,
+          "duplicates": false,
+          "options": [
+            { "name": "Court of the Archon", "models": [8] },
+            { "name": "Incubi", "models": [5, 10] },
+            { "name": "Mandrakes", "models": [5, 10] }
+          ]
+        }
+      ],
+      "enhancements": ["Labyrinthine Cunning", "Huskblade"]
+    }
+  },
+  "NECRONS": {
+    "NIGHTBRINGER’S COLD": {
+      "units": [
+        {
+          "max": 2,
+          "duplicates": false,
+          "options": [
+            { "name": "Anrakyr the Traveller" },
+            { "name": "Catacomb Command Barge" },
+            { "name": "Chronomancer" },
+            { "name": "Imotekh the Stormlord" },
+            { "name": "Lord" },
+            { "name": "Overlord" },
+            { "name": "Plasmancer" },
+            { "name": "Trazyn the Infinite" }
+          ]
+        },
+        {
+          "max": 3,
+          "options": [{ "name": "Necron Warriors", "models": [10] }]
+        },
+        {
+          "max": 2,
+          "options": [
+            { "name": "Flayed Ones", "models": [10] },
+            { "name": "Immortals", "models": [5, 10] }
+          ]
+        },
+        {
+          "max": 1,
+          "options": [{ "name": "Lychguard", "models": [5] }]
+        }
+      ],
+      "enhancements": ["Sempiternal Weave", "Dimensional Sanctum"]
+    },
+    "THE SEVERED": {
+      "units": [
+        {
+          "max": 2,
+          "options": [{ "name": "Plasmancer" }, { "name": "Psychomancer" }]
+        },
+        {
+          "max": 3,
+          "options": [{ "name": "Flayed Ones", "models": [10] }]
+        },
+        {
+          "max": 2,
+          "options": [{ "name": "Ophydian Destroyers", "models": [3] }]
+        }
+      ],
+      "enhancements": ["Veil of Darkness", "Nightmare Shroud"]
+    },
+    "RELENTLESS EXPANSIONISTS": {
+      "units": [
+        {
+          "max": 2,
+          "duplicates": false,
+          "options": [
+            { "name": "Catacomb Command Barge" },
+            { "name": "Chronomancer" },
+            { "name": "Lord" },
+            { "name": "Overlord" }
+          ]
+        },
+        {
+          "max": 3,
+          "options": [{ "name": "Necron Warriors", "models": [10] }]
+        },
+        {
+          "max": 1,
+          "options": [{ "name": "Immortals", "models": [5, 10] }]
+        },
+        {
+          "max": 1,
+          "options": [{ "name": "Lychguard", "models": [5] }]
+        }
+      ],
+      "enhancements": ["Implacable Conqueror", "Hypermaterial Ablator"]
+    }
+  },
+  "TYRANIDS": {
+    "INFESTATION SWARM": {
+      "units": [
+        {
+          "max": 2,
+          "duplicates": false,
+          "options": [
+            { "name": "Broodlord" },
+            { "name": "Neurotyrant" },
+            { "name": "Tervigon" },
+            { "name": "Winged Hive Tyrant" },
+            { "name": "Winged Tyranid Prime" }
+          ]
+        },
+        {
+          "max": 6,
+          "options": [{ "name": "Termagants", "models": [10] }]
+        },
+        {
+          "max": 3,
+          "options": [{ "name": "Hormagaunts", "models": [10] }]
+        },
+        {
+          "max": 1,
+          "options": [{ "name": "Genestealers", "models": [5, 10] }]
+        }
+      ],
+      "enhancements": ["Alien Cunning", "Perfectly Adapted"]
+    },
+    "BOARDING TORPEDOES": {
+      "units": [
+        {
+          "max": 2,
+          "duplicates": false,
+          "options": [
+            { "name": "Broodlord" },
+            { "name": "Hive Tyrant" },
+            { "name": "Neurotyrant" },
+            { "name": "Tyranid Prime" }
+          ]
+        },
+        {
+          "max": 3,
+          "options": [{ "name": "Tyranid Warriors", "models": [3] }]
+        },
+        {
+          "max": 2,
+          "options": [{ "name": "Genestealers", "models": [5, 10] }]
+        },
+        {
+          "max": 1,
+          "options": [{ "name": "Lictor" }]
+        }
+      ],
+      "enhancements": ["Shadow in the Warp", "Synaptic Lynchpin"]
+    },
+    "VANGUARD ORGANISMS": {
+      "units": [
+        {
+          "max": 2,
+          "duplicates": false,
+          "options": [
+            { "name": "Broodlord" },
+            { "name": "Neurotyrant" },
+            { "name": "Parasite of Mortrex" },
+            { "name": "Winged Tyranid Prime" }
+          ]
+        },
+        {
+          "max": 3,
+          "options": [
+            { "name": "Genestealers", "models": [5, 10] },
+            { "name": "Von Ryan’s Leapers", "models": [3] }
+          ]
+        },
+        {
+          "max": 2,
+          "options": [{ "name": "Lictor" }]
+        }
+      ],
+      "enhancements": ["Chameleonic Mutation", "Bio-Stimulus"]
+    },
+    "CRUSHER STAMPEDE": {
+      "units": [
+        {
+          "max": 2,
+          "duplicates": false,
+          "options": [
+            { "name": "Hive Tyrant" },
+            { "name": "Neurotyrant" },
+            { "name": "Tyranid Prime" },
+            { "name": "Winged Hive Tyrant" },
+            { "name": "Winged Tyranid Prime" }
+          ]
+        },
+        {
+          "max": 2,
+          "options": [{ "name": "Tyranid Warriors", "models": [3] }]
+        },
+        {
+          "max": 2,
+          "options": [
+            { "name": "Tyranid Warriors with Melee Bio-weapons", "models": [3] }
+          ]
+        },
+        {
+          "max": 1,
+          "options": [{ "name": "Screamer-Killer" }]
+        }
+      ],
+      "enhancements": ["Unstoppable Hunger", "Monstrous Musculature"]
+    }
+  },
+  "GENESTEALER CULTS": {
+    "BROOD BROTHERS": {
+      "units": [
+        {
+          "max": 2,
+          "options": [{ "name": "Broodcoven" }]
+        },
+        {
+          "max": 3,
+          "options": [{ "name": "Brood Brothers", "models": [10] }]
+        },
+        {
+          "max": 3,
+          "options": [
+            { "name": "Acolyte Hybrids", "models": [5, 10] },
+            { "name": "Hybrid Metamorphs", "models": [5, 10] },
+            { "name": "Neophyte Hybrids", "models": [10] }
+          ]
+        }
+      ],
+      "enhancements": ["They Came From Below", "Unquestioning Loyalty"]
+    },
+    "BIOSANCTIC BROODSURGE": {
+      "units": [
+        {
+          "max": 2,
+          "duplicates": false,
+          "options": [
+            { "name": "Acolyte Iconward" },
+            { "name": "Magus" },
+            { "name": "Patriarch" },
+            { "name": "Primus" }
+          ]
+        },
+        {
+          "max": 3,
+          "options": [
+            { "name": "Acolyte Hybrids", "models": [5, 10] },
+            { "name": "Hybrid Metamorphs", "models": [5, 10] },
+            { "name": "Neophyte Hybrids", "models": [10] }
+          ]
+        },
+        {
+          "max": 2,
+          "options": [{ "name": "Purestrain Genestealers", "models": [5, 10] }]
+        }
+      ],
+      "enhancements": ["Insidious Mindwyrm", "Icon of the Cult Ascendant"]
+    },
+    "SABOTEURS": {
+      "units": [
+        {
+          "max": 2,
+          "duplicates": false,
+          "options": [
+            { "name": "Magus" },
+            { "name": "Nexos" },
+            { "name": "Primus" }
+          ]
+        },
+        {
+          "max": 3,
+          "options": [{ "name": "Neophyte Hybrids", "models": [10] }]
+        },
+        {
+          "max": 3,
+          "options": [{ "name": "Hybrid Metamorphs", "models": [5, 10] }]
+        }
+      ],
+      "enhancements": ["Master of Concealment", "Sabotage Charges"]
+    }
+  },
+  "LEAGUES OF VOTANN": {
+    "OATHBAND": {
+      "units": [
+        {
+          "max": 2,
+          "duplicates": false,
+          "options": [
+            { "name": "Einhyr Champion" },
+            { "name": "Kâhl" },
+            { "name": "Ûthar the Destined" }
+          ]
+        },
+        {
+          "max": 3,
+          "options": [{ "name": "Hearthkyn Warriors", "models": [10] }]
+        },
+        {
+          "max": 2,
+          "duplicates": false,
+          "options": [
+            { "name": "Einhyr Hearthguard", "models": [5] },
+            { "name": "Hernkyn Pioneers", "models": [3] }
+          ]
+        },
+        {
+          "max": 1,
+          "options": [{ "name": "Cthonian Beserks", "models": [5] }]
+        }
+      ],
+      "enhancements": ["Wayfarer’s Grace", "Grim Demeanour"]
+    },
+    "VOIDFARERS": {
+      "units": [
+        {
+          "max": 2,
+          "duplicates": false,
+          "options": [
+            { "name": "Brôkhyr Iron-master" },
+            { "name": "Kâhl" },
+            { "name": "Ûthar the Destined" }
+          ]
+        },
+        {
+          "max": 3,
+          "options": [{ "name": "Hearthkyn Warriors", "models": [10] }]
+        },
+        {
+          "max": 1,
+          "options": [{ "name": "Hernkyn Pioneers", "models": [3] }]
+        }
+      ],
+      "enhancements": ["Appraising Glare", "Reactive Casket-field"]
+    }
+  },
+  "ORKS": {
+    "BOARDING KREW": {
+      "units": [
+        {
+          "max": 2,
+          "options": [{ "name": "Boss Zagstruk" }, { "name": "Warboss" }]
+        },
+        {
+          "max": 3,
+          "options": [
+            { "name": "Beast Snagga Boyz", "models": [10] },
+            { "name": "Boyz", "models": [10] }
+          ]
+        },
+        {
+          "max": 2,
+          "duplicates": false,
+          "options": [
+            { "name": "Meganobz", "models": [3] },
+            { "name": "Nobz", "models": [5, 10] }
+          ]
+        },
+        {
+          "max": 1,
+          "options": [{ "name": "Stormboyz", "models": [10] }]
+        }
+      ],
+      "enhancements": ["Headwoppa’s Killchoppa", "Big Bosspole"]
+    },
+    "FREEBOOTERZ": {
+      "units": [
+        {
+          "max": 2,
+          "options": [{ "name": "Kaptin Badrukk" }, { "name": "Warboss" }]
+        },
+        {
+          "max": 3,
+          "options": [{ "name": "Boyz", "models": [10] }]
+        },
+        {
+          "max": 2,
+          "options": [{ "name": "Flash Gitz", "models": [5, 10] }]
+        }
+      ],
+      "enhancements": ["Da Lucky Stikk", "Freeboota’s Bravado"]
+    }
+  },
+  "T’AU EMPIRE": {
+    "HUNTER CADRE": {
+      "units": [
+        {
+          "max": 2,
+          "duplicates": false,
+          "options": [
+            { "name": "Cadre Fireblade" },
+            { "name": "Commander Farsight" },
+            { "name": "Commander in Crisis Battlesuit" },
+            { "name": "Commander Shadowsun" }
+          ]
+        },
+        {
+          "max": 3,
+          "options": [
+            { "name": "Breacher Team", "models": [10] },
+            { "name": "Strike Team", "models": [10] }
+          ]
+        },
+        {
+          "max": 2,
+          "duplicates": false,
+          "options": [
+            { "name": "Crisis Battlesuits", "models": [3] },
+            { "name": "Stealth Battlesuits", "models": [3] }
+          ]
+        },
+        {
+          "max": 1,
+          "options": [{ "name": "Pathfinder Team", "models": [10] }]
+        }
+      ],
+      "enhancements": ["Puretide Engram Neurochip", "Stimm Injectors"]
+    },
+    "BREACHING FORCE": {
+      "units": [
+        {
+          "max": 2,
+          "duplicates": false,
+          "options": [
+            { "name": "Aun’Shi" },
+            { "name": "Cadre Fireblade" },
+            { "name": "Ethereal" }
+          ]
+        },
+        {
+          "max": 3,
+          "options": [{ "name": "Breacher Team", "models": [10] }]
+        },
+        {
+          "max": 1,
+          "options": [{ "name": "Kroot Carnivores", "models": [10] }]
+        },
+        {
+          "max": 1,
+          "options": [{ "name": "Kroot Hounds", "models": [4] }]
+        }
+      ],
+      "enhancements": [
+        "Solid-image Projection Unit",
+        "Seismic Fibrillator Node"
+      ]
+    }
+  }
+}
