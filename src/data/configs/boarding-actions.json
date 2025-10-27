@@ -1688,11 +1688,24 @@
     }
   },
   "ORKS": {
-    "BOARDING KREW": {
+    "RAMSHIP RAIDERS": {
       "units": [
         {
           "max": 2,
-          "options": [{ "name": "Boss Zagstruk" }, { "name": "Warboss" }]
+          "duplicates": false,
+          "options": [
+            { "name": "Beastboss" },
+            { "name": "Big Mek" },
+            { "name": "Big Mek with Shokk Attack Gun" },
+            { "name": "Boss Snikrot" },
+            { "name": "Warboss" },
+            { "name": "Mek" },
+            { "name": "Painboss" },
+            { "name": "Painboy" },
+            { "name": "Weirdboy" },
+            { "name": "Wurrboy" },
+            { "name": "Zodgrod Wortsnagga" }
+          ]
         },
         {
           "max": 3,
@@ -1702,36 +1715,47 @@
           ]
         },
         {
-          "max": 2,
-          "duplicates": false,
-          "options": [
-            { "name": "Meganobz", "models": [3] },
-            { "name": "Nobz", "models": [5, 10] }
-          ]
+          "options": [{ "name": "Burna Boyz", "models": [5, 10] }]
         },
         {
-          "max": 1,
-          "options": [{ "name": "Stormboyz", "models": [10] }]
+          "options": [{ "name": "Flash Gitz", "models": [5, 10] }]
+        },
+        {
+          "options": [{ "name": "Gretchin", "models": [11] }]
+        },
+        {
+          "options": [{ "name": "Kommandos", "models": [10] }]
+        },
+        {
+          "options": [{ "name": "Nobz", "models": [5] }]
+        },
+        {
+          "options": [{ "name": "Stormboyz", "models": [5, 10] }]
         }
       ],
-      "enhancements": ["Headwoppa’s Killchoppa", "Big Bosspole"]
+      "enhancements": ["Living Battering Ram", "Scarred Brute"]
     },
-    "FREEBOOTERZ": {
+    "KAPTIN KILLERS": {
       "units": [
         {
           "max": 2,
-          "options": [{ "name": "Kaptin Badrukk" }, { "name": "Warboss" }]
-        },
-        {
-          "max": 3,
-          "options": [{ "name": "Boyz", "models": [10] }]
+          "duplicates": false,
+          "options": [
+            { "name": "Big Mek in Mega Armour" },
+            { "name": "Warboss" },
+            { "name": "Warboss in Mega Armour" }
+          ]
         },
         {
           "max": 2,
-          "options": [{ "name": "Flash Gitz", "models": [5, 10] }]
+          "options": [{ "name": "Meganobz", "models": [3] }]
+        },
+        {
+          "max": 2,
+          "options": [{ "name": "Nobz", "models": [5, 10] }]
         }
       ],
-      "enhancements": ["Da Lucky Stikk", "Freeboota’s Bravado"]
+      "enhancements": ["Tellyporta", "Gnasher Squig Crates"]
     }
   },
   "T’AU EMPIRE": {
