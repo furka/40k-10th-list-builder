@@ -18,6 +18,7 @@ import { deserializeList } from "./utils/serialize-list";
 import { autoUpgradeMFMVersion } from "./utils/mfm";
 import PACKAGE from "../package.json";
 import { BOARDING_ACTIONS, CONFIGS } from "./data/configs";
+import { migrateListToSubFactionSystem } from "./utils/legacy-migrations";
 
 function save(key, val = appData[key]) {
   localStorage.setItem(key, JSON.stringify(val));
@@ -48,13 +49,16 @@ const appData = reactive({
   showPointsChanges: restore("showPointsChanges") ?? true,
   sortOrder: restore("sortOrder") ?? "A-Z",
   units: restore("units") ?? [],
+
   get currentMFM() {
     const version = this.currentList?.mfm_version;
     return MFM[version] ?? null;
   },
+
   get compendium() {
     return (this.currentMFM || MFM.CURRENT).DATA_SHEETS;
   },
+
   get filteredCompendium() {
     return this.compendium.filter(
       (unit) =>
@@ -62,6 +66,7 @@ const appData = reactive({
         unit.faction === this.currentList.subFaction
     );
   },
+
   get factions() {
     const baseFactions = (this.currentMFM || MFM.CURRENT).FACTIONS;
 
@@ -97,6 +102,7 @@ const appData = reactive({
       };
     });
   },
+
   get isBoardingActions() {
     const faction = this.factions.find(
       (f) => f.name === this.currentList?.faction
@@ -104,17 +110,22 @@ const appData = reactive({
     const detachment = faction?.detachments.find(
       (d) => d.name === this.currentList?.detachment
     );
-    return detachment?.boardingActions === true;
+    return detachment?.boardingActions;
   },
+
   get boardingActionsConfig() {
-    if (!this.isBoardingActions) return null;
+    if (!this.isBoardingActions) {
+      return null;
+    }
     return this.boardingActions[this.currentList?.faction]?.[
       this.currentList?.detachment
     ];
   },
+
   get effectiveMaxPoints() {
     return this.isBoardingActions ? 500 : this.currentList.maxPoints;
   },
+
   get detachmentDisplayName() {
     const detachment = this.currentList?.detachment;
     if (!detachment) return "";
@@ -122,6 +133,7 @@ const appData = reactive({
       this.boardingActions[this.currentList?.faction]?.[detachment];
     return config?.displayName || detachment;
   },
+
   get availableSubFactions() {
     const currentFaction = this.currentList?.faction;
     if (!currentFaction) return [];
@@ -131,28 +143,6 @@ const appData = reactive({
     });
   },
 });
-
-function migrateListToSubFactionSystem(list) {
-  if (!list) return;
-
-  if (list.detachment) {
-    list.detachment = list.detachment.toUpperCase();
-  }
-  if (list.faction) {
-    list.faction = list.faction.toUpperCase();
-  }
-
-  const parentFaction = CONFIGS["sub-factions"][list.faction];
-
-  if (parentFaction) {
-    // This list was created with old system where sub-faction was stored as main faction
-    // Migrate: faction="BLOOD ANGELS" -> faction="SPACE MARINES", subFaction="BLOOD ANGELS"
-    list.subFaction = list.faction;
-    list.faction = parentFaction;
-  } else if (list.subFaction === undefined) {
-    list.subFaction = null;
-  }
-}
 
 function initializeApp() {
   [appData.currentList, ...appData.lists].forEach((list) => {
@@ -186,8 +176,6 @@ function initializeApp() {
 }
 
 initializeApp();
-
-console.log(appData);
 
 const handleResize = () => {
   appData.appHeight = window.innerHeight;
