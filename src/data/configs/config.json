@@ -130,7 +130,7 @@
       "Autarch",
       "Autarch Skyrunner",
       "Autarch Wayleaper",
-      "Avatar Of Khaine",
+      "Avatar of Khaine",
       "Baharroth",
       "Bonesinger",
       "Death Jester",
@@ -157,12 +157,14 @@
       "Yvraine"
     ],
     "epic-hero": [
+      "Amallyn Shadowguide",
       "Asurmen",
       "Avatar of Khaine",
       "Baharroth",
       "Eldrad Ulthran",
       "Fuegan",
       "Illic Nightspear",
+      "Irillyth",
       "Jain Zar",
       "Karandras",
       "Lhykhis",
@@ -182,13 +184,6 @@
     "fortification": [
       "Webway Gate"
     ],
-    "conditional": {
-      "WINDRIDER HOST": {
-        "battle-line": [
-          "Windriders"
-        ]
-      }
-    },
     "legends": [
       "Amallyn Shadowguide",
       "Autarch Skyrunner",
@@ -215,7 +210,14 @@
       "Wasp Assault Walker",
       "Webway Gate",
       "Wraithseer"
-    ]
+    ],
+    "conditional": {
+      "WINDRIDER HOST": {
+        "battle-line": [
+          "Windriders"
+        ]
+      }
+    }
   },
   "IMPERIAL AGENTS": {
     "battle-line": [
