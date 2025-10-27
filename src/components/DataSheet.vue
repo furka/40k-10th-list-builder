@@ -4,7 +4,11 @@ import { GROUP_NONE, SORT_EXPENSIVE_FIRST } from "../data/constants";
 import { sortOptionsPtsDescending } from "../utils/sort-functions";
 import { isBattleLine } from "../utils/is-battleline";
 import { unitMax } from "../utils/unit-max";
-import { isBoardingActionsSlotFull } from "../utils/boarding-actions";
+import {
+  isBoardingActionsSlotFull,
+  getBoardingActionsMax,
+  getBoardingActionsErrorMessage,
+} from "../utils/boarding-actions";
 import { getPreviousMFM, getUnitPointsDifference } from "../utils/mfm";
 
 const props = defineProps({
@@ -176,12 +180,41 @@ function optionAvailable(option) {
     return !enhancementTaken(option);
   }
 
+  if (props.appData.isBoardingActions) {
+    const boardingActionsMax = getBoardingActionsMax(
+      { name: props.dataSheet.name },
+      props.appData.currentList.detachment,
+      props.appData.currentList,
+      props.appData.compendium
+    );
+
+    if (boardingActionsMax === 0) {
+      return false;
+    }
+  }
+
   return enoughInCollection(option);
 }
+
+const disabledReason = computed(() => {
+  if (props.appData.isBoardingActions && max.value === 0) {
+    return getBoardingActionsErrorMessage(
+      props.dataSheet.name,
+      props.appData.currentList.detachment,
+      props.appData.currentList,
+      props.appData.compendium
+    );
+  }
+  return null;
+});
 </script>
 
 <template>
-  <div class="data-sheet" v-if="owned && options.length">
+  <div
+    class="data-sheet"
+    v-if="owned && options.length"
+    :title="disabledReason"
+  >
     <div
       class="data-sheet__title"
       :class="{ maxed: maxed }"
