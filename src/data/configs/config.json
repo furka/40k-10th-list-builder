@@ -922,7 +922,8 @@
   },
   "GENESTEALER CULTS": {
     "battle-line": [
-      "Acolyte Hybrids",
+      "Acolyte Hybrids with Autopistols",
+      "Acolyte Hybrids with Hand Flamers",
       "Neophyte Hybrids"
     ],
     "character": [
@@ -941,27 +942,14 @@
       "Reductus Saboteur",
       "Sanctus"
     ],
-    "epic-hero": [
-      "Patriarch"
-    ],
+    "epic-hero": [],
     "dedicated-transport": [
-      "Goliath Truck",
-      "Storm Chimera"
+      "Goliath Truck"
     ],
     "fortification": [
-      "Aegis Defence Line",
-      "Earthshaker Platform",
-      "Hydra Platform",
-      "Manticore Platform",
-      "Sabre Weapons Battery",
       "Tectonic Fragdrill"
     ],
     "legends": [
-      "Earthshaker Platform",
-      "Hydra Platform",
-      "Manticore Platform",
-      "Sabre Weapons Battery",
-      "Storm Chimera",
       "Tectonic Fragdrill"
     ]
   },
