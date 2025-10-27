@@ -1593,75 +1593,55 @@
     }
   },
   "GENESTEALER CULTS": {
-    "BROOD BROTHERS": {
+    "CULT UNVEILED": {
       "units": [
         {
-          "max": 2,
-          "options": [{ "name": "Broodcoven" }]
+          "options": [{ "name": "Magus" }, { "name": "Primus" }]
         },
-        {
-          "max": 3,
-          "options": [{ "name": "Brood Brothers", "models": [10] }]
-        },
-        {
-          "max": 3,
-          "options": [
-            { "name": "Acolyte Hybrids", "models": [5, 10] },
-            { "name": "Hybrid Metamorphs", "models": [5, 10] },
-            { "name": "Neophyte Hybrids", "models": [10] }
-          ]
-        }
-      ],
-      "enhancements": ["They Came From Below", "Unquestioning Loyalty"]
-    },
-    "BIOSANCTIC BROODSURGE": {
-      "units": [
         {
           "max": 2,
           "duplicates": false,
           "options": [
             { "name": "Acolyte Iconward" },
-            { "name": "Magus" },
-            { "name": "Patriarch" },
-            { "name": "Primus" }
+            { "name": "Clamavus" },
+            { "name": "Kelermorph" },
+            { "name": "Locus" },
+            { "name": "Sanctus" }
           ]
         },
         {
           "max": 3,
           "options": [
-            { "name": "Acolyte Hybrids", "models": [5, 10] },
-            { "name": "Hybrid Metamorphs", "models": [5, 10] },
+            { "name": "Acolyte Hybrids with Autopistols", "models": [5, 10] },
             { "name": "Neophyte Hybrids", "models": [10] }
           ]
         },
         {
-          "max": 2,
-          "options": [{ "name": "Purestrain Genestealers", "models": [5, 10] }]
+          "options": [{ "name": "Acolyte Hybrids with Hand Flamers", "models": [5, 10] }]
         }
       ],
-      "enhancements": ["Insidious Mindwyrm", "Icon of the Cult Ascendant"]
+      "enhancements": ["Master Saboteur", "Primary Detonator"]
     },
-    "SABOTEURS": {
+    "GENESPAWN ONSLAUGHT": {
       "units": [
         {
           "max": 2,
           "duplicates": false,
           "options": [
-            { "name": "Magus" },
-            { "name": "Nexos" },
-            { "name": "Primus" }
+            { "name": "Abominant" },
+            { "name": "Benefictus" },
+            { "name": "Biophagus" }
           ]
         },
         {
-          "max": 3,
-          "options": [{ "name": "Neophyte Hybrids", "models": [10] }]
+          "max": 2,
+          "options": [{ "name": "Aberrants", "models": [5, 10] }]
         },
         {
-          "max": 3,
           "options": [{ "name": "Hybrid Metamorphs", "models": [5, 10] }]
         }
       ],
-      "enhancements": ["Master of Concealment", "Sabotage Charges"]
+      "enhancements": ["Spiteful Imp", "Miasmic Fumes"]
     }
   },
   "LEAGUES OF VOTANN": {
