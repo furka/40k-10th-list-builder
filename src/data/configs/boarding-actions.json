@@ -1285,99 +1285,118 @@
     }
   },
   "DRUKHARI": {
-    "FEAST OF PAIN": {
+    "SPACE LANE RAIDERS": {
       "units": [
-        {
-          "max": 2,
-          "duplicates": false,
-          "options": [
-            { "name": "Archon" },
-            { "name": "Drazhar" },
-            { "name": "Lelith Hesperax" },
-            { "name": "Succubus" }
-          ]
-        },
-        {
-          "max": 3,
-          "options": [
-            { "name": "Kabalite Warriors", "models": [10] },
-            { "name": "Wyches", "models": [10] }
-          ]
-        },
-        {
-          "max": 2,
-          "duplicates": false,
-          "options": [
-            { "name": "Incubi", "models": [5, 10] },
-            { "name": "Mandrakes", "models": [5, 10] }
-          ]
-        }
-      ],
-      "enhancements": ["Swiftblade", "Soul Trap"]
-    },
-    "CRUCIBLE OF MALEDICTION": {
-      "units": [
-        {
-          "max": 2,
-          "options": [{ "name": "Haemonculus" }, { "name": "Urien Rakarth" }]
-        },
-        {
-          "max": 3,
-          "options": [{ "name": "Wracks", "models": [5, 10] }]
-        },
-        {
-          "max": 1,
-          "options": [{ "name": "Grotesques", "models": [3] }]
-        }
-      ],
-      "enhancements": ["Crucible’s Fire", "Twisted Surgeon"]
-    },
-    "VOID RAIDERS": {
-      "units": [
-        {
-          "max": 2,
-          "duplicates": false,
-          "options": [
-            { "name": "Archon" },
-            { "name": "Lelith Hesperax" },
-            { "name": "Succubus" }
-          ]
-        },
-        {
-          "max": 3,
-          "options": [
-            { "name": "Kabalite Warriors", "models": [10] },
-            { "name": "Wyches", "models": [10] }
-          ]
-        },
-        {
-          "max": 1,
-          "options": [{ "name": "Mandrakes", "models": [5, 10] }]
-        }
-      ],
-      "enhancements": ["Merciless Butcher", "Shadow Field"]
-    },
-    "COURT OF THE ARCHON": {
-      "units": [
-        {
-          "max": 2,
-          "options": [{ "name": "Archon" }]
-        },
         {
           "max": 3,
           "options": [{ "name": "Kabalite Warriors", "models": [10] }]
         },
         {
           "max": 3,
-          "duplicates": false,
+          "options": [{ "name": "Wracks", "models": [5, 10] }]
+        },
+        {
+          "max": 3,
+          "options": [{ "name": "Wyches", "models": [10] }]
+        },
+        {
+          "exception": "requiresKabaliteWarriors",
+          "options": [{ "name": "Archon" }]
+        },
+        {
+          "exception": "requiresWracks",
           "options": [
-            { "name": "Court of the Archon", "models": [8] },
-            { "name": "Incubi", "models": [5, 10] },
-            { "name": "Mandrakes", "models": [5, 10] }
+            { "name": "Haemonculus" },
+            { "name": "Urien Rakarth" }
           ]
+        },
+        {
+          "exception": "requiresWyches",
+          "options": [
+            { "name": "Lelith Hesperax" },
+            { "name": "Succubus" }
+          ]
+        },
+        {
+          "options": [{ "name": "Incubi", "models": [5, 10] }]
+        },
+        {
+          "options": [{ "name": "Mandrakes", "models": [5, 10] }]
         }
       ],
-      "enhancements": ["Labyrinthine Cunning", "Huskblade"]
+      "enhancements": ["Power and Greed", "Spiteful Demise"]
+    },
+    "KABALITE CORSAIRS": {
+      "units": [
+        {
+          "max": 2,
+          "duplicates": false,
+          "options": [{ "name": "Archon" }, { "name": "Drazhar" }]
+        },
+        {
+          "max": 3,
+          "options": [{ "name": "Kabalite Warriors", "models": [10] }]
+        },
+        {
+          "options": [{ "name": "Court of the Archon", "models": [4] }]
+        },
+        {
+          "options": [{ "name": "Incubi", "models": [5, 10] }]
+        },
+        {
+          "options": [{ "name": "Mandrakes", "models": [5, 10] }]
+        }
+      ],
+      "enhancements": ["Dark Charisma", "Malevolent Cunning"]
+    },
+    "SHIP-KILLER CULT": {
+      "units": [
+        {
+          "max": 2,
+          "duplicates": false,
+          "options": [
+            { "name": "Lelith Hesperax" },
+            { "name": "Succubus" }
+          ]
+        },
+        {
+          "max": 3,
+          "options": [{ "name": "Wyches", "models": [10] }]
+        },
+        {
+          "options": [{ "name": "Incubi", "models": [5, 10] }]
+        },
+        {
+          "options": [{ "name": "Mandrakes", "models": [5, 10] }]
+        }
+      ],
+      "enhancements": ["Stimm-Fervour", "Blood-Drenched Champion"]
+    },
+    "PAINBRINGERS": {
+      "units": [
+        {
+          "max": 2,
+          "duplicates": false,
+          "options": [
+            { "name": "Haemonculus" },
+            { "name": "Urien Rakarth" }
+          ]
+        },
+        {
+          "max": 3,
+          "options": [{ "name": "Wracks", "models": [5, 10] }]
+        },
+        {
+          "options": [{ "name": "Grotesques", "models": [3, 6] }]
+        },
+        {
+          "options": [{ "name": "Incubi", "models": [5, 10] }]
+        },
+        {
+          "options": [{ "name": "Mandrakes", "models": [5, 10] }]
+        }
+      ],
+      "enhancements": ["Rending Chain-Flails", "Vile Surgeon"]
     }
   },
   "NECRONS": {

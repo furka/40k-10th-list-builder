@@ -293,4 +293,90 @@ export const boardingActionsExceptions = {
       return `Chaos Daemons cannot mix units from opposed gods:\n• Cannot mix Khorne + Slaanesh units\n• Cannot mix Nurgle + Tzeentch units`;
     },
   },
+
+  /**
+   * Drukhari SPACE LANE RAIDERS - Archon requires Kabalite Warriors:
+   * You can include up to one of the following unit if you include one or more KABALITE WARRIORS units:
+   * • Archon
+   */
+  requiresKabaliteWarriors: {
+    validate(slot, detachment, currentList, compendium) {
+      const slotUnitNames = slot.options.map((opt) => opt.name);
+
+      const hasArchonInSlot = currentList.units.some((u) =>
+        slotUnitNames.some((slotName) => nameEquals(slotName, u.name)) &&
+        nameEquals(u.name, "Archon")
+      );
+
+      if (!hasArchonInSlot) return true;
+
+      const hasKabaliteWarriors = currentList.units.some((u) =>
+        nameEquals(u.name, "Kabalite Warriors")
+      );
+
+      return hasKabaliteWarriors;
+    },
+
+    getMessage(slot) {
+      return `You can include up to one of the following unit if you include one or more KABALITE WARRIORS units:\n• Archon`;
+    },
+  },
+
+  /**
+   * Drukhari SPACE LANE RAIDERS - Haemonculus/Urien requires Wracks:
+   * You can include up to one of the following units if you include one or more WRACKS units:
+   * • Haemonculus (excluding Urien Rakarth)
+   * • Urien Rakarth
+   */
+  requiresWracks: {
+    validate(slot, detachment, currentList, compendium) {
+      const slotUnitNames = slot.options.map((opt) => opt.name);
+
+      const hasHaemonculusOrUrienInSlot = currentList.units.some((u) =>
+        slotUnitNames.some((slotName) => nameEquals(slotName, u.name)) &&
+        (nameEquals(u.name, "Haemonculus") || nameEquals(u.name, "Urien Rakarth"))
+      );
+
+      if (!hasHaemonculusOrUrienInSlot) return true;
+
+      const hasWracks = currentList.units.some((u) =>
+        nameEquals(u.name, "Wracks")
+      );
+
+      return hasWracks;
+    },
+
+    getMessage(slot) {
+      return `You can include up to one of the following units if you include one or more WRACKS units:\n• Haemonculus (excluding Urien Rakarth)\n• Urien Rakarth`;
+    },
+  },
+
+  /**
+   * Drukhari SPACE LANE RAIDERS - Lelith/Succubus requires Wyches:
+   * You can include up to one of the following units if you include one or more WYCHES units:
+   * • Lelith Hesperax
+   * • Succubus (excluding Lelith Hesperax)
+   */
+  requiresWyches: {
+    validate(slot, detachment, currentList, compendium) {
+      const slotUnitNames = slot.options.map((opt) => opt.name);
+
+      const hasLelithOrSuccubusInSlot = currentList.units.some((u) =>
+        slotUnitNames.some((slotName) => nameEquals(slotName, u.name)) &&
+        (nameEquals(u.name, "Lelith Hesperax") || nameEquals(u.name, "Succubus"))
+      );
+
+      if (!hasLelithOrSuccubusInSlot) return true;
+
+      const hasWyches = currentList.units.some((u) =>
+        nameEquals(u.name, "Wyches")
+      );
+
+      return hasWyches;
+    },
+
+    getMessage(slot) {
+      return `You can include up to one of the following units if you include one or more WYCHES units:\n• Lelith Hesperax\n• Succubus (excluding Lelith Hesperax)`;
+    },
+  },
 };
