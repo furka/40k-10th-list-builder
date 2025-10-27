@@ -1468,116 +1468,86 @@
     }
   },
   "TYRANIDS": {
-    "INFESTATION SWARM": {
+    "TYRANID ATTACK": {
       "units": [
         {
           "max": 2,
-          "duplicates": false,
+          "options": [{ "name": "Winged Tyranid Prime" }]
+        },
+        {
+          "max": 2,
           "options": [
-            { "name": "Broodlord" },
-            { "name": "Neurotyrant" },
-            { "name": "Tervigon" },
-            { "name": "Winged Hive Tyrant" },
-            { "name": "Winged Tyranid Prime" }
+            { "name": "Tyranid Warriors with Melee Bio-weapons", "models": [3] },
+            { "name": "Tyranid Warriors with Ranged Bio-weapons", "models": [3] }
           ]
         },
         {
-          "max": 6,
-          "options": [{ "name": "Termagants", "models": [10] }]
-        },
-        {
-          "max": 3,
           "options": [{ "name": "Hormagaunts", "models": [10] }]
         },
         {
-          "max": 1,
-          "options": [{ "name": "Genestealers", "models": [5, 10] }]
+          "options": [{ "name": "Neurogaunts", "models": [10] }]
+        },
+        {
+          "options": [{ "name": "Ripper Swarms", "models": [3] }]
+        },
+        {
+          "options": [{ "name": "Termagants", "models": [10] }]
         }
       ],
-      "enhancements": ["Alien Cunning", "Perfectly Adapted"]
+      "enhancements": ["Synaptic Goad", "Reinforced Carapace"]
     },
-    "BOARDING TORPEDOES": {
+    "BOARDING SWARM": {
       "units": [
         {
           "max": 2,
           "duplicates": false,
           "options": [
-            { "name": "Broodlord" },
-            { "name": "Hive Tyrant" },
-            { "name": "Neurotyrant" },
-            { "name": "Tyranid Prime" }
+            { "name": "Deathleaper" },
+            { "name": "Lictor" },
+            { "name": "Neurolictor" }
           ]
         },
         {
-          "max": 3,
-          "options": [{ "name": "Tyranid Warriors", "models": [3] }]
-        },
-        {
           "max": 2,
-          "options": [{ "name": "Genestealers", "models": [5, 10] }]
-        },
-        {
-          "max": 1,
-          "options": [{ "name": "Lictor" }]
+          "options": [
+            { "name": "Hormagaunts", "models": [10] },
+            { "name": "Raveners", "models": [3] },
+            { "name": "Von Ryan's Leapers", "models": [3] }
+          ]
         }
       ],
-      "enhancements": ["Shadow in the Warp", "Synaptic Lynchpin"]
+      "enhancements": ["Monoform Predators"]
     },
-    "VANGUARD ORGANISMS": {
+    "BIOTIDE": {
       "units": [
         {
           "max": 2,
-          "duplicates": false,
-          "options": [
-            { "name": "Broodlord" },
-            { "name": "Neurotyrant" },
-            { "name": "Parasite of Mortrex" },
-            { "name": "Winged Tyranid Prime" }
-          ]
+          "options": [{ "name": "Winged Tyranid Prime" }]
         },
         {
           "max": 3,
           "options": [
-            { "name": "Genestealers", "models": [5, 10] },
-            { "name": "Von Ryan’s Leapers", "models": [3] }
+            { "name": "Hormagaunts", "models": [10] },
+            { "name": "Neurogaunts", "models": [10] },
+            { "name": "Ripper Swarms", "models": [3] },
+            { "name": "Termagants", "models": [10] }
           ]
-        },
-        {
-          "max": 2,
-          "options": [{ "name": "Lictor" }]
         }
       ],
-      "enhancements": ["Chameleonic Mutation", "Bio-Stimulus"]
+      "enhancements": ["Synaptic Beacon", "Hypersurge Gland"]
     },
-    "CRUSHER STAMPEDE": {
+    "INFESTATION SWARM (TYR)": {
+      "displayName": "INFESTATION SWARM",
       "units": [
         {
-          "max": 2,
-          "duplicates": false,
-          "options": [
-            { "name": "Hive Tyrant" },
-            { "name": "Neurotyrant" },
-            { "name": "Tyranid Prime" },
-            { "name": "Winged Hive Tyrant" },
-            { "name": "Winged Tyranid Prime" }
-          ]
+          "options": [{ "name": "Broodlord" }]
         },
         {
-          "max": 2,
-          "options": [{ "name": "Tyranid Warriors", "models": [3] }]
-        },
-        {
-          "max": 2,
-          "options": [
-            { "name": "Tyranid Warriors with Melee Bio-weapons", "models": [3] }
-          ]
-        },
-        {
-          "max": 1,
-          "options": [{ "name": "Screamer-Killer" }]
+          "max": 3,
+          "options": [{ "name": "Genestealers", "models": [5, 10] }]
         }
       ],
-      "enhancements": ["Unstoppable Hunger", "Monstrous Musculature"]
+      "enhancements": ["Stalking Menace", "Psi-spoor Sensitivity"]
     }
   },
   "GENESTEALER CULTS": {
@@ -1632,6 +1602,19 @@
         }
       ],
       "enhancements": ["Spiteful Imp", "Miasmic Fumes"]
+    },
+    "INFESTATION SWARM (GSC)": {
+      "displayName": "INFESTATION SWARM",
+      "units": [
+        {
+          "options": [{ "name": "Patriarch" }]
+        },
+        {
+          "max": 3,
+          "options": [{ "name": "Purestrain Genestealers", "models": [5, 10] }]
+        }
+      ],
+      "enhancements": ["Stalking Menace", "Psi-spoor Sensitivity"]
     }
   },
   "LEAGUES OF VOTANN": {
