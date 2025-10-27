@@ -1645,13 +1645,14 @@
     }
   },
   "LEAGUES OF VOTANN": {
-    "OATHBAND": {
+    "VOID SALVAGERS": {
       "units": [
         {
           "max": 2,
           "duplicates": false,
           "options": [
             { "name": "Einhyr Champion" },
+            { "name": "Grimnyr" },
             { "name": "Kâhl" },
             { "name": "Ûthar the Destined" }
           ]
@@ -1661,41 +1662,29 @@
           "options": [{ "name": "Hearthkyn Warriors", "models": [10] }]
         },
         {
-          "max": 2,
-          "duplicates": false,
-          "options": [
-            { "name": "Einhyr Hearthguard", "models": [5] },
-            { "name": "Hernkyn Pioneers", "models": [3] }
-          ]
+          "options": [{ "name": "Brôkhyr Thunderkyn", "models": [3] }]
         },
         {
-          "max": 1,
-          "options": [{ "name": "Cthonian Beserks", "models": [5] }]
+          "options": [{ "name": "Cthonian Beserks", "models": [5, 10] }]
+        },
+        {
+          "options": [{ "name": "Einhyr Hearthguard", "models": [5] }]
         }
       ],
-      "enhancements": ["Wayfarer’s Grace", "Grim Demeanour"]
+      "enhancements": ["Masterful Construction", "Obsessive Drive"]
     },
-    "VOIDFARERS": {
+    "HEARTHFIRE STRIKE": {
       "units": [
         {
           "max": 2,
-          "duplicates": false,
-          "options": [
-            { "name": "Brôkhyr Iron-master" },
-            { "name": "Kâhl" },
-            { "name": "Ûthar the Destined" }
-          ]
+          "options": [{ "name": "Einhyr Champion" }]
         },
         {
-          "max": 3,
-          "options": [{ "name": "Hearthkyn Warriors", "models": [10] }]
-        },
-        {
-          "max": 1,
-          "options": [{ "name": "Hernkyn Pioneers", "models": [3] }]
+          "max": 2,
+          "options": [{ "name": "Einhyr Hearthguard", "models": [5, 10] }]
         }
       ],
-      "enhancements": ["Appraising Glare", "Reactive Casket-field"]
+      "enhancements": ["Celebrated Folk Hero", "Gûlyk's Stars"]
     }
   },
   "ORKS": {
