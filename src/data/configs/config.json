@@ -959,16 +959,16 @@
       "Strike Squad"
     ],
     "character": [
-      "Brother-captain",
-      "Brother-captain Stern",
+      "Brother-Captain",
+      "Brother-Captain Stern",
       "Brotherhood Champion",
       "Brotherhood Chaplain",
       "Brotherhood Librarian",
       "Brotherhood Techmarine",
       "Castellan Crowe",
       "Grand Master",
-      "Grand Master In Nemesis Dreadknight",
       "Grand Master Voldus",
+      "Grand Master in Nemesis Dreadknight",
       "Kaldor Draigo",
       "Venerable Dreadnought"
     ],
@@ -979,12 +979,16 @@
       "Kaldor Draigo"
     ],
     "dedicated-transport": [
-      "Grey Knights Razorback",
-      "Grey Knights Rhino"
+      "Grey Knights Relic Razorback",
+      "Razorback",
+      "Rhino"
     ],
+    "fortification": [],
     "legends": [
+      "Brother-Captain Stern",
       "Grey Knights Dreadnought",
-      "Grey Knights Relic Razorback"
+      "Grey Knights Relic Razorback",
+      "Kaldor Draigo"
     ]
   },
   "IMPERIAL KNIGHTS": {
