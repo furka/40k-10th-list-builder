@@ -52,10 +52,10 @@
     "character": [
       "Aleya",
       "Blade Champion",
-      "Knight-centura",
-      "Shield-captain",
-      "Shield-captain In Allarus Terminator Armour",
-      "Shield-captain On Dawneagle Jetbike",
+      "Knight-Centura",
+      "Shield-Captain",
+      "Shield-Captain in Allarus Terminator Armour",
+      "Shield-Captain on Dawneagle Jetbike",
       "Trajann Valoris",
       "Valerian"
     ],
@@ -67,6 +67,7 @@
     "dedicated-transport": [
       "Anathema Psykana Rhino"
     ],
+    "fortification": [],
     "legends": [],
     "conditional": {
       "NULL MAIDEN VIGIL": {
@@ -90,11 +91,11 @@
       "Tech-Priest Enginseer",
       "Tech-Priest Manipulus",
       "Technoarcheologist",
-      "X-101"
+      "x-101"
     ],
     "epic-hero": [
       "Belisarius Cawl",
-      "X-101"
+      "x-101"
     ],
     "dedicated-transport": [
       "Skorpius Dunerider",
@@ -106,7 +107,7 @@
       "Secutarii Peltasts",
       "Servitors",
       "Terrax-pattern Termite",
-      "X-101"
+      "x-101"
     ]
   },
   "ADEPTUS TITANICUS": {
@@ -207,7 +208,6 @@
       "Vampire Hunter",
       "Vampire Raider",
       "Warp Hunter",
-      "Wasp Assault Walker",
       "Webway Gate",
       "Wraithseer"
     ],
@@ -235,8 +235,8 @@
       "Inquisitor Draxus",
       "Inquisitor Eisenhorn",
       "Inquisitor Greyfax",
-      "Inquisitor In Terminator Armour",
       "Inquisitor Karamazov",
+      "Inquisitor in Terminator Armour",
       "Janus Draik",
       "Jokaero Weaponsmith",
       "Kill Team Cassius",
@@ -244,10 +244,10 @@
       "Navigator",
       "Neyam Shai Murad",
       "Rogue Trader Entourage",
-      "UR-025",
       "Vindicare Assassin",
       "Watch Captain Artemis",
-      "Watch Master"
+      "Watch Master",
+      "ur-025"
     ],
     "epic-hero": [
       "Callidus Assassin",
@@ -255,15 +255,22 @@
       "Eversor Assassin",
       "Inquisitor Coteaz",
       "Inquisitor Draxus",
+      "Inquisitor Eisenhorn",
       "Inquisitor Greyfax",
+      "Inquisitor Karamazov",
+      "Janus Draik",
+      "Kill Team Cassius",
+      "Neyam Shai Murad",
       "Vindicare Assassin",
-      "Watch Captain Artemis"
+      "Watch Captain Artemis",
+      "ur-025"
     ],
     "dedicated-transport": [
       "Imperial Rhino",
       "Inquisitorial Chimera",
       "Sisters of Battle Immolator"
     ],
+    "fortification": [],
     "legends": [
       "Daemonhost",
       "Damned Legionnaires",
@@ -271,17 +278,16 @@
       "Fortis Kill Team",
       "Indomitor Kill Team",
       "Inquisitor Eisenhorn",
-      "Inquisitor In Terminator Armour",
       "Inquisitor Karamazov",
+      "Inquisitor in Terminator Armour",
       "Janus Draik",
       "Jokaero Weaponsmith",
       "Kill Team Cassius",
       "Neyam Shai Murad",
       "Proteus Kill Team",
-      "Sanctifiers",
       "Spectrus Kill Team",
-      "UR-025",
-      "Veteran Bike Squad"
+      "Veteran Bike Squad",
+      "ur-025"
     ]
   },
   "ASTRA MILITARUM": {
@@ -297,7 +303,6 @@
       "Commissar",
       "Death Rider Commissar",
       "Gaunt’s Ghosts",
-      "Hell’s Last",
       "Krieg Command Squad",
       "Leman Russ Commander",
       "Lord Marshal Dreir",
@@ -348,7 +353,6 @@
       "Armageddon-pattern Medusa",
       "Arvus Lighter",
       "Atlas Recovery Vehicle",
-      "Carnodon",
       "Centaur Light Carrier",
       "Colossus",
       "Crassus",
@@ -364,7 +368,6 @@
       "Hades Breaching Drill",
       "Heavy Mortar Team",
       "Heavy Quad Launcher Team",
-      "Hell’s Last",
       "Hydra Platform",
       "Macharius",
       "Macharius Omega",
@@ -501,8 +504,6 @@
       "Infernal Enrapturess",
       "Kairos Fateweaver",
       "Karanak",
-      "Karanak",
-      "Karanak",
       "Keeper of Secrets",
       "Lord of Change",
       "Poxbringer",
@@ -532,8 +533,6 @@
       "Horticulous Slimux",
       "Kairos Fateweaver",
       "Karanak",
-      "Karanak",
-      "Karanak",
       "Rotigus",
       "Scabeiathrax the Bloated",
       "Shalaxi Helbane",
@@ -558,8 +557,6 @@
       "Giant Chaos Spawn",
       "Hellflayer",
       "Herald of Slaanesh on Steed of Slaanesh",
-      "Karanak",
-      "Karanak",
       "Plague Toads",
       "Pox Riders",
       "Scabeiathrax the Bloated",
@@ -632,7 +629,6 @@
       "Fabius Bile",
       "Haarken Worldclaimer",
       "Heretic Astartes Daemon Prince",
-      "Heretic Astartes Daemon Prince with Wings",
       "Huron Blackheart",
       "Lord Discordant on Helstalker",
       "Master of Executions",
@@ -658,15 +654,13 @@
       "Vashtorr the Arkifane"
     ],
     "dedicated-transport": [
-      "Chaos Rhino",
-      "Terrax-pattern Termite"
+      "Chaos Rhino"
     ],
     "fortification": [
       "Noctilith Crown"
     ],
     "legends": [
       "Blood Slaughterer",
-      "Cerberus",
       "Chaos Deimos Predator",
       "Chaos Lord on Bike",
       "Chaos Lord on Disc of Tzeentch",
@@ -676,49 +670,28 @@
       "Chaos Thunderhawk",
       "Cultist Mob with Firearms",
       "Decimator",
-      "Deredeo Dreadnought",
       "Dreadclaw Drop Pod",
       "Exalted Champion",
-      "Falchion",
-      "Fellblade",
-      "Fire Raptor Gunship",
       "Gellerpox Infected",
       "Greater Blight Drone",
       "Greater Brass Scorpion",
       "Hell Blade",
       "Hell Talon",
       "Kharybdis Assault Claw",
-      "Kratos",
       "Kytan Ravager",
-      "Land Raider Achilles",
-      "Land Raider Proteus",
-      "Leviathan Dreadnought",
-      "Mastodon",
       "Mutilators",
       "Mutoid Vermin",
       "Negavolt Cultists",
-      "Rapier Carrier",
-      "Relic Contemptor Dreadnought",
       "Renegade Enforcer",
       "Renegade Heavy Weapons Squad",
       "Renegade Ogryn Beast Handler",
       "Renegade Ogryn Brutes",
       "Renegade Plague Ogryns",
       "Rogue Psyker",
-      "Sicaran Battle Tank",
-      "Sicaran Punisher",
-      "Sicaran Venator",
-      "Sokar-pattern Stormbird",
       "Sorcerer on Bike",
       "Sorcerer on Disc of Tzeentch",
       "Sorcerer on Palanquin of Nurgle",
-      "Sorcerer on Steed of Slaanesh",
-      "Spartan",
-      "Storm Eagle Gunship",
-      "Terrax-pattern Termite",
-      "Typhon",
-      "Whirlwind Scorpius",
-      "Xiphon Interceptor"
+      "Sorcerer on Steed of Slaanesh"
     ]
   },
   "DARK ANGELS": {
@@ -764,7 +737,6 @@
     ],
     "character": [
       "Biologus Putrifier",
-      "Chaos Lord On Palanquin Of Nurgle",
       "Daemon Prince of Nurgle",
       "Daemon Prince of Nurgle with Wings",
       "Death Guard Chaos Lord",
@@ -781,7 +753,6 @@
       "Noxious Blightbringer",
       "Plague Surgeon",
       "Rotigus",
-      "Sorcerer On Palanquin Of Nurgle",
       "Tallyman",
       "Typhus"
     ],
@@ -791,48 +762,17 @@
       "Typhus"
     ],
     "dedicated-transport": [
-      "Chaos Rhino",
-      "Terrax-pattern Termite"
+      "Chaos Rhino"
     ],
     "fortification": [
       "Miasmic Malignifier"
     ],
     "legends": [
-      "Cerberus",
-      "Chaos Lord On Palanquin Of Nurgle",
-      "Chaos Thunderhawk",
       "Death Guard Chaos Lord",
       "Death Guard Chaos Lord in Terminator Armour",
       "Death Guard Cultists",
       "Death Guard Possessed",
-      "Death Guard Sorcerer in Terminator Armour",
-      "Deredeo Dreadnought",
-      "Falchion",
-      "Fellblade",
-      "Fire Raptor Gunship",
-      "Gellerpox Infected",
-      "Greater Blight Drone",
-      "Hell Blade",
-      "Hell Talon",
-      "Kratos",
-      "Land Raider Achilles",
-      "Land Raider Proteus",
-      "Leviathan Dreadnought",
-      "Mastodon",
-      "Mutoid Vermin",
-      "Rapier Carrier",
-      "Relic Contemptor Dreadnought",
-      "Sicaran Battle Tank",
-      "Sicaran Punisher",
-      "Sicaran Venator",
-      "Sokar-pattern Stormbird",
-      "Sorcerer On Palanquin Of Nurgle",
-      "Spartan",
-      "Storm Eagle Gunship",
-      "Terrax-pattern Termite",
-      "Typhon",
-      "Whirlwind Scorpius",
-      "Xiphon Interceptor"
+      "Death Guard Sorcerer in Terminator Armour"
     ]
   },
   "DEATHWATCH": {
@@ -881,9 +821,6 @@
     "fortification": [],
     "legends": [
       "Beastmaster",
-      "Corsair Cloud Dancer Band",
-      "Corsair Reaver Band",
-      "Corsair Skyreaver Band",
       "Court of the Archon",
       "Grotesques",
       "Raven Strike Fighter",
@@ -988,7 +925,8 @@
       "Brother-Captain Stern",
       "Grey Knights Dreadnought",
       "Grey Knights Relic Razorback",
-      "Kaldor Draigo"
+      "Kaldor Draigo",
+      "Servitors"
     ]
   },
   "IMPERIAL KNIGHTS": {
@@ -1111,9 +1049,7 @@
     ],
     "fortification": [
       "Convergence of Dominion",
-      "Gauss Pylon",
-      "Sentry Pylons",
-      "Tomb Citadel Walls"
+      "Gauss Pylon"
     ],
     "legends": [
       "Anrakyr the Traveller",
@@ -1124,9 +1060,7 @@
       "Lord",
       "Nemesor Zahndrekh",
       "Night Shroud",
-      "Sentry Pylons",
       "Tesseract Ark",
-      "Tomb Citadel Walls",
       "Vargard Obyron"
     ]
   },
