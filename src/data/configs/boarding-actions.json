@@ -1442,26 +1442,24 @@
     "CANOPTEK HARVESTERS": {
       "units": [
         {
-          "max": 2,
+          "max": 3,
           "duplicates": false,
           "options": [
-            { "name": "Catacomb Command Barge" },
             { "name": "Chronomancer" },
-            { "name": "Lord" },
-            { "name": "Overlord" }
+            { "name": "Illuminor Szeras" },
+            { "name": "Orikan the Diviner" },
+            { "name": "Plasmancer" },
+            { "name": "Psychomancer" },
+            { "name": "Technomancer" }
           ]
         },
         {
-          "max": 3,
-          "options": [{ "name": "Necron Warriors", "models": [10] }]
-        },
-        {
-          "max": 1,
-          "options": [{ "name": "Immortals", "models": [5, 10] }]
-        },
-        {
-          "max": 1,
-          "options": [{ "name": "Lychguard", "models": [5] }]
+          "max": 2,
+          "options": [
+            { "name": "Canoptek Wraiths", "models": [3] },
+            { "name": "Canoptek Scarab Swarms", "models": [3] },
+            { "name": "Necron Warriors", "models": [10] }
+          ]
         }
       ],
       "enhancements": ["Nanoscarab Reconstitution", "Impromptu Translocation"]
