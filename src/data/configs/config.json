@@ -1499,11 +1499,11 @@
       "Angron",
       "Bloodthirster",
       "Daemon Prince of Khorne",
-      "Daemon Prince of Khorne With Wings",
-      "Khârn The Betrayer",
+      "Daemon Prince of Khorne with Wings",
+      "Khârn the Betrayer",
       "Lord Invocatus",
-      "Lord On Juggernaut",
-      "Master Of Executions",
+      "Lord on Juggernaut",
+      "Master of Executions",
       "Skarbrand",
       "Slaughterbound"
     ],
@@ -1514,12 +1514,10 @@
       "Skarbrand"
     ],
     "dedicated-transport": [
-      "Chaos Rhino",
-      "Terrax-Pattern Termite"
+      "Chaos Rhino"
     ],
-    "legends": [
-      "Terrax-Pattern Termite"
-    ],
+    "fortification": [],
+    "legends": [],
     "conditional": {
       "CULT OF BLOOD": {
         "battle-line": [
