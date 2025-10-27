@@ -1244,44 +1244,44 @@
       ],
       "enhancements": ["Grace of Khaine", "Rallying Cry"]
     },
-    "WEBWAY RAIDERS": {
+    "WRAITHS OF THE VOID": {
+      "units": [
+        {
+          "max": 2,
+          "options": [{ "name": "Spiritseer" }]
+        },
+        {
+          "max": 2,
+          "options": [
+            { "name": "Wraithblades", "models": [5, 10] },
+            { "name": "Wraithguard", "models": [5, 10] }
+          ]
+        }
+      ],
+      "enhancements": ["Direct Guidance", "Song of Renewal"]
+    },
+    "STAR-DANCER MASQUE": {
       "units": [
         {
           "max": 2,
           "duplicates": false,
           "options": [
-            { "name": "Autarch" },
-            { "name": "Autarch Wayleaper" },
-            { "name": "Eldrad Ulthran" },
-            { "name": "Farseer" }
+            { "name": "Death Jester" },
+            { "name": "Shadowseer" },
+            { "name": "Troupe Master" }
           ]
         },
         {
-          "max": 2,
-          "options": [
-            { "name": "Warlock" },
-            { "name": "Warlock Conclave", "models": [2, 4] }
-          ]
+          "max": 1,
+          "exception": "requiresNoOtherCharacters",
+          "options": [{ "name": "Solitaire" }]
         },
         {
           "max": 3,
-          "options": [{ "name": "Rangers", "models": [5] }]
+          "options": [{ "name": "Troupe", "models": [5, 6, 11] }]
         }
       ],
-      "enhancements": ["Phase Orb (Psychic)", "Swiftstrike"]
-    },
-    "CORSAIR FLEET": {
-      "units": [
-        {
-          "max": 2,
-          "options": [{ "name": "Corsair Voidscarred", "models": [5] }]
-        },
-        {
-          "max": 3,
-          "options": [{ "name": "Corsair Voidreavers", "models": [5, 10] }]
-        }
-      ],
-      "enhancements": ["Reaver Lord", "Void-Runner"]
+      "enhancements": ["Prismatic Garb", "Path of Eldanesh"]
     }
   },
   "DRUKHARI": {

@@ -228,6 +228,34 @@ export const boardingActionsExceptions = {
   },
 
   /**
+   * If you do not include any other CHARACTER models, you can include up to 1 of the following unit:
+   * • Solitaire
+   */
+  requiresNoOtherCharacters: {
+    validate(slot, detachment, currentList, compendium) {
+      const slotUnitNames = slot.options.map((opt) => opt.name);
+
+      const characterCount = currentList.units.filter((u) => {
+        const isInThisSlot = slotUnitNames.some((slotName) =>
+          nameEquals(slotName, u.name)
+        );
+        if (isInThisSlot) return false;
+
+        const datasheet = compendium.find((ds) => nameEquals(ds.name, u.name));
+        return datasheet?.character === true;
+      }).length;
+
+      return characterCount === 0;
+    },
+
+    getMessage(slot) {
+      const slotMax = slot.max || 1;
+      const optionsText = slot.options.map((opt) => "• " + opt.name).join("\n");
+      return `If you do not include any other CHARACTER models, you can include up to ${slotMax} of the following unit:\n${optionsText}`;
+    },
+  },
+
+  /**
    * Chaos Daemons cannot mix units from opposed gods:
    * • Cannot mix Khorne + Slaanesh units
    * • Cannot mix Nurgle + Tzeentch units
