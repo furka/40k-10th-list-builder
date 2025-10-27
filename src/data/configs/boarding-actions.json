@@ -1381,7 +1381,7 @@
     }
   },
   "NECRONS": {
-    "NIGHTBRINGER’S COLD": {
+    "TOMB SHIP COMPLEMENT": {
       "units": [
         {
           "max": 2,
@@ -1413,9 +1413,9 @@
           "options": [{ "name": "Lychguard", "models": [5] }]
         }
       ],
-      "enhancements": ["Sempiternal Weave", "Dimensional Sanctum"]
+      "enhancements": ["Resurrection Protocols", "Mindshackle Scarabs"]
     },
-    "THE SEVERED": {
+    "DERANGED OUTCASTS": {
       "units": [
         {
           "max": 2,
@@ -1430,9 +1430,9 @@
           "options": [{ "name": "Ophydian Destroyers", "models": [3] }]
         }
       ],
-      "enhancements": ["Veil of Darkness", "Nightmare Shroud"]
+      "enhancements": ["Inured to Damage", "Domineering Presence"]
     },
-    "RELENTLESS EXPANSIONISTS": {
+    "CANOPTEK HARVESTERS": {
       "units": [
         {
           "max": 2,
@@ -1457,7 +1457,7 @@
           "options": [{ "name": "Lychguard", "models": [5] }]
         }
       ],
-      "enhancements": ["Implacable Conqueror", "Hypermaterial Ablator"]
+      "enhancements": ["Nanoscarab Reconstitution", "Impromptu Translocation"]
     }
   },
   "TYRANIDS": {
