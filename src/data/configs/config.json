@@ -86,22 +86,26 @@
       "Cybernetica Datasmith",
       "Skitarii Marshal",
       "Sydonian Skatros",
-      "Tech-priest Dominus",
-      "Tech-priest Enginseer",
-      "Tech-priest Manipulus",
+      "Tech-Priest Dominus",
+      "Tech-Priest Enginseer",
+      "Tech-Priest Manipulus",
       "Technoarcheologist",
       "X-101"
     ],
     "epic-hero": [
-      "Belisarius Cawl"
+      "Belisarius Cawl",
+      "X-101"
     ],
     "dedicated-transport": [
       "Skorpius Dunerider",
-      "Terrax-Pattern Termite"
+      "Terrax-pattern Termite"
     ],
+    "fortification": [],
     "legends": [
+      "Secutarii Hoplites",
+      "Secutarii Peltasts",
       "Servitors",
-      "Terrax-Pattern Termite",
+      "Terrax-pattern Termite",
       "X-101"
     ]
   },
