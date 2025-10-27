@@ -29,7 +29,7 @@ function findBoardingActionsSlot(unitName, detachment) {
   return null;
 }
 
-function isSlotAvailable(slot, detachment, currentList, compendium) {
+function getSlotMaxAllowed(slot, detachment, currentList, compendium) {
   if (slot.exception && boardingActionsExceptions[slot.exception]) {
     return boardingActionsExceptions[slot.exception].validate(
       slot,
@@ -38,7 +38,7 @@ function isSlotAvailable(slot, detachment, currentList, compendium) {
       compendium
     );
   }
-  return true;
+  return slot.max || 1;
 }
 
 export function isBoardingActionsDetachment(detachment) {
@@ -74,14 +74,13 @@ export function getBoardingActionsMax(
   const slot = findBoardingActionsSlot(option.name, detachment);
   if (!slot) return 0;
 
-  if (!isSlotAvailable(slot, detachment, currentList, compendium)) {
-    return 0;
-  }
+  const maxAllowed = getSlotMaxAllowed(slot, detachment, currentList, compendium);
 
   if (slot.duplicates === false) {
-    return 1;
+    return Math.min(1, maxAllowed);
   }
-  return slot.max || 1;
+
+  return maxAllowed;
 }
 
 export function isBoardingActionsSlotFull(
@@ -93,7 +92,7 @@ export function isBoardingActionsSlotFull(
   const slot = findBoardingActionsSlot(unitName, detachment);
   if (!slot) return false;
 
-  const slotMax = slot.max || 1;
+  const slotMax = getSlotMaxAllowed(slot, detachment, currentList, compendium);
   const slotUnitNames = slot.options.map((opt) => opt.name);
 
   const unitsInSlot = currentList.units.filter((unit) =>
