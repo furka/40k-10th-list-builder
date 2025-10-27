@@ -1,5 +1,6 @@
 import configs from "./config.json";
 import boardingActionsConfig from "./boarding-actions.json";
+import { normalizeString } from "../../utils/name-match";
 
 export const CONFIGS = {
   "battle-line": [],
@@ -17,17 +18,17 @@ for (const key in configs) {
   const config = configs[key];
 
   CONFIGS["battle-line"].push(
-    ...config["battle-line"].map((i) => i.toLowerCase())
+    ...config["battle-line"].map((i) => normalizeString(i))
   );
-  CONFIGS["character"].push(...config["character"].map((i) => i.toLowerCase()));
-  CONFIGS["epic-hero"].push(...config["epic-hero"].map((i) => i.toLowerCase()));
+  CONFIGS["character"].push(...config["character"].map((i) => normalizeString(i)));
+  CONFIGS["epic-hero"].push(...config["epic-hero"].map((i) => normalizeString(i)));
   CONFIGS["dedicated-transport"].push(
-    ...config["dedicated-transport"].map((i) => i.toLowerCase())
+    ...config["dedicated-transport"].map((i) => normalizeString(i))
   );
 
   if (config["fortification"]) {
     CONFIGS["fortification"].push(
-      ...config["fortification"].map((i) => i.toLowerCase())
+      ...config["fortification"].map((i) => normalizeString(i))
     );
   }
 

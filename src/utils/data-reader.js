@@ -1,5 +1,6 @@
 import { CONFIGS, BOARDING_ACTIONS } from "../data/configs";
 import { fixes } from "../data/munitorum-field-manual/fixes";
+import { normalizeString } from "./name-match";
 
 export const parse = function (MFM) {
   let fixed = MFM.replace(/\r\n/g, "\n");
@@ -132,33 +133,33 @@ export const parse = function (MFM) {
         }
 
         if (
-          CONFIGS["epic-hero"].includes(currentDatasheet.name.toLowerCase())
+          CONFIGS["epic-hero"].includes(normalizeString(currentDatasheet.name))
         ) {
           currentDatasheet.epicHero = true;
         }
 
         if (
-          CONFIGS["battle-line"].includes(currentDatasheet.name.toLowerCase())
+          CONFIGS["battle-line"].includes(normalizeString(currentDatasheet.name))
         ) {
           currentDatasheet.battleLine = true;
         }
 
         if (
-          CONFIGS["fortification"].includes(currentDatasheet.name.toLowerCase())
+          CONFIGS["fortification"].includes(normalizeString(currentDatasheet.name))
         ) {
           currentDatasheet.fortification = true;
         }
 
         if (
           CONFIGS["dedicated-transport"].includes(
-            currentDatasheet.name.toLowerCase()
+            normalizeString(currentDatasheet.name)
           )
         ) {
           currentDatasheet.dedicatedTransport = true;
         }
 
         if (
-          CONFIGS["character"].includes(currentDatasheet.name.toLowerCase())
+          CONFIGS["character"].includes(normalizeString(currentDatasheet.name))
         ) {
           currentDatasheet.character = true;
         }

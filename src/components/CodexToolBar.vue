@@ -3,13 +3,18 @@ import { computed } from "vue";
 import CodexOptions from "./CodexOptions.vue";
 import SortArmyButton from "./SortArmyButton.vue";
 import ToolBar from "./ToolBar.vue";
+import { CONFIGS } from "../data/configs";
 
 const props = defineProps({
   appData: Object,
 });
 
 const factions = computed(() => {
-  const factions = props.appData.factions.map((f) => f.name);
+  const factions = props.appData.factions
+    .map((f) => f.name)
+    .filter((factionName) => {
+      return !CONFIGS["sub-factions"][factionName];
+    });
   factions.sort();
   return factions;
 });
@@ -22,8 +27,18 @@ const detachments = computed(() => {
 
   if (!faction?.detachments) return null;
 
+  const baseFactions = props.appData.currentMFM?.FACTIONS || [];
+  const baseFaction = baseFactions.find(
+    (f) => f.name === props.appData.currentList.faction
+  );
+  const baseDetachmentNames = baseFaction?.detachments.map((d) => d.name) || [];
+
   const standardDetachments = faction.detachments
-    .filter((d) => !d.boardingActions)
+    .filter((d) => !d.boardingActions && baseDetachmentNames.includes(d.name))
+    .map((d) => d.name);
+
+  const subFactionDetachments = faction.detachments
+    .filter((d) => !d.boardingActions && !baseDetachmentNames.includes(d.name))
     .map((d) => d.name);
 
   const boardingActionsDetachments = faction.detachments
@@ -32,12 +47,16 @@ const detachments = computed(() => {
 
   return {
     standard: standardDetachments,
+    subFaction: subFactionDetachments,
     boardingActions: boardingActionsDetachments,
   };
 });
 
 function getDetachmentDisplayName(detachmentName) {
-  const config = props.appData.boardingActions[props.appData.currentList.faction]?.[detachmentName];
+  const config =
+    props.appData.boardingActions[props.appData.currentList.faction]?.[
+      detachmentName
+    ];
   return config?.displayName || detachmentName;
 }
 </script>
@@ -52,11 +71,32 @@ function getDetachmentDisplayName(detachmentName) {
       <select
         v-model="props.appData.currentList.faction"
         class="toolbar__faction-select"
+        :class="
+          props.appData.availableSubFactions.length > 0
+            ? 'toolbar__faction-select--3'
+            : 'toolbar__faction-select--2'
+        "
       >
         <option v-for="(faction, index) in factions" :value="faction">
           {{ faction.toLowerCase() }}
         </option>
       </select>
+      <template v-if="props.appData.availableSubFactions.length > 0">
+        <span>—</span>
+        <select
+          v-model="props.appData.currentList.subFaction"
+          class="toolbar__subfaction-select toolbar__subfaction-select--3"
+        >
+          <option :value="null">none</option>
+          <option
+            v-for="(subFaction, index) in props.appData.availableSubFactions"
+            :key="index"
+            :value="subFaction"
+          >
+            {{ subFaction.toLowerCase() }}
+          </option>
+        </select>
+      </template>
       <template
         v-if="
           detachments &&
@@ -68,6 +108,11 @@ function getDetachmentDisplayName(detachmentName) {
         <select
           v-model="props.appData.currentList.detachment"
           class="toolbar__detachment-select"
+          :class="
+            props.appData.availableSubFactions.length > 0
+              ? 'toolbar__detachment-select--3'
+              : 'toolbar__detachment-select--2'
+          "
         >
           <option
             v-for="(detachment, index) in detachments.standard"
@@ -77,9 +122,23 @@ function getDetachmentDisplayName(detachmentName) {
             {{ detachment.toLowerCase() }}
           </option>
           <option
+            v-if="detachments.subFaction.length > 0"
+            disabled
+            class="toolbar__detachment-separator"
+          >
+            {{ props.appData.currentList.subFaction }}
+          </option>
+          <option
+            v-for="(detachment, index) in detachments.subFaction"
+            :key="'subfaction-' + index"
+            :value="detachment"
+          >
+            {{ detachment.toLowerCase() }}
+          </option>
+          <option
             v-if="detachments.boardingActions.length > 0"
             disabled
-            class="ba-separator"
+            class="toolbar__detachment-separator"
           >
             BOARDING ACTIONS
           </option>
@@ -117,18 +176,33 @@ function getDetachmentDisplayName(detachmentName) {
     }
 
     &__faction-select,
+    &__subfaction-select,
     &__detachment-select {
-      max-width: calc(50vw - 300px);
       text-transform: capitalize;
+    }
+
+    &__faction-select--2,
+    &__detachment-select--2 {
+      max-width: calc(50vw - 300px);
 
       @media (max-width: 1160px) {
         max-width: calc(50vw - 185px);
       }
+    }
 
-      .ba-separator {
-        font-size: 0.75em;
-        color: #999;
+    &__faction-select--3,
+    &__subfaction-select--3,
+    &__detachment-select--3 {
+      max-width: calc(33vw - 200px);
+
+      @media (max-width: 1160px) {
+        max-width: calc(33vw - 125px);
       }
+    }
+
+    &__detachment-separator {
+      font-size: 0.75em;
+      color: #999;
     }
 
     &__group {

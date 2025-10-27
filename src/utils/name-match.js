@@ -1,4 +1,4 @@
-function normalizeString(str) {
+export function normalizeString(str) {
   if (!str) return "";
   return str
     .toUpperCase()

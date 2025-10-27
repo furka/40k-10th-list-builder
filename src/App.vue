@@ -17,7 +17,7 @@ import VersionBar from "./components/VersionBar.vue";
 import { deserializeList } from "./utils/serialize-list";
 import { autoUpgradeMFMVersion } from "./utils/mfm";
 import PACKAGE from "../package.json";
-import { BOARDING_ACTIONS } from "./data/configs";
+import { BOARDING_ACTIONS, CONFIGS } from "./data/configs";
 
 function save(key, val = appData[key]) {
   localStorage.setItem(key, JSON.stringify(val));
@@ -55,59 +55,110 @@ const appData = reactive({
   get compendium() {
     return (this.currentMFM || MFM.CURRENT).DATA_SHEETS;
   },
+  get filteredCompendium() {
+    return this.compendium.filter(
+      (unit) =>
+        unit.faction === this.currentList.faction ||
+        unit.faction === this.currentList.subFaction
+    );
+  },
   get factions() {
     const baseFactions = (this.currentMFM || MFM.CURRENT).FACTIONS;
 
-    return baseFactions.map(faction => {
+    return baseFactions.map((faction) => {
+      let detachments = [...faction.detachments];
+
+      // Add boarding actions detachments
       const baConfig = this.boardingActions[faction.name];
-      if (!baConfig) {
-        return faction;
+      if (baConfig) {
+        const baDetachments = Object.keys(baConfig).map((detachmentName) => ({
+          name: detachmentName,
+          boardingActions: true,
+        }));
+        detachments = [...detachments, ...baDetachments];
       }
 
-      const baDetachments = Object.keys(baConfig).map(detachmentName => ({
-        name: detachmentName,
-        boardingActions: true
-      }));
+      // Add subFaction detachments if this is the current faction and a subFaction is selected
+      if (
+        faction.name === this.currentList?.faction &&
+        this.currentList?.subFaction
+      ) {
+        const subFaction = baseFactions.find(
+          (f) => f.name === this.currentList.subFaction
+        );
+        if (subFaction) {
+          detachments = [...detachments, ...subFaction.detachments];
+        }
+      }
 
       return {
         ...faction,
-        detachments: [...faction.detachments, ...baDetachments]
+        detachments,
       };
     });
   },
   get isBoardingActions() {
-    const faction = this.factions.find(f => f.name === this.currentList?.faction);
-    const detachment = faction?.detachments.find(d => d.name === this.currentList?.detachment);
+    const faction = this.factions.find(
+      (f) => f.name === this.currentList?.faction
+    );
+    const detachment = faction?.detachments.find(
+      (d) => d.name === this.currentList?.detachment
+    );
     return detachment?.boardingActions === true;
   },
   get boardingActionsConfig() {
     if (!this.isBoardingActions) return null;
-    return this.boardingActions[this.currentList?.faction]?.[this.currentList?.detachment];
+    return this.boardingActions[this.currentList?.faction]?.[
+      this.currentList?.detachment
+    ];
   },
   get effectiveMaxPoints() {
     return this.isBoardingActions ? 500 : this.currentList.maxPoints;
   },
   get detachmentDisplayName() {
     const detachment = this.currentList?.detachment;
-    if (!detachment) return '';
-    const config = this.boardingActions[this.currentList?.faction]?.[detachment];
+    if (!detachment) return "";
+    const config =
+      this.boardingActions[this.currentList?.faction]?.[detachment];
     return config?.displayName || detachment;
+  },
+  get availableSubFactions() {
+    const currentFaction = this.currentList?.faction;
+    if (!currentFaction) return [];
+
+    return Object.keys(CONFIGS["sub-factions"]).filter((factionName) => {
+      return CONFIGS["sub-factions"][factionName] === currentFaction;
+    });
   },
 });
 
-function initializeApp() {
-  // Normalize legacy data to uppercase
-  if (appData.currentList?.detachment) {
-    appData.currentList.detachment =
-      appData.currentList.detachment.toUpperCase();
+function migrateListToSubFactionSystem(list) {
+  if (!list) return;
+
+  if (list.detachment) {
+    list.detachment = list.detachment.toUpperCase();
   }
-  if (appData.currentList?.faction) {
-    appData.currentList.faction = appData.currentList.faction.toUpperCase();
+  if (list.faction) {
+    list.faction = list.faction.toUpperCase();
   }
 
-  // Auto-upgrade lists to latest MFM if no point changes
-  autoUpgradeMFMVersion(appData.currentList);
-  appData.lists.forEach((list) => autoUpgradeMFMVersion(list));
+  const parentFaction = CONFIGS["sub-factions"][list.faction];
+
+  if (parentFaction) {
+    // This list was created with old system where sub-faction was stored as main faction
+    // Migrate: faction="BLOOD ANGELS" -> faction="SPACE MARINES", subFaction="BLOOD ANGELS"
+    list.subFaction = list.faction;
+    list.faction = parentFaction;
+  } else if (list.subFaction === undefined) {
+    list.subFaction = null;
+  }
+}
+
+function initializeApp() {
+  [appData.currentList, ...appData.lists].forEach((list) => {
+    migrateListToSubFactionSystem(list);
+    autoUpgradeMFMVersion(list);
+  });
   save("lists");
 
   // Load shared list from URL parameters
@@ -178,6 +229,7 @@ function createNewList(faction, detachment) {
   return {
     detachment: detachment || MFM.CURRENT.FACTIONS[0].detachments[0].name,
     faction: faction || MFM.CURRENT.FACTIONS[0].name,
+    subFaction: null,
     maxPoints: 2000,
     mfm_version: MFM.CURRENT.MFM_VERSION,
     modifiedDate: Date.now(),
@@ -228,6 +280,7 @@ watch(
   () => {
     appData.codexFilter = "";
     appData.editCollection = false;
+    appData.currentList.subFaction = null;
     appData.currentList.detachment = MFM.CURRENT.FACTIONS.find(
       (f) =>
         f.name?.toLowerCase() === appData.currentList.faction?.toLowerCase()
@@ -243,6 +296,27 @@ watch(
 watch(
   () => appData.currentList.sortOrder,
   () => applySortToList()
+);
+
+watch(
+  () => appData.currentList.subFaction,
+  () => {
+    const faction = appData.factions.find(
+      (f) =>
+        f.name?.toLowerCase() === appData.currentList.faction?.toLowerCase()
+    );
+
+    if (!faction?.detachments) return;
+
+    const currentDetachment = appData.currentList.detachment;
+    const isDetachmentAvailable = faction.detachments.some(
+      (d) => d.name === currentDetachment
+    );
+
+    if (!isDetachmentAvailable) {
+      appData.currentList.detachment = faction.detachments[0]?.name;
+    }
+  }
 );
 
 onMounted(() => {

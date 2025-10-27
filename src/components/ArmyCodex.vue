@@ -98,9 +98,8 @@ function applyBoardingActionsRules(sheets) {
 }
 
 const dataSheets = computed(() => {
-  const sheets = props.appData.compendium
-    ?.filter(factionFilter)
-    .filter(userFilter)
+  const sheets = props.appData.filteredCompendium
+    ?.filter(userFilter)
     .filter(forgeWorldFilter)
     .filter(legendsFilter)
     .sort(sortOrder());
