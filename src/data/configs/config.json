@@ -1419,29 +1419,20 @@
     "battle-line": [
       "Blue Horrors",
       "Pink Horrors",
-      "Rubric Marines",
-      "Tzaangors"
+      "Rubric Marines"
     ],
-    "conditional": {
-      "WARPMELD PACT": {
-        "battle-line": [
-          "Tzaangors"
-        ]
-      }
-    },
     "character": [
       "Ahriman",
-      "Chaos Lord On Disc Of Tzeentch",
       "Daemon Prince of Tzeentch",
       "Daemon Prince of Tzeentch with Wings",
       "Exalted Sorcerer",
-      "Exalted Sorcerer On Disc Of Tzeentch",
+      "Exalted Sorcerer on Disc of Tzeentch",
       "Infernal Master",
       "Kairos Fateweaver",
       "Lord of Change",
-      "Magnus The Red",
+      "Magnus the Red",
       "Sorcerer",
-      "Sorcerer In Terminator Armour",
+      "Sorcerer in Terminator Armour",
       "Tzaangor Shaman"
     ],
     "epic-hero": [
@@ -1450,13 +1441,17 @@
       "Magnus the Red"
     ],
     "dedicated-transport": [
-      "Chaos Rhino",
-      "Terrax-Pattern Termite"
+      "Chaos Rhino"
     ],
-    "legends": [
-      "Chaos Lord On Disc Of Tzeentch",
-      "Terrax-Pattern Termite"
-    ]
+    "fortification": [],
+    "legends": [],
+    "conditional": {
+      "WARPMELD PACT": {
+        "battle-line": [
+          "Tzaangors"
+        ]
+      }
+    }
   },
   "TYRANIDS": {
     "battle-line": [
