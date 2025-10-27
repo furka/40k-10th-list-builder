@@ -19,7 +19,8 @@ export const boardingActionsExceptions = {
         const datasheet = compendium.find((ds) => nameEquals(ds.name, u.name));
         return datasheet?.character === true;
       }).length;
-      return characterCount <= 1;
+
+      return characterCount <= 1 ? slot.max : 0;
     },
 
     getMessage(slot) {
@@ -59,7 +60,7 @@ export const boardingActionsExceptions = {
         custodianNames.some((name) => nameEquals(u.name, name))
       ).length;
 
-      return anathemaPsykanaCount < custodianCount;
+      return Math.max(0, custodianCount - anathemaPsykanaCount);
     },
 
     getMessage(slot) {
@@ -107,7 +108,7 @@ export const boardingActionsExceptions = {
         legionariesNames.some((name) => nameEquals(u.name, name))
       ).length;
 
-      return cultistCount < legionariesCount;
+      return Math.max(0, legionariesCount - cultistCount);
     },
 
     getMessage(slot) {
@@ -147,7 +148,7 @@ export const boardingActionsExceptions = {
         khorneBerzerkersNames.some((name) => nameEquals(u.name, name))
       ).length;
 
-      return jakhalsCount < khorneBerzerkersCount;
+      return Math.max(0, khorneBerzerkersCount - jakhalsCount);
     },
 
     getMessage(slot) {
@@ -196,6 +197,7 @@ export const boardingActionsExceptions = {
         );
       });
 
+      let maxAllowed = slot.max;
       for (const lord of phoenixLordsInArmy) {
         const lordName = Object.keys(phoenixLordAttachments).find((name) =>
           nameEquals(lord.name, name)
@@ -207,10 +209,13 @@ export const boardingActionsExceptions = {
           requiredUnits.some((reqUnit) => nameEquals(u.name, reqUnit))
         );
 
-        if (!hasRequiredUnit) return false;
+        if (!hasRequiredUnit) {
+          maxAllowed = 0;
+          break;
+        }
       }
 
-      return true;
+      return maxAllowed;
     },
 
     getMessage(slot) {
@@ -245,7 +250,7 @@ export const boardingActionsExceptions = {
         return datasheet?.character === true;
       }).length;
 
-      return characterCount === 0;
+      return characterCount === 0 ? slot.max : 0;
     },
 
     getMessage(slot) {
@@ -262,13 +267,13 @@ export const boardingActionsExceptions = {
    */
   godExclusionRules: {
     validate(slot, detachment, currentList, compendium) {
-      // Define god-specific units (characters and troops)
       const khorneUnits = ["Bloodletters", "Flesh Hounds", "Bloodcrushers", "Skull Cannon", "Skullmaster", "Karanak", "Bloodmaster", "Skulltaker"];
       const slaaneshUnits = ["Daemonettes", "Fiends", "Seekers", "Seeker Chariots", "Exalted Seeker Chariot", "The Masque of Slaanesh", "Contorted Epitome", "Infernal Enrapturess", "Tranceweaver"];
       const nurgleUnits = ["Plaguebearers", "Beasts of Nurgle", "Nurglings", "Plague Drones", "Poxbringer", "Sloppity Bilepiper", "Spoilpox Scrivener", "Epidemius"];
       const tzeentchUnits = ["Pink Horrors", "Blue Horrors", "Brimstone Horrors", "Flamers", "Screamers", "Burning Chariot", "Changecaster", "Fluxmaster", "Fateskimmer", "Changeling", "The Changeling", "Blue Scribes", "Kairos Fateweaver", "Exalted Flamer"];
 
-      // Check which gods are present in the army
+      const slotUnitNames = slot.options.map((opt) => opt.name);
+
       const hasKhorne = currentList.units.some((u) =>
         khorneUnits.some((name) => nameEquals(u.name, name))
       );
@@ -282,11 +287,23 @@ export const boardingActionsExceptions = {
         tzeentchUnits.some((name) => nameEquals(u.name, name))
       );
 
-      // Check for opposed god conflicts
-      if (hasKhorne && hasSlaanesh) return false;
-      if (hasNurgle && hasTzeentch) return false;
+      const slotHasKhorne = slotUnitNames.some((name) =>
+        khorneUnits.some((unit) => nameEquals(name, unit))
+      );
+      const slotHasSlaanesh = slotUnitNames.some((name) =>
+        slaaneshUnits.some((unit) => nameEquals(name, unit))
+      );
+      const slotHasNurgle = slotUnitNames.some((name) =>
+        nurgleUnits.some((unit) => nameEquals(name, unit))
+      );
+      const slotHasTzeentch = slotUnitNames.some((name) =>
+        tzeentchUnits.some((unit) => nameEquals(name, unit))
+      );
 
-      return true;
+      if ((hasKhorne && slotHasSlaanesh) || (hasSlaanesh && slotHasKhorne)) return 0;
+      if ((hasNurgle && slotHasTzeentch) || (hasTzeentch && slotHasNurgle)) return 0;
+
+      return slot.max;
     },
 
     getMessage(slot) {
@@ -301,20 +318,11 @@ export const boardingActionsExceptions = {
    */
   requiresKabaliteWarriors: {
     validate(slot, detachment, currentList, compendium) {
-      const slotUnitNames = slot.options.map((opt) => opt.name);
-
-      const hasArchonInSlot = currentList.units.some((u) =>
-        slotUnitNames.some((slotName) => nameEquals(slotName, u.name)) &&
-        nameEquals(u.name, "Archon")
-      );
-
-      if (!hasArchonInSlot) return true;
-
       const hasKabaliteWarriors = currentList.units.some((u) =>
         nameEquals(u.name, "Kabalite Warriors")
       );
 
-      return hasKabaliteWarriors;
+      return hasKabaliteWarriors ? slot.max : 0;
     },
 
     getMessage(slot) {
@@ -330,20 +338,11 @@ export const boardingActionsExceptions = {
    */
   requiresWracks: {
     validate(slot, detachment, currentList, compendium) {
-      const slotUnitNames = slot.options.map((opt) => opt.name);
-
-      const hasHaemonculusOrUrienInSlot = currentList.units.some((u) =>
-        slotUnitNames.some((slotName) => nameEquals(slotName, u.name)) &&
-        (nameEquals(u.name, "Haemonculus") || nameEquals(u.name, "Urien Rakarth"))
-      );
-
-      if (!hasHaemonculusOrUrienInSlot) return true;
-
       const hasWracks = currentList.units.some((u) =>
         nameEquals(u.name, "Wracks")
       );
 
-      return hasWracks;
+      return hasWracks ? slot.max : 0;
     },
 
     getMessage(slot) {
@@ -359,20 +358,11 @@ export const boardingActionsExceptions = {
    */
   requiresWyches: {
     validate(slot, detachment, currentList, compendium) {
-      const slotUnitNames = slot.options.map((opt) => opt.name);
-
-      const hasLelithOrSuccubusInSlot = currentList.units.some((u) =>
-        slotUnitNames.some((slotName) => nameEquals(slotName, u.name)) &&
-        (nameEquals(u.name, "Lelith Hesperax") || nameEquals(u.name, "Succubus"))
-      );
-
-      if (!hasLelithOrSuccubusInSlot) return true;
-
       const hasWyches = currentList.units.some((u) =>
         nameEquals(u.name, "Wyches")
       );
 
-      return hasWyches;
+      return hasWyches ? slot.max : 0;
     },
 
     getMessage(slot) {
@@ -391,22 +381,102 @@ export const boardingActionsExceptions = {
     validate(slot, detachment, currentList, compendium) {
       const slotUnitNames = slot.options.map((opt) => opt.name);
 
-      // Count how many units from this slot are in the list
       const unitsInSlot = currentList.units.filter((u) =>
         slotUnitNames.some((slotName) => nameEquals(slotName, u.name))
       );
 
-      // Count how many Kroot Carnivores are in the list
       const krootCarnivoresCount = currentList.units.filter((u) =>
         nameEquals(u.name, "Kroot Carnivores")
       ).length;
 
-      // Units in this slot cannot exceed the number of Kroot Carnivores
-      return unitsInSlot.length <= krootCarnivoresCount;
+      return Math.max(0, krootCarnivoresCount - unitsInSlot.length);
     },
 
     getMessage(slot) {
       return `For each KROOT CARNIVORES unit you include, you can include up to one of the following units:\n• Kroot Farstalkers\n• Kroot Hounds\n• Krootox Riders`;
+    },
+  },
+
+  /**
+   * Imperial Agents - Inquisitorial Agents require Inquisitor:
+   * If you include an INQUISITOR model, you can include one of the following unit:
+   * • Inquisitorial Agents (6 or 12 models)
+   */
+  requiresInquisitor: {
+    validate(slot, detachment, currentList, compendium) {
+      const hasInquisitor = currentList.units.some((u) =>
+        nameEquals(u.name, "Inquisitor")
+      );
+
+      return hasInquisitor ? slot.max : 0;
+    },
+
+    getMessage(slot) {
+      return `If you include an INQUISITOR model, you can include one of the following unit:\n• Inquisitorial Agents (6 or 12 models)`;
+    },
+  },
+
+  /**
+   * Death Guard VECTORS OF DECAY - Cultists/Poxwalkers require Plague Marines:
+   * The combined total number of Death Guard Cultists and Poxwalkers units cannot be more than the number of PLAGUE MARINES units
+   */
+  requiresPlagueMarinesUnits: {
+    validate(slot, detachment, currentList, compendium) {
+      const cultistNames = ["Death Guard Cultists", "Poxwalkers"];
+      const plagueMarinesNames = ["Plague Marines"];
+
+      const slotUnitNames = slot.options.map((opt) => opt.name);
+
+      const cultistCount = currentList.units.filter((u) => {
+        const isInThisSlot = slotUnitNames.some((slotName) =>
+          nameEquals(slotName, u.name)
+        );
+        if (isInThisSlot) return false;
+
+        return cultistNames.some((name) => nameEquals(u.name, name));
+      }).length;
+
+      const plagueMarinesCount = currentList.units.filter((u) =>
+        plagueMarinesNames.some((name) => nameEquals(u.name, name))
+      ).length;
+
+      return Math.max(0, plagueMarinesCount - cultistCount);
+    },
+
+    getMessage(slot) {
+      return `The combined total number of Death Guard Cultists and Poxwalkers units cannot be more than the number of PLAGUE MARINES units`;
+    },
+  },
+
+  /**
+   * Thousand Sons - Cultists/Tzaangors require Rubric Marines:
+   * The combined total number of Thousand Sons Cultists and Tzaangors units cannot be more than the number of RUBRIC MARINES units
+   */
+  requiresRubricMarinesUnits: {
+    validate(slot, detachment, currentList, compendium) {
+      const cultistNames = ["Thousand Sons Cultists", "Tzaangors"];
+      const rubricMarinesNames = ["Rubric Marines"];
+
+      const slotUnitNames = slot.options.map((opt) => opt.name);
+
+      const cultistCount = currentList.units.filter((u) => {
+        const isInThisSlot = slotUnitNames.some((slotName) =>
+          nameEquals(slotName, u.name)
+        );
+        if (isInThisSlot) return false;
+
+        return cultistNames.some((name) => nameEquals(u.name, name));
+      }).length;
+
+      const rubricMarinesCount = currentList.units.filter((u) =>
+        rubricMarinesNames.some((name) => nameEquals(u.name, name))
+      ).length;
+
+      return Math.max(0, rubricMarinesCount - cultistCount);
+    },
+
+    getMessage(slot) {
+      return `The combined total number of Thousand Sons Cultists and Tzaangors units cannot be more than the number of RUBRIC MARINES units`;
     },
   },
 };
