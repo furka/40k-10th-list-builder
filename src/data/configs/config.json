@@ -570,9 +570,7 @@
     ]
   },
   "CHAOS KNIGHTS": {
-    "battle-line": [
-      "Cultist Mob"
-    ],
+    "battle-line": [],
     "character": [
       "Chaos Cerastus Knight Acheron",
       "Chaos Cerastus Knight Atrapos",
@@ -580,25 +578,17 @@
       "Chaos Cerastus Knight Lancer",
       "Chaos Questoris Knight Magaera",
       "Chaos Questoris Knight Styrix",
-      "Cultist Firebrand",
-      "Dark Commune",
       "Knight Abominant",
       "Knight Desecrator",
       "Knight Despoiler",
       "Knight Rampager",
       "Knight Ruinator",
-      "Knight Tyrant",
-      "Renegade Enforcer",
-      "Rogue Psyker",
-      "Traitor Enforcer",
-      "War Dog Stalker"
+      "Knight Tyrant"
     ],
     "epic-hero": [],
     "dedicated-transport": [],
-    "legends": [
-      "Renegade Enforcer",
-      "Rogue Psyker"
-    ],
+    "fortification": [],
+    "legends": [],
     "conditional": {
       "HOUNDPACK LANCE": {
         "battle-line": [
