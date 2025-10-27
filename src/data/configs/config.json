@@ -863,12 +863,14 @@
       "Beastmaster",
       "Drazhar",
       "Haemonculus",
+      "Lady Malys",
       "Lelith Hesperax",
       "Succubus",
       "Urien Rakarth"
     ],
     "epic-hero": [
       "Drazhar",
+      "Lady Malys",
       "Lelith Hesperax",
       "Urien Rakarth"
     ],
@@ -876,15 +878,18 @@
       "Raider",
       "Venom"
     ],
+    "fortification": [],
     "legends": [
+      "Beastmaster",
       "Corsair Cloud Dancer Band",
       "Corsair Reaver Band",
       "Corsair Skyreaver Band",
-      "Corsair Voidreavers",
-      "Corsair Voidscarred",
+      "Court of the Archon",
+      "Grotesques",
       "Raven Strike Fighter",
       "Reaper",
-      "Tantalus"
+      "Tantalus",
+      "Urien Rakarth"
     ]
   },
   "EMPEROR'S CHILDREN": {
