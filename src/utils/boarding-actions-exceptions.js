@@ -379,4 +379,34 @@ export const boardingActionsExceptions = {
       return `You can include up to one of the following units if you include one or more WYCHES units:\n• Lelith Hesperax\n• Succubus (excluding Lelith Hesperax)`;
     },
   },
+
+  /**
+   * T'au Empire KROOT RAIDING PARTY - Auxiliary units require Kroot Carnivores:
+   * For each KROOT CARNIVORES unit you include, you can include up to one of each of the following units:
+   * • Kroot Farstalkers
+   * • Kroot Hounds
+   * • Krootox Riders
+   */
+  requiresKrootCarnivores: {
+    validate(slot, detachment, currentList, compendium) {
+      const slotUnitNames = slot.options.map((opt) => opt.name);
+
+      // Count how many units from this slot are in the list
+      const unitsInSlot = currentList.units.filter((u) =>
+        slotUnitNames.some((slotName) => nameEquals(slotName, u.name))
+      );
+
+      // Count how many Kroot Carnivores are in the list
+      const krootCarnivoresCount = currentList.units.filter((u) =>
+        nameEquals(u.name, "Kroot Carnivores")
+      ).length;
+
+      // Units in this slot cannot exceed the number of Kroot Carnivores
+      return unitsInSlot.length <= krootCarnivoresCount;
+    },
+
+    getMessage(slot) {
+      return `For each KROOT CARNIVORES unit you include, you can include up to one of the following units:\n• Kroot Farstalkers\n• Kroot Hounds\n• Krootox Riders`;
+    },
+  },
 };

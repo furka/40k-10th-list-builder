@@ -1305,17 +1305,11 @@
         },
         {
           "exception": "requiresWracks",
-          "options": [
-            { "name": "Haemonculus" },
-            { "name": "Urien Rakarth" }
-          ]
+          "options": [{ "name": "Haemonculus" }, { "name": "Urien Rakarth" }]
         },
         {
           "exception": "requiresWyches",
-          "options": [
-            { "name": "Lelith Hesperax" },
-            { "name": "Succubus" }
-          ]
+          "options": [{ "name": "Lelith Hesperax" }, { "name": "Succubus" }]
         },
         {
           "options": [{ "name": "Incubi", "models": [5, 10] }]
@@ -1354,10 +1348,7 @@
         {
           "max": 2,
           "duplicates": false,
-          "options": [
-            { "name": "Lelith Hesperax" },
-            { "name": "Succubus" }
-          ]
+          "options": [{ "name": "Lelith Hesperax" }, { "name": "Succubus" }]
         },
         {
           "max": 3,
@@ -1377,10 +1368,7 @@
         {
           "max": 2,
           "duplicates": false,
-          "options": [
-            { "name": "Haemonculus" },
-            { "name": "Urien Rakarth" }
-          ]
+          "options": [{ "name": "Haemonculus" }, { "name": "Urien Rakarth" }]
         },
         {
           "max": 3,
@@ -1617,7 +1605,9 @@
           ]
         },
         {
-          "options": [{ "name": "Acolyte Hybrids with Hand Flamers", "models": [5, 10] }]
+          "options": [
+            { "name": "Acolyte Hybrids with Hand Flamers", "models": [5, 10] }
+          ]
         }
       ],
       "enhancements": ["Master Saboteur", "Primary Detonator"]
@@ -1684,7 +1674,7 @@
           "options": [{ "name": "Einhyr Hearthguard", "models": [5, 10] }]
         }
       ],
-      "enhancements": ["Celebrated Folk Hero", "Gûlyk's Stars"]
+      "enhancements": ["Celebrated Folk Hero", "Gûlyk’s Stars"]
     }
   },
   "ORKS": {
@@ -1759,68 +1749,76 @@
     }
   },
   "T’AU EMPIRE": {
-    "HUNTER CADRE": {
+    "STARFIRE CADRE": {
       "units": [
         {
           "max": 2,
           "duplicates": false,
           "options": [
             { "name": "Cadre Fireblade" },
-            { "name": "Commander Farsight" },
-            { "name": "Commander in Crisis Battlesuit" },
-            { "name": "Commander Shadowsun" }
+            { "name": "Darkstrider" },
+            { "name": "Ethereal" }
           ]
         },
         {
           "max": 3,
           "options": [
             { "name": "Breacher Team", "models": [10] },
+            { "name": "Pathfinder Team", "models": [5, 10] },
             { "name": "Strike Team", "models": [10] }
           ]
         },
         {
-          "max": 2,
-          "duplicates": false,
-          "options": [
-            { "name": "Crisis Battlesuits", "models": [3] },
-            { "name": "Stealth Battlesuits", "models": [3] }
-          ]
+          "options": [{ "name": "Kroot Carnivores", "models": [10] }]
         },
         {
-          "max": 1,
-          "options": [{ "name": "Pathfinder Team", "models": [10] }]
+          "options": [{ "name": "Stealth Battlesuits", "models": [3] }]
+        },
+        {
+          "options": [{ "name": "Vespid Stingwings", "models": [5] }]
+        },
+        {
+          "options": [
+            { "name": "Crisis Fireknife Battlesuits", "models": [3] },
+            { "name": "Crisis Starscythe Battlesuits", "models": [3] },
+            { "name": "Crisis Sunforge Battlesuits", "models": [3] }
+          ]
         }
       ],
-      "enhancements": ["Puretide Engram Neurochip", "Stimm Injectors"]
+      "enhancements": ["Target Optimisation Microdrones", "Duty’s Echo"]
     },
-    "BREACHING FORCE": {
+    "KROOT RAIDING PARTY": {
       "units": [
         {
           "max": 2,
           "duplicates": false,
           "options": [
-            { "name": "Aun’Shi" },
-            { "name": "Cadre Fireblade" },
-            { "name": "Ethereal" }
+            { "name": "Kroot Flesh Shaper" },
+            { "name": "Kroot Trail Shaper" },
+            { "name": "Kroot War Shaper" }
           ]
         },
         {
           "max": 3,
-          "options": [{ "name": "Breacher Team", "models": [10] }]
-        },
-        {
-          "max": 1,
           "options": [{ "name": "Kroot Carnivores", "models": [10] }]
         },
         {
-          "max": 1,
-          "options": [{ "name": "Kroot Hounds", "models": [4] }]
+          "max": 3,
+          "exception": "requiresKrootCarnivores",
+          "options": [{ "name": "Kroot Farstalkers", "models": [12] }]
+        },
+        {
+          "max": 3,
+          "exception": "requiresKrootCarnivores",
+          "options": [{ "name": "Kroot Hounds", "models": [5] }]
+        },
+        {
+          "max": 3,
+          "exception": "requiresKrootCarnivores",
+          "options": [{ "name": "Krootox Riders", "models": [1] }]
         }
       ],
-      "enhancements": [
-        "Solid-image Projection Unit",
-        "Seismic Fibrillator Node"
-      ]
+      "enhancements": ["Experienced Leader", "Quill Marker"]
     }
   }
 }
