@@ -50,7 +50,11 @@
     "epic-hero": ["Aleya", "Trajann Valoris", "Valerian"],
     "dedicated-transport": ["Anathema Psykana Rhino"],
     "legends": [],
-    "conditional": { "NULL MAIDEN VIGIL": { "battle-line": ["Prosecutors"] } }
+    "conditional": {
+      "NULL MAIDEN VIGIL": {
+        "battle-line": ["Prosecutors"]
+      }
+    }
   },
   "ADEPTUS MECHANICUS": {
     "battle-line": ["Skitarii Rangers", "Skitarii Vanguard"],
@@ -140,7 +144,11 @@
       "Ynnari Venom"
     ],
     "fortification": ["Webway Gate"],
-    "conditional": { "WINDRIDER HOST": { "battle-line": ["Windriders"] } },
+    "conditional": {
+      "WINDRIDER HOST": {
+        "battle-line": ["Windriders"]
+      }
+    },
     "legends": [
       "Amallyn Shadowguide",
       "Autarch Skyrunner",
@@ -599,7 +607,9 @@
     "dedicated-transport": [],
     "legends": ["Deathwing Strikemaster", "Ravenwing Talonmaster"],
     "conditional": {
-      "COMPANY OF HUNTERS": { "battle-line": ["Outrider Squad"] }
+      "COMPANY OF HUNTERS": {
+        "battle-line": ["Outrider Squad"]
+      }
     },
     "sub-faction": "SPACE MARINES"
   },
@@ -802,61 +812,71 @@
     "dedicated-transport": ["Kapricus Carrier", "Sagitaur"],
     "legends": [],
     "conditional": {
-      "DÊLVE ASSAULT SHIFT": { "battle-line": ["Cthonian Beserks"] }
+      "DÊLVE ASSAULT SHIFT": {
+        "battle-line": ["Cthonian Beserks"]
+      }
     }
   },
   "NECRONS": {
     "battle-line": ["Immortals", "Necron Warriors"],
     "character": [
-      "Anrakyr The Traveller",
-      "C'tan Shard Of The Deceiver",
-      "C'tan Shard Of The Nightbringer",
-      "C'tan Shard Of The Void Dragon",
+      "Anrakyr the Traveller",
       "Catacomb Command Barge",
       "Chronomancer",
+      "C’tan Shard of the Deceiver",
+      "C’tan Shard of the Nightbringer",
+      "C’tan Shard of the Void Dragon",
       "Geomancer",
       "Hexmark Destroyer",
       "Illuminor Szeras",
-      "Imotekh The Stormlord",
+      "Imotekh the Stormlord",
       "Lokhust Lord",
       "Lord",
       "Nemesor Zahndrekh",
-      "Orikan The Diviner",
-      "Overlord with translocation shroud",
+      "Orikan the Diviner",
       "Overlord",
+      "Overlord with Translocation Shroud",
       "Plasmancer",
       "Psychomancer",
       "Royal Warden",
       "Skorpekh Lord",
       "Technomancer",
       "The Silent King",
-      "Transcendent C'tan",
-      "Trazyn The Infinite",
+      "Transcendent C’tan",
+      "Trazyn the Infinite",
       "Vargard Obyron"
     ],
     "epic-hero": [
-      "C'tan Shard of the Deceiver",
-      "C'tan Shard of the Nightbringer",
-      "C'tan Shard of the Void Dragon",
+      "Anrakyr the Traveller",
+      "C’tan Shard of the Deceiver",
+      "C’tan Shard of the Nightbringer",
+      "C’tan Shard of the Void Dragon",
       "Illuminor Szeras",
       "Imotekh the Stormlord",
+      "Nemesor Zahndrekh",
       "Orikan the Diviner",
       "The Silent King",
-      "Trazyn the Infinite"
+      "Trazyn the Infinite",
+      "Vargard Obyron"
     ],
     "dedicated-transport": ["Ghost Ark"],
     "fortification": [
-      "Convergence Of Dominion",
+      "Convergence of Dominion",
       "Gauss Pylon",
-      "Sentry Pylon",
+      "Sentry Pylons",
       "Tomb Citadel Walls"
     ],
     "legends": [
-      "Anrakyr The Traveller",
+      "Anrakyr the Traveller",
+      "Canoptek Acanthrites",
+      "Canoptek Tomb Sentinel",
+      "Canoptek Tomb Stalker",
       "Gauss Pylon",
       "Lord",
       "Nemesor Zahndrekh",
-      "Sentry Pylon",
+      "Night Shroud",
+      "Sentry Pylons",
+      "Tesseract Ark",
       "Tomb Citadel Walls",
       "Vargard Obyron"
     ]
@@ -1089,7 +1109,9 @@
       "Shas'o R'alai"
     ],
     "conditional": {
-      "KROOT HUNTING PACK": { "battle-line": ["Kroot Carnivores"] }
+      "KROOT HUNTING PACK": {
+        "battle-line": ["Kroot Carnivores"]
+      }
     }
   },
   "THOUSAND SONS": {
@@ -1099,7 +1121,11 @@
       "Rubric Marines",
       "Tzaangors"
     ],
-    "conditional": { "WARPMELD PACT": { "battle-line": ["Tzaangors"] } },
+    "conditional": {
+      "WARPMELD PACT": {
+        "battle-line": ["Tzaangors"]
+      }
+    },
     "character": [
       "Ahriman",
       "Chaos Lord On Disc Of Tzeentch",
@@ -1162,7 +1188,9 @@
     "dedicated-transport": ["Chaos Rhino", "Terrax-Pattern Termite"],
     "legends": ["Terrax-Pattern Termite"],
     "conditional": {
-      "CULT OF BLOOD": { "battle-line": ["Jakhals", "Goremongers"] }
+      "CULT OF BLOOD": {
+        "battle-line": ["Jakhals", "Goremongers"]
+      }
     }
   }
 }
