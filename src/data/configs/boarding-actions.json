@@ -630,7 +630,7 @@
       "enhancements": ["Shield of Admonishment", "Close and Sanction"]
     }
   },
-  "AGENTS OF THE IMPERIUM": {
+  "IMPERIAL AGENTS": {
     "VOIDSHIP’S COMPANY": {
       "units": [
         {
@@ -895,7 +895,7 @@
           ]
         }
       ],
-      "enhancements": ["Barb-Lance", "Preternatural Instincts"]
+      "enhancements": ["Voice of the Octed", "Swollen with Power"]
     },
     "UNDERDECK UPRISING": {
       "units": [
@@ -913,7 +913,7 @@
           ]
         }
       ],
-      "enhancements": ["Daemonic Pact", "Zealot’s Wrath"]
+      "enhancements": ["Rabble Rouser", "Vox Malevolus"]
     },
     "CHAMPIONS OF CHAOS": {
       "units": [
@@ -941,7 +941,7 @@
           "options": [{ "name": "Obliterators", "models": [1, 2] }]
         }
       ],
-      "enhancements": ["Daemonbound Boon", "Merciless Fighter"]
+      "enhancements": ["Manifest Vengeance", "Dark Majesty"]
     }
   },
   "DEATH GUARD": {
