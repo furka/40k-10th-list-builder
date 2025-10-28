@@ -67,9 +67,20 @@ export function getBoardingActionsMax(
   currentList,
   compendium
 ) {
-  if (option.enhancement || option.name === "Enhancements") {
+  const isEnhancement = option.enhancement ||
+    option.name === "Enhancements" ||
+    option.name === "Detachment Enhancements" ||
+    option.name === "Generic Enhancements" ||
+    option.name === "Breaching Operation Enhancements";
+
+  if (isEnhancement) {
     const nonEpicCharacterCount = currentList.units.filter((u) => {
-      if (u.name === "Enhancements") return false;
+      const isEnhancementUnit = u.name === "Enhancements" ||
+        u.name === "Detachment Enhancements" ||
+        u.name === "Generic Enhancements" ||
+        u.name === "Breaching Operation Enhancements";
+      if (isEnhancementUnit) return false;
+
       const datasheet = compendium.find((ds) => nameEquals(ds.name, u.name));
       return datasheet?.character === true && datasheet?.epicHero !== true;
     }).length;

@@ -222,7 +222,7 @@ const disabledReason = computed(() => {
     >
       <span class="data-sheet__name">
         <template v-if="count > -1"> {{ count }}/{{ max }}</template>
-        {{ props.dataSheet.name }}
+        {{ props.dataSheet.displayName || props.dataSheet.name }}
         <template v-if="props.appData.group === GROUP_NONE">
           <span
             v-if="
@@ -322,6 +322,7 @@ const disabledReason = computed(() => {
 
   &__name {
     line-height: 20px;
+    text-transform: capitalize;
 
     > span {
       cursor: help;

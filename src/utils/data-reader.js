@@ -187,8 +187,46 @@ export const parse = function (MFM) {
   // Inject boarding actions enhancements
   const enhancementsSheet = DATA_SHEETS.find(sheet => sheet.name === "Enhancements");
   if (enhancementsSheet) {
+    const genericEnhancements = [
+      "superior boarding tactics",
+      "close-quarters killer",
+      "peerless leader",
+      "expert breacher",
+      "personal teleporter",
+      "trademark weapon"
+    ];
+
+    const breachingOperationEnhancements = [
+      "breaching charges",
+      "spoor seeker",
+      "paralysing assault"
+    ];
+
     Object.entries(BOARDING_ACTIONS).forEach(([factionName, detachments]) => {
       Object.entries(detachments).forEach(([detachmentName, config]) => {
+        // Add generic enhancements
+        genericEnhancements.forEach(enhancementName => {
+          enhancementsSheet.sizes.push({
+            name: enhancementName,
+            detachment: detachmentName,
+            enhancement: true,
+            enhancementCategory: "Generic Enhancements",
+            points: 0
+          });
+        });
+
+        // Add breaching operation enhancements
+        breachingOperationEnhancements.forEach(enhancementName => {
+          enhancementsSheet.sizes.push({
+            name: enhancementName,
+            detachment: detachmentName,
+            enhancement: true,
+            enhancementCategory: "Breaching Operation Enhancements",
+            points: 0
+          });
+        });
+
+        // Add faction-specific boarding actions enhancements
         if (config.enhancements) {
           config.enhancements.forEach(enhancementName => {
             enhancementsSheet.sizes.push({

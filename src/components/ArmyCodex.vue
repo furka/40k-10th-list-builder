@@ -15,6 +15,7 @@ import {
 } from "../utils/sort-functions";
 import { isBattleLine } from "../utils/is-battleline";
 import { nameEquals } from "../utils/name-match";
+import { getBoardingActionsDisplayName } from "../utils/boarding-actions";
 
 const props = defineProps({
   appData: Object,
@@ -167,10 +168,53 @@ const groupedUnits = computed(() => {
   }
 
   if (enhancements.value.sizes.length) {
-    data.push({
-      title: "Detachment Enhancements",
-      units: [enhancements.value],
-    });
+    // Group enhancements by category
+    const detachmentEnhancements = enhancements.value.sizes.filter(
+      s => !s.enhancementCategory
+    );
+    const genericEnhancements = enhancements.value.sizes.filter(
+      s => s.enhancementCategory === "Generic Enhancements"
+    );
+    const breachingEnhancements = enhancements.value.sizes.filter(
+      s => s.enhancementCategory === "Breaching Operation Enhancements"
+    );
+
+    const enhancementUnits = [];
+    const detachmentDisplayName = getBoardingActionsDisplayName(props.appData.currentList.detachment).toLowerCase();
+
+    if (detachmentEnhancements.length) {
+      enhancementUnits.push({
+        name: "Detachment Enhancements",
+        displayName: detachmentDisplayName,
+        sizes: detachmentEnhancements,
+        enhancements: true,
+      });
+    }
+
+    if (genericEnhancements.length) {
+      enhancementUnits.push({
+        name: "Generic Enhancements",
+        displayName: "boarding actions",
+        sizes: genericEnhancements,
+        enhancements: true,
+      });
+    }
+
+    if (breachingEnhancements.length) {
+      enhancementUnits.push({
+        name: "Breaching Operation Enhancements",
+        displayName: "breaching operations",
+        sizes: breachingEnhancements,
+        enhancements: true,
+      });
+    }
+
+    if (enhancementUnits.length) {
+      data.push({
+        title: "Enhancements",
+        units: enhancementUnits,
+      });
+    }
   }
 
   return data.filter((group) => group.units.length > 0);
