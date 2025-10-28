@@ -68,7 +68,12 @@ export function getBoardingActionsMax(
   compendium
 ) {
   if (option.enhancement || option.name === "Enhancements") {
-    return 1;
+    const nonEpicCharacterCount = currentList.units.filter((u) => {
+      if (u.name === "Enhancements") return false;
+      const datasheet = compendium.find((ds) => nameEquals(ds.name, u.name));
+      return datasheet?.character === true && datasheet?.epicHero !== true;
+    }).length;
+    return Math.min(2, nonEpicCharacterCount);
   }
 
   const slot = findBoardingActionsSlot(option.name, detachment);
