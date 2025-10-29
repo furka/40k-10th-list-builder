@@ -124,6 +124,24 @@ const enhancements = computed(() => {
   };
 });
 
+const unitStats = computed(() => {
+  const counts = {};
+  const modelsTaken = {};
+  const enhancementsTaken = new Set();
+
+  props.appData.currentList.units.forEach((unit) => {
+    if (!unit.bonus) {
+      counts[unit.name] = (counts[unit.name] || 0) + 1;
+    }
+    modelsTaken[unit.name] = (modelsTaken[unit.name] || 0) + (unit.models || 0);
+    if (unit.optionName) {
+      enhancementsTaken.add(unit.optionName);
+    }
+  });
+
+  return { counts, modelsTaken, enhancementsTaken };
+});
+
 const groupedUnits = computed(() => {
   const data = [];
   if (props.appData.group === GROUP_NONE) {
@@ -251,8 +269,19 @@ function onScrollWheel(e) {
           <div class="codex__group-units">
             <DataSheet
               v-for="(unit, index) in group.units"
+              :key="unit.name"
               :dataSheet="unit"
-              :app-data="appData"
+              :unit-stats="unitStats"
+              :edit-collection="appData.editCollection"
+              :collection="appData.collection"
+              :current-m-f-m="appData.currentMFM"
+              :sort-order="appData.sortOrder"
+              :is-boarding-actions="appData.isBoardingActions"
+              :detachment="appData.currentList.detachment"
+              :current-list="appData.currentList"
+              :compendium="appData.compendium"
+              :show-points-changes="appData.showPointsChanges"
+              :group="appData.group"
               @add="addUnit"
             />
           </div>

@@ -13,7 +13,17 @@ import { getPreviousMFM, getUnitPointsDifference } from "../utils/mfm";
 
 const props = defineProps({
   dataSheet: Object,
-  appData: Object,
+  unitStats: Object,
+  editCollection: Boolean,
+  collection: Object,
+  currentMFM: Object,
+  sortOrder: String,
+  isBoardingActions: Boolean,
+  detachment: String,
+  currentList: Object,
+  compendium: Array,
+  showPointsChanges: Boolean,
+  group: String,
 });
 
 const owned = computed(() => {
@@ -21,20 +31,20 @@ const owned = computed(() => {
     return 999;
   }
 
-  if (props.appData.editCollection) {
-    return props.appData.collection[props.dataSheet.name] ?? 999;
+  if (props.editCollection) {
+    return props.collection[props.dataSheet.name] ?? 999;
   }
 
-  return props.appData.collection[props.dataSheet.name] ?? 999;
+  return props.collection[props.dataSheet.name] ?? 999;
 });
 
 function onCollectionBlur(event) {
   const value = Math.min(999, Math.max(0, Number(event.target.value)));
-  props.appData.collection[props.dataSheet.name] = value;
+  props.collection[props.dataSheet.name] = value;
 }
 
 const options = computed(() => {
-  const currentMFM = props.appData.currentMFM;
+  const currentMFM = props.currentMFM;
   const previousMFM = getPreviousMFM(currentMFM);
 
   const sizes = [...props.dataSheet.sizes].map((size) => {
@@ -60,7 +70,7 @@ const options = computed(() => {
     };
   });
 
-  if (props.appData.sortOrder === SORT_EXPENSIVE_FIRST) {
+  if (props.sortOrder === SORT_EXPENSIVE_FIRST) {
     sizes.sort(sortOptionsPtsDescending);
   }
 
@@ -68,20 +78,24 @@ const options = computed(() => {
 });
 
 const count = computed(() => {
-  return props.appData.currentList.units.filter(
-    (unit) => unit.name === props.dataSheet.name && !unit.bonus
-  )?.length;
+  return props.unitStats.counts[props.dataSheet.name] || 0;
 });
 
 const maxed = computed(() => {
-  const max = unitMax(props.dataSheet, props.appData);
+  const max = unitMax(
+    props.dataSheet,
+    props.detachment,
+    props.isBoardingActions,
+    props.currentList,
+    props.compendium
+  );
 
-  if (props.appData.isBoardingActions) {
+  if (props.isBoardingActions) {
     const slotFull = isBoardingActionsSlotFull(
       props.dataSheet.name,
-      props.appData.currentList.detachment,
-      props.appData.currentList,
-      props.appData.compendium
+      props.detachment,
+      props.currentList,
+      props.compendium
     );
 
     return count.value >= max || slotFull;
@@ -91,7 +105,13 @@ const maxed = computed(() => {
 });
 
 const max = computed(() => {
-  return unitMax(props.dataSheet, props.appData);
+  return unitMax(
+    props.dataSheet,
+    props.detachment,
+    props.isBoardingActions,
+    props.currentList,
+    props.compendium
+  );
 });
 
 const hasOwned = computed(() => {
@@ -99,7 +119,7 @@ const hasOwned = computed(() => {
     return true;
   }
 
-  if (props.appData.editCollection) {
+  if (props.editCollection) {
     return true;
   }
 
@@ -107,9 +127,7 @@ const hasOwned = computed(() => {
 });
 
 const modelsTaken = computed(() => {
-  return props.appData.currentList.units
-    .filter((u) => u.name === props.dataSheet.name)
-    .reduce((acc, curr) => acc + curr.models, 0);
+  return props.unitStats.modelsTaken[props.dataSheet.name] || 0;
 });
 
 const color = computed(() => {
@@ -148,11 +166,7 @@ function enoughInCollection(option) {
 }
 
 function enhancementTaken(enhancement) {
-  return (
-    props.appData.currentList.units.filter(
-      (u) => u.optionName === enhancement.name
-    )?.length > 0
-  );
+  return props.unitStats.enhancementsTaken.has(enhancement.name);
 }
 
 function upOrDown(change) {
@@ -175,12 +189,12 @@ function optionAvailable(option) {
     return !enhancementTaken(option);
   }
 
-  if (props.appData.isBoardingActions) {
+  if (props.isBoardingActions) {
     const boardingActionsMax = getBoardingActionsMax(
       { name: props.dataSheet.name },
-      props.appData.currentList.detachment,
-      props.appData.currentList,
-      props.appData.compendium
+      props.detachment,
+      props.currentList,
+      props.compendium
     );
 
     if (boardingActionsMax === 0) {
@@ -192,12 +206,12 @@ function optionAvailable(option) {
 }
 
 const disabledReason = computed(() => {
-  if (props.appData.isBoardingActions && max.value === 0) {
+  if (props.isBoardingActions && max.value === 0) {
     return getBoardingActionsErrorMessage(
       props.dataSheet.name,
-      props.appData.currentList.detachment,
-      props.appData.currentList,
-      props.appData.compendium
+      props.detachment,
+      props.currentList,
+      props.compendium
     );
   }
   return null;
@@ -213,17 +227,17 @@ const disabledReason = computed(() => {
     <div
       class="data-sheet__title"
       :class="{ maxed: maxed }"
-      :style="appData.showPointsChanges ? `background-color: ${color};` : ''"
+      :style="showPointsChanges ? `background-color: ${color};` : ''"
     >
       <span class="data-sheet__name">
         <template v-if="count > -1"> {{ count }}/{{ max }}</template>
         {{ props.dataSheet.displayName || props.dataSheet.name }}
-        <template v-if="props.appData.group === GROUP_NONE">
+        <template v-if="props.group === GROUP_NONE">
           <span
             v-if="
               isBattleLine(
                 props.dataSheet,
-                props.appData.currentList.detachment
+                props.detachment
               )
             "
             title="Battleline"
@@ -242,7 +256,7 @@ const disabledReason = computed(() => {
       </span>
 
       <label
-        v-if="!props.dataSheet.enhancements && props.appData.editCollection"
+        v-if="!props.dataSheet.enhancements && props.editCollection"
       >
         Models owned:
         <input
@@ -258,7 +272,7 @@ const disabledReason = computed(() => {
       </label>
 
       <div
-        v-if="!props.dataSheet.enhancements && !props.appData.editCollection"
+        v-if="!props.dataSheet.enhancements && !props.editCollection"
         class="data-sheet__count"
       >
         <template v-if="owned < 999">
@@ -284,7 +298,7 @@ const disabledReason = computed(() => {
         <span class="data-sheet__option-spacer"></span>
         <span class="data-sheet__points">
           <span
-            v-if="option.pointsChange && appData.showPointsChanges"
+            v-if="option.pointsChange && showPointsChanges"
             :class="upOrDown(option.pointsChange)"
           >
             ({{ option.pointsChange }})
