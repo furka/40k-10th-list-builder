@@ -10,8 +10,22 @@ import {
 } from "../data/constants";
 
 const props = defineProps({
-  appData: Object,
+  showPointsChanges: Boolean,
+  showForgeWorld: Boolean,
+  showLegends: Boolean,
+  editCollection: Boolean,
+  sortOrder: String,
+  group: String,
 });
+
+const emit = defineEmits([
+  'set-show-points-changes',
+  'set-show-forge-world',
+  'set-show-legends',
+  'set-edit-collection',
+  'set-sort-order',
+  'set-group',
+]);
 </script>
 
 <template>
@@ -23,30 +37,49 @@ const props = defineProps({
     <template v-slot:content>
       <div class="codex-options__content">
         <label title="Show points changes compared to previous MFM">
-          <input type="checkbox" v-model="props.appData.showPointsChanges" />
+          <input
+            type="checkbox"
+            :checked="props.showPointsChanges"
+            @change="emit('set-show-points-changes', $event.target.checked)"
+          />
           Points Changes
         </label>
 
         <label title="Show Forge World units">
-          <input type="checkbox" v-model="props.appData.showForgeWorld" />
+          <input
+            type="checkbox"
+            :checked="props.showForgeWorld"
+            @change="emit('set-show-forge-world', $event.target.checked)"
+          />
           Forge World
         </label>
 
         <label title="Show Legends units">
-          <input type="checkbox" v-model="props.appData.showLegends" />
+          <input
+            type="checkbox"
+            :checked="props.showLegends"
+            @change="emit('set-show-legends', $event.target.checked)"
+          />
           Legends
         </label>
 
         <label
           title="Set which units are available in your personal collection"
         >
-          <input type="checkbox" v-model="props.appData.editCollection" />
+          <input
+            type="checkbox"
+            :checked="props.editCollection"
+            @change="emit('set-edit-collection', $event.target.checked)"
+          />
           Edit Collection
         </label>
 
         <label title="Sort Datasheets">
           Sort:
-          <select v-model="props.appData.sortOrder">
+          <select
+            :value="props.sortOrder"
+            @change="emit('set-sort-order', $event.target.value)"
+          >
             <option>{{ SORT_ALPHABETICAL }}</option>
             <option>{{ SORT_CHEAPEST_FIRST }}</option>
             <option>{{ SORT_EXPENSIVE_FIRST }}</option>
@@ -55,7 +88,10 @@ const props = defineProps({
 
         <label title="Group Datasheets">
           Group:
-          <select v-model="props.appData.group">
+          <select
+            :value="props.group"
+            @change="emit('set-group', $event.target.value)"
+          >
             <option>{{ GROUP_NONE }}</option>
             <option>{{ GROUP_ROLE }}</option>
           </select>
