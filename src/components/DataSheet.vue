@@ -174,9 +174,7 @@ function optionAvailable(option) {
   if (props.appData.isBoardingActions) {
     const boardingActionsMax = getBoardingActionsMax(
       { name: props.dataSheet.name },
-      props.appData.currentList.detachment,
-      props.appData.currentList,
-      props.appData.compendium
+      props.appData
     );
 
     if (boardingActionsMax === 0) {
