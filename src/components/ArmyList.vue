@@ -9,17 +9,25 @@ const TOOLBAR_HEIGHT = 44;
 const VERSION_BAR_HEIGHT = 20;
 
 const props = defineProps({
-  appData: Object,
+  appHeight: Number,
+  effectiveMaxPoints: Number,
+  currentMFM: Object,
+  compendium: Array,
+  isBoardingActions: Boolean,
+  detachment: String,
+  currentList: Object,
 });
 
+const emit = defineEmits(['set-units', 'set-sort-order']);
+
 const scale = computed(() => {
-  return (props.appData.appHeight - (TOOLBAR_HEIGHT * 2) - VERSION_BAR_HEIGHT) / props.appData.effectiveMaxPoints;
+  return (props.appHeight - (TOOLBAR_HEIGHT * 2) - VERSION_BAR_HEIGHT) / props.effectiveMaxPoints;
 });
 
 const points = computed(() => {
-  return props.appData.currentList.units.reduce(
+  return props.currentList.units.reduce(
     (acc, curr) => {
-      const unitPoints = getPoints(curr, props.appData.currentMFM);
+      const unitPoints = getPoints(curr, props.currentMFM);
       return acc + (unitPoints > 0 ? unitPoints : 0);
     },
     0
@@ -28,7 +36,7 @@ const points = computed(() => {
 
 const emptySpace = computed(() => {
   return (
-    Math.max(0, props.appData.effectiveMaxPoints - points.value) *
+    Math.max(0, props.effectiveMaxPoints - points.value) *
       scale.value +
     "px"
   );
@@ -36,7 +44,7 @@ const emptySpace = computed(() => {
 
 const unitCounts = computed(() => {
   const counts = {};
-  props.appData.currentList.units.forEach((unit) => {
+  props.currentList.units.forEach((unit) => {
     counts[unit.name] = (counts[unit.name] || 0) + 1;
   });
   return counts;
@@ -44,14 +52,19 @@ const unitCounts = computed(() => {
 
 function handleDragChange(event) {
   if (event.moved) {
-    props.appData.currentList.sortOrder = SORT_MANUAL;
+    emit('set-sort-order', SORT_MANUAL);
   }
+}
+
+function updateUnits(units) {
+  emit('set-units', units);
 }
 </script>
 
 <template>
   <draggable
-    v-model="props.appData.currentList.units"
+    :model-value="props.currentList.units"
+    @update:model-value="updateUnits"
     group="units"
     animation="150"
     item-key="id"
@@ -62,11 +75,11 @@ function handleDragChange(event) {
       <ArmyListUnit
         :unit="element"
         :scale="scale"
-        :current-m-f-m="props.appData.currentMFM"
-        :compendium="props.appData.compendium"
-        :is-boarding-actions="props.appData.isBoardingActions"
-        :detachment="props.appData.currentList.detachment"
-        :current-list="props.appData.currentList"
+        :current-m-f-m="props.currentMFM"
+        :compendium="props.compendium"
+        :is-boarding-actions="props.isBoardingActions"
+        :detachment="props.detachment"
+        :current-list="props.currentList"
         :unit-count="unitCounts[element.name] || 0"
       />
     </template>
