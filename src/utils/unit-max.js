@@ -1,18 +1,13 @@
 import { isBattleLine } from "./is-battleline";
-import {
-  isBoardingActionsDetachment,
-  getBoardingActionsMax
-} from "./boarding-actions";
+import { getBoardingActionsMax } from "./boarding-actions";
 
-export function unitMax(option, appData) {
-  const detachment = appData.currentList.detachment;
-
-  if (isBoardingActionsDetachment(detachment)) {
+export function unitMax(option, detachment, isBoardingActions, currentList, compendium) {
+  if (isBoardingActions) {
     return getBoardingActionsMax(
       option,
       detachment,
-      appData.currentList,
-      appData.compendium
+      currentList,
+      compendium
     );
   }
 
