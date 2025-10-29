@@ -160,19 +160,6 @@ const appData = reactive({
     });
     return modelsTaken;
   },
-
-  get nonEpicCharacterCount() {
-    return this.currentList.units.filter((u) => {
-      const isEnhancementUnit = u.name === "Enhancements" ||
-        u.name === "Detachment Enhancements" ||
-        u.name === "Generic Enhancements" ||
-        u.name === "Breaching Operation Enhancements";
-      if (isEnhancementUnit) return false;
-
-      const datasheet = this.compendium.find((ds) => ds.name === u.name);
-      return datasheet?.character === true && datasheet?.epicHero !== true;
-    }).length;
-  },
 });
 
 console.log(appData);

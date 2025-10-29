@@ -8,7 +8,12 @@ export function unitMax(option, appData) {
   const detachment = appData.currentList.detachment;
 
   if (isBoardingActionsDetachment(detachment)) {
-    return getBoardingActionsMax(option, appData);
+    return getBoardingActionsMax(
+      option,
+      detachment,
+      appData.currentList,
+      appData.compendium
+    );
   }
 
   if (isBattleLine(option, detachment)) {

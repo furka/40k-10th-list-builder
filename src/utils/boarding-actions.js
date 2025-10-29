@@ -63,12 +63,10 @@ export function getBoardingActionsDisplayName(detachment) {
 
 export function getBoardingActionsMax(
   option,
-  appData
+  detachment,
+  currentList,
+  compendium
 ) {
-  const detachment = appData.currentList.detachment;
-  const currentList = appData.currentList;
-  const compendium = appData.compendium;
-
   const isEnhancement = option.enhancement ||
     option.name === "Enhancements" ||
     option.name === "Detachment Enhancements" ||
@@ -76,7 +74,17 @@ export function getBoardingActionsMax(
     option.name === "Breaching Operation Enhancements";
 
   if (isEnhancement) {
-    return Math.min(2, appData.nonEpicCharacterCount);
+    const nonEpicCharacterCount = currentList.units.filter((u) => {
+      const isEnhancementUnit = u.name === "Enhancements" ||
+        u.name === "Detachment Enhancements" ||
+        u.name === "Generic Enhancements" ||
+        u.name === "Breaching Operation Enhancements";
+      if (isEnhancementUnit) return false;
+
+      const datasheet = compendium.find((ds) => nameEquals(ds.name, u.name));
+      return datasheet?.character === true && datasheet?.epicHero !== true;
+    }).length;
+    return Math.min(2, nonEpicCharacterCount);
   }
 
   const slot = findBoardingActionsSlot(option.name, detachment);
