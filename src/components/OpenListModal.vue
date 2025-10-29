@@ -8,8 +8,11 @@ import ModalWithButton from "./ModalWithButton.vue";
 import { computed } from "vue";
 
 const props = defineProps({
-  appData: Object,
+  currentList: Object,
+  savedLists: Array,
 });
+
+const emit = defineEmits(['select-list', 'copy-list', 'delete-list']);
 
 function points(units, list) {
   const mfm = (list.mfm_version && MFM[list.mfm_version]) || MFM.CURRENT;
@@ -24,40 +27,22 @@ function mfmVersion(list) {
 }
 
 const lists = computed(() => {
-  return [props.appData.currentList, ...props.appData.lists];
+  return [props.currentList, ...props.savedLists];
 });
 
-async function selectList(list) {
-  if (list === props.appData.currentList) {
+function selectList(list) {
+  if (list === props.currentList) {
     return;
   }
-
-  const detachment = list.detachment;
-  const i = props.appData.lists.indexOf(list);
-  props.appData.lists.splice(i, 1);
-  props.appData.lists.unshift(props.appData.currentList);
-  props.appData.currentList = list;
-
-  // not sure, why but changing the list of options and default value of the
-  // dropdown at the same time causes the wrong value to be selected
-  await new Promise((r) => requestAnimationFrame(r));
-  props.appData.currentList.detachment = detachment;
+  emit('select-list', list);
 }
 
 function copyList(list) {
-  let i;
-  if (list === props.appData.currentList) {
-    i = 0;
-  } else {
-    i = props.appData.lists.indexOf(list);
-  }
-  const clone = JSON.parse(JSON.stringify(list));
-  props.appData.lists.splice(i, 0, clone);
+  emit('copy-list', list);
 }
 
 function deleteList(list) {
-  const i = props.appData.lists.indexOf(list);
-  props.appData.lists.splice(i, 1);
+  emit('delete-list', list);
 }
 </script>
 

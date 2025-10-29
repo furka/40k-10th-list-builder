@@ -11,6 +11,8 @@ const props = defineProps({
   appData: Object,
 });
 
+defineEmits(['newList', 'select-list', 'copy-list', 'delete-list']);
+
 const points = computed(() => {
   return props.appData.currentList.units.reduce((acc, curr) => {
     const unitPoints = getPoints(curr, props.appData.currentMFM);
@@ -75,7 +77,13 @@ const points = computed(() => {
         <NewIcon class="toolbar__icon" />
         <span>New</span>
       </button>
-      <OpenListModal :app-data="props.appData" />
+      <OpenListModal
+        :current-list="props.appData.currentList"
+        :saved-lists="props.appData.lists"
+        @select-list="$emit('select-list', $event)"
+        @copy-list="$emit('copy-list', $event)"
+        @delete-list="$emit('delete-list', $event)"
+      />
     </div>
   </ToolBar>
 </template>

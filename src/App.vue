@@ -233,6 +233,35 @@ function newList() {
   appData.currentList = createNewList(faction, detachment);
 }
 
+async function selectList(list) {
+  const detachment = list.detachment;
+  const i = appData.lists.indexOf(list);
+  appData.lists.splice(i, 1);
+  appData.lists.unshift(appData.currentList);
+  appData.currentList = list;
+
+  // not sure, why but changing the list of options and default value of the
+  // dropdown at the same time causes the wrong value to be selected
+  await new Promise((r) => requestAnimationFrame(r));
+  appData.currentList.detachment = detachment;
+}
+
+function copyList(list) {
+  let i;
+  if (list === appData.currentList) {
+    i = 0;
+  } else {
+    i = appData.lists.indexOf(list);
+  }
+  const clone = JSON.parse(JSON.stringify(list));
+  appData.lists.splice(i, 0, clone);
+}
+
+function deleteList(list) {
+  const i = appData.lists.indexOf(list);
+  appData.lists.splice(i, 1);
+}
+
 function track(val) {
   watch(
     () => appData[val],
@@ -316,7 +345,14 @@ onUnmounted(() => {
 
 <template>
   <div class="app">
-    <AppToolBar class="app__toolbar" :app-data="appData" @new-list="newList" />
+    <AppToolBar
+      class="app__toolbar"
+      :app-data="appData"
+      @new-list="newList"
+      @select-list="selectList"
+      @copy-list="copyList"
+      @delete-list="deleteList"
+    />
     <CodexToolBar class="app__codex-toolbar" :app-data="appData" />
     <div class="app__body">
       <ArmyList :app-data="appData" />
