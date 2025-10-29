@@ -116,6 +116,13 @@ export const useArmyListStore = defineStore('armyList', () => {
       return `Unit not available in MFM ${version}`;
     }
 
+    // Check if unit has valid points in the MFM
+    const points = mfmStore.getPoints(unit, currentMFM.value, faction.value);
+    if (points === -1) {
+      const version = currentMFM.value?.MFM_VERSION || "unknown";
+      return `Unit not found in MFM ${version}`;
+    }
+
     const max = unitMax(datasheet, isBoardingActions.value);
 
     if (isBoardingActions.value) {
