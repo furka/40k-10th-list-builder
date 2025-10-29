@@ -141,6 +141,25 @@ const appData = reactive({
       return CONFIGS["sub-factions"][factionName] === currentFaction;
     });
   },
+
+  get unitCounts() {
+    const counts = {};
+    this.currentList.units.forEach((unit) => {
+      if (!unit.bonus) {
+        counts[unit.name] = (counts[unit.name] || 0) + 1;
+      }
+    });
+    return counts;
+  },
+
+  get unitModelsTaken() {
+    const modelsTaken = {};
+    this.currentList.units.forEach((unit) => {
+      const name = unit.name;
+      modelsTaken[name] = (modelsTaken[name] || 0) + (unit.models || 0);
+    });
+    return modelsTaken;
+  },
 });
 
 console.log(appData);

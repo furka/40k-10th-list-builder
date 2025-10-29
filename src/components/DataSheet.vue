@@ -68,9 +68,7 @@ const options = computed(() => {
 });
 
 const count = computed(() => {
-  return props.appData.currentList.units.filter(
-    (unit) => unit.name === props.dataSheet.name && !unit.bonus
-  )?.length;
+  return props.appData.unitCounts[props.dataSheet.name] || 0;
 });
 
 const maxed = computed(() => {
@@ -107,9 +105,7 @@ const hasOwned = computed(() => {
 });
 
 const modelsTaken = computed(() => {
-  return props.appData.currentList.units
-    .filter((u) => u.name === props.dataSheet.name)
-    .reduce((acc, curr) => acc + curr.models, 0);
+  return props.appData.unitModelsTaken[props.dataSheet.name] || 0;
 });
 
 const color = computed(() => {
