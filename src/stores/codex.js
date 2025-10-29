@@ -29,21 +29,38 @@ export const useCodexStore = defineStore('codex', () => {
   });
 
   // Fast lookup map indexed by normalized unit name
+  // Returns object with: { factionMap, allUnitsMap }
+  // factionMap prioritizes current faction, allUnitsMap is fallback
   const compendiumByName = computed(() => {
-    const map = new Map();
+    const factionMap = new Map();
+    const allUnitsMap = new Map();
+
     compendium.value.forEach((sheet) => {
       const normalizedName = normalizeString(sheet.name);
-      map.set(normalizedName, sheet);
+      const isCurrentFaction = sheet.faction === faction.value || sheet.faction === subFaction.value;
+
+      // Add to faction map if it's current faction
+      if (isCurrentFaction) {
+        factionMap.set(normalizedName, sheet);
+      }
+
+      // Always add to fallback map (last one wins for duplicates)
+      allUnitsMap.set(normalizedName, sheet);
 
       // Also add entries for all aliases
       const aliases = unitNameAliases[sheet.name];
       if (aliases) {
         aliases.forEach(alias => {
-          map.set(normalizeString(alias), sheet);
+          const normalizedAlias = normalizeString(alias);
+          if (isCurrentFaction) {
+            factionMap.set(normalizedAlias, sheet);
+          }
+          allUnitsMap.set(normalizedAlias, sheet);
         });
       }
     });
-    return map;
+
+    return { factionMap, allUnitsMap };
   });
 
   // Get filtered compendium based on faction, subfaction, detachment, and UI filters
@@ -67,17 +84,30 @@ export const useCodexStore = defineStore('codex', () => {
     if (isBoardingActions) {
       const config = BOARDING_ACTIONS[faction.value]?.[detachment.value];
       if (config?.units) {
-        // Build a lookup map for boarding actions units
+        // Build a lookup map for boarding actions units, including aliases
         const unitConfigMap = new Map();
         config.units.forEach(slot => {
           slot.options.forEach(option => {
-            unitConfigMap.set(option.name.toLowerCase(), option);
+            const normalizedOptionName = normalizeString(option.name);
+            unitConfigMap.set(normalizedOptionName, option);
           });
         });
 
         sheets = sheets
           .map(sheet => {
-            const unitConfig = unitConfigMap.get(sheet.name.toLowerCase());
+            const normalizedSheetName = normalizeString(sheet.name);
+            let unitConfig = unitConfigMap.get(normalizedSheetName);
+
+            // If not found, check if any aliases match
+            if (!unitConfig) {
+              const aliases = unitNameAliases[sheet.name];
+              if (aliases) {
+                for (const alias of aliases) {
+                  unitConfig = unitConfigMap.get(normalizeString(alias));
+                  if (unitConfig) break;
+                }
+              }
+            }
 
             if (!unitConfig) {
               return null;
@@ -178,7 +208,11 @@ export const useCodexStore = defineStore('codex', () => {
     if (nameEquals(unitName, "Enhancements")) {
       return enhancements.value;
     }
-    return compendiumByName.value.get(normalizeString(unitName));
+
+    const normalized = normalizeString(unitName);
+    // Try faction map first (prioritizes current faction), then fall back to all units
+    return compendiumByName.value.factionMap.get(normalized) ||
+           compendiumByName.value.allUnitsMap.get(normalized);
   }
 
   return {

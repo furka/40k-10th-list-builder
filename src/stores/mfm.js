@@ -54,7 +54,7 @@ export const useMfmStore = defineStore('mfm', () => {
     return currentIndex > 0 ? MFM[versions[currentIndex - 1]] : null;
   }
 
-  function getPoints(unit, mfm) {
+  function getPoints(unit, mfm, faction = null) {
     if (!mfm) {
       mfm = MFM.CURRENT;
     }
@@ -62,7 +62,18 @@ export const useMfmStore = defineStore('mfm', () => {
       return -1;
     }
 
-    const data_sheet = mfm.DATA_SHEETS.find((d) => d.name === unit.name);
+    let data_sheet;
+
+    // If faction provided, prioritize units from that faction
+    if (faction) {
+      data_sheet = mfm.DATA_SHEETS.find((d) => d.name === unit.name && d.faction === faction);
+    }
+
+    // Fallback to any unit with matching name
+    if (!data_sheet) {
+      data_sheet = mfm.DATA_SHEETS.find((d) => d.name === unit.name);
+    }
+
     let option;
 
     if (!data_sheet) {

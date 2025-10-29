@@ -379,17 +379,23 @@ export const boardingActionsExceptions = {
    */
   requiresKrootCarnivores: {
     validate(slot, detachment, currentList, getDataSheet) {
+      const auxiliaryNames = ["Kroot Farstalkers", "Kroot Hounds", "Krootox Riders"];
       const slotUnitNames = slot.options.map((opt) => opt.name);
 
-      const unitsInSlot = currentList.units.filter((u) =>
-        slotUnitNames.some((slotName) => nameEquals(slotName, u.name))
-      );
+      const auxiliaryCount = currentList.units.filter((u) => {
+        const isInThisSlot = slotUnitNames.some((slotName) =>
+          nameEquals(slotName, u.name)
+        );
+        if (isInThisSlot) return false;
+
+        return auxiliaryNames.some((name) => nameEquals(u.name, name));
+      }).length;
 
       const krootCarnivoresCount = currentList.units.filter((u) =>
         nameEquals(u.name, "Kroot Carnivores")
       ).length;
 
-      return Math.max(0, krootCarnivoresCount - unitsInSlot.length);
+      return Math.max(0, krootCarnivoresCount - auxiliaryCount);
     },
 
     getMessage(slot) {

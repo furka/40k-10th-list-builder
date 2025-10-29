@@ -87,6 +87,10 @@ const options = computed(() => {
 });
 
 const count = computed(() => {
+  // For boarding actions enhancements, count all enhancements, not just this category
+  if (props.dataSheet.enhancements && armyListStore.isBoardingActions) {
+    return armyListStore.totalEnhancementsCount;
+  }
   return armyListStore.unitCounts[props.dataSheet.name] || 0;
 });
 
@@ -97,6 +101,11 @@ const maxed = computed(() => {
   );
 
   if (armyListStore.isBoardingActions) {
+    // For enhancements in boarding actions, limit is based on non-epic characters
+    if (props.dataSheet.enhancements) {
+      return armyListStore.totalEnhancementsCount >= armyListStore.nonEpicCharacterCount;
+    }
+
     const slotFull = isBoardingActionsSlotFull(
       props.dataSheet.name
     );
@@ -108,6 +117,10 @@ const maxed = computed(() => {
 });
 
 const max = computed(() => {
+  // For boarding actions enhancements, max is number of non-epic characters
+  if (props.dataSheet.enhancements && armyListStore.isBoardingActions) {
+    return armyListStore.nonEpicCharacterCount;
+  }
   return unitMax(
     props.dataSheet,
     armyListStore.isBoardingActions

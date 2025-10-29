@@ -23,7 +23,7 @@ const scale = computed(() => {
 const points = computed(() => {
   return armyListStore.units.reduce(
     (acc, curr) => {
-      const unitPoints = mfmStore.getPoints(curr, armyListStore.currentMFM);
+      const unitPoints = mfmStore.getPoints(curr, armyListStore.currentMFM, armyListStore.faction);
       return acc + (unitPoints > 0 ? unitPoints : 0);
     },
     0

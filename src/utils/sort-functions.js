@@ -51,15 +51,19 @@ export const sortListByRole = function (getDataSheet) {
   return function (a, b) {
     const getRolePriority = (unit) => {
       const dataSheet = getDataSheet(unit.name);
-      if (!dataSheet) return 5;
 
-      if (dataSheet.character || dataSheet.epicHero) return 1;
-      if (nameEquals(unit.name, "Enhancements")) return 2;
-      if (dataSheet.battleLine) return 3;
-      if (dataSheet.dedicatedTransport) return 4;
-      if (dataSheet.allies) return 6;
-      if (dataSheet.forgeWorld) return 7;
-      if (dataSheet.fortification) return 8;
+      // Check if it's an enhancement by checking datasheet or unit structure
+      const isEnhancement = dataSheet?.enhancements || (!dataSheet && unit.optionName && !unit.models);
+
+      if (!dataSheet && !isEnhancement) return 5;
+
+      if (dataSheet?.character || dataSheet?.epicHero) return 1;
+      if (isEnhancement) return 2;
+      if (dataSheet?.battleLine) return 3;
+      if (dataSheet?.dedicatedTransport) return 4;
+      if (dataSheet?.allies) return 6;
+      if (dataSheet?.forgeWorld) return 7;
+      if (dataSheet?.fortification) return 8;
       return 5;
     };
 

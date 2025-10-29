@@ -62,22 +62,53 @@ export const useArmyListStore = defineStore('armyList', () => {
     return taken;
   });
 
+  const totalEnhancementsCount = computed(() => {
+    let count = 0;
+    units.value.forEach((unit) => {
+      const datasheet = codexStore.getDataSheet(unit.name);
+      if (datasheet?.enhancements || (!datasheet && unit.optionName && !unit.models)) {
+        count++;
+      }
+    });
+    return count;
+  });
+
+  const nonEpicCharacterCount = computed(() => {
+    let count = 0;
+    units.value.forEach((unit) => {
+      const datasheet = codexStore.getDataSheet(unit.name);
+      if (datasheet?.character && !datasheet?.epicHero) {
+        count++;
+      }
+    });
+    return count;
+  });
+
 
   function getUnitValidationError(unit) {
     if (unit.error) {
       return "Invalid Unit";
     }
 
-    // Special handling for enhancements - validate them directly
-    if (nameEquals(unit.name, "Enhancements")) {
+    const datasheet = codexStore.getDataSheet(unit.name);
+
+    // Check if this is an enhancement - either by checking the datasheet or by having an optionName but no datasheet
+    if (datasheet?.enhancements || (!datasheet && unit.optionName && !unit.models)) {
       const availableEnhancements = codexStore.enhancements.sizes.map((e) => e.name);
       if (!availableEnhancements.includes(unit.optionName)) {
         return "Enhancement not available in this detachment";
       }
+
+      // For boarding actions, check if total enhancements exceed non-epic characters
+      if (isBoardingActions.value) {
+        if (totalEnhancementsCount.value > nonEpicCharacterCount.value) {
+          return "Too many enhancements for number of characters";
+        }
+      }
+
       return false;
     }
 
-    const datasheet = codexStore.getDataSheet(unit.name);
     const count = unitCounts.value[unit.name] || 0;
 
     if (!datasheet) {
@@ -187,6 +218,8 @@ export const useArmyListStore = defineStore('armyList', () => {
     unitCounts,
     modelsTaken,
     enhancementsTaken,
+    totalEnhancementsCount,
+    nonEpicCharacterCount,
     isBoardingActions,
     effectiveMaxPoints,
     currentMFM,

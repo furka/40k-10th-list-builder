@@ -14,7 +14,7 @@ const props = defineProps({
 });
 
 const unitPoints = computed(() => {
-  const points = mfmStore.getPoints(props.unit, armyListStore.currentMFM);
+  const points = mfmStore.getPoints(props.unit, armyListStore.currentMFM, armyListStore.faction);
   return points > 0 ? points : 0;
 });
 
