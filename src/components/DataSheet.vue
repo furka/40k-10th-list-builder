@@ -16,24 +16,21 @@ const props = defineProps({
   appData: Object,
 });
 
-const collection = computed(() => {
-  let entry = props.appData.collection.find(
-    (u) => u.name === props.dataSheet.name
-  );
-
-  if (!entry) {
-    entry = {
-      name: props.dataSheet.name,
-      owned: 999,
-    };
-    props.appData.collection.push(entry);
+const owned = computed(() => {
+  if (props.dataSheet.enhancements) {
+    return 999;
   }
 
-  return entry;
+  if (props.appData.editCollection) {
+    return props.appData.collection[props.dataSheet.name] ?? 999;
+  }
+
+  return props.appData.collection[props.dataSheet.name] ?? 999;
 });
 
-function onCollectionBlur(collection) {
-  collection.owned = Math.min(999, Math.max(0, Number(collection.owned)));
+function onCollectionBlur(event) {
+  const value = Math.min(999, Math.max(0, Number(event.target.value)));
+  props.appData.collection[props.dataSheet.name] = value;
 }
 
 const options = computed(() => {
@@ -97,7 +94,7 @@ const max = computed(() => {
   return unitMax(props.dataSheet, props.appData);
 });
 
-const owned = computed(() => {
+const hasOwned = computed(() => {
   if (props.dataSheet.enhancements) {
     return true;
   }
@@ -106,7 +103,7 @@ const owned = computed(() => {
     return true;
   }
 
-  return collection.value.owned > 0;
+  return owned.value > 0;
 });
 
 const modelsTaken = computed(() => {
@@ -143,13 +140,11 @@ const color = computed(() => {
 });
 
 function enoughInCollection(option) {
-  const owned = collection.value.owned;
-
   if (!option.models) {
     return true;
   }
 
-  return option.models + modelsTaken.value <= owned;
+  return option.models + modelsTaken.value <= owned.value;
 }
 
 function enhancementTaken(enhancement) {
@@ -212,7 +207,7 @@ const disabledReason = computed(() => {
 <template>
   <div
     class="data-sheet"
-    v-if="owned && options.length"
+    v-if="hasOwned && options.length"
     :title="disabledReason"
   >
     <div
@@ -256,9 +251,9 @@ const disabledReason = computed(() => {
           min="0"
           max="999"
           title="How many of these do you own?"
-          v-model="collection.owned"
+          :value="owned"
           @focus="$event.target.select()"
-          @blur="onCollectionBlur(collection)"
+          @blur="onCollectionBlur"
         />
       </label>
 
@@ -266,8 +261,8 @@ const disabledReason = computed(() => {
         v-if="!props.dataSheet.enhancements && !props.appData.editCollection"
         class="data-sheet__count"
       >
-        <template v-if="collection.owned < 999">
-          {{ modelsTaken }} / {{ collection.owned }}
+        <template v-if="owned < 999">
+          {{ modelsTaken }} / {{ owned }}
         </template>
       </div>
     </div>

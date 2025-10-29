@@ -1,4 +1,5 @@
 import { CONFIGS } from "../data/configs";
+import { autoUpgradeMFMVersion } from "./mfm";
 
 export function migrateListToSubFactionSystem(list) {
   if (!list) return;
@@ -19,5 +20,49 @@ export function migrateListToSubFactionSystem(list) {
     list.faction = parentFaction;
   } else if (list.subFaction === undefined) {
     list.subFaction = null;
+  }
+}
+
+export function migrateCollection(collection) {
+  if (!collection) {
+    return {};
+  }
+
+  if (Array.isArray(collection)) {
+    const obj = {};
+    collection.forEach(item => {
+      if (item.name && typeof item.owned === 'number' && item.owned !== 999) {
+        obj[item.name] = item.owned;
+      }
+    });
+    return obj;
+  }
+
+  return collection;
+}
+
+export function runAllMigrations(appData, save) {
+  let collectionChanged = false;
+  let listsChanged = false;
+
+  // Migrate collection from array to object format
+  if (Array.isArray(appData.collection)) {
+    appData.collection = migrateCollection(appData.collection);
+    collectionChanged = true;
+  }
+
+  // Migrate all lists (current list and saved lists)
+  [appData.currentList, ...appData.lists].forEach((list) => {
+    migrateListToSubFactionSystem(list);
+    autoUpgradeMFMVersion(list);
+  });
+  listsChanged = true;
+
+  // Save if changes were made
+  if (collectionChanged) {
+    save("collection");
+  }
+  if (listsChanged) {
+    save("lists");
   }
 }

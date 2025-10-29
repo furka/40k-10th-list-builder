@@ -15,10 +15,9 @@ import AppToolBar from "./components/AppToolBar.vue";
 import CodexToolBar from "./components/CodexToolBar.vue";
 import VersionBar from "./components/VersionBar.vue";
 import { deserializeList } from "./utils/serialize-list";
-import { autoUpgradeMFMVersion } from "./utils/mfm";
 import PACKAGE from "../package.json";
 import { BOARDING_ACTIONS, CONFIGS } from "./data/configs";
-import { migrateListToSubFactionSystem } from "./utils/legacy-migrations";
+import { runAllMigrations } from "./utils/legacy-migrations";
 
 function save(key, val = appData[key]) {
   localStorage.setItem(key, JSON.stringify(val));
@@ -39,7 +38,7 @@ const appData = reactive({
   bin: [],
   boardingActions: BOARDING_ACTIONS,
   codexFilter: "",
-  collection: restore("collection") ?? [],
+  collection: restore("collection") ?? {},
   currentList: restore("currentList") ?? createNewList(),
   editCollection: false,
   group: restore("group") ?? GROUP_NONE,
@@ -144,12 +143,11 @@ const appData = reactive({
   },
 });
 
+console.log(appData);
+
 function initializeApp() {
-  [appData.currentList, ...appData.lists].forEach((list) => {
-    migrateListToSubFactionSystem(list);
-    autoUpgradeMFMVersion(list);
-  });
-  save("lists");
+  // Run all legacy migrations
+  runAllMigrations(appData, save);
 
   // Load shared list from URL parameters
   const searchParams = new URLSearchParams(window.location.search);
