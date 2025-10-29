@@ -324,7 +324,12 @@ onUnmounted(() => {
     </div>
     <VersionBar :app-data="appData" />
   </div>
-  <PrintableArmyList :app-data="appData" class="print" />
+  <PrintableArmyList
+    :current-m-f-m="appData.currentMFM"
+    :current-list="appData.currentList"
+    :detachment-display-name="appData.detachmentDisplayName"
+    class="print"
+  />
 </template>
 
 <style scoped lang="scss">

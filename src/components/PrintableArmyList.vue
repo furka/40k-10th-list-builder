@@ -3,18 +3,20 @@ import { computed } from "vue";
 import { getPoints } from "../utils/mfm";
 
 const props = defineProps({
-  appData: Object,
+  currentMFM: Object,
+  currentList: Object,
+  detachmentDisplayName: String,
 });
 
 const PADSIZE = 10;
 
 function getUnitPoints(unit) {
-  const unitPoints = getPoints(unit, props.appData.currentMFM);
+  const unitPoints = getPoints(unit, props.currentMFM);
   return unitPoints > 0 ? unitPoints : 0;
 }
 
 const validUnits = computed(() => {
-  return props.appData.currentList.units.filter(
+  return props.currentList.units.filter(
     (unit) => getUnitPoints(unit) > 0
   );
 });
@@ -57,13 +59,13 @@ function unitLine(unit) {
 
 <template>
   <article class="army-list">
-    <h1 v-if="props.appData.currentList.name">
-      {{ props.appData.currentList.name }}
+    <h1 v-if="props.currentList.name">
+      {{ props.currentList.name }}
     </h1>
     <h2>
       <span class="army-list__name">
-        {{ props.appData.currentList.faction }} —
-        {{ props.appData.detachmentDisplayName }}
+        {{ props.currentList.faction }} —
+        {{ props.detachmentDisplayName }}
       </span>
       — {{ points }} pts
     </h2>
