@@ -12,6 +12,15 @@ const armyListStore = useArmyListStore();
 const mfmStore = useMfmStore();
 const appStore = useAppStore();
 
+const subFactionValue = computed({
+  get() {
+    return armyListStore.subFaction ?? '';
+  },
+  set(value) {
+    armyListStore.subFaction = value || null;
+  }
+});
+
 const factions = computed(() => {
   const baseFactions = (armyListStore.currentMFM || mfmStore.MFM.CURRENT).FACTIONS;
 
@@ -130,11 +139,10 @@ function getDetachmentDisplayName(detachmentName) {
       <template v-if="availableSubFactions.length > 0">
         <span>—</span>
         <select
-          :value="armyListStore.subFaction"
-          @change="armyListStore.subFaction = $event.target.value === 'null' ? null : $event.target.value"
+          v-model="subFactionValue"
           class="toolbar__subfaction-select toolbar__subfaction-select--3"
         >
-          <option :value="null">none</option>
+          <option value="">&lt;no sub-faction&gt;</option>
           <option
             v-for="(subFaction, index) in availableSubFactions"
             :key="index"

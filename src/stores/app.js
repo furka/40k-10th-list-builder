@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import { ref, watch } from 'vue';
 import { save, restore } from '../utils/localStorage';
-import { GROUP_NONE, SORT_MANUAL } from '../data/constants';
+import { GROUP_ROLE, SORT_MANUAL } from '../data/constants';
 import { useArmyListStore } from './armyList';
 import { useMfmStore } from './mfm';
 import PACKAGE from '../../package.json';
@@ -14,7 +14,7 @@ export const useAppStore = defineStore('app', () => {
   // UI state
   const codexFilter = ref('');
   const editCollection = ref(false);
-  const group = ref(restore('group') ?? GROUP_NONE);
+  const group = ref(restore('group') ?? GROUP_ROLE);
   const sortOrder = ref(restore('sortOrder') ?? 'A-Z');
 
   // Toggles
