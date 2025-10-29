@@ -47,12 +47,8 @@ export const sortListPoints = function (mfmStore, currentMFM, ascending = false)
   };
 };
 
-export const sortListByRole = function (compendium) {
+export const sortListByRole = function (getDataSheet) {
   return function (a, b) {
-    const getDataSheet = (unitName) => {
-      return compendium.find((ds) => nameEquals(ds.name, unitName));
-    };
-
     const getRolePriority = (unit) => {
       const dataSheet = getDataSheet(unit.name);
       if (!dataSheet) return 5;

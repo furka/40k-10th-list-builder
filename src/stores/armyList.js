@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 import { computed, ref, watch, reactive } from 'vue';
-import { isBoardingActionsDetachment, getBoardingActionsErrorMessage } from '../utils/boarding-actions';
+import { isBoardingActionsDetachment, getBoardingActionsErrorMessage, isBoardingActionsSlotFull } from '../utils/boarding-actions';
 import { save, restore } from '../utils/localStorage';
 import { useMfmStore } from './mfm';
 import { useCodexStore } from './codex';
@@ -68,8 +68,16 @@ export const useArmyListStore = defineStore('armyList', () => {
       return "Invalid Unit";
     }
 
-    const compendium = codexStore.compendium;
-    const datasheet = compendium.find((u) => nameEquals(u.name, unit.name));
+    // Special handling for enhancements - validate them directly
+    if (nameEquals(unit.name, "Enhancements")) {
+      const availableEnhancements = codexStore.enhancements.sizes.map((e) => e.name);
+      if (!availableEnhancements.includes(unit.optionName)) {
+        return "Enhancement not available in this detachment";
+      }
+      return false;
+    }
+
+    const datasheet = codexStore.getDataSheet(unit.name);
     const count = unitCounts.value[unit.name] || 0;
 
     if (!datasheet) {
@@ -87,17 +95,18 @@ export const useArmyListStore = defineStore('armyList', () => {
       if (count > max) {
         return getBoardingActionsErrorMessage(unit.name);
       }
+
+      // Check if this unit violates slot exceptions by checking if the slot
+      // would be full WITHOUT this unit. If so, this unit is invalid.
+      const unitsExcludingThis = units.value.filter(u => u.id !== unit.id);
+      const slotFull = isBoardingActionsSlotFull(unit.name, unitsExcludingThis);
+
+      if (slotFull) {
+        return getBoardingActionsErrorMessage(unit.name);
+      }
     } else {
       if (count > max) {
         return `Only ${max} of this unit allowed`;
-      }
-    }
-
-    if (nameEquals(unit.name, "Enhancements")) {
-      const availableEnhancements = codexStore.enhancements.sizes.map((e) => e.name);
-
-      if (!availableEnhancements.includes(unit.optionName)) {
-        return "Enhancement not available in this detachment";
       }
     }
 

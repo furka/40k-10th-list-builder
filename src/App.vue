@@ -170,7 +170,7 @@ function applySortToList() {
   } else if (sortOrder === "Cheap first") {
     units.sort(sortListPoints(mfmStore, armyListStore.currentMFM, true));
   } else if (sortOrder === "By Role") {
-    units.sort(sortListByRole(codexStore.compendium));
+    units.sort(sortListByRole(codexStore.getDataSheet));
   }
 
   armyListStore.setUnits(units);

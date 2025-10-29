@@ -7,7 +7,7 @@ export const boardingActionsExceptions = {
    * • Valerian
    */
   requiresMaxOneOtherCharacter: {
-    validate(slot, detachment, currentList, compendium) {
+    validate(slot, detachment, currentList, getDataSheet) {
       const slotUnitNames = slot.options.map((opt) => opt.name);
 
       const characterCount = currentList.units.filter((u) => {
@@ -16,7 +16,7 @@ export const boardingActionsExceptions = {
         );
         if (isInThisSlot) return false;
 
-        const datasheet = compendium.find((ds) => nameEquals(ds.name, u.name));
+        const datasheet = getDataSheet(u.name);
         return datasheet?.character === true;
       }).length;
 
@@ -37,7 +37,7 @@ export const boardingActionsExceptions = {
    * • Witchseekers (5 or 10 models)
    */
   requiresCustodianUnits: {
-    validate(slot, detachment, currentList, compendium) {
+    validate(slot, detachment, currentList, getDataSheet) {
       const anathemaPsykanaNames = ["Prosecutors", "Vigilators", "Witchseekers"];
       const custodianNames = [
         "Allarus Custodians",
@@ -84,7 +84,7 @@ export const boardingActionsExceptions = {
    * • Traitor Guardsmen Squad (10 models)
    */
   requiresLegionariesUnits: {
-    validate(slot, detachment, currentList, compendium) {
+    validate(slot, detachment, currentList, getDataSheet) {
       const cultistNames = [
         "Accursed Cultists",
         "Cultist Mob",
@@ -129,7 +129,7 @@ export const boardingActionsExceptions = {
    * • Jakhals (10 models)
    */
   requiresKhorneBerzerkersUnits: {
-    validate(slot, detachment, currentList, compendium) {
+    validate(slot, detachment, currentList, getDataSheet) {
       const jakhalsNames = ["Jakhals"];
       const khorneBerzerkersNames = ["Khorne Berzerkers"];
 
@@ -174,7 +174,7 @@ export const boardingActionsExceptions = {
    * • Maugan Ra (requires Dark Reapers)
    */
   requiresPhoenixLordAttachment: {
-    validate(slot, detachment, currentList, compendium) {
+    validate(slot, detachment, currentList, getDataSheet) {
       const phoenixLordAttachments = {
         Asurmen: ["Dire Avengers"],
         Baharroth: ["Swooping Hawks"],
@@ -237,7 +237,7 @@ export const boardingActionsExceptions = {
    * • Solitaire
    */
   requiresNoOtherCharacters: {
-    validate(slot, detachment, currentList, compendium) {
+    validate(slot, detachment, currentList, getDataSheet) {
       const slotUnitNames = slot.options.map((opt) => opt.name);
 
       const characterCount = currentList.units.filter((u) => {
@@ -246,7 +246,7 @@ export const boardingActionsExceptions = {
         );
         if (isInThisSlot) return false;
 
-        const datasheet = compendium.find((ds) => nameEquals(ds.name, u.name));
+        const datasheet = getDataSheet(u.name);
         return datasheet?.character === true;
       }).length;
 
@@ -266,7 +266,7 @@ export const boardingActionsExceptions = {
    * • Cannot mix Nurgle + Tzeentch units
    */
   godExclusionRules: {
-    validate(slot, detachment, currentList, compendium) {
+    validate(slot, detachment, currentList, getDataSheet) {
       const khorneUnits = ["Bloodletters", "Flesh Hounds", "Bloodcrushers", "Skull Cannon", "Skullmaster", "Karanak", "Bloodmaster", "Skulltaker"];
       const slaaneshUnits = ["Daemonettes", "Fiends", "Seekers", "Seeker Chariots", "Exalted Seeker Chariot", "The Masque of Slaanesh", "Contorted Epitome", "Infernal Enrapturess", "Tranceweaver"];
       const nurgleUnits = ["Plaguebearers", "Beasts of Nurgle", "Nurglings", "Plague Drones", "Poxbringer", "Sloppity Bilepiper", "Spoilpox Scrivener", "Epidemius"];
@@ -317,7 +317,7 @@ export const boardingActionsExceptions = {
    * • Archon
    */
   requiresKabaliteWarriors: {
-    validate(slot, detachment, currentList, compendium) {
+    validate(slot, detachment, currentList, getDataSheet) {
       const hasKabaliteWarriors = currentList.units.some((u) =>
         nameEquals(u.name, "Kabalite Warriors")
       );
@@ -337,7 +337,7 @@ export const boardingActionsExceptions = {
    * • Urien Rakarth
    */
   requiresWracks: {
-    validate(slot, detachment, currentList, compendium) {
+    validate(slot, detachment, currentList, getDataSheet) {
       const hasWracks = currentList.units.some((u) =>
         nameEquals(u.name, "Wracks")
       );
@@ -357,7 +357,7 @@ export const boardingActionsExceptions = {
    * • Succubus (excluding Lelith Hesperax)
    */
   requiresWyches: {
-    validate(slot, detachment, currentList, compendium) {
+    validate(slot, detachment, currentList, getDataSheet) {
       const hasWyches = currentList.units.some((u) =>
         nameEquals(u.name, "Wyches")
       );
@@ -378,7 +378,7 @@ export const boardingActionsExceptions = {
    * • Krootox Riders
    */
   requiresKrootCarnivores: {
-    validate(slot, detachment, currentList, compendium) {
+    validate(slot, detachment, currentList, getDataSheet) {
       const slotUnitNames = slot.options.map((opt) => opt.name);
 
       const unitsInSlot = currentList.units.filter((u) =>
@@ -403,7 +403,7 @@ export const boardingActionsExceptions = {
    * • Inquisitorial Agents (6 or 12 models)
    */
   requiresInquisitor: {
-    validate(slot, detachment, currentList, compendium) {
+    validate(slot, detachment, currentList, getDataSheet) {
       const hasInquisitor = currentList.units.some((u) =>
         nameEquals(u.name, "Inquisitor")
       );
@@ -421,7 +421,7 @@ export const boardingActionsExceptions = {
    * The combined total number of Death Guard Cultists and Poxwalkers units cannot be more than the number of PLAGUE MARINES units
    */
   requiresPlagueMarinesUnits: {
-    validate(slot, detachment, currentList, compendium) {
+    validate(slot, detachment, currentList, getDataSheet) {
       const cultistNames = ["Death Guard Cultists", "Poxwalkers"];
       const plagueMarinesNames = ["Plague Marines"];
 
@@ -453,7 +453,7 @@ export const boardingActionsExceptions = {
    * The combined total number of Thousand Sons Cultists and Tzaangors units cannot be more than the number of RUBRIC MARINES units
    */
   requiresRubricMarinesUnits: {
-    validate(slot, detachment, currentList, compendium) {
+    validate(slot, detachment, currentList, getDataSheet) {
       const cultistNames = ["Thousand Sons Cultists", "Tzaangors"];
       const rubricMarinesNames = ["Rubric Marines"];
 

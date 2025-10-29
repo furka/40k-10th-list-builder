@@ -190,9 +190,7 @@ function optionAvailable(option) {
   }
 
   if (armyListStore.isBoardingActions) {
-    const boardingActionsMax = getBoardingActionsMax(
-      { name: props.dataSheet.name }
-    );
+    const boardingActionsMax = getBoardingActionsMax(props.dataSheet);
 
     if (boardingActionsMax === 0) {
       return false;

@@ -45,8 +45,7 @@ const name = computed(() => {
 });
 
 const inValid = computed(() => {
-  // VALIDATION TEMPORARILY DISABLED FOR PERFORMANCE TESTING
-  return false;
+  return armyListStore.getUnitValidationError(props.unit);
 });
 </script>
 

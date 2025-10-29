@@ -2,7 +2,8 @@ import { defineStore } from 'pinia';
 import { computed, ref } from 'vue';
 import { useMfmStore } from './mfm';
 import { useAppStore } from './app';
-import { nameEquals } from '../utils/name-match';
+import { nameEquals, normalizeString } from '../utils/name-match';
+import unitNameAliases from '../data/configs/unit-name-aliases.json';
 import {
   sortDataSheetAlphabetical,
   sortDataSheetPtsAscending,
@@ -25,6 +26,24 @@ export const useCodexStore = defineStore('codex', () => {
   // Get the full compendium from current MFM
   const compendium = computed(() => {
     return (currentMFM.value || mfmStore.MFM.CURRENT).DATA_SHEETS;
+  });
+
+  // Fast lookup map indexed by normalized unit name
+  const compendiumByName = computed(() => {
+    const map = new Map();
+    compendium.value.forEach((sheet) => {
+      const normalizedName = normalizeString(sheet.name);
+      map.set(normalizedName, sheet);
+
+      // Also add entries for all aliases
+      const aliases = unitNameAliases[sheet.name];
+      if (aliases) {
+        aliases.forEach(alias => {
+          map.set(normalizeString(alias), sheet);
+        });
+      }
+    });
+    return map;
   });
 
   // Get filtered compendium based on faction, subfaction, detachment, and UI filters
@@ -154,17 +173,27 @@ export const useCodexStore = defineStore('codex', () => {
     currentMFM.value = mfm;
   }
 
+  function getDataSheet(unitName) {
+    // Special case for enhancements - return the enhancements computed
+    if (nameEquals(unitName, "Enhancements")) {
+      return enhancements.value;
+    }
+    return compendiumByName.value.get(normalizeString(unitName));
+  }
+
   return {
     faction,
     subFaction,
     detachment,
     currentMFM,
     compendium,
+    compendiumByName,
     filteredCompendium,
     enhancements,
     setFaction,
     setSubFaction,
     setDetachment,
     setCurrentMFM,
+    getDataSheet,
   };
 });

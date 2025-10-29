@@ -41,7 +41,7 @@ function getSlotMaxAllowed(slot) {
       slot,
       codexStore.detachment,
       currentList,
-      codexStore.filteredCompendium
+      codexStore.getDataSheet
     );
   }
   return slot.max || 1;
@@ -71,22 +71,15 @@ export function getBoardingActionsMax(option) {
   const armyListStore = useArmyListStore();
   const codexStore = useCodexStore();
 
-  const isEnhancement = option.enhancement ||
-    option.name === "Enhancements" ||
-    option.name === "Detachment Enhancements" ||
-    option.name === "Generic Enhancements" ||
-    option.name === "Breaching Operation Enhancements";
+  const isEnhancement = option.enhancement || option.enhancements;
 
   if (isEnhancement) {
     const nonEpicCharacterCount = armyListStore.units.filter((u) => {
-      const isEnhancementUnit = u.name === "Enhancements" ||
-        u.name === "Detachment Enhancements" ||
-        u.name === "Generic Enhancements" ||
-        u.name === "Breaching Operation Enhancements";
-      if (isEnhancementUnit) return false;
+      const datasheet = codexStore.getDataSheet(u.name);
+      if (!datasheet) return false;
+      if (datasheet.enhancements) return false;
 
-      const datasheet = codexStore.filteredCompendium.find((ds) => nameEquals(ds.name, u.name));
-      return datasheet?.character === true && datasheet?.epicHero !== true;
+      return datasheet.character === true && datasheet.epicHero !== true;
     }).length;
     return Math.min(2, nonEpicCharacterCount);
   }
@@ -103,7 +96,7 @@ export function getBoardingActionsMax(option) {
   return maxAllowed;
 }
 
-export function isBoardingActionsSlotFull(unitName) {
+export function isBoardingActionsSlotFull(unitName, unitsArray = null) {
   const armyListStore = useArmyListStore();
   const codexStore = useCodexStore();
 
@@ -113,7 +106,8 @@ export function isBoardingActionsSlotFull(unitName) {
   const slotMax = getSlotMaxAllowed(slot);
   const slotUnitNames = slot.options.map((opt) => opt.name);
 
-  const unitsInSlot = armyListStore.units.filter((unit) =>
+  const units = unitsArray !== null ? unitsArray : armyListStore.units;
+  const unitsInSlot = units.filter((unit) =>
     slotUnitNames.some((slotName) => nameEquals(slotName, unit.name))
   );
 
