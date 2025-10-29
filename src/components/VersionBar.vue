@@ -5,15 +5,17 @@ import PACKAGE from "../../package.json";
 import RiskIcon from "../assets/risk-icon.svg";
 
 const props = defineProps({
-  appData: Object,
+  currentList: Object,
 });
+
+const emit = defineEmits(['set-mfm-version']);
 
 const availableMFMVersions = computed(() => {
   const versions = Object.keys(MFM)
     .filter((key) => key.startsWith("VERSION"))
     .reverse();
 
-  const currentVersion = props.appData.currentList.mfm_version;
+  const currentVersion = props.currentList.mfm_version;
 
   if (!currentVersion) {
     versions.push("unknown");
@@ -30,7 +32,10 @@ const availableMFMVersions = computed(() => {
     <div class="version-bar__mfm">
       <label>
         Munitorum Field Manual
-        <select v-model="appData.currentList.mfm_version">
+        <select
+          :value="props.currentList.mfm_version"
+          @change="emit('set-mfm-version', $event.target.value === 'unknown' ? undefined : $event.target.value)"
+        >
           <option
             v-for="version in availableMFMVersions"
             :key="version"
@@ -41,7 +46,7 @@ const availableMFMVersions = computed(() => {
         </select>
       </label>
       <span
-        v-if="isListOutdated(appData.currentList)"
+        v-if="isListOutdated(props.currentList)"
         class="version-bar__warning"
         title="This list has point changes compared to the latest MFM version. Change the MFM version to the left to update."
       >
