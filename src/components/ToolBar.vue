@@ -1,7 +1,4 @@
 <script setup>
-const props = defineProps({
-  appData: Object,
-});
 </script>
 
 <template>
