@@ -7,15 +7,11 @@ import ModalWithButton from "./ModalWithButton.vue";
 import { computed } from "vue";
 import { useArmyListStore } from "../stores/armyList";
 import { useMfmStore } from "../stores/mfm";
+import { useAppStore } from "../stores/app";
 
 const armyListStore = useArmyListStore();
 const mfmStore = useMfmStore();
-
-const props = defineProps({
-  savedLists: Array,
-});
-
-const emit = defineEmits(['select-list', 'copy-list', 'delete-list']);
+const appStore = useAppStore();
 
 function points(units, list) {
   const mfm = mfmStore.getVersion(list.mfm_version) || mfmStore.MFM.CURRENT;
@@ -30,7 +26,7 @@ function mfmVersion(list) {
 }
 
 const lists = computed(() => {
-  return [armyListStore.toObject(), ...props.savedLists];
+  return [armyListStore.toObject(), ...appStore.lists];
 });
 
 function selectList(list) {
@@ -38,15 +34,15 @@ function selectList(list) {
   if (list === currentList || JSON.stringify(list) === JSON.stringify(currentList)) {
     return;
   }
-  emit('select-list', list);
+  appStore.selectList(list);
 }
 
 function copyList(list) {
-  emit('copy-list', list);
+  appStore.copyList(list);
 }
 
 function deleteList(list) {
-  emit('delete-list', list);
+  appStore.deleteList(list);
 }
 </script>
 

@@ -77,15 +77,15 @@ export const useArmyListStore = defineStore('armyList', () => {
       return `Unit not available in MFM ${version}`;
     }
 
-    const max = unitMax(datasheet, isBoardingActions.value, compendium);
+    const max = unitMax(datasheet, isBoardingActions.value);
 
     if (isBoardingActions.value) {
       if (max === 0) {
-        return getBoardingActionsErrorMessage(unit.name, compendium);
+        return getBoardingActionsErrorMessage(unit.name);
       }
 
       if (count > max) {
-        return getBoardingActionsErrorMessage(unit.name, compendium);
+        return getBoardingActionsErrorMessage(unit.name);
       }
     } else {
       if (count > max) {

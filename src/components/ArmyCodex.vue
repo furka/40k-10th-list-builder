@@ -6,138 +6,20 @@ import { computed, ref } from "vue";
 import { useArmyListStore } from "../stores/armyList";
 import { useCollectionStore } from "../stores/collection";
 import { useCodexStore } from "../stores/codex";
-import {
-  GROUP_NONE,
-  SORT_CHEAPEST_FIRST,
-  SORT_EXPENSIVE_FIRST,
-} from "../data/constants";
-import {
-  sortDataSheetAlphabetical,
-  sortDataSheetPtsAscending,
-  sortDataSheetPtsDescending,
-} from "../utils/sort-functions";
+import { useAppStore } from "../stores/app";
+import { GROUP_NONE } from "../data/constants";
 import { isBattleLine } from "../utils/is-battleline";
 import { getBoardingActionsDisplayName } from "../utils/boarding-actions";
 
 const armyListStore = useArmyListStore();
 const collectionStore = useCollectionStore();
 const codexStore = useCodexStore();
-
-const props = defineProps({
-  codexFilter: String,
-  showForgeWorld: Boolean,
-  showLegends: Boolean,
-  sortOrder: String,
-  boardingActionsConfig: Object,
-  group: String,
-  editCollection: Boolean,
-  showPointsChanges: Boolean,
-  bin: Array,
-});
-
-const emit = defineEmits(["add", "remove-unit"]);
-
-function addUnit(unit, size) {
-  emit("add", unit, size);
-}
-
-function userFilter(sheet) {
-  return sheet.name
-    .toLowerCase()
-    .includes(props.codexFilter.toLowerCase());
-}
-
-function forgeWorldFilter(sheet) {
-  if (props.showForgeWorld) {
-    return true;
-  } else {
-    return !sheet.forgeWorld;
-  }
-}
-
-function legendsFilter(sheet) {
-  if (props.showLegends) {
-    return true;
-  } else {
-    return !sheet.legends;
-  }
-}
-
-function sortOrderFn() {
-  if (props.sortOrder === SORT_EXPENSIVE_FIRST) {
-    return sortDataSheetPtsDescending;
-  }
-  if (props.sortOrder === SORT_CHEAPEST_FIRST) {
-    return sortDataSheetPtsAscending;
-  }
-  return sortDataSheetAlphabetical;
-}
-
-function applyBoardingActionsRules(sheets) {
-  if (!armyListStore.isBoardingActions) {
-    return sheets;
-  }
-
-  const config = props.boardingActionsConfig;
-  if (!config?.units) {
-    return [];
-  }
-
-  // Build a lookup map once instead of flatMapping for every sheet
-  const unitConfigMap = new Map();
-  config.units.forEach(slot => {
-    slot.options.forEach(option => {
-      unitConfigMap.set(option.name.toLowerCase(), option);
-    });
-  });
-
-  return sheets
-    .map(sheet => {
-      const unitConfig = unitConfigMap.get(sheet.name.toLowerCase());
-
-      if (!unitConfig) {
-        return null;
-      }
-
-      if (!unitConfig.models) {
-        return sheet;
-      }
-
-      const filteredSizes = sheet.sizes.filter(size =>
-        unitConfig.models.includes(size.models)
-      );
-
-      return {
-        ...sheet,
-        sizes: filteredSizes.length > 0 ? filteredSizes : sheet.sizes
-      };
-    })
-    .filter(sheet => sheet !== null);
-}
-
-const dataSheets = computed(() => {
-  const sheets = codexStore.filteredCompendium
-    ?.filter(userFilter)
-    .filter(forgeWorldFilter)
-    .filter(legendsFilter)
-    .sort(sortOrderFn());
-
-  return applyBoardingActionsRules(sheets || []);
-});
-
-
-const unitStats = computed(() => {
-  return {
-    counts: armyListStore.unitCounts,
-    modelsTaken: armyListStore.modelsTaken,
-    enhancementsTaken: armyListStore.enhancementsTaken,
-  };
-});
+const appStore = useAppStore();
 
 const groupedUnits = computed(() => {
   const data = [];
-  if (props.group === GROUP_NONE) {
-    data.push({ title: "", units: dataSheets.value });
+  if (appStore.group === GROUP_NONE) {
+    data.push({ title: "", units: codexStore.filteredCompendium });
   } else {
     const characters = { title: "Characters", units: [] };
     const battleLine = { title: "Battle Line", units: [] };
@@ -157,7 +39,7 @@ const groupedUnits = computed(() => {
       fortifications
     );
 
-    dataSheets.value.forEach((sheet) => {
+    codexStore.filteredCompendium.forEach((sheet) => {
       if (sheet.allies) {
         allies.title = sheet.allies;
         allies.units.push(sheet);
@@ -178,46 +60,23 @@ const groupedUnits = computed(() => {
   }
 
   if (codexStore.enhancements.sizes.length) {
-    // Group enhancements by category
-    const detachmentEnhancements = codexStore.enhancements.sizes.filter(
-      s => !s.enhancementCategory
-    );
-    const genericEnhancements = codexStore.enhancements.sizes.filter(
-      s => s.enhancementCategory === "Generic Enhancements"
-    );
-    const breachingEnhancements = codexStore.enhancements.sizes.filter(
-      s => s.enhancementCategory === "Breaching Operation Enhancements"
-    );
-
-    const enhancementUnits = [];
     const detachmentDisplayName = getBoardingActionsDisplayName(armyListStore.detachment).toLowerCase();
+    const groupedEnhancements = {};
 
-    if (detachmentEnhancements.length) {
-      enhancementUnits.push({
-        name: "Detachment Enhancements",
-        displayName: detachmentDisplayName,
-        sizes: detachmentEnhancements,
-        enhancements: true,
-      });
-    }
+    codexStore.enhancements.sizes.forEach((enhancement) => {
+      const category = enhancement.enhancementCategory || detachmentDisplayName;
+      if (!groupedEnhancements[category]) {
+        groupedEnhancements[category] = [];
+      }
+      groupedEnhancements[category].push(enhancement);
+    });
 
-    if (genericEnhancements.length) {
-      enhancementUnits.push({
-        name: "Generic Enhancements",
-        displayName: "boarding actions",
-        sizes: genericEnhancements,
-        enhancements: true,
-      });
-    }
-
-    if (breachingEnhancements.length) {
-      enhancementUnits.push({
-        name: "Breaching Operation Enhancements",
-        displayName: "breaching operations",
-        sizes: breachingEnhancements,
-        enhancements: true,
-      });
-    }
+    const enhancementUnits = Object.entries(groupedEnhancements).map(([category, sizes]) => ({
+      name: category,
+      displayName: category,
+      sizes,
+      enhancements: true,
+    }));
 
     if (enhancementUnits.length) {
       data.push({
@@ -231,7 +90,7 @@ const groupedUnits = computed(() => {
 });
 
 function removeUnit(value) {
-  emit("remove-unit", value);
+  appStore.bin = value;
 }
 
 // horizontal scroll using scrollwheel
@@ -246,7 +105,7 @@ function onScrollWheel(e) {
   <div class="codex">
     <!-- Draggable area for deleting units from army list -->
     <draggable
-      :model-value="props.bin"
+      :model-value="appStore.bin"
       @update:model-value="removeUnit"
       group="units"
       animation="150"
@@ -258,7 +117,7 @@ function onScrollWheel(e) {
       </template>
     </draggable>
     <div class="codex__mfm" @wheel="onScrollWheel" ref="codexEl">
-      <template v-if="dataSheets.length > 0">
+      <template v-if="codexStore.filteredCompendium.length > 0">
         <div class="codex__group" v-for="group in groupedUnits">
           <h2 class="codex__group-title" v-if="group.title">
             {{ group.title }}
@@ -268,13 +127,6 @@ function onScrollWheel(e) {
               v-for="(unit, index) in group.units"
               :key="unit.name"
               :dataSheet="unit"
-              :unit-stats="unitStats"
-              :edit-collection="props.editCollection"
-              :sort-order="props.sortOrder"
-              :compendium="codexStore.compendium"
-              :show-points-changes="props.showPointsChanges"
-              :group="props.group"
-              @add="addUnit"
             />
           </div>
         </div>

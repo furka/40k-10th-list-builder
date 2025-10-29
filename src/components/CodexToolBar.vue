@@ -3,50 +3,72 @@ import { computed } from "vue";
 import CodexOptions from "./CodexOptions.vue";
 import SortArmyButton from "./SortArmyButton.vue";
 import ToolBar from "./ToolBar.vue";
-import { CONFIGS } from "../data/configs";
+import { CONFIGS, BOARDING_ACTIONS } from "../data/configs";
 import { useArmyListStore } from "../stores/armyList";
+import { useMfmStore } from "../stores/mfm";
+import { useAppStore } from "../stores/app";
 
 const armyListStore = useArmyListStore();
+const mfmStore = useMfmStore();
+const appStore = useAppStore();
 
-const props = defineProps({
-  factions: Array,
-  boardingActions: Object,
-  availableSubFactions: Array,
-  codexFilter: String,
-  showPointsChanges: Boolean,
-  showForgeWorld: Boolean,
-  showLegends: Boolean,
-  editCollection: Boolean,
-  sortOrder: String,
-  group: String,
+const factions = computed(() => {
+  const baseFactions = (armyListStore.currentMFM || mfmStore.MFM.CURRENT).FACTIONS;
+
+  return baseFactions.map((faction) => {
+    let detachments = [...faction.detachments];
+
+    const baConfig = BOARDING_ACTIONS[faction.name];
+    if (baConfig) {
+      const baDetachments = Object.keys(baConfig).map((detachmentName) => ({
+        name: detachmentName,
+        boardingActions: true,
+      }));
+      detachments = [...detachments, ...baDetachments];
+    }
+
+    const subFactionConfig = CONFIGS["sub-factions"];
+    const subFactions = Object.keys(subFactionConfig).filter(
+      (subFactionName) => subFactionConfig[subFactionName] === faction.name
+    );
+
+    if (subFactions.length > 0) {
+      for (const subFactionName of subFactions) {
+        const subFaction = baseFactions.find((f) => f.name === subFactionName);
+        if (subFaction) {
+          detachments = [...detachments, ...subFaction.detachments];
+        }
+      }
+    }
+
+    return {
+      ...faction,
+      detachments,
+    };
+  });
 });
 
-const emit = defineEmits([
-  'set-sort-order',
-  'set-show-points-changes',
-  'set-show-forge-world',
-  'set-show-legends',
-  'set-edit-collection',
-  'set-codex-sort-order',
-  'set-group',
-  'set-faction',
-  'set-sub-faction',
-  'set-detachment',
-  'set-codex-filter',
-]);
+const availableSubFactions = computed(() => {
+  const currentFaction = armyListStore.faction;
+  if (!currentFaction) return [];
+
+  return Object.keys(CONFIGS["sub-factions"]).filter((factionName) => {
+    return CONFIGS["sub-factions"][factionName] === currentFaction;
+  });
+});
 
 const factionsFiltered = computed(() => {
-  const factions = props.factions
+  const factionNames = factions.value
     .map((f) => f.name)
     .filter((factionName) => {
       return !CONFIGS["sub-factions"][factionName];
     });
-  factions.sort();
-  return factions;
+  factionNames.sort();
+  return factionNames;
 });
 
 const detachments = computed(() => {
-  const faction = props.factions.find(
+  const faction = factions.value.find(
     (f) =>
       f.name?.toUpperCase() === armyListStore.faction?.toUpperCase()
   );
@@ -79,10 +101,7 @@ const detachments = computed(() => {
 });
 
 function getDetachmentDisplayName(detachmentName) {
-  const config =
-    props.boardingActions[armyListStore.faction]?.[
-      detachmentName
-    ];
+  const config = BOARDING_ACTIONS[armyListStore.faction]?.[detachmentName];
   return config?.displayName || detachmentName;
 }
 </script>
@@ -90,19 +109,16 @@ function getDetachmentDisplayName(detachmentName) {
 <template>
   <ToolBar class="codex-toolbar">
     <div class="toolbar__group toolbar__group--sort">
-      <SortArmyButton
-        :sort-order="armyListStore.sortOrder"
-        @set-sort-order="emit('set-sort-order', $event)"
-      />
+      <SortArmyButton />
     </div>
 
     <div class="toolbar__group toolbar__group--faction">
       <select
         :value="armyListStore.faction"
-        @change="emit('set-faction', $event.target.value)"
+        @change="armyListStore.faction = $event.target.value"
         class="toolbar__faction-select"
         :class="
-          props.availableSubFactions.length > 0
+          availableSubFactions.length > 0
             ? 'toolbar__faction-select--3'
             : 'toolbar__faction-select--2'
         "
@@ -111,16 +127,16 @@ function getDetachmentDisplayName(detachmentName) {
           {{ faction.toLowerCase() }}
         </option>
       </select>
-      <template v-if="props.availableSubFactions.length > 0">
+      <template v-if="availableSubFactions.length > 0">
         <span>—</span>
         <select
           :value="armyListStore.subFaction"
-          @change="emit('set-sub-faction', $event.target.value === 'null' ? null : $event.target.value)"
+          @change="armyListStore.subFaction = $event.target.value === 'null' ? null : $event.target.value"
           class="toolbar__subfaction-select toolbar__subfaction-select--3"
         >
           <option :value="null">none</option>
           <option
-            v-for="(subFaction, index) in props.availableSubFactions"
+            v-for="(subFaction, index) in availableSubFactions"
             :key="index"
             :value="subFaction"
           >
@@ -138,10 +154,10 @@ function getDetachmentDisplayName(detachmentName) {
         <span>—</span>
         <select
           :value="armyListStore.detachment"
-          @change="emit('set-detachment', $event.target.value)"
+          @change="armyListStore.detachment = $event.target.value"
           class="toolbar__detachment-select"
           :class="
-            props.availableSubFactions.length > 0
+            availableSubFactions.length > 0
               ? 'toolbar__detachment-select--3'
               : 'toolbar__detachment-select--2'
           "
@@ -188,28 +204,15 @@ function getDetachmentDisplayName(detachmentName) {
     <div class="toolbar__group toolbar__group--filter">
       <input
         type="text"
-        :value="props.codexFilter"
-        @input="emit('set-codex-filter', $event.target.value)"
+        :value="appStore.codexFilter"
+        @input="appStore.codexFilter = $event.target.value"
         placeholder="Filter Datasheets"
         class="toolbar__codex-filter"
       />
     </div>
 
     <div class="toolbar__group">
-      <CodexOptions
-        :show-points-changes="props.showPointsChanges"
-        :show-forge-world="props.showForgeWorld"
-        :show-legends="props.showLegends"
-        :edit-collection="props.editCollection"
-        :sort-order="props.sortOrder"
-        :group="props.group"
-        @set-show-points-changes="emit('set-show-points-changes', $event)"
-        @set-show-forge-world="emit('set-show-forge-world', $event)"
-        @set-show-legends="emit('set-show-legends', $event)"
-        @set-edit-collection="emit('set-edit-collection', $event)"
-        @set-sort-order="emit('set-codex-sort-order', $event)"
-        @set-group="emit('set-group', $event)"
-      />
+      <CodexOptions />
     </div>
   </ToolBar>
 </template>

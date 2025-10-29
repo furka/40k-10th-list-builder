@@ -6,23 +6,18 @@ import { SORT_MANUAL } from "../data/constants";
 import { useArmyListStore } from "../stores/armyList";
 import { useMfmStore } from "../stores/mfm";
 import { useCodexStore } from "../stores/codex";
+import { useAppStore } from "../stores/app";
 
 const armyListStore = useArmyListStore();
 const mfmStore = useMfmStore();
 const codexStore = useCodexStore();
+const appStore = useAppStore();
 
 const TOOLBAR_HEIGHT = 44;
 const VERSION_BAR_HEIGHT = 20;
 
-const props = defineProps({
-  appHeight: Number,
-  effectiveMaxPoints: Number,
-});
-
-const emit = defineEmits(['set-units', 'set-sort-order']);
-
 const scale = computed(() => {
-  return (props.appHeight - (TOOLBAR_HEIGHT * 2) - VERSION_BAR_HEIGHT) / props.effectiveMaxPoints;
+  return (appStore.appHeight - (TOOLBAR_HEIGHT * 2) - VERSION_BAR_HEIGHT) / armyListStore.effectiveMaxPoints;
 });
 
 const points = computed(() => {
@@ -37,7 +32,7 @@ const points = computed(() => {
 
 const emptySpace = computed(() => {
   return (
-    Math.max(0, props.effectiveMaxPoints - points.value) *
+    Math.max(0, armyListStore.effectiveMaxPoints - points.value) *
       scale.value +
     "px"
   );
@@ -45,12 +40,12 @@ const emptySpace = computed(() => {
 
 function handleDragChange(event) {
   if (event.moved) {
-    emit('set-sort-order', SORT_MANUAL);
+    armyListStore.sortOrder = SORT_MANUAL;
   }
 }
 
 function updateUnits(units) {
-  emit('set-units', units);
+  armyListStore.setUnits(units);
 }
 </script>
 

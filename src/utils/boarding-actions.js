@@ -2,7 +2,7 @@ import { BOARDING_ACTIONS } from "../data/configs";
 import { nameEquals } from "./name-match";
 import { boardingActionsExceptions } from "./boarding-actions-exceptions";
 import { useArmyListStore } from "../stores/armyList";
-import { storeToRefs } from "pinia";
+import { useCodexStore } from "../stores/codex";
 
 function findDetachmentConfig(detachment) {
   for (const factionName in BOARDING_ACTIONS) {
@@ -31,16 +31,17 @@ function findBoardingActionsSlot(unitName, detachment) {
   return null;
 }
 
-function getSlotMaxAllowed(slot, compendium) {
+function getSlotMaxAllowed(slot) {
+  const armyListStore = useArmyListStore();
+  const codexStore = useCodexStore();
+
   if (slot.exception && boardingActionsExceptions[slot.exception]) {
-    const store = useArmyListStore();
-    const { units, detachment } = storeToRefs(store);
-    const currentList = { units: units.value };
+    const currentList = { units: armyListStore.units };
     return boardingActionsExceptions[slot.exception].validate(
       slot,
-      detachment.value,
+      codexStore.detachment,
       currentList,
-      compendium
+      codexStore.filteredCompendium
     );
   }
   return slot.max || 1;
@@ -66,12 +67,9 @@ export function getBoardingActionsDisplayName(detachment) {
   return detachment;
 }
 
-export function getBoardingActionsMax(
-  option,
-  compendium
-) {
-  const store = useArmyListStore();
-  const { units, detachment } = storeToRefs(store);
+export function getBoardingActionsMax(option) {
+  const armyListStore = useArmyListStore();
+  const codexStore = useCodexStore();
 
   const isEnhancement = option.enhancement ||
     option.name === "Enhancements" ||
@@ -80,23 +78,23 @@ export function getBoardingActionsMax(
     option.name === "Breaching Operation Enhancements";
 
   if (isEnhancement) {
-    const nonEpicCharacterCount = units.value.filter((u) => {
+    const nonEpicCharacterCount = armyListStore.units.filter((u) => {
       const isEnhancementUnit = u.name === "Enhancements" ||
         u.name === "Detachment Enhancements" ||
         u.name === "Generic Enhancements" ||
         u.name === "Breaching Operation Enhancements";
       if (isEnhancementUnit) return false;
 
-      const datasheet = compendium.find((ds) => nameEquals(ds.name, u.name));
+      const datasheet = codexStore.filteredCompendium.find((ds) => nameEquals(ds.name, u.name));
       return datasheet?.character === true && datasheet?.epicHero !== true;
     }).length;
     return Math.min(2, nonEpicCharacterCount);
   }
 
-  const slot = findBoardingActionsSlot(option.name, detachment.value);
+  const slot = findBoardingActionsSlot(option.name, codexStore.detachment);
   if (!slot) return 0;
 
-  const maxAllowed = getSlotMaxAllowed(slot, detachment, compendium);
+  const maxAllowed = getSlotMaxAllowed(slot);
 
   if (slot.duplicates === false) {
     return Math.min(1, maxAllowed);
@@ -105,34 +103,27 @@ export function getBoardingActionsMax(
   return maxAllowed;
 }
 
-export function isBoardingActionsSlotFull(
-  unitName,
-  compendium
-) {
-  const store = useArmyListStore();
-  const { units, detachment } = storeToRefs(store);
+export function isBoardingActionsSlotFull(unitName) {
+  const armyListStore = useArmyListStore();
+  const codexStore = useCodexStore();
 
-  const slot = findBoardingActionsSlot(unitName, detachment.value);
+  const slot = findBoardingActionsSlot(unitName, codexStore.detachment);
   if (!slot) return false;
 
-  const slotMax = getSlotMaxAllowed(slot, compendium);
+  const slotMax = getSlotMaxAllowed(slot);
   const slotUnitNames = slot.options.map((opt) => opt.name);
 
-  const unitsInSlot = units.value.filter((unit) =>
+  const unitsInSlot = armyListStore.units.filter((unit) =>
     slotUnitNames.some((slotName) => nameEquals(slotName, unit.name))
   );
 
   return unitsInSlot.length >= slotMax;
 }
 
-export function getBoardingActionsErrorMessage(
-  unitName,
-  compendium
-) {
-  const store = useArmyListStore();
-  const { detachment } = storeToRefs(store);
+export function getBoardingActionsErrorMessage(unitName) {
+  const codexStore = useCodexStore();
 
-  const slot = findBoardingActionsSlot(unitName, detachment.value);
+  const slot = findBoardingActionsSlot(unitName, codexStore.detachment);
   if (!slot) {
     return "Unit not available in this Detachment";
   }

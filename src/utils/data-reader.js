@@ -210,7 +210,7 @@ export const parse = function (MFM) {
             name: enhancementName,
             detachment: detachmentName,
             enhancement: true,
-            enhancementCategory: "Generic Enhancements",
+            enhancementCategory: "boarding actions",
             points: 0
           });
         });
@@ -221,7 +221,7 @@ export const parse = function (MFM) {
             name: enhancementName,
             detachment: detachmentName,
             enhancement: true,
-            enhancementCategory: "Breaching Operation Enhancements",
+            enhancementCategory: "breaching operations",
             points: 0
           });
         });

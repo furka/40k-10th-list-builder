@@ -1,12 +1,9 @@
 import { isBattleLine } from "./is-battleline";
 import { getBoardingActionsMax } from "./boarding-actions";
 
-export function unitMax(option, isBoardingActions, compendium) {
+export function unitMax(option, isBoardingActions) {
   if (isBoardingActions) {
-    return getBoardingActionsMax(
-      option,
-      compendium
-    );
+    return getBoardingActionsMax(option);
   }
 
   if (isBattleLine(option)) {

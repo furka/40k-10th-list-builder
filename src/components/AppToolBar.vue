@@ -7,29 +7,25 @@ import ToolBar from "./ToolBar.vue";
 import ShareListModal from "./ShareListModal.vue";
 import { useArmyListStore } from "../stores/armyList";
 import { useMfmStore } from "../stores/mfm";
+import { useAppStore } from "../stores/app";
+import { BOARDING_ACTIONS } from "../data/configs";
 
 const armyListStore = useArmyListStore();
 const mfmStore = useMfmStore();
-
-const props = defineProps({
-  savedLists: Array,
-  detachmentDisplayName: String,
-});
-
-const emit = defineEmits([
-  'newList',
-  'select-list',
-  'copy-list',
-  'delete-list',
-  'set-max-points',
-  'set-list-name',
-]);
+const appStore = useAppStore();
 
 const points = computed(() => {
   return armyListStore.units.reduce((acc, curr) => {
     const unitPoints = mfmStore.getPoints(curr, armyListStore.currentMFM);
     return acc + (unitPoints > 0 ? unitPoints : 0);
   }, 0);
+});
+
+const detachmentDisplayName = computed(() => {
+  const detachment = armyListStore.detachment;
+  if (!detachment) return "";
+  const config = BOARDING_ACTIONS[armyListStore.faction]?.[detachment];
+  return config?.displayName || detachment;
 });
 </script>
 
@@ -50,7 +46,7 @@ const points = computed(() => {
           min="500"
           step="500"
           :value="armyListStore.maxPoints"
-          @input="emit('set-max-points', parseInt($event.target.value))"
+          @input="armyListStore.maxPoints = parseInt($event.target.value)"
           class="toolbar__points-input"
           :style="{
             width:
@@ -64,9 +60,7 @@ const points = computed(() => {
     </div>
 
     <div class="toolbar__group">
-      <ViewListModal
-        :detachment-display-name="props.detachmentDisplayName"
-      />
+      <ViewListModal />
       <ShareListModal />
     </div>
 
@@ -74,7 +68,7 @@ const points = computed(() => {
       <input
         type="text"
         :value="armyListStore.name"
-        @input="emit('set-list-name', $event.target.value)"
+        @input="armyListStore.name = $event.target.value"
         placeholder="Name your list"
         class="toolbar__list-name"
       />
@@ -83,18 +77,13 @@ const points = computed(() => {
     <div class="toolbar__group">
       <button
         class="toolbar__button"
-        @click="emit('newList')"
+        @click="appStore.newList"
         title="Create a new army list"
       >
         <NewIcon class="toolbar__icon" />
         <span>New</span>
       </button>
-      <OpenListModal
-        :saved-lists="props.savedLists"
-        @select-list="emit('select-list', $event)"
-        @copy-list="emit('copy-list', $event)"
-        @delete-list="emit('delete-list', $event)"
-      />
+      <OpenListModal />
     </div>
   </ToolBar>
 </template>

@@ -13,6 +13,10 @@ export const useCollectionStore = defineStore('collection', () => {
     collection.value[unitName] = count;
   }
 
+  function getUnitCount(unitName) {
+    return collection.value[unitName] ?? 999;
+  }
+
   function loadFromStorage() {
     const savedCollection = restore('collection');
     if (savedCollection) {
@@ -32,6 +36,7 @@ export const useCollectionStore = defineStore('collection', () => {
     collection,
     setCollection,
     setUnitCount,
+    getUnitCount,
     loadFromStorage,
   };
 });

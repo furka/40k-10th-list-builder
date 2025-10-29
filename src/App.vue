@@ -5,6 +5,7 @@ import { useArmyListStore } from "./stores/armyList";
 import { useCollectionStore } from "./stores/collection";
 import { useMfmStore } from "./stores/mfm";
 import { useCodexStore } from "./stores/codex";
+import { useAppStore } from "./stores/app";
 import ArmyList from "./components/ArmyList.vue";
 import ArmyCodex from "./components/ArmyCodex.vue";
 import PrintableArmyList from "./components/PrintableArmyList.vue";
@@ -21,28 +22,16 @@ import { deserializeList } from "./utils/serialize-list";
 import PACKAGE from "../package.json";
 import { BOARDING_ACTIONS, CONFIGS } from "./data/configs";
 import { runAllMigrations } from "./utils/legacy-migrations";
-import { save, restore } from "./utils/localStorage";
+import { save } from "./utils/localStorage";
 
 const armyListStore = useArmyListStore();
 const collectionStore = useCollectionStore();
 const mfmStore = useMfmStore();
 const codexStore = useCodexStore();
+const appStore = useAppStore();
 
 const appData = reactive({
-  appHeight: window.innerHeight,
-  appWidth: window.innerWidth,
-  armyName: "",
-  bin: [],
   boardingActions: BOARDING_ACTIONS,
-  codexFilter: "",
-  editCollection: false,
-  group: restore("group") ?? GROUP_NONE,
-  lists: restore("lists") ?? [],
-  showForgeWorld: restore("showForgeWorld") ?? false,
-  showLegends: restore("showLegends") ?? false,
-  showPointsChanges: restore("showPointsChanges") ?? true,
-  sortOrder: restore("sortOrder") ?? "A-Z",
-  units: restore("units") ?? [],
 });
 
 
@@ -111,7 +100,7 @@ const availableSubFactions = computed(() => {
 console.log(appData);
 
 function initializeApp() {
-  const defaultList = createNewList();
+  const defaultList = appStore.createNewList();
   armyListStore.loadFromStorage(defaultList);
   collectionStore.loadFromStorage();
 
@@ -119,6 +108,7 @@ function initializeApp() {
   const migrationsAppData = {
     ...appData,
     currentList,
+    lists: appStore.lists,
     collection: collectionStore.collection
   };
 
@@ -132,13 +122,18 @@ function initializeApp() {
 
   armyListStore.setList(migrationsAppData.currentList);
 
+  // Initialize codex store with current values
+  codexStore.setFaction(armyListStore.faction);
+  codexStore.setSubFaction(armyListStore.subFaction);
+  codexStore.setDetachment(armyListStore.detachment);
+  codexStore.setCurrentMFM(armyListStore.currentMFM);
+
   const searchParams = new URLSearchParams(window.location.search);
   if (searchParams.size) {
     try {
       const list = deserializeList(searchParams);
-      appData.lists.unshift(armyListStore.toObject());
+      appStore.lists.unshift(armyListStore.toObject());
       armyListStore.setList(list);
-      save("lists", appData.lists);
     } catch (e) {
       console.error(e);
     }
@@ -156,20 +151,8 @@ function initializeApp() {
 initializeApp();
 
 const handleResize = () => {
-  appData.appHeight = window.innerHeight;
-  appData.appWidth = window.innerWidth;
+  appStore.setAppDimensions(window.innerHeight, window.innerWidth);
 };
-
-function addUnit(unit, size) {
-  const newUnit = {
-    id: uuidv4(),
-    bonus: size.bonus,
-    models: size.models,
-    name: unit.name,
-    optionName: size.name,
-  };
-  armyListStore.addUnit(newUnit);
-}
 
 function applySortToList() {
   const sortOrder = armyListStore.sortOrder || SORT_MANUAL;
@@ -193,170 +176,32 @@ function applySortToList() {
   armyListStore.setUnits(units);
 }
 
-function createNewList(faction, detachment) {
-  return {
-    detachment: detachment || mfmStore.MFM.CURRENT.FACTIONS[0].detachments[0].name,
-    faction: faction || mfmStore.MFM.CURRENT.FACTIONS[0].name,
-    subFaction: null,
-    maxPoints: 2000,
-    mfm_version: mfmStore.MFM.CURRENT.MFM_VERSION,
-    modifiedDate: Date.now(),
-    name: "",
-    sortOrder: SORT_MANUAL,
-    units: [],
-    version: PACKAGE.version,
-  };
-}
-
-function newList() {
-  const faction = armyListStore.faction;
-  const detachment = armyListStore.detachment;
-  appData.lists.unshift(armyListStore.toObject());
-  const newListData = createNewList(faction, detachment);
-  armyListStore.setList(newListData);
-}
-
-async function selectList(list) {
-  const detachment = list.detachment;
-  const i = appData.lists.indexOf(list);
-  appData.lists.splice(i, 1);
-  appData.lists.unshift(armyListStore.toObject());
-  armyListStore.setList(list);
-
-  // not sure, why but changing the list of options and default value of the
-  // dropdown at the same time causes the wrong value to be selected
-  await new Promise((r) => requestAnimationFrame(r));
-  armyListStore.detachment = detachment;
-}
-
-function copyList(list) {
-  const currentList = armyListStore.toObject();
-  let i;
-  if (JSON.stringify(list) === JSON.stringify(currentList)) {
-    i = 0;
-  } else {
-    i = appData.lists.indexOf(list);
-  }
-  const clone = JSON.parse(JSON.stringify(list));
-  appData.lists.splice(i, 0, clone);
-}
-
-function deleteList(list) {
-  const i = appData.lists.indexOf(list);
-  appData.lists.splice(i, 1);
-}
-
 function setSortOrder(sortOrder) {
   armyListStore.sortOrder = sortOrder;
 }
 
-function setShowPointsChanges(value) {
-  appData.showPointsChanges = value;
-}
-
-function setShowForgeWorld(value) {
-  appData.showForgeWorld = value;
-}
-
-function setShowLegends(value) {
-  appData.showLegends = value;
-}
-
-function setEditCollection(value) {
-  appData.editCollection = value;
-}
-
-function setCodexSortOrder(value) {
-  appData.sortOrder = value;
-}
-
-function setGroup(value) {
-  appData.group = value;
-}
-
-function setMaxPoints(value) {
-  armyListStore.maxPoints = value;
-}
-
-function setListName(value) {
-  armyListStore.name = value;
-}
-
-function setMfmVersion(value) {
-  armyListStore.mfm_version = value;
-}
-
-function setUnits(units) {
-  armyListStore.setUnits(units);
-}
-
-function removeUnit(value) {
-  appData.bin = value;
-}
-
-function setFaction(value) {
-  armyListStore.faction = value;
-}
-
-function setSubFaction(value) {
-  armyListStore.subFaction = value;
-}
-
-function setDetachment(value) {
-  armyListStore.detachment = value;
-}
-
-function setCodexFilter(value) {
-  appData.codexFilter = value;
-}
-
-function track(val) {
-  watch(
-    () => appData[val],
-    () => save(val, appData[val]),
-    { deep: true }
-  );
-}
-
-track("lists");
-track("group");
-track("showForgeWorld");
-track("showLegends");
-track("showPointsChanges");
-track("sortOrder");
-track("units");
-
 watch(
-  () => appData.bin,
-  () => appData.bin.splice(0)
+  () => appStore.bin,
+  () => appStore.bin.splice(0)
 );
 
 watch(
   () => armyListStore.faction,
-  () => {
-    appData.codexFilter = "";
-    appData.editCollection = false;
+  (newFaction) => {
+    appStore.codexFilter = "";
+    appStore.editCollection = false;
     armyListStore.subFaction = null;
     armyListStore.detachment = mfmStore.MFM.CURRENT.FACTIONS.find(
       (f) =>
-        f.name?.toLowerCase() === armyListStore.faction?.toLowerCase()
+        f.name?.toLowerCase() === newFaction?.toLowerCase()
     )?.detachments[0]?.name;
+    codexStore.setFaction(newFaction);
   }
 );
 
 watch(
-  () => armyListStore.units.length,
-  () => applySortToList()
-);
-
-watch(
-  () => armyListStore.sortOrder,
-  () => applySortToList()
-);
-
-watch(
   () => armyListStore.subFaction,
-  () => {
+  (newSubFaction) => {
     const faction = factions.value.find(
       (f) =>
         f.name?.toLowerCase() === armyListStore.faction?.toLowerCase()
@@ -372,7 +217,33 @@ watch(
     if (!isDetachmentAvailable) {
       armyListStore.detachment = faction.detachments[0]?.name;
     }
+
+    codexStore.setSubFaction(newSubFaction);
   }
+);
+
+watch(
+  () => armyListStore.detachment,
+  (newDetachment) => {
+    codexStore.setDetachment(newDetachment);
+  }
+);
+
+watch(
+  () => armyListStore.currentMFM,
+  (newMFM) => {
+    codexStore.setCurrentMFM(newMFM);
+  }
+);
+
+watch(
+  () => armyListStore.units.length,
+  () => applySortToList()
+);
+
+watch(
+  () => armyListStore.sortOrder,
+  () => applySortToList()
 );
 
 onMounted(() => {
@@ -386,70 +257,15 @@ onUnmounted(() => {
 
 <template>
   <div class="app">
-    <AppToolBar
-      class="app__toolbar"
-      :saved-lists="appData.lists"
-      :detachment-display-name="detachmentDisplayName"
-      @new-list="newList"
-      @select-list="selectList"
-      @copy-list="copyList"
-      @delete-list="deleteList"
-      @set-max-points="setMaxPoints"
-      @set-list-name="setListName"
-    />
-    <CodexToolBar
-      class="app__codex-toolbar"
-      :factions="factions"
-      :boarding-actions="appData.boardingActions"
-      :available-sub-factions="availableSubFactions"
-      :codex-filter="appData.codexFilter"
-      :show-points-changes="appData.showPointsChanges"
-      :show-forge-world="appData.showForgeWorld"
-      :show-legends="appData.showLegends"
-      :edit-collection="appData.editCollection"
-      :sort-order="appData.sortOrder"
-      :group="appData.group"
-      @set-sort-order="setSortOrder"
-      @set-show-points-changes="setShowPointsChanges"
-      @set-show-forge-world="setShowForgeWorld"
-      @set-show-legends="setShowLegends"
-      @set-edit-collection="setEditCollection"
-      @set-codex-sort-order="setCodexSortOrder"
-      @set-group="setGroup"
-      @set-faction="setFaction"
-      @set-sub-faction="setSubFaction"
-      @set-detachment="setDetachment"
-      @set-codex-filter="setCodexFilter"
-    />
+    <AppToolBar class="app__toolbar" />
+    <CodexToolBar class="app__codex-toolbar" />
     <div class="app__body">
-      <ArmyList
-        :app-height="appData.appHeight"
-        :effective-max-points="armyListStore.effectiveMaxPoints"
-        @set-units="setUnits"
-        @set-sort-order="setSortOrder"
-      />
-      <ArmyCodex
-        :codex-filter="appData.codexFilter"
-        :show-forge-world="appData.showForgeWorld"
-        :show-legends="appData.showLegends"
-        :sort-order="appData.sortOrder"
-        :boarding-actions-config="boardingActionsConfig"
-        :group="appData.group"
-        :edit-collection="appData.editCollection"
-        :show-points-changes="appData.showPointsChanges"
-        :bin="appData.bin"
-        @add="addUnit"
-        @remove-unit="removeUnit"
-      />
+      <ArmyList />
+      <ArmyCodex />
     </div>
-    <VersionBar
-      @set-mfm-version="setMfmVersion"
-    />
+    <VersionBar />
   </div>
-  <PrintableArmyList
-    :detachment-display-name="detachmentDisplayName"
-    class="print"
-  />
+  <PrintableArmyList class="print" />
 </template>
 
 <style scoped lang="scss">

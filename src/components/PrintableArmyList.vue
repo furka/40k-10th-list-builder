@@ -2,12 +2,16 @@
 import { computed } from "vue";
 import { useArmyListStore } from "../stores/armyList";
 import { useMfmStore } from "../stores/mfm";
+import { BOARDING_ACTIONS } from "../data/configs";
 
 const armyListStore = useArmyListStore();
 const mfmStore = useMfmStore();
 
-const props = defineProps({
-  detachmentDisplayName: String,
+const detachmentDisplayName = computed(() => {
+  const detachment = armyListStore.detachment;
+  if (!detachment) return "";
+  const config = BOARDING_ACTIONS[armyListStore.faction]?.[detachment];
+  return config?.displayName || detachment;
 });
 
 const PADSIZE = 10;
@@ -67,7 +71,7 @@ function unitLine(unit) {
     <h2>
       <span class="army-list__name">
         {{ armyListStore.faction }} —
-        {{ props.detachmentDisplayName }}
+        {{ detachmentDisplayName }}
       </span>
       — {{ points }} pts
     </h2>

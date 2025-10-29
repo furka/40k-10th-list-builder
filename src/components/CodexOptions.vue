@@ -8,24 +8,9 @@ import {
   GROUP_NONE,
   GROUP_ROLE,
 } from "../data/constants";
+import { useAppStore } from "../stores/app";
 
-const props = defineProps({
-  showPointsChanges: Boolean,
-  showForgeWorld: Boolean,
-  showLegends: Boolean,
-  editCollection: Boolean,
-  sortOrder: String,
-  group: String,
-});
-
-const emit = defineEmits([
-  'set-show-points-changes',
-  'set-show-forge-world',
-  'set-show-legends',
-  'set-edit-collection',
-  'set-sort-order',
-  'set-group',
-]);
+const appStore = useAppStore();
 </script>
 
 <template>
@@ -39,8 +24,8 @@ const emit = defineEmits([
         <label title="Show points changes compared to previous MFM">
           <input
             type="checkbox"
-            :checked="props.showPointsChanges"
-            @change="emit('set-show-points-changes', $event.target.checked)"
+            :checked="appStore.showPointsChanges"
+            @change="appStore.showPointsChanges = $event.target.checked"
           />
           Points Changes
         </label>
@@ -48,8 +33,8 @@ const emit = defineEmits([
         <label title="Show Forge World units">
           <input
             type="checkbox"
-            :checked="props.showForgeWorld"
-            @change="emit('set-show-forge-world', $event.target.checked)"
+            :checked="appStore.showForgeWorld"
+            @change="appStore.showForgeWorld = $event.target.checked"
           />
           Forge World
         </label>
@@ -57,8 +42,8 @@ const emit = defineEmits([
         <label title="Show Legends units">
           <input
             type="checkbox"
-            :checked="props.showLegends"
-            @change="emit('set-show-legends', $event.target.checked)"
+            :checked="appStore.showLegends"
+            @change="appStore.showLegends = $event.target.checked"
           />
           Legends
         </label>
@@ -68,8 +53,8 @@ const emit = defineEmits([
         >
           <input
             type="checkbox"
-            :checked="props.editCollection"
-            @change="emit('set-edit-collection', $event.target.checked)"
+            :checked="appStore.editCollection"
+            @change="appStore.editCollection = $event.target.checked"
           />
           Edit Collection
         </label>
@@ -77,8 +62,8 @@ const emit = defineEmits([
         <label title="Sort Datasheets">
           Sort:
           <select
-            :value="props.sortOrder"
-            @change="emit('set-sort-order', $event.target.value)"
+            :value="appStore.sortOrder"
+            @change="appStore.sortOrder = $event.target.value"
           >
             <option>{{ SORT_ALPHABETICAL }}</option>
             <option>{{ SORT_CHEAPEST_FIRST }}</option>
@@ -89,8 +74,8 @@ const emit = defineEmits([
         <label title="Group Datasheets">
           Group:
           <select
-            :value="props.group"
-            @change="emit('set-group', $event.target.value)"
+            :value="appStore.group"
+            @change="appStore.group = $event.target.value"
           >
             <option>{{ GROUP_NONE }}</option>
             <option>{{ GROUP_ROLE }}</option>

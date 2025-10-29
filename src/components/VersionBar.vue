@@ -8,8 +8,6 @@ import { useMfmStore } from "../stores/mfm";
 const armyListStore = useArmyListStore();
 const mfmStore = useMfmStore();
 
-const emit = defineEmits(['set-mfm-version']);
-
 const availableMFMVersions = computed(() => {
   const versions = Object.keys(mfmStore.MFM)
     .filter((key) => key.startsWith("VERSION"))
@@ -34,7 +32,7 @@ const availableMFMVersions = computed(() => {
         Munitorum Field Manual
         <select
           :value="armyListStore.mfm_version"
-          @change="emit('set-mfm-version', $event.target.value === 'unknown' ? undefined : $event.target.value)"
+          @change="armyListStore.mfm_version = $event.target.value === 'unknown' ? undefined : $event.target.value"
         >
           <option
             v-for="version in availableMFMVersions"

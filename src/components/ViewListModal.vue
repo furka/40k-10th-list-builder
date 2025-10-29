@@ -2,10 +2,6 @@
 import DocumentIcon from "../assets/text-document-line-icon.svg";
 import ModalWithButton from "./ModalWithButton.vue";
 import PrintableArmyList from "./PrintableArmyList.vue";
-
-const props = defineProps({
-  detachmentDisplayName: String,
-});
 </script>
 
 <template>
@@ -15,9 +11,7 @@ const props = defineProps({
       <span>View</span>
     </template>
     <template v-slot:content>
-      <PrintableArmyList
-        :detachment-display-name="props.detachmentDisplayName"
-      />
+      <PrintableArmyList />
     </template>
   </ModalWithButton>
 </template>

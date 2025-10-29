@@ -1,5 +1,6 @@
 <script setup>
 import { computed } from "vue";
+import { v4 as uuidv4 } from "uuid";
 import { GROUP_NONE, SORT_EXPENSIVE_FIRST } from "../data/constants";
 import { sortOptionsPtsDescending } from "../utils/sort-functions";
 import { isBattleLine } from "../utils/is-battleline";
@@ -12,31 +13,38 @@ import {
 import { useArmyListStore } from "../stores/armyList";
 import { useCollectionStore } from "../stores/collection";
 import { useMfmStore } from "../stores/mfm";
+import { useCodexStore } from "../stores/codex";
+import { useAppStore } from "../stores/app";
 
 const armyListStore = useArmyListStore();
 const collectionStore = useCollectionStore();
 const mfmStore = useMfmStore();
+const codexStore = useCodexStore();
+const appStore = useAppStore();
 
 const props = defineProps({
   dataSheet: Object,
-  unitStats: Object,
-  editCollection: Boolean,
-  sortOrder: String,
-  compendium: Array,
-  showPointsChanges: Boolean,
-  group: String,
 });
+
+function addUnit(option) {
+  if (!optionAvailable(option)) return;
+
+  const newUnit = {
+    id: uuidv4(),
+    bonus: option.bonus,
+    models: option.models,
+    name: props.dataSheet.name,
+    optionName: option.name,
+  };
+  armyListStore.addUnit(newUnit);
+}
 
 const owned = computed(() => {
   if (props.dataSheet.enhancements) {
     return 999;
   }
 
-  if (props.editCollection) {
-    return collectionStore.collection[props.dataSheet.name] ?? 999;
-  }
-
-  return collectionStore.collection[props.dataSheet.name] ?? 999;
+  return collectionStore.getUnitCount(props.dataSheet.name);
 });
 
 function onCollectionBlur(event) {
@@ -71,7 +79,7 @@ const options = computed(() => {
     };
   });
 
-  if (props.sortOrder === SORT_EXPENSIVE_FIRST) {
+  if (appStore.sortOrder === SORT_EXPENSIVE_FIRST) {
     sizes.sort(sortOptionsPtsDescending);
   }
 
@@ -79,20 +87,18 @@ const options = computed(() => {
 });
 
 const count = computed(() => {
-  return props.unitStats.counts[props.dataSheet.name] || 0;
+  return armyListStore.unitCounts[props.dataSheet.name] || 0;
 });
 
 const maxed = computed(() => {
   const max = unitMax(
     props.dataSheet,
-    armyListStore.isBoardingActions,
-    props.compendium
+    armyListStore.isBoardingActions
   );
 
   if (armyListStore.isBoardingActions) {
     const slotFull = isBoardingActionsSlotFull(
-      props.dataSheet.name,
-      props.compendium
+      props.dataSheet.name
     );
 
     return count.value >= max || slotFull;
@@ -104,8 +110,7 @@ const maxed = computed(() => {
 const max = computed(() => {
   return unitMax(
     props.dataSheet,
-    armyListStore.isBoardingActions,
-    props.compendium
+    armyListStore.isBoardingActions
   );
 });
 
@@ -114,7 +119,7 @@ const hasOwned = computed(() => {
     return true;
   }
 
-  if (props.editCollection) {
+  if (appStore.editCollection) {
     return true;
   }
 
@@ -122,7 +127,7 @@ const hasOwned = computed(() => {
 });
 
 const modelsTaken = computed(() => {
-  return props.unitStats.modelsTaken[props.dataSheet.name] || 0;
+  return armyListStore.modelsTaken[props.dataSheet.name] || 0;
 });
 
 const color = computed(() => {
@@ -161,7 +166,7 @@ function enoughInCollection(option) {
 }
 
 function enhancementTaken(enhancement) {
-  return props.unitStats.enhancementsTaken.has(enhancement.name);
+  return armyListStore.enhancementsTaken.has(enhancement.name);
 }
 
 function upOrDown(change) {
@@ -186,8 +191,7 @@ function optionAvailable(option) {
 
   if (armyListStore.isBoardingActions) {
     const boardingActionsMax = getBoardingActionsMax(
-      { name: props.dataSheet.name },
-      props.compendium
+      { name: props.dataSheet.name }
     );
 
     if (boardingActionsMax === 0) {
@@ -201,8 +205,7 @@ function optionAvailable(option) {
 const disabledReason = computed(() => {
   if (armyListStore.isBoardingActions && max.value === 0) {
     return getBoardingActionsErrorMessage(
-      props.dataSheet.name,
-      props.compendium
+      props.dataSheet.name
     );
   }
   return null;
@@ -218,12 +221,12 @@ const disabledReason = computed(() => {
     <div
       class="data-sheet__title"
       :class="{ maxed: maxed }"
-      :style="showPointsChanges ? `background-color: ${color};` : ''"
+      :style="appStore.showPointsChanges ? `background-color: ${color};` : ''"
     >
       <span class="data-sheet__name">
         <template v-if="count > -1"> {{ count }}/{{ max }}</template>
         {{ props.dataSheet.displayName || props.dataSheet.name }}
-        <template v-if="props.group === GROUP_NONE">
+        <template v-if="appStore.group === GROUP_NONE">
           <span
             v-if="
               isBattleLine(
@@ -246,7 +249,7 @@ const disabledReason = computed(() => {
       </span>
 
       <label
-        v-if="!props.dataSheet.enhancements && props.editCollection"
+        v-if="!props.dataSheet.enhancements && appStore.editCollection"
       >
         Models owned:
         <input
@@ -262,7 +265,7 @@ const disabledReason = computed(() => {
       </label>
 
       <div
-        v-if="!props.dataSheet.enhancements && !props.editCollection"
+        v-if="!props.dataSheet.enhancements && !appStore.editCollection"
         class="data-sheet__count"
       >
         <template v-if="owned < 999">
@@ -273,9 +276,7 @@ const disabledReason = computed(() => {
     <ul>
       <li
         v-for="(option, index) in options"
-        @click="
-          optionAvailable(option) ? $emit('add', props.dataSheet, option) : null
-        "
+        @click="addUnit(option)"
         :class="{ maxed: !optionAvailable(option) }"
       >
         <span v-if="option.models">
@@ -288,7 +289,7 @@ const disabledReason = computed(() => {
         <span class="data-sheet__option-spacer"></span>
         <span class="data-sheet__points">
           <span
-            v-if="option.pointsChange && showPointsChanges"
+            v-if="option.pointsChange && appStore.showPointsChanges"
             :class="upOrDown(option.pointsChange)"
           >
             ({{ option.pointsChange }})
