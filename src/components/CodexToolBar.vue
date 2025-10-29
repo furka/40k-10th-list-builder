@@ -6,7 +6,19 @@ import ToolBar from "./ToolBar.vue";
 import { CONFIGS } from "../data/configs";
 
 const props = defineProps({
-  appData: Object,
+  factions: Array,
+  currentMFM: Object,
+  currentList: Object,
+  boardingActions: Object,
+  availableSubFactions: Array,
+  codexFilter: String,
+  currentListSortOrder: String,
+  showPointsChanges: Boolean,
+  showForgeWorld: Boolean,
+  showLegends: Boolean,
+  editCollection: Boolean,
+  sortOrder: String,
+  group: String,
 });
 
 const emit = defineEmits([
@@ -17,10 +29,14 @@ const emit = defineEmits([
   'set-edit-collection',
   'set-codex-sort-order',
   'set-group',
+  'set-faction',
+  'set-sub-faction',
+  'set-detachment',
+  'set-codex-filter',
 ]);
 
-const factions = computed(() => {
-  const factions = props.appData.factions
+const factionsFiltered = computed(() => {
+  const factions = props.factions
     .map((f) => f.name)
     .filter((factionName) => {
       return !CONFIGS["sub-factions"][factionName];
@@ -30,16 +46,16 @@ const factions = computed(() => {
 });
 
 const detachments = computed(() => {
-  const faction = props.appData.factions.find(
+  const faction = props.factions.find(
     (f) =>
-      f.name?.toUpperCase() === props.appData.currentList.faction?.toUpperCase()
+      f.name?.toUpperCase() === props.currentList.faction?.toUpperCase()
   );
 
   if (!faction?.detachments) return null;
 
-  const baseFactions = props.appData.currentMFM?.FACTIONS || [];
+  const baseFactions = props.currentMFM?.FACTIONS || [];
   const baseFaction = baseFactions.find(
-    (f) => f.name === props.appData.currentList.faction
+    (f) => f.name === props.currentList.faction
   );
   const baseDetachmentNames = baseFaction?.detachments.map((d) => d.name) || [];
 
@@ -64,7 +80,7 @@ const detachments = computed(() => {
 
 function getDetachmentDisplayName(detachmentName) {
   const config =
-    props.appData.boardingActions[props.appData.currentList.faction]?.[
+    props.boardingActions[props.currentList.faction]?.[
       detachmentName
     ];
   return config?.displayName || detachmentName;
@@ -75,34 +91,36 @@ function getDetachmentDisplayName(detachmentName) {
   <ToolBar class="codex-toolbar">
     <div class="toolbar__group toolbar__group--sort">
       <SortArmyButton
-        :sort-order="props.appData.currentList.sortOrder"
+        :sort-order="props.currentListSortOrder"
         @set-sort-order="emit('set-sort-order', $event)"
       />
     </div>
 
     <div class="toolbar__group toolbar__group--faction">
       <select
-        v-model="props.appData.currentList.faction"
+        :value="props.currentList.faction"
+        @change="emit('set-faction', $event.target.value)"
         class="toolbar__faction-select"
         :class="
-          props.appData.availableSubFactions.length > 0
+          props.availableSubFactions.length > 0
             ? 'toolbar__faction-select--3'
             : 'toolbar__faction-select--2'
         "
       >
-        <option v-for="(faction, index) in factions" :value="faction">
+        <option v-for="(faction, index) in factionsFiltered" :value="faction">
           {{ faction.toLowerCase() }}
         </option>
       </select>
-      <template v-if="props.appData.availableSubFactions.length > 0">
+      <template v-if="props.availableSubFactions.length > 0">
         <span>—</span>
         <select
-          v-model="props.appData.currentList.subFaction"
+          :value="props.currentList.subFaction"
+          @change="emit('set-sub-faction', $event.target.value === 'null' ? null : $event.target.value)"
           class="toolbar__subfaction-select toolbar__subfaction-select--3"
         >
           <option :value="null">none</option>
           <option
-            v-for="(subFaction, index) in props.appData.availableSubFactions"
+            v-for="(subFaction, index) in props.availableSubFactions"
             :key="index"
             :value="subFaction"
           >
@@ -119,10 +137,11 @@ function getDetachmentDisplayName(detachmentName) {
       >
         <span>—</span>
         <select
-          v-model="props.appData.currentList.detachment"
+          :value="props.currentList.detachment"
+          @change="emit('set-detachment', $event.target.value)"
           class="toolbar__detachment-select"
           :class="
-            props.appData.availableSubFactions.length > 0
+            props.availableSubFactions.length > 0
               ? 'toolbar__detachment-select--3'
               : 'toolbar__detachment-select--2'
           "
@@ -139,7 +158,7 @@ function getDetachmentDisplayName(detachmentName) {
             disabled
             class="toolbar__detachment-separator"
           >
-            {{ props.appData.currentList.subFaction }}
+            {{ props.currentList.subFaction }}
           </option>
           <option
             v-for="(detachment, index) in detachments.subFaction"
@@ -169,7 +188,8 @@ function getDetachmentDisplayName(detachmentName) {
     <div class="toolbar__group toolbar__group--filter">
       <input
         type="text"
-        v-model="props.appData.codexFilter"
+        :value="props.codexFilter"
+        @input="emit('set-codex-filter', $event.target.value)"
         placeholder="Filter Datasheets"
         class="toolbar__codex-filter"
       />
@@ -177,12 +197,12 @@ function getDetachmentDisplayName(detachmentName) {
 
     <div class="toolbar__group">
       <CodexOptions
-        :show-points-changes="props.appData.showPointsChanges"
-        :show-forge-world="props.appData.showForgeWorld"
-        :show-legends="props.appData.showLegends"
-        :edit-collection="props.appData.editCollection"
-        :sort-order="props.appData.sortOrder"
-        :group="props.appData.group"
+        :show-points-changes="props.showPointsChanges"
+        :show-forge-world="props.showForgeWorld"
+        :show-legends="props.showLegends"
+        :edit-collection="props.editCollection"
+        :sort-order="props.sortOrder"
+        :group="props.group"
         @set-show-points-changes="emit('set-show-points-changes', $event)"
         @set-show-forge-world="emit('set-show-forge-world', $event)"
         @set-show-legends="emit('set-show-legends', $event)"
