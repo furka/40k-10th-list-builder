@@ -34,6 +34,14 @@ const emptySpace = computed(() => {
   );
 });
 
+const unitCounts = computed(() => {
+  const counts = {};
+  props.appData.currentList.units.forEach((unit) => {
+    counts[unit.name] = (counts[unit.name] || 0) + 1;
+  });
+  return counts;
+});
+
 function handleDragChange(event) {
   if (event.moved) {
     props.appData.currentList.sortOrder = SORT_MANUAL;
@@ -51,7 +59,16 @@ function handleDragChange(event) {
     @change="handleDragChange"
   >
     <template #item="{ element, index }">
-      <ArmyListUnit :unit="element" :scale="scale" :app-data="props.appData" />
+      <ArmyListUnit
+        :unit="element"
+        :scale="scale"
+        :current-m-f-m="props.appData.currentMFM"
+        :compendium="props.appData.compendium"
+        :is-boarding-actions="props.appData.isBoardingActions"
+        :detachment="props.appData.currentList.detachment"
+        :current-list="props.appData.currentList"
+        :unit-count="unitCounts[element.name] || 0"
+      />
     </template>
   </draggable>
 </template>

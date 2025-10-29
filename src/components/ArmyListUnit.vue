@@ -7,13 +7,18 @@ import { getPoints } from "../utils/mfm";
 import { nameEquals } from "../utils/name-match";
 
 const props = defineProps({
-  appData: Object,
   unit: Object,
   scale: Number,
+  currentMFM: Object,
+  compendium: Array,
+  isBoardingActions: Boolean,
+  detachment: String,
+  currentList: Object,
+  unitCount: Number,
 });
 
 const unitPoints = computed(() => {
-  const points = getPoints(props.unit, props.appData.currentMFM);
+  const points = getPoints(props.unit, props.currentMFM);
   return points > 0 ? points : 0;
 });
 
@@ -47,56 +52,60 @@ const inValid = computed(() => {
   if (props.unit.error) {
     return "Invalid Unit";
   }
-  const unit = props.appData.compendium.find((u) => nameEquals(u.name, props.unit.name));
+  const unit = props.compendium.find((u) => nameEquals(u.name, props.unit.name));
 
-  const count = props.appData.currentList.units.filter(
-    (u) => nameEquals(u.name, props.unit.name)
-  ).length;
+  const count = props.unitCount;
 
   if (!unit) {
-    const version = props.appData.currentMFM?.MFM_VERSION || "unknown";
+    const version = props.currentMFM?.MFM_VERSION || "unknown";
     return `Unit not available in MFM ${version}`;
   }
 
-  const max = unitMax(unit, props.appData);
+  const max = unitMax(
+    unit,
+    props.detachment,
+    props.isBoardingActions,
+    props.currentList,
+    props.compendium
+  );
 
-  if (props.appData.isBoardingActions) {
+  if (props.isBoardingActions) {
     if (max === 0) {
       return getBoardingActionsErrorMessage(
         props.unit.name,
-        props.appData.currentList.detachment,
-        props.appData.currentList,
-        props.appData.compendium
+        props.detachment,
+        props.currentList,
+        props.compendium
       );
     }
 
     if (count > max) {
       return getBoardingActionsErrorMessage(
         props.unit.name,
-        props.appData.currentList.detachment,
-        props.appData.currentList,
-        props.appData.compendium
+        props.detachment,
+        props.currentList,
+        props.compendium
       );
     }
 
     const listExcludingCurrent = {
-      ...props.appData.currentList,
-      units: props.appData.currentList.units.filter(u => u.id !== props.unit.id)
+      ...props.currentList,
+      units: props.currentList.units.filter(u => u.id !== props.unit.id)
     };
 
     const slotFull = isBoardingActionsSlotFull(
       props.unit.name,
-      props.appData.currentList.detachment,
+      props.detachment,
       listExcludingCurrent,
-      props.appData.compendium
+      props.compendium
     );
 
     if (slotFull) {
       return getBoardingActionsErrorMessage(
         props.unit.name,
-        props.appData.currentList.detachment,
-        props.appData.currentList,
-        props.appData.compendium
+        props.detachment,
+        props.currentList,
+        props.compendium
       );
     }
   } else {
@@ -106,12 +115,12 @@ const inValid = computed(() => {
   }
 
   if (nameEquals(props.unit.name, "Enhancements")) {
-    const availableEnhancements = props.appData.compendium
+    const availableEnhancements = props.compendium
       ?.find((u) => nameEquals(u.name, "Enhancements"))
       ?.sizes.filter(
         (s) =>
           s.detachment?.toUpperCase() ===
-          props.appData.currentList.detachment?.toUpperCase()
+          props.detachment?.toUpperCase()
       )
       .map((e) => e.name);
 
