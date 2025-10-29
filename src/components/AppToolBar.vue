@@ -1,19 +1,19 @@
 <script setup>
 import { computed } from "vue";
-import { getPoints } from "../utils/mfm";
 import ViewListModal from "./ViewListModal.vue";
 import OpenListModal from "./OpenListModal.vue";
 import NewIcon from "../assets/file-line-icon.svg";
 import ToolBar from "./ToolBar.vue";
 import ShareListModal from "./ShareListModal.vue";
+import { useArmyListStore } from "../stores/armyList";
+import { useMfmStore } from "../stores/mfm";
+
+const armyListStore = useArmyListStore();
+const mfmStore = useMfmStore();
 
 const props = defineProps({
-  currentList: Object,
   savedLists: Array,
-  currentMFM: Object,
   detachmentDisplayName: String,
-  isBoardingActions: Boolean,
-  effectiveMaxPoints: Number,
 });
 
 const emit = defineEmits([
@@ -26,8 +26,8 @@ const emit = defineEmits([
 ]);
 
 const points = computed(() => {
-  return props.currentList.units.reduce((acc, curr) => {
-    const unitPoints = getPoints(curr, props.currentMFM);
+  return armyListStore.units.reduce((acc, curr) => {
+    const unitPoints = mfmStore.getPoints(curr, armyListStore.currentMFM);
     return acc + (unitPoints > 0 ? unitPoints : 0);
   }, 0);
 });
@@ -36,27 +36,27 @@ const points = computed(() => {
 <template>
   <ToolBar class="app-toolbar">
     <div class="toolbar__group toolbar__group--points">
-      <label :class="{ 'label--static': props.isBoardingActions }">
-        <span :class="{ over: points > props.effectiveMaxPoints }">
+      <label :class="{ 'label--static': armyListStore.isBoardingActions }">
+        <span :class="{ over: points > armyListStore.effectiveMaxPoints }">
           {{ points }}
         </span>
         /
-        <span v-if="props.isBoardingActions">{{
-          props.effectiveMaxPoints
+        <span v-if="armyListStore.isBoardingActions">{{
+          armyListStore.effectiveMaxPoints
         }}</span>
         <input
           v-else
           type="number"
           min="500"
           step="500"
-          :value="props.currentList.maxPoints"
+          :value="armyListStore.maxPoints"
           @input="emit('set-max-points', parseInt($event.target.value))"
           class="toolbar__points-input"
           :style="{
             width:
               Math.max(
                 3,
-                props.currentList.maxPoints.toString().length + 1
+                armyListStore.maxPoints.toString().length + 1
               ) + 'ch',
           }"
         />
@@ -65,17 +65,15 @@ const points = computed(() => {
 
     <div class="toolbar__group">
       <ViewListModal
-        :current-m-f-m="props.currentMFM"
-        :current-list="props.currentList"
         :detachment-display-name="props.detachmentDisplayName"
       />
-      <ShareListModal :current-list="props.currentList" />
+      <ShareListModal />
     </div>
 
     <div class="toolbar__group toolbar__group--list-name">
       <input
         type="text"
-        :value="props.currentList.name"
+        :value="armyListStore.name"
         @input="emit('set-list-name', $event.target.value)"
         placeholder="Name your list"
         class="toolbar__list-name"
@@ -92,7 +90,6 @@ const points = computed(() => {
         <span>New</span>
       </button>
       <OpenListModal
-        :current-list="props.currentList"
         :saved-lists="props.savedLists"
         @select-list="emit('select-list', $event)"
         @copy-list="emit('copy-list', $event)"

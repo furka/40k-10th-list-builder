@@ -1,5 +1,5 @@
 import { CONFIGS } from "../data/configs";
-import { autoUpgradeMFMVersion } from "./mfm";
+import { useMfmStore } from "../stores/mfm";
 
 export function migrateListToSubFactionSystem(list) {
   if (!list) return;
@@ -42,6 +42,7 @@ export function migrateCollection(collection) {
 }
 
 export function runAllMigrations(appData, save) {
+  const mfmStore = useMfmStore();
   let collectionChanged = false;
   let listsChanged = false;
 
@@ -54,7 +55,7 @@ export function runAllMigrations(appData, save) {
   // Migrate all lists (current list and saved lists)
   [appData.currentList, ...appData.lists].forEach((list) => {
     migrateListToSubFactionSystem(list);
-    autoUpgradeMFMVersion(list);
+    mfmStore.autoUpgradeMFMVersion(list);
   });
   listsChanged = true;
 

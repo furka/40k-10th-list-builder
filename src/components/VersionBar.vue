@@ -1,21 +1,21 @@
 <script setup>
 import { computed } from "vue";
-import { MFM, isListOutdated } from "../utils/mfm";
 import PACKAGE from "../../package.json";
 import RiskIcon from "../assets/risk-icon.svg";
+import { useArmyListStore } from "../stores/armyList";
+import { useMfmStore } from "../stores/mfm";
 
-const props = defineProps({
-  currentList: Object,
-});
+const armyListStore = useArmyListStore();
+const mfmStore = useMfmStore();
 
 const emit = defineEmits(['set-mfm-version']);
 
 const availableMFMVersions = computed(() => {
-  const versions = Object.keys(MFM)
+  const versions = Object.keys(mfmStore.MFM)
     .filter((key) => key.startsWith("VERSION"))
     .reverse();
 
-  const currentVersion = props.currentList.mfm_version;
+  const currentVersion = armyListStore.mfm_version;
 
   if (!currentVersion) {
     versions.push("unknown");
@@ -33,7 +33,7 @@ const availableMFMVersions = computed(() => {
       <label>
         Munitorum Field Manual
         <select
-          :value="props.currentList.mfm_version"
+          :value="armyListStore.mfm_version"
           @change="emit('set-mfm-version', $event.target.value === 'unknown' ? undefined : $event.target.value)"
         >
           <option
@@ -46,7 +46,7 @@ const availableMFMVersions = computed(() => {
         </select>
       </label>
       <span
-        v-if="isListOutdated(props.currentList)"
+        v-if="mfmStore.isListOutdated(armyListStore.toObject())"
         class="version-bar__warning"
         title="This list has point changes compared to the latest MFM version. Change the MFM version to the left to update."
       >

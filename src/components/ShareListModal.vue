@@ -4,15 +4,14 @@ import { serializeList } from "../utils/serialize-list";
 import ModalWithButton from "./ModalWithButton.vue";
 import { computed } from "vue";
 import { ref } from "vue";
+import { useArmyListStore } from "../stores/armyList";
+
+const armyListStore = useArmyListStore();
 
 let feedback = ref("");
 
-const props = defineProps({
-  currentList: Object,
-});
-
 const serializedList = computed(() => {
-  const list = serializeList(props.currentList);
+  const list = serializeList(armyListStore.toObject());
 
   return (
     window.location.protocol +

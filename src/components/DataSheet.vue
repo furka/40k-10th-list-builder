@@ -9,18 +9,19 @@ import {
   getBoardingActionsMax,
   getBoardingActionsErrorMessage,
 } from "../utils/boarding-actions";
-import { getPreviousMFM, getUnitPointsDifference } from "../utils/mfm";
+import { useArmyListStore } from "../stores/armyList";
+import { useCollectionStore } from "../stores/collection";
+import { useMfmStore } from "../stores/mfm";
+
+const armyListStore = useArmyListStore();
+const collectionStore = useCollectionStore();
+const mfmStore = useMfmStore();
 
 const props = defineProps({
   dataSheet: Object,
   unitStats: Object,
   editCollection: Boolean,
-  collection: Object,
-  currentMFM: Object,
   sortOrder: String,
-  isBoardingActions: Boolean,
-  detachment: String,
-  currentList: Object,
   compendium: Array,
   showPointsChanges: Boolean,
   group: String,
@@ -32,20 +33,20 @@ const owned = computed(() => {
   }
 
   if (props.editCollection) {
-    return props.collection[props.dataSheet.name] ?? 999;
+    return collectionStore.collection[props.dataSheet.name] ?? 999;
   }
 
-  return props.collection[props.dataSheet.name] ?? 999;
+  return collectionStore.collection[props.dataSheet.name] ?? 999;
 });
 
 function onCollectionBlur(event) {
   const value = Math.min(999, Math.max(0, Number(event.target.value)));
-  props.collection[props.dataSheet.name] = value;
+  collectionStore.setUnitCount(props.dataSheet.name, value);
 }
 
 const options = computed(() => {
-  const currentMFM = props.currentMFM;
-  const previousMFM = getPreviousMFM(currentMFM);
+  const currentMFM = armyListStore.currentMFM;
+  const previousMFM = mfmStore.getPreviousMFM(currentMFM);
 
   const sizes = [...props.dataSheet.sizes].map((size) => {
     const unit = {
@@ -56,7 +57,7 @@ const options = computed(() => {
     };
 
     const pointsDiff = previousMFM
-      ? getUnitPointsDifference(unit, currentMFM, previousMFM)
+      ? mfmStore.getUnitPointsDifference(unit, currentMFM, previousMFM)
       : 0;
 
     return {
@@ -84,17 +85,13 @@ const count = computed(() => {
 const maxed = computed(() => {
   const max = unitMax(
     props.dataSheet,
-    props.detachment,
-    props.isBoardingActions,
-    props.currentList,
+    armyListStore.isBoardingActions,
     props.compendium
   );
 
-  if (props.isBoardingActions) {
+  if (armyListStore.isBoardingActions) {
     const slotFull = isBoardingActionsSlotFull(
       props.dataSheet.name,
-      props.detachment,
-      props.currentList,
       props.compendium
     );
 
@@ -107,9 +104,7 @@ const maxed = computed(() => {
 const max = computed(() => {
   return unitMax(
     props.dataSheet,
-    props.detachment,
-    props.isBoardingActions,
-    props.currentList,
+    armyListStore.isBoardingActions,
     props.compendium
   );
 });
@@ -189,11 +184,9 @@ function optionAvailable(option) {
     return !enhancementTaken(option);
   }
 
-  if (props.isBoardingActions) {
+  if (armyListStore.isBoardingActions) {
     const boardingActionsMax = getBoardingActionsMax(
       { name: props.dataSheet.name },
-      props.detachment,
-      props.currentList,
       props.compendium
     );
 
@@ -206,11 +199,9 @@ function optionAvailable(option) {
 }
 
 const disabledReason = computed(() => {
-  if (props.isBoardingActions && max.value === 0) {
+  if (armyListStore.isBoardingActions && max.value === 0) {
     return getBoardingActionsErrorMessage(
       props.dataSheet.name,
-      props.detachment,
-      props.currentList,
       props.compendium
     );
   }
@@ -236,8 +227,7 @@ const disabledReason = computed(() => {
           <span
             v-if="
               isBattleLine(
-                props.dataSheet,
-                props.detachment
+                props.dataSheet
               )
             "
             title="Battleline"

@@ -1,23 +1,26 @@
 <script setup>
-import { MFM, getPoints, isListOutdated, changes } from "../utils/mfm";
 import OpenIcon from "../assets/computer-folder-open-icon.svg";
 import DeleteIcon from "../assets/recycle-bin-line-icon.svg";
 import CopyIcon from "../assets/text-documents-line-icon.svg";
 import RiskIcon from "../assets/risk-icon.svg";
 import ModalWithButton from "./ModalWithButton.vue";
 import { computed } from "vue";
+import { useArmyListStore } from "../stores/armyList";
+import { useMfmStore } from "../stores/mfm";
+
+const armyListStore = useArmyListStore();
+const mfmStore = useMfmStore();
 
 const props = defineProps({
-  currentList: Object,
   savedLists: Array,
 });
 
 const emit = defineEmits(['select-list', 'copy-list', 'delete-list']);
 
 function points(units, list) {
-  const mfm = (list.mfm_version && MFM[list.mfm_version]) || MFM.CURRENT;
+  const mfm = mfmStore.getVersion(list.mfm_version) || mfmStore.MFM.CURRENT;
   return units.reduce((acc, curr) => {
-    const unitPoints = getPoints(curr, mfm);
+    const unitPoints = mfmStore.getPoints(curr, mfm);
     return acc + (unitPoints > 0 ? unitPoints : 0);
   }, 0);
 }
@@ -27,11 +30,12 @@ function mfmVersion(list) {
 }
 
 const lists = computed(() => {
-  return [props.currentList, ...props.savedLists];
+  return [armyListStore.toObject(), ...props.savedLists];
 });
 
 function selectList(list) {
-  if (list === props.currentList) {
+  const currentList = armyListStore.toObject();
+  if (list === currentList || JSON.stringify(list) === JSON.stringify(currentList)) {
     return;
   }
   emit('select-list', list);
@@ -79,10 +83,10 @@ function deleteList(list) {
             <span
               class="open-modal__mfm-version"
               :class="
-                isListOutdated(list) ? 'open-modal__mfm-version--outdated' : ''
+                mfmStore.isListOutdated(list) ? 'open-modal__mfm-version--outdated' : ''
               "
               :title="
-                isListOutdated(list) ? `List has outdated MFM version` : ''
+                mfmStore.isListOutdated(list) ? `List has outdated MFM version` : ''
               "
             >
               <span class="open-modal__mfm-label">MFM</span>

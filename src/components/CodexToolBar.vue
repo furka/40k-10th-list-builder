@@ -4,15 +4,15 @@ import CodexOptions from "./CodexOptions.vue";
 import SortArmyButton from "./SortArmyButton.vue";
 import ToolBar from "./ToolBar.vue";
 import { CONFIGS } from "../data/configs";
+import { useArmyListStore } from "../stores/armyList";
+
+const armyListStore = useArmyListStore();
 
 const props = defineProps({
   factions: Array,
-  currentMFM: Object,
-  currentList: Object,
   boardingActions: Object,
   availableSubFactions: Array,
   codexFilter: String,
-  currentListSortOrder: String,
   showPointsChanges: Boolean,
   showForgeWorld: Boolean,
   showLegends: Boolean,
@@ -48,14 +48,14 @@ const factionsFiltered = computed(() => {
 const detachments = computed(() => {
   const faction = props.factions.find(
     (f) =>
-      f.name?.toUpperCase() === props.currentList.faction?.toUpperCase()
+      f.name?.toUpperCase() === armyListStore.faction?.toUpperCase()
   );
 
   if (!faction?.detachments) return null;
 
-  const baseFactions = props.currentMFM?.FACTIONS || [];
+  const baseFactions = armyListStore.currentMFM?.FACTIONS || [];
   const baseFaction = baseFactions.find(
-    (f) => f.name === props.currentList.faction
+    (f) => f.name === armyListStore.faction
   );
   const baseDetachmentNames = baseFaction?.detachments.map((d) => d.name) || [];
 
@@ -80,7 +80,7 @@ const detachments = computed(() => {
 
 function getDetachmentDisplayName(detachmentName) {
   const config =
-    props.boardingActions[props.currentList.faction]?.[
+    props.boardingActions[armyListStore.faction]?.[
       detachmentName
     ];
   return config?.displayName || detachmentName;
@@ -91,14 +91,14 @@ function getDetachmentDisplayName(detachmentName) {
   <ToolBar class="codex-toolbar">
     <div class="toolbar__group toolbar__group--sort">
       <SortArmyButton
-        :sort-order="props.currentListSortOrder"
+        :sort-order="armyListStore.sortOrder"
         @set-sort-order="emit('set-sort-order', $event)"
       />
     </div>
 
     <div class="toolbar__group toolbar__group--faction">
       <select
-        :value="props.currentList.faction"
+        :value="armyListStore.faction"
         @change="emit('set-faction', $event.target.value)"
         class="toolbar__faction-select"
         :class="
@@ -114,7 +114,7 @@ function getDetachmentDisplayName(detachmentName) {
       <template v-if="props.availableSubFactions.length > 0">
         <span>—</span>
         <select
-          :value="props.currentList.subFaction"
+          :value="armyListStore.subFaction"
           @change="emit('set-sub-faction', $event.target.value === 'null' ? null : $event.target.value)"
           class="toolbar__subfaction-select toolbar__subfaction-select--3"
         >
@@ -137,7 +137,7 @@ function getDetachmentDisplayName(detachmentName) {
       >
         <span>—</span>
         <select
-          :value="props.currentList.detachment"
+          :value="armyListStore.detachment"
           @change="emit('set-detachment', $event.target.value)"
           class="toolbar__detachment-select"
           :class="
@@ -158,7 +158,7 @@ function getDetachmentDisplayName(detachmentName) {
             disabled
             class="toolbar__detachment-separator"
           >
-            {{ props.currentList.subFaction }}
+            {{ armyListStore.subFaction }}
           </option>
           <option
             v-for="(detachment, index) in detachments.subFaction"

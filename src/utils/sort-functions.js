@@ -1,4 +1,3 @@
-import { getPoints } from "./mfm";
 import { nameEquals } from "./name-match";
 
 export const sortDataSheetAlphabetical = function (a, b) {
@@ -33,10 +32,10 @@ export const sortOptionsPtsDescending = function (a, b) {
   return a < b ? 1 : a > b ? -1 : 0;
 };
 
-export const sortListPoints = function (currentMFM, ascending = false) {
+export const sortListPoints = function (mfmStore, currentMFM, ascending = false) {
   return function (a, b) {
-    const aPoints = getPoints(a, currentMFM);
-    const bPoints = getPoints(b, currentMFM);
+    const aPoints = mfmStore.getPoints(a, currentMFM);
+    const bPoints = mfmStore.getPoints(b, currentMFM);
 
     if (aPoints === bPoints) {
       return sortDataSheetAlphabetical(a, b);

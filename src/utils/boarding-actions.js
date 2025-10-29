@@ -1,6 +1,8 @@
 import { BOARDING_ACTIONS } from "../data/configs";
 import { nameEquals } from "./name-match";
 import { boardingActionsExceptions } from "./boarding-actions-exceptions";
+import { useArmyListStore } from "../stores/armyList";
+import { storeToRefs } from "pinia";
 
 function findDetachmentConfig(detachment) {
   for (const factionName in BOARDING_ACTIONS) {
@@ -29,11 +31,14 @@ function findBoardingActionsSlot(unitName, detachment) {
   return null;
 }
 
-function getSlotMaxAllowed(slot, detachment, currentList, compendium) {
+function getSlotMaxAllowed(slot, compendium) {
   if (slot.exception && boardingActionsExceptions[slot.exception]) {
+    const store = useArmyListStore();
+    const { units, detachment } = storeToRefs(store);
+    const currentList = { units: units.value };
     return boardingActionsExceptions[slot.exception].validate(
       slot,
-      detachment,
+      detachment.value,
       currentList,
       compendium
     );
@@ -63,10 +68,11 @@ export function getBoardingActionsDisplayName(detachment) {
 
 export function getBoardingActionsMax(
   option,
-  detachment,
-  currentList,
   compendium
 ) {
+  const store = useArmyListStore();
+  const { units, detachment } = storeToRefs(store);
+
   const isEnhancement = option.enhancement ||
     option.name === "Enhancements" ||
     option.name === "Detachment Enhancements" ||
@@ -74,7 +80,7 @@ export function getBoardingActionsMax(
     option.name === "Breaching Operation Enhancements";
 
   if (isEnhancement) {
-    const nonEpicCharacterCount = currentList.units.filter((u) => {
+    const nonEpicCharacterCount = units.value.filter((u) => {
       const isEnhancementUnit = u.name === "Enhancements" ||
         u.name === "Detachment Enhancements" ||
         u.name === "Generic Enhancements" ||
@@ -87,10 +93,10 @@ export function getBoardingActionsMax(
     return Math.min(2, nonEpicCharacterCount);
   }
 
-  const slot = findBoardingActionsSlot(option.name, detachment);
+  const slot = findBoardingActionsSlot(option.name, detachment.value);
   if (!slot) return 0;
 
-  const maxAllowed = getSlotMaxAllowed(slot, detachment, currentList, compendium);
+  const maxAllowed = getSlotMaxAllowed(slot, detachment, compendium);
 
   if (slot.duplicates === false) {
     return Math.min(1, maxAllowed);
@@ -101,17 +107,18 @@ export function getBoardingActionsMax(
 
 export function isBoardingActionsSlotFull(
   unitName,
-  detachment,
-  currentList,
   compendium
 ) {
-  const slot = findBoardingActionsSlot(unitName, detachment);
+  const store = useArmyListStore();
+  const { units, detachment } = storeToRefs(store);
+
+  const slot = findBoardingActionsSlot(unitName, detachment.value);
   if (!slot) return false;
 
-  const slotMax = getSlotMaxAllowed(slot, detachment, currentList, compendium);
+  const slotMax = getSlotMaxAllowed(slot, compendium);
   const slotUnitNames = slot.options.map((opt) => opt.name);
 
-  const unitsInSlot = currentList.units.filter((unit) =>
+  const unitsInSlot = units.value.filter((unit) =>
     slotUnitNames.some((slotName) => nameEquals(slotName, unit.name))
   );
 
@@ -120,11 +127,12 @@ export function isBoardingActionsSlotFull(
 
 export function getBoardingActionsErrorMessage(
   unitName,
-  detachment,
-  currentList,
   compendium
 ) {
-  const slot = findBoardingActionsSlot(unitName, detachment);
+  const store = useArmyListStore();
+  const { detachment } = storeToRefs(store);
+
+  const slot = findBoardingActionsSlot(unitName, detachment.value);
   if (!slot) {
     return "Unit not available in this Detachment";
   }

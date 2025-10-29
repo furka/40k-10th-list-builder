@@ -3,6 +3,9 @@ import DataSheet from "./DataSheet.vue";
 import draggable from "vuedraggable";
 import ArmyListUnit from "./ArmyListUnit.vue";
 import { computed, ref } from "vue";
+import { useArmyListStore } from "../stores/armyList";
+import { useCollectionStore } from "../stores/collection";
+import { useCodexStore } from "../stores/codex";
 import {
   GROUP_NONE,
   SORT_CHEAPEST_FIRST,
@@ -14,23 +17,20 @@ import {
   sortDataSheetPtsDescending,
 } from "../utils/sort-functions";
 import { isBattleLine } from "../utils/is-battleline";
-import { nameEquals } from "../utils/name-match";
 import { getBoardingActionsDisplayName } from "../utils/boarding-actions";
 
+const armyListStore = useArmyListStore();
+const collectionStore = useCollectionStore();
+const codexStore = useCodexStore();
+
 const props = defineProps({
-  filteredCompendium: Array,
-  compendium: Array,
   codexFilter: String,
   showForgeWorld: Boolean,
   showLegends: Boolean,
   sortOrder: String,
-  isBoardingActions: Boolean,
   boardingActionsConfig: Object,
-  currentList: Object,
   group: String,
   editCollection: Boolean,
-  collection: Object,
-  currentMFM: Object,
   showPointsChanges: Boolean,
   bin: Array,
 });
@@ -74,7 +74,7 @@ function sortOrderFn() {
 }
 
 function applyBoardingActionsRules(sheets) {
-  if (!props.isBoardingActions) {
+  if (!armyListStore.isBoardingActions) {
     return sheets;
   }
 
@@ -83,11 +83,17 @@ function applyBoardingActionsRules(sheets) {
     return [];
   }
 
+  // Build a lookup map once instead of flatMapping for every sheet
+  const unitConfigMap = new Map();
+  config.units.forEach(slot => {
+    slot.options.forEach(option => {
+      unitConfigMap.set(option.name.toLowerCase(), option);
+    });
+  });
+
   return sheets
     .map(sheet => {
-      const unitConfig = config.units
-        .flatMap(slot => slot.options)
-        .find(option => nameEquals(option.name, sheet.name));
+      const unitConfig = unitConfigMap.get(sheet.name.toLowerCase());
 
       if (!unitConfig) {
         return null;
@@ -110,7 +116,7 @@ function applyBoardingActionsRules(sheets) {
 }
 
 const dataSheets = computed(() => {
-  const sheets = props.filteredCompendium
+  const sheets = codexStore.filteredCompendium
     ?.filter(userFilter)
     .filter(forgeWorldFilter)
     .filter(legendsFilter)
@@ -119,38 +125,13 @@ const dataSheets = computed(() => {
   return applyBoardingActionsRules(sheets || []);
 });
 
-const enhancements = computed(() => {
-  const { name, sizes } = props.compendium.find(
-    (sheet) => nameEquals(sheet.name, "Enhancements")
-  );
-
-  return {
-    name,
-    sizes: sizes.filter(
-      (s) =>
-        s.detachment?.toLowerCase() ===
-        props.currentList.detachment?.toLowerCase()
-    ),
-    enhancements: true,
-  };
-});
 
 const unitStats = computed(() => {
-  const counts = {};
-  const modelsTaken = {};
-  const enhancementsTaken = new Set();
-
-  props.currentList.units.forEach((unit) => {
-    if (!unit.bonus) {
-      counts[unit.name] = (counts[unit.name] || 0) + 1;
-    }
-    modelsTaken[unit.name] = (modelsTaken[unit.name] || 0) + (unit.models || 0);
-    if (unit.optionName) {
-      enhancementsTaken.add(unit.optionName);
-    }
-  });
-
-  return { counts, modelsTaken, enhancementsTaken };
+  return {
+    counts: armyListStore.unitCounts,
+    modelsTaken: armyListStore.modelsTaken,
+    enhancementsTaken: armyListStore.enhancementsTaken,
+  };
 });
 
 const groupedUnits = computed(() => {
@@ -182,7 +163,7 @@ const groupedUnits = computed(() => {
         allies.units.push(sheet);
       } else if (sheet.character) {
         characters.units.push(sheet);
-      } else if (isBattleLine(sheet, props.currentList.detachment)) {
+      } else if (isBattleLine(sheet)) {
         battleLine.units.push(sheet);
       } else if (sheet.dedicatedTransport) {
         transports.units.push(sheet);
@@ -196,20 +177,20 @@ const groupedUnits = computed(() => {
     });
   }
 
-  if (enhancements.value.sizes.length) {
+  if (codexStore.enhancements.sizes.length) {
     // Group enhancements by category
-    const detachmentEnhancements = enhancements.value.sizes.filter(
+    const detachmentEnhancements = codexStore.enhancements.sizes.filter(
       s => !s.enhancementCategory
     );
-    const genericEnhancements = enhancements.value.sizes.filter(
+    const genericEnhancements = codexStore.enhancements.sizes.filter(
       s => s.enhancementCategory === "Generic Enhancements"
     );
-    const breachingEnhancements = enhancements.value.sizes.filter(
+    const breachingEnhancements = codexStore.enhancements.sizes.filter(
       s => s.enhancementCategory === "Breaching Operation Enhancements"
     );
 
     const enhancementUnits = [];
-    const detachmentDisplayName = getBoardingActionsDisplayName(props.currentList.detachment).toLowerCase();
+    const detachmentDisplayName = getBoardingActionsDisplayName(armyListStore.detachment).toLowerCase();
 
     if (detachmentEnhancements.length) {
       enhancementUnits.push({
@@ -289,13 +270,8 @@ function onScrollWheel(e) {
               :dataSheet="unit"
               :unit-stats="unitStats"
               :edit-collection="props.editCollection"
-              :collection="props.collection"
-              :current-m-f-m="props.currentMFM"
               :sort-order="props.sortOrder"
-              :is-boarding-actions="props.isBoardingActions"
-              :detachment="props.currentList.detachment"
-              :current-list="props.currentList"
-              :compendium="props.compendium"
+              :compendium="codexStore.compendium"
               :show-points-changes="props.showPointsChanges"
               :group="props.group"
               @add="addUnit"

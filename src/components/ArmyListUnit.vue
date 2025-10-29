@@ -1,24 +1,20 @@
 <script setup>
 import { computed } from "vue";
 import RiskIcon from "../assets/risk-icon.svg";
-import { unitMax } from "../utils/unit-max";
-import { isBoardingActionsSlotFull, getBoardingActionsErrorMessage } from "../utils/boarding-actions";
-import { getPoints } from "../utils/mfm";
 import { nameEquals } from "../utils/name-match";
+import { useArmyListStore } from "../stores/armyList";
+import { useMfmStore } from "../stores/mfm";
+
+const armyListStore = useArmyListStore();
+const mfmStore = useMfmStore();
 
 const props = defineProps({
   unit: Object,
   scale: Number,
-  currentMFM: Object,
-  compendium: Array,
-  isBoardingActions: Boolean,
-  detachment: String,
-  currentList: Object,
-  unitCount: Number,
 });
 
 const unitPoints = computed(() => {
-  const points = getPoints(props.unit, props.currentMFM);
+  const points = mfmStore.getPoints(props.unit, armyListStore.currentMFM);
   return points > 0 ? points : 0;
 });
 
@@ -49,87 +45,7 @@ const name = computed(() => {
 });
 
 const inValid = computed(() => {
-  if (props.unit.error) {
-    return "Invalid Unit";
-  }
-  const unit = props.compendium.find((u) => nameEquals(u.name, props.unit.name));
-
-  const count = props.unitCount;
-
-  if (!unit) {
-    const version = props.currentMFM?.MFM_VERSION || "unknown";
-    return `Unit not available in MFM ${version}`;
-  }
-
-  const max = unitMax(
-    unit,
-    props.detachment,
-    props.isBoardingActions,
-    props.currentList,
-    props.compendium
-  );
-
-  if (props.isBoardingActions) {
-    if (max === 0) {
-      return getBoardingActionsErrorMessage(
-        props.unit.name,
-        props.detachment,
-        props.currentList,
-        props.compendium
-      );
-    }
-
-    if (count > max) {
-      return getBoardingActionsErrorMessage(
-        props.unit.name,
-        props.detachment,
-        props.currentList,
-        props.compendium
-      );
-    }
-
-    const listExcludingCurrent = {
-      ...props.currentList,
-      units: props.currentList.units.filter(u => u.id !== props.unit.id)
-    };
-
-    const slotFull = isBoardingActionsSlotFull(
-      props.unit.name,
-      props.detachment,
-      listExcludingCurrent,
-      props.compendium
-    );
-
-    if (slotFull) {
-      return getBoardingActionsErrorMessage(
-        props.unit.name,
-        props.detachment,
-        props.currentList,
-        props.compendium
-      );
-    }
-  } else {
-    if (count > max) {
-      return `Only ${max} of this unit allowed`;
-    }
-  }
-
-  if (nameEquals(props.unit.name, "Enhancements")) {
-    const availableEnhancements = props.compendium
-      ?.find((u) => nameEquals(u.name, "Enhancements"))
-      ?.sizes.filter(
-        (s) =>
-          s.detachment?.toUpperCase() ===
-          props.detachment?.toUpperCase()
-      )
-      .map((e) => e.name);
-
-    if (!availableEnhancements.includes(props.unit.optionName)) {
-      return "Enhancement not available in this detachment";
-    }
-  }
-
-  return false;
+  return armyListStore.getUnitValidationError(props.unit);
 });
 </script>
 

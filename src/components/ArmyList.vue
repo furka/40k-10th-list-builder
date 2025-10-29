@@ -3,7 +3,13 @@ import { computed } from "vue";
 import draggable from "vuedraggable";
 import ArmyListUnit from "./ArmyListUnit.vue";
 import { SORT_MANUAL } from "../data/constants";
-import { getPoints } from "../utils/mfm";
+import { useArmyListStore } from "../stores/armyList";
+import { useMfmStore } from "../stores/mfm";
+import { useCodexStore } from "../stores/codex";
+
+const armyListStore = useArmyListStore();
+const mfmStore = useMfmStore();
+const codexStore = useCodexStore();
 
 const TOOLBAR_HEIGHT = 44;
 const VERSION_BAR_HEIGHT = 20;
@@ -11,11 +17,6 @@ const VERSION_BAR_HEIGHT = 20;
 const props = defineProps({
   appHeight: Number,
   effectiveMaxPoints: Number,
-  currentMFM: Object,
-  compendium: Array,
-  isBoardingActions: Boolean,
-  detachment: String,
-  currentList: Object,
 });
 
 const emit = defineEmits(['set-units', 'set-sort-order']);
@@ -25,9 +26,9 @@ const scale = computed(() => {
 });
 
 const points = computed(() => {
-  return props.currentList.units.reduce(
+  return armyListStore.units.reduce(
     (acc, curr) => {
-      const unitPoints = getPoints(curr, props.currentMFM);
+      const unitPoints = mfmStore.getPoints(curr, armyListStore.currentMFM);
       return acc + (unitPoints > 0 ? unitPoints : 0);
     },
     0
@@ -40,14 +41,6 @@ const emptySpace = computed(() => {
       scale.value +
     "px"
   );
-});
-
-const unitCounts = computed(() => {
-  const counts = {};
-  props.currentList.units.forEach((unit) => {
-    counts[unit.name] = (counts[unit.name] || 0) + 1;
-  });
-  return counts;
 });
 
 function handleDragChange(event) {
@@ -63,7 +56,7 @@ function updateUnits(units) {
 
 <template>
   <draggable
-    :model-value="props.currentList.units"
+    :model-value="armyListStore.units"
     @update:model-value="updateUnits"
     group="units"
     animation="150"
@@ -75,12 +68,6 @@ function updateUnits(units) {
       <ArmyListUnit
         :unit="element"
         :scale="scale"
-        :current-m-f-m="props.currentMFM"
-        :compendium="props.compendium"
-        :is-boarding-actions="props.isBoardingActions"
-        :detachment="props.detachment"
-        :current-list="props.currentList"
-        :unit-count="unitCounts[element.name] || 0"
       />
     </template>
   </draggable>

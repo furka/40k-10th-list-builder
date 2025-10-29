@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "deep-freeze": "^0.0.1",
+    "pinia": "^3.0.3",
     "sortablejs": "^1.15.0",
     "uuid": "^9.0.0",
     "vite-svg-loader": "^4.0.0",

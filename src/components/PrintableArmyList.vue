@@ -1,22 +1,24 @@
 <script setup>
 import { computed } from "vue";
-import { getPoints } from "../utils/mfm";
+import { useArmyListStore } from "../stores/armyList";
+import { useMfmStore } from "../stores/mfm";
+
+const armyListStore = useArmyListStore();
+const mfmStore = useMfmStore();
 
 const props = defineProps({
-  currentMFM: Object,
-  currentList: Object,
   detachmentDisplayName: String,
 });
 
 const PADSIZE = 10;
 
 function getUnitPoints(unit) {
-  const unitPoints = getPoints(unit, props.currentMFM);
+  const unitPoints = mfmStore.getPoints(unit, armyListStore.currentMFM);
   return unitPoints > 0 ? unitPoints : 0;
 }
 
 const validUnits = computed(() => {
-  return props.currentList.units.filter(
+  return armyListStore.units.filter(
     (unit) => getUnitPoints(unit) > 0
   );
 });
@@ -59,12 +61,12 @@ function unitLine(unit) {
 
 <template>
   <article class="army-list">
-    <h1 v-if="props.currentList.name">
-      {{ props.currentList.name }}
+    <h1 v-if="armyListStore.name">
+      {{ armyListStore.name }}
     </h1>
     <h2>
       <span class="army-list__name">
-        {{ props.currentList.faction }} —
+        {{ armyListStore.faction }} —
         {{ props.detachmentDisplayName }}
       </span>
       — {{ points }} pts
