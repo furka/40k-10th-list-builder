@@ -8,14 +8,26 @@ import ToolBar from "./ToolBar.vue";
 import ShareListModal from "./ShareListModal.vue";
 
 const props = defineProps({
-  appData: Object,
+  currentList: Object,
+  savedLists: Array,
+  currentMFM: Object,
+  detachmentDisplayName: String,
+  isBoardingActions: Boolean,
+  effectiveMaxPoints: Number,
 });
 
-defineEmits(['newList', 'select-list', 'copy-list', 'delete-list']);
+const emit = defineEmits([
+  'newList',
+  'select-list',
+  'copy-list',
+  'delete-list',
+  'set-max-points',
+  'set-list-name',
+]);
 
 const points = computed(() => {
-  return props.appData.currentList.units.reduce((acc, curr) => {
-    const unitPoints = getPoints(curr, props.appData.currentMFM);
+  return props.currentList.units.reduce((acc, curr) => {
+    const unitPoints = getPoints(curr, props.currentMFM);
     return acc + (unitPoints > 0 ? unitPoints : 0);
   }, 0);
 });
@@ -24,26 +36,27 @@ const points = computed(() => {
 <template>
   <ToolBar class="app-toolbar">
     <div class="toolbar__group toolbar__group--points">
-      <label :class="{ 'label--static': props.appData.isBoardingActions }">
-        <span :class="{ over: points > props.appData.effectiveMaxPoints }">
+      <label :class="{ 'label--static': props.isBoardingActions }">
+        <span :class="{ over: points > props.effectiveMaxPoints }">
           {{ points }}
         </span>
         /
-        <span v-if="props.appData.isBoardingActions">{{
-          props.appData.effectiveMaxPoints
+        <span v-if="props.isBoardingActions">{{
+          props.effectiveMaxPoints
         }}</span>
         <input
           v-else
           type="number"
           min="500"
           step="500"
-          v-model.number="props.appData.currentList.maxPoints"
+          :value="props.currentList.maxPoints"
+          @input="emit('set-max-points', parseInt($event.target.value))"
           class="toolbar__points-input"
           :style="{
             width:
               Math.max(
                 3,
-                props.appData.currentList.maxPoints.toString().length + 1
+                props.currentList.maxPoints.toString().length + 1
               ) + 'ch',
           }"
         />
@@ -52,17 +65,18 @@ const points = computed(() => {
 
     <div class="toolbar__group">
       <ViewListModal
-        :current-m-f-m="props.appData.currentMFM"
-        :current-list="props.appData.currentList"
-        :detachment-display-name="props.appData.detachmentDisplayName"
+        :current-m-f-m="props.currentMFM"
+        :current-list="props.currentList"
+        :detachment-display-name="props.detachmentDisplayName"
       />
-      <ShareListModal :current-list="props.appData.currentList" />
+      <ShareListModal :current-list="props.currentList" />
     </div>
 
     <div class="toolbar__group toolbar__group--list-name">
       <input
         type="text"
-        v-model="props.appData.currentList.name"
+        :value="props.currentList.name"
+        @input="emit('set-list-name', $event.target.value)"
         placeholder="Name your list"
         class="toolbar__list-name"
       />
@@ -71,18 +85,18 @@ const points = computed(() => {
     <div class="toolbar__group">
       <button
         class="toolbar__button"
-        @click="$emit('newList')"
+        @click="emit('newList')"
         title="Create a new army list"
       >
         <NewIcon class="toolbar__icon" />
         <span>New</span>
       </button>
       <OpenListModal
-        :current-list="props.appData.currentList"
-        :saved-lists="props.appData.lists"
-        @select-list="$emit('select-list', $event)"
-        @copy-list="$emit('copy-list', $event)"
-        @delete-list="$emit('delete-list', $event)"
+        :current-list="props.currentList"
+        :saved-lists="props.savedLists"
+        @select-list="emit('select-list', $event)"
+        @copy-list="emit('copy-list', $event)"
+        @delete-list="emit('delete-list', $event)"
       />
     </div>
   </ToolBar>
