@@ -9,6 +9,16 @@ const props = defineProps({
   appData: Object,
 });
 
+const emit = defineEmits([
+  'set-sort-order',
+  'set-show-points-changes',
+  'set-show-forge-world',
+  'set-show-legends',
+  'set-edit-collection',
+  'set-codex-sort-order',
+  'set-group',
+]);
+
 const factions = computed(() => {
   const factions = props.appData.factions
     .map((f) => f.name)
@@ -64,7 +74,10 @@ function getDetachmentDisplayName(detachmentName) {
 <template>
   <ToolBar class="codex-toolbar">
     <div class="toolbar__group toolbar__group--sort">
-      <SortArmyButton :app-data="props.appData" />
+      <SortArmyButton
+        :sort-order="props.appData.currentList.sortOrder"
+        @set-sort-order="emit('set-sort-order', $event)"
+      />
     </div>
 
     <div class="toolbar__group toolbar__group--faction">
@@ -163,7 +176,20 @@ function getDetachmentDisplayName(detachmentName) {
     </div>
 
     <div class="toolbar__group">
-      <CodexOptions :app-data="props.appData" />
+      <CodexOptions
+        :show-points-changes="props.appData.showPointsChanges"
+        :show-forge-world="props.appData.showForgeWorld"
+        :show-legends="props.appData.showLegends"
+        :edit-collection="props.appData.editCollection"
+        :sort-order="props.appData.sortOrder"
+        :group="props.appData.group"
+        @set-show-points-changes="emit('set-show-points-changes', $event)"
+        @set-show-forge-world="emit('set-show-forge-world', $event)"
+        @set-show-legends="emit('set-show-legends', $event)"
+        @set-edit-collection="emit('set-edit-collection', $event)"
+        @set-sort-order="emit('set-codex-sort-order', $event)"
+        @set-group="emit('set-group', $event)"
+      />
     </div>
   </ToolBar>
 </template>

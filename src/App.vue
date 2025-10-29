@@ -262,6 +262,54 @@ function deleteList(list) {
   appData.lists.splice(i, 1);
 }
 
+function setSortOrder(sortOrder) {
+  appData.currentList.sortOrder = sortOrder;
+}
+
+function setShowPointsChanges(value) {
+  appData.showPointsChanges = value;
+}
+
+function setShowForgeWorld(value) {
+  appData.showForgeWorld = value;
+}
+
+function setShowLegends(value) {
+  appData.showLegends = value;
+}
+
+function setEditCollection(value) {
+  appData.editCollection = value;
+}
+
+function setCodexSortOrder(value) {
+  appData.sortOrder = value;
+}
+
+function setGroup(value) {
+  appData.group = value;
+}
+
+function setMaxPoints(value) {
+  appData.currentList.maxPoints = value;
+}
+
+function setListName(value) {
+  appData.currentList.name = value;
+}
+
+function setMfmVersion(value) {
+  appData.currentList.mfm_version = value;
+}
+
+function setUnits(units) {
+  appData.currentList.units = units;
+}
+
+function removeUnit(value) {
+  appData.bin = value;
+}
+
 function track(val) {
   watch(
     () => appData[val],
@@ -347,18 +395,66 @@ onUnmounted(() => {
   <div class="app">
     <AppToolBar
       class="app__toolbar"
-      :app-data="appData"
+      :current-list="appData.currentList"
+      :saved-lists="appData.lists"
+      :current-m-f-m="appData.currentMFM"
+      :detachment-display-name="appData.detachmentDisplayName"
+      :is-boarding-actions="appData.isBoardingActions"
+      :effective-max-points="appData.effectiveMaxPoints"
       @new-list="newList"
       @select-list="selectList"
       @copy-list="copyList"
       @delete-list="deleteList"
+      @set-max-points="setMaxPoints"
+      @set-list-name="setListName"
     />
-    <CodexToolBar class="app__codex-toolbar" :app-data="appData" />
+    <CodexToolBar
+      class="app__codex-toolbar"
+      :app-data="appData"
+      @set-sort-order="setSortOrder"
+      @set-show-points-changes="setShowPointsChanges"
+      @set-show-forge-world="setShowForgeWorld"
+      @set-show-legends="setShowLegends"
+      @set-edit-collection="setEditCollection"
+      @set-codex-sort-order="setCodexSortOrder"
+      @set-group="setGroup"
+    />
     <div class="app__body">
-      <ArmyList :app-data="appData" />
-      <ArmyCodex :app-data="appData" @add="addUnit" />
+      <ArmyList
+        :app-height="appData.appHeight"
+        :effective-max-points="appData.effectiveMaxPoints"
+        :current-m-f-m="appData.currentMFM"
+        :compendium="appData.compendium"
+        :is-boarding-actions="appData.isBoardingActions"
+        :detachment="appData.currentList.detachment"
+        :current-list="appData.currentList"
+        @set-units="setUnits"
+        @set-sort-order="setSortOrder"
+      />
+      <ArmyCodex
+        :filtered-compendium="appData.filteredCompendium"
+        :compendium="appData.compendium"
+        :codex-filter="appData.codexFilter"
+        :show-forge-world="appData.showForgeWorld"
+        :show-legends="appData.showLegends"
+        :sort-order="appData.sortOrder"
+        :is-boarding-actions="appData.isBoardingActions"
+        :boarding-actions-config="appData.boardingActionsConfig"
+        :current-list="appData.currentList"
+        :group="appData.group"
+        :edit-collection="appData.editCollection"
+        :collection="appData.collection"
+        :current-m-f-m="appData.currentMFM"
+        :show-points-changes="appData.showPointsChanges"
+        :bin="appData.bin"
+        @add="addUnit"
+        @remove-unit="removeUnit"
+      />
     </div>
-    <VersionBar :app-data="appData" />
+    <VersionBar
+      :current-list="appData.currentList"
+      @set-mfm-version="setMfmVersion"
+    />
   </div>
   <PrintableArmyList
     :current-m-f-m="appData.currentMFM"
