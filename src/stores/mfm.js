@@ -64,14 +64,22 @@ export const useMfmStore = defineStore('mfm', () => {
 
     let data_sheet;
 
-    // If faction provided, prioritize units from that faction
-    if (faction) {
-      data_sheet = mfm.DATA_SHEETS.find((d) => d.name === unit.name && d.faction === faction);
-    }
+    // Check if this is an enhancement (has no models field and has optionName)
+    const isEnhancement = !unit.models && unit.optionName;
 
-    // Fallback to any unit with matching name
-    if (!data_sheet) {
-      data_sheet = mfm.DATA_SHEETS.find((d) => d.name === unit.name);
+    if (isEnhancement) {
+      // For enhancements, look for the "Enhancements" datasheet
+      data_sheet = mfm.DATA_SHEETS.find((d) => d.name === "Enhancements");
+    } else {
+      // If faction provided, prioritize units from that faction
+      if (faction) {
+        data_sheet = mfm.DATA_SHEETS.find((d) => d.name === unit.name && d.faction === faction);
+      }
+
+      // Fallback to any unit with matching name
+      if (!data_sheet) {
+        data_sheet = mfm.DATA_SHEETS.find((d) => d.name === unit.name);
+      }
     }
 
     let option;
