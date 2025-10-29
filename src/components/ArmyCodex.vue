@@ -18,26 +18,37 @@ import { nameEquals } from "../utils/name-match";
 import { getBoardingActionsDisplayName } from "../utils/boarding-actions";
 
 const props = defineProps({
-  appData: Object,
+  filteredCompendium: Array,
+  compendium: Array,
+  codexFilter: String,
+  showForgeWorld: Boolean,
+  showLegends: Boolean,
+  sortOrder: String,
+  isBoardingActions: Boolean,
+  boardingActionsConfig: Object,
+  currentList: Object,
+  group: String,
+  editCollection: Boolean,
+  collection: Object,
+  currentMFM: Object,
+  showPointsChanges: Boolean,
+  bin: Array,
 });
 
-const emit = defineEmits(["add"]);
+const emit = defineEmits(["add", "remove-unit"]);
+
 function addUnit(unit, size) {
   emit("add", unit, size);
-}
-
-function factionFilter(sheet) {
-  return sheet.faction === props.appData.currentList.faction;
 }
 
 function userFilter(sheet) {
   return sheet.name
     .toLowerCase()
-    .includes(props.appData.codexFilter.toLowerCase());
+    .includes(props.codexFilter.toLowerCase());
 }
 
 function forgeWorldFilter(sheet) {
-  if (props.appData.showForgeWorld) {
+  if (props.showForgeWorld) {
     return true;
   } else {
     return !sheet.forgeWorld;
@@ -45,29 +56,29 @@ function forgeWorldFilter(sheet) {
 }
 
 function legendsFilter(sheet) {
-  if (props.appData.showLegends) {
+  if (props.showLegends) {
     return true;
   } else {
     return !sheet.legends;
   }
 }
 
-function sortOrder() {
-  if (props.appData.sortOrder === SORT_EXPENSIVE_FIRST) {
+function sortOrderFn() {
+  if (props.sortOrder === SORT_EXPENSIVE_FIRST) {
     return sortDataSheetPtsDescending;
   }
-  if (props.appData.sortOrder === SORT_CHEAPEST_FIRST) {
+  if (props.sortOrder === SORT_CHEAPEST_FIRST) {
     return sortDataSheetPtsAscending;
   }
   return sortDataSheetAlphabetical;
 }
 
 function applyBoardingActionsRules(sheets) {
-  if (!props.appData.isBoardingActions) {
+  if (!props.isBoardingActions) {
     return sheets;
   }
 
-  const config = props.appData.boardingActionsConfig;
+  const config = props.boardingActionsConfig;
   if (!config?.units) {
     return [];
   }
@@ -99,17 +110,17 @@ function applyBoardingActionsRules(sheets) {
 }
 
 const dataSheets = computed(() => {
-  const sheets = props.appData.filteredCompendium
+  const sheets = props.filteredCompendium
     ?.filter(userFilter)
     .filter(forgeWorldFilter)
     .filter(legendsFilter)
-    .sort(sortOrder());
+    .sort(sortOrderFn());
 
   return applyBoardingActionsRules(sheets || []);
 });
 
 const enhancements = computed(() => {
-  const { name, sizes } = props.appData.compendium.find(
+  const { name, sizes } = props.compendium.find(
     (sheet) => nameEquals(sheet.name, "Enhancements")
   );
 
@@ -118,7 +129,7 @@ const enhancements = computed(() => {
     sizes: sizes.filter(
       (s) =>
         s.detachment?.toLowerCase() ===
-        props.appData.currentList.detachment?.toLowerCase()
+        props.currentList.detachment?.toLowerCase()
     ),
     enhancements: true,
   };
@@ -129,7 +140,7 @@ const unitStats = computed(() => {
   const modelsTaken = {};
   const enhancementsTaken = new Set();
 
-  props.appData.currentList.units.forEach((unit) => {
+  props.currentList.units.forEach((unit) => {
     if (!unit.bonus) {
       counts[unit.name] = (counts[unit.name] || 0) + 1;
     }
@@ -144,7 +155,7 @@ const unitStats = computed(() => {
 
 const groupedUnits = computed(() => {
   const data = [];
-  if (props.appData.group === GROUP_NONE) {
+  if (props.group === GROUP_NONE) {
     data.push({ title: "", units: dataSheets.value });
   } else {
     const characters = { title: "Characters", units: [] };
@@ -171,7 +182,7 @@ const groupedUnits = computed(() => {
         allies.units.push(sheet);
       } else if (sheet.character) {
         characters.units.push(sheet);
-      } else if (isBattleLine(sheet, props.appData.currentList.detachment)) {
+      } else if (isBattleLine(sheet, props.currentList.detachment)) {
         battleLine.units.push(sheet);
       } else if (sheet.dedicatedTransport) {
         transports.units.push(sheet);
@@ -198,7 +209,7 @@ const groupedUnits = computed(() => {
     );
 
     const enhancementUnits = [];
-    const detachmentDisplayName = getBoardingActionsDisplayName(props.appData.currentList.detachment).toLowerCase();
+    const detachmentDisplayName = getBoardingActionsDisplayName(props.currentList.detachment).toLowerCase();
 
     if (detachmentEnhancements.length) {
       enhancementUnits.push({
@@ -238,6 +249,10 @@ const groupedUnits = computed(() => {
   return data.filter((group) => group.units.length > 0);
 });
 
+function removeUnit(value) {
+  emit("remove-unit", value);
+}
+
 // horizontal scroll using scrollwheel
 const codexEl = ref(null);
 function onScrollWheel(e) {
@@ -250,7 +265,8 @@ function onScrollWheel(e) {
   <div class="codex">
     <!-- Draggable area for deleting units from army list -->
     <draggable
-      v-model="props.appData.bin"
+      :model-value="props.bin"
+      @update:model-value="removeUnit"
       group="units"
       animation="150"
       item-key="id"
@@ -272,16 +288,16 @@ function onScrollWheel(e) {
               :key="unit.name"
               :dataSheet="unit"
               :unit-stats="unitStats"
-              :edit-collection="appData.editCollection"
-              :collection="appData.collection"
-              :current-m-f-m="appData.currentMFM"
-              :sort-order="appData.sortOrder"
-              :is-boarding-actions="appData.isBoardingActions"
-              :detachment="appData.currentList.detachment"
-              :current-list="appData.currentList"
-              :compendium="appData.compendium"
-              :show-points-changes="appData.showPointsChanges"
-              :group="appData.group"
+              :edit-collection="props.editCollection"
+              :collection="props.collection"
+              :current-m-f-m="props.currentMFM"
+              :sort-order="props.sortOrder"
+              :is-boarding-actions="props.isBoardingActions"
+              :detachment="props.currentList.detachment"
+              :current-list="props.currentList"
+              :compendium="props.compendium"
+              :show-points-changes="props.showPointsChanges"
+              :group="props.group"
               @add="addUnit"
             />
           </div>
