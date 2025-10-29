@@ -49,8 +49,12 @@ const points = computed(() => {
     </div>
 
     <div class="toolbar__group">
-      <ViewListModal :app-data="props.appData" />
-      <ShareListModal :app-data="props.appData" />
+      <ViewListModal
+        :current-m-f-m="props.appData.currentMFM"
+        :current-list="props.appData.currentList"
+        :detachment-display-name="props.appData.detachmentDisplayName"
+      />
+      <ShareListModal :current-list="props.appData.currentList" />
     </div>
 
     <div class="toolbar__group toolbar__group--list-name">

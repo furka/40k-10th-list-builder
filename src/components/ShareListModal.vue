@@ -8,11 +8,11 @@ import { ref } from "vue";
 let feedback = ref("");
 
 const props = defineProps({
-  appData: Object,
+  currentList: Object,
 });
 
 const serializedList = computed(() => {
-  const list = serializeList(props.appData.currentList);
+  const list = serializeList(props.currentList);
 
   return (
     window.location.protocol +

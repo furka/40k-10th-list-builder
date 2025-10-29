@@ -4,7 +4,9 @@ import ModalWithButton from "./ModalWithButton.vue";
 import PrintableArmyList from "./PrintableArmyList.vue";
 
 const props = defineProps({
-  appData: Object,
+  currentMFM: Object,
+  currentList: Object,
+  detachmentDisplayName: String,
 });
 </script>
 
@@ -15,7 +17,11 @@ const props = defineProps({
       <span>View</span>
     </template>
     <template v-slot:content>
-      <PrintableArmyList :app-data="props.appData" />
+      <PrintableArmyList
+        :current-m-f-m="props.currentMFM"
+        :current-list="props.currentList"
+        :detachment-display-name="props.detachmentDisplayName"
+      />
     </template>
   </ModalWithButton>
 </template>
