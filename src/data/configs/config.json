@@ -1226,6 +1226,14 @@
     "legends": ["Iron Priest On Thunderwolf"],
     "sub-faction": "SPACE MARINES"
   },
+  "ULTRAMARINES": {
+    "battle-line": [],
+    "character": ["Ferren Arios"],
+    "epic-hero": ["Ferren Arios"],
+    "dedicated-transport": [],
+    "legends": ["Ferren Arios", "Ultramarines Honour Guard"],
+    "sub-faction": "SPACE MARINES"
+  },
   "T'AU EMPIRE": {
     "battle-line": ["Breacher Team", "Strike Team"],
     "character": [
