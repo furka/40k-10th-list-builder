@@ -1,0 +1,4293 @@
+MUNITORUM
+FIELD MANUAL
+VERSION 3.7
+Welcome to the Munitorum Field Manual. This document contains the most up-to-date points values that should be used in
+your games, covering all the factions in Warhammer 40,000.
+You can use this document to determine the points (pts) value
+of each unit in your army. Each entry lists the increments to
+a unit’s size that incur different points costs. This may change
+with the addition of each individual model (e.g. 1 model, 2
+models, 3 models, etc.) or it may be presented with a lower
+and upper limit to a unit’s Starting Strength (e.g. one cost for
+5 models, another cost for 10 models). In the latter case, your
+units can contain a number of models in between these limits,
+but you must still pay the maximum points cost for a unit
+that starts the game with more than its minimum number of
+models. You can learn more about using points to muster your
+army on pages 55-56 of the Core Rules.
+This document lists the points values for every unit that, at
+the time of publication, is supported for Warhammer 40,000 –
+including those available from Forge World – and these replace
+any points values published previously. It will be updated
+periodically to reflect the latest publications and to support
+game balance.
+Increases and Decreases
+Entries that have had their values increased or decreased since
+the last iteration of this document are highlighted in red or
+green respectively, with the size of increase or decrease shown
+in parentheses before each changed value. Where Codex points
+appear for the first time in this document, such changes are
+highlighted when they differ from those printed in that book.
+Crusade – Supply Limit Exceeded
+As a result of the points updates in this document, Crusade
+players may find that the combined points value of all the units
+currently on their Order of Battle now exceeds their current
+Supply Limit. If this is the case, you can increase your Supply
+Limit so that it is equal to the combined points value of all
+the units currently on your Order of Battle (doing so does not
+require the use of any Requisitions or Requisition points).
+CONTENTS
+Adepta Sororitas ������������������������������������������������������������������������������ 2
+Adeptus Custodes����������������������������������������������������������������������������� 3
+Adeptus Mechanicus������������������������������������������������������������������������ 4
+Adeptus Titanicus ���������������������������������������������������������������������������� 5
+Aeldari����������������������������������������������������������������������������������������������� 6
+Astra Militarum �������������������������������������������������������������������������������� 8
+Black Templars �������������������������������������������������������������������������������10
+Blood Angels�����������������������������������������������������������������������������������11
+Chaos Daemons������������������������������������������������������������������������������12
+Chaos Knights���������������������������������������������������������������������������������14
+Chaos Space Marines���������������������������������������������������������������������15
+Dark Angels������������������������������������������������������������������������������������17
+Death Guard������������������������������������������������������������������������������������18
+Deathwatch�������������������������������������������������������������������������������������19
+Drukhari������������������������������������������������������������������������������������������20
+Emperor’s Children�������������������������������������������������������������������������21
+Genestealer Cults����������������������������������������������������������������������������22
+Grey Knights�����������������������������������������������������������������������������������23
+Imperial Agents ������������������������������������������������������������������������������24
+Imperial Knights �����������������������������������������������������������������������������26
+Leagues of Votann��������������������������������������������������������������������������27
+Necrons�������������������������������������������������������������������������������������������28
+Orks�������������������������������������������������������������������������������������������������29
+Space Marines���������������������������������������������������������������������������������31
+Space Wolves����������������������������������������������������������������������������������33
+T’au Empire�������������������������������������������������������������������������������������34
+Thousand Sons�������������������������������������������������������������������������������35
+Tyranids�������������������������������������������������������������������������������������������36
+World Eaters �����������������������������������������������������������������������������������38
+PRODUCED BY THE WARHAMMER DESIGN STUDIO
+Munitorum Field Manual © Copyright Games Workshop Limited 2025.
+1
+CODEX: ADEPTA SORORITAS
+Aestred Thurga and Agathae Dolan
+2 models 70 pts
+Arco-flagellants
+3 models 45 pts
+10 models 140 pts
+Battle Sisters Squad
+10 models 105 pts
+Canoness
+1 model (+10) 60 pts
+Canoness with Jump Pack
+1 model 75 pts
+Castigator
+1 model 160 pts
+Celestian Sacresants
+5 models 70 pts
+10 models (+10) 140 pts
+Daemonifuge
+2 models 85 pts
+Dialogus
+1 model 40 pts
+Dogmata
+1 model 45 pts
+Dominion Squad
+10 models (+5) 120 pts
+Exorcist
+1 model 210 pts
+Hospitaller
+1 model (+10) 60 pts
+Imagifier
+1 model 65 pts
+Immolator
+1 model 115 pts
+Junith Eruita
+1 model 80 pts
+Ministorum Priest
+1 model 50 pts
+Mortifiers
+1 model 70 pts
+2 models 140 pts
+Morvenn Vahl
+1 model (+15) 185 pts
+Palatine
+1 model 50 pts
+Paragon Warsuits
+3 models 210 pts
+Penitent Engines
+1 model 75 pts
+2 models 150 pts
+Repentia Squad
+5 models 75 pts
+10 models 160 pts
+Retributor Squad
+5 models (+15) 120 pts
+Saint Celestine
+3 models 150 pts
+Sanctifiers
+9 models (+10) 110 pts
+Seraphim Squad
+5 models 80 pts
+10 models 160 pts
+Sisters Novitiate Squad
+10 models 100 pts
+Sororitas Rhino
+1 model 75 pts
+Triumph of Saint Katherine
+1 model 235 pts
+Zephyrim Squad
+5 models 80 pts
+10 models 160 pts
+DETACHMENT ENHANCEMENTS
+Army of Faith
+Blade of Saint Ellynor 15 pts
+Divine Aspect 5 pts
+Litanies of Faith 10 pts
+Triptych of the Macharian Crusade 20 pts
+Bringers of Flame
+Fire and Fury 30 pts
+Iron Surplice of Saint Istalela 10 pts
+Manual of Saint Griselda 20 pts
+Righteous Rage 15 pts
+Champions of Faith
+Eyes of the Oracle 10 pts
+Mark of Devotion 30 pts
+Sanctified Amulet 25 pts
+Triptych of Judgement 15 pts
+Hallowed Martyrs
+Chaplet of Sacrifice 25 pts
+Mantle of Ophelia 20 pts
+Saintly Example 10 pts
+Through Suffering, Strength 25 pts
+Penitent Host
+Catechism of Divine Penitence 20 pts
+Psalm of Righteous Judgement 30 pts
+Refrain of Enduring Faith 25 pts
+Verse of Holy Piety 15 pts
+2
+CODEX: ADEPTUS CUSTODES
+Aleya
+1 model 65 pts
+Allarus Custodians
+2 models (-10) 110 pts
+3 models (-15) 165 pts
+5 models (-25) 275 pts
+6 models (-30) 330 pts
+Anathema Psykana Rhino
+1 model 75 pts
+Blade Champion
+1 model 120 pts
+Custodian Guard
+4 models (-10) 150 pts
+5 models (-10) 190 pts
+Custodian Wardens
+4 models 210 pts
+5 models 260 pts
+Knight-Centura
+1 model 55 pts
+Prosecutors
+4 models 40 pts
+5 models 50 pts
+9 models 75 pts
+10 models 85 pts
+Shield-Captain
+1 model 120 pts
+Shield-Captain in
+Allarus Terminator Armour
+1 model 130 pts
+Shield-Captain on Dawneagle Jetbike
+1 model 150 pts
+Trajann Valoris
+1 model 140 pts
+Valerian
+1 model 110 pts
+Venerable Contemptor Dreadnought
+1 model 170 pts
+Venerable Land Raider
+1 model 220 pts
+Vertus Praetors
+2 models 150 pts
+3 models 225 pts
+Vigilators
+4 models (-5) 45 pts
+5 models (-10) 55 pts
+9 models (-10) 90 pts
+10 models (-10) 100 pts
+Witchseekers
+4 models (-5) 45 pts
+5 models (-10) 55 pts
+9 models (-25) 90 pts
+10 models (-25) 100 pts
+FORGE WORLD POINTS VALUES
+Agamatus Custodians
+3 models 225 pts
+6 models 450 pts
+Aquilon Custodians
+3 models 195 pts
+6 models 390 pts
+Ares Gunship
+1 model 580 pts
+Caladius Grav-tank
+1 model 215 pts
+Contemptor-Achillus Dreadnought
+1 model 155 pts
+Contemptor-Galatus Dreadnought
+1 model 165 pts
+Coronus Grav-carrier
+1 model 200 pts
+Custodian Guard with Adrasite
+and Pyrithite Spears
+5 models 250 pts
+Orion Assault Dropship
+1 model 690 pts
+Pallas Grav-attack
+1 model 105 pts
+Sagittarum Custodians
+5 models 225 pts
+Telemon Heavy Dreadnought
+1 model 225 pts
+Venatari Custodians
+3 models 165 pts
+6 models 330 pts
+DETACHMENT ENHANCEMENTS
+Auric Champions
+Blade Imperator 25 pts
+Inspirational Exemplar 10 pts
+Martial Philosopher 30 pts
+Veiled Blade 25 pts
+Lions of the Emperor
+Admonimortis 10 pts
+Fierce Conqueror 15 pts
+Praesidius 25 pts
+Superior Creation 25 pts
+Null Maiden Vigil
+Enhanced Voidsheen Cloak 10 pts
+Huntress’ Eye 15 pts
+Oblivion Knight 25 pts
+Raptor Blade 5 pts
+Shield Host
+Auric Mantle 15 pts
+Castellan’s Mark 20 pts
+From the Hall of Armouries 25 pts
+Panoptispex 5 pts
+Solar Spearhead
+Adamantine Talisman 25 pts
+Augury Uplink 35 pts
+Honoured Fallen 15 pts
+Veteran of the Kataphraktoi 10 pts
+Talons of the Emperor
+Aegis Projector 20 pts
+Champion of the Imperium 25 pts
+Gift of Terran Artifice 15 pts
+Radiant Mantle 30 pts
+3
+CODEX: ADEPTUS MECHANICUS
+Archaeopter Fusilave
+1 model 160 pts
+Archaeopter Stratoraptor
+1 model 185 pts
+Archaeopter Transvector
+1 model 150 pts
+Belisarius Cawl
+1 model (+35) 210 pts
+Corpuscarii Electro-Priests
+5 models 65 pts
+10 models 130 pts
+Cybernetica Datasmith
+1 model 35 pts
+Fulgurite Electro-Priests
+5 models 70 pts
+10 models 140 pts
+Ironstrider Ballistarii
+1 model (+10) 85 pts
+2 models (+20) 170 pts
+3 models (+30) 255 pts
+Kastelan Robots
+2 models 180 pts
+4 models 360 pts
+Kataphron Breachers
+3 models 160 pts
+6 models 320 pts
+Kataphron Destroyers
+3 models 105 pts
+6 models 210 pts
+Onager Dunecrawler
+1 model 155 pts
+Pteraxii Skystalkers
+5 models (+5) 75 pts
+10 models (+10) 150 pts
+Pteraxii Sterylizors
+5 models 80 pts
+10 models 160 pts
+Serberys Raiders
+3 models 60 pts
+6 models 120 pts
+Serberys Sulphurhounds
+3 models 55 pts
+6 models 110 pts
+Servitor Battleclade
+9 models 60 pts
+Sicarian Infiltrators
+5 models (+5) 75 pts
+10 models (+15) 155 pts
+Sicarian Ruststalkers
+5 models (+5) 80 pts
+10 models (+15) 165 pts
+Skitarii Marshal
+1 model 35 pts
+Skitarii Rangers
+10 models 85 pts
+Skitarii Vanguard
+10 models 95 pts
+Skorpius Disintegrator
+1 model 165 pts
+Skorpius Dunerider
+1 model 85 pts
+Sydonian Dragoons with Radium Jezzails
+1 model 55 pts
+2 models 100 pts
+3 models 150 pts
+Sydonian Dragoons with Taser Lances
+1 model 65 pts
+2 models 130 pts
+3 models 195 pts
+Sydonian Skatros
+1 model 50 pts
+Tech-Priest Dominus
+1 model 65 pts
+Tech-Priest Enginseer
+1 model 55 pts
+Tech-Priest Manipulus
+1 model 60 pts
+Technoarcheologist
+1 model 45 pts
+DETACHMENT ENHANCEMENTS
+Cohort Cybernetica
+Arch-negator 10 pts
+Emotionless Clarity 15 pts
+Lord of Machines 20 pts
+Necromechanic 25 pts
+Data-psalm Conclave
+Data-blessed Autosermon 20 pts
+Mantle of the Gnosticarch 15 pts
+Mechanicus Locum 10 pts
+Temporcopia 25 pts
+Explorator Maniple
+Artisan 15 pts
+Genetor 25 pts
+Logis 20 pts
+Magos 15 pts
+Haloscreed Battle Clade
+Cognitive Reinforcement 35 pts
+Inloaded Lethality 15 pts
+Sanctified Ordnance 10 pts
+Transoracular Dyad Wafers 15 pts
+Rad-zone Corps
+Autoclavic Denunciation 15 pts
+Malphonic Susurrus 20 pts
+Peerless Eradicator 20 pts
+Radial Suffusion 25 pts
+Skitarii Hunter Cohort
+Battle-sphere Uplink 30 pts
+Cantic Thrallnet 25 pts
+Clandestine Infiltrator 20 pts
+Veiled Hunter 10 pts
+4
+INDEX: ADEPTUS TITANICUS
+FORGE WORLD POINTS VALUES
+Reaver Titan
+1 model 2200 pts
+Warbringer Nemesis Titan
+1 model 2600 pts
+Warhound Titan
+1 model 1100 pts
+Warlord Titan
+1 model 3500 pts
+5
+CODEX: AELDARI
+Asurmen
+1 model 125 pts
+Autarch
+1 model 85 pts
+Autarch Wayleaper
+1 model 80 pts
+Avatar of Khaine
+1 model 280 pts
+Baharroth
+1 model 115 pts
+Corsair Voidreavers
+5 models 65 pts
+10 models 110 pts
+Corsair Voidscarred
+5 models 80 pts
+10 models 160 pts
+Crimson Hunter
+1 model 160 pts
+D-cannon Platform
+1 model 125 pts
+Dark Reapers
+5 models 90 pts
+10 models 195 pts
+Death Jester
+1 model 90 pts
+Dire Avengers
+5 models 75 pts
+10 models 150 pts
+Eldrad Ulthran
+1 model (+10) 120 pts
+Falcon
+1 model 130 pts
+Farseer
+1 model 70 pts
+Farseer Skyrunner
+1 model 80 pts
+Fire Dragons
+5 models 120 pts
+10 models (+20) 240 pts
+Fire Prism
+1 model 150 pts
+Fuegan
+1 model 120 pts
+Guardian Defenders
+11 models 100 pts
+Hemlock Wraithfighter
+1 model 155 pts
+Howling Banshees
+5 models 95 pts
+10 models 190 pts
+Jain Zar
+1 model (+15) 120 pts
+Lhykhis
+1 model (+15) 135 pts
+Maugan Ra
+1 model 100 pts
+Night Spinner
+1 model 190 pts
+Rangers
+5 models 55 pts
+10 models 110 pts
+Shadow Weaver Platform
+1 model 75 pts
+Shadowseer
+1 model 60 pts
+Shining Spears
+3 models 110 pts
+6 models 220 pts
+Shroud Runners
+3 models 80 pts
+6 models 160 pts
+Skyweavers
+2 models 95 pts
+4 models 190 pts
+Solitaire
+1 model 115 pts
+Spiritseer
+1 model 65 pts
+Starweaver
+1 model 80 pts
+Storm Guardians
+11 models (+10) 110 pts
+Striking Scorpions
+5 models 85 pts
+10 models 150 pts
+Swooping Hawks
+5 models (+10) 95 pts
+10 models 190 pts
+Troupe
+5 models 85 pts
+6 models 100 pts
+11 models 190 pts
+12 models 205 pts
+Troupe Master
+1 model 75 pts
+Vibro Cannon Platform
+1 model 60 pts
+Voidweaver
+1 model 125 pts
+Vyper
+1 model 65 pts
+2 models 130 pts
+War Walker
+1 model 85 pts
+2 models 170 pts
+Warlock
+1 model 45 pts
+Warlock Conclave
+2 models 55 pts
+4 models 130 pts
+Warlock Skyrunners
+1 model 45 pts
+2 models 90 pts
+Warp Spiders
+5 models (+10) 105 pts
+10 models 190 pts
+Wave Serpent
+1 model 125 pts
+Windriders
+3 models 80 pts
+6 models 160 pts
+Wraithblades
+5 models 160 pts
+Wraithguard
+5 models 170 pts
+Wraithknight
+1 model 435 pts
+Wraithknight with Ghostglaive
+1 model 420 pts
+Wraithlord
+1 model 140 pts
+6
+YNNARI
+The Visarch
+1 model 90 pts
+The Yncarne
+1 model 260 pts
+Ynnari Archon
+1 model 85 pts
+Ynnari Incubi
+5 models 85 pts
+10 models 170 pts
+Ynnari Kabalite Warriors
+10 models 110 pts
+Ynnari Raider
+1 model 80 pts
+Ynnari Reavers
+3 models 65 pts
+3 models 120 pts
+Ynnari Succubus
+1 model 45 pts
+Ynnari Venom
+1 model 70 pts
+Ynnari Wyches
+10 models 90 pts
+Yvraine
+1 model 100 pts
+FORGE WORLD POINTS VALUES
+Phantom Titan
+1 model 2100 pts
+Revenant Titan
+1 model 1100 pts
+DETACHMENT ENHANCEMENTS
+Armoured Warhost
+Guiding Presence 25 pts
+Guileful Strategist 15 pts
+Harmonisation Matrix 30 pts
+Spirit Stone of Raelyth 20 pts
+Aspect Host
+Aspect of Murder 25 pts
+Mantle of Wisdom 30 pts
+Shimmerstone 15 pts
+Strategic Savant 15 pts
+Devoted of Ynnead
+Borrowed Vigour 10 pts
+Gaze of Ynnead 15 pts
+Morbid Might 15 pts
+Storm of Whispers 10 pts
+Ghosts of the Webway
+Cegorach’s Coil 25 pts
+Mask of Secrets 15 pts
+Mistweave 15 pts
+Murder’s Jest 20 pts
+Guardian Battlehost
+Breath of Vaul 10 pts
+Craftworld’s Champion 25 pts
+Ethereal Pathway 30 pts
+Protector of the Paths 20 pts
+Seer Council
+Lucid Eye 30 pts
+Runes of Warding 25 pts
+Stone of Eldritch Fury 15 pts
+Torc of Morai-Heg 20 pts
+Spirit Conclave
+Higher Duty 25 pts
+Light of Clarity 30 pts
+Rune of Mists 10 pts
+Stave of Kurnous 15 pts
+Serpent’s Brood
+Fanged Leer 10 pts
+Key of Ghosts 20 pts
+Shedskin Raiment 25 pts
+Weavers’ Wail 20 pts
+Warhost
+Gift of Foresight 15 pts
+Phoenix Gem 35 pts
+Psychic Destroyer 30 pts
+Timeless Strategist 15 pts
+Windrider Host
+Echoes of Ulthanesh 20 pts
+Firstdrawn Blade 10 pts
+Mirage Field 25 pts
+Seersight Strike 15 pts
+7
+CODEX: ASTRA MILITARUM
+Aegis Defence Line
+1 model 145 pts
+Armoured Sentinels
+1 model 65 pts
+2 models 130 pts
+Artillery Team
+1 model 95 pts
+Attilan Rough Riders
+5 models 60 pts
+10 models 120 pts
+Baneblade
+1 model 450 pts
+Banehammer
+1 model 420 pts
+Banesword
+1 model 450 pts
+Basilisk
+1 model 140 pts
+Bullgryn Squad
+3 models 100 pts
+6 models 200 pts
+Cadian Castellan
+1 model 55 pts
+Cadian Command Squad
+5 models 65 pts
+Cadian Heavy Weapons Squad
+3 models 65 pts
+Cadian Shock Troops
+10 models 65 pts
+20 models 120 pts
+Catachan Command Squad
+5 models 65 pts
+Catachan Heavy Weapons Squad
+3 models 65 pts
+Catachan Jungle Fighters
+10 models 65 pts
+20 models 120 pts
+Chimera
+1 model 85 pts
+Commissar
+1 model 30 pts
+Death Korps of Krieg
+10 models 65 pts
+20 models 145 pts
+Death Riders
+5 models 60 pts
+10 models 120 pts
+Deathstrike
+1 model 145 pts
+Doomhammer
+1 model 415 pts
+Field Ordnance Battery
+2 models 110 pts
+Gaunt’s Ghosts
+6 models 100 pts
+Hellhammer
+1 model 420 pts
+Hellhound
+1 model 125 pts
+Hydra
+1 model 95 pts
+Kasrkin
+10 models 110 pts
+Krieg Combat Engineers
+5 models 60 pts
+10 models 95 pts
+Krieg Command Squad
+6 models 65 pts
+Krieg Heavy Weapons Squad
+4 models 75 pts
+Leman Russ Battle Tank
+1 model 185 pts
+Leman Russ Commander
+1 model 235 pts
+Leman Russ Demolisher
+1 model 190 pts
+Leman Russ Eradicator
+1 model 170 pts
+Leman Russ Executioner
+1 model 170 pts
+Leman Russ Exterminator
+1 model 180 pts
+Leman Russ Punisher
+1 model 150 pts
+Leman Russ Vanquisher
+1 model 145 pts
+Lord Marshal Dreir
+1 model 100 pts
+Lord Solar Leontus
+1 model 130 pts
+Manticore
+1 model 165 pts
+Militarum Tempestus Command Squad
+5 models 85 pts
+Ministorum Priest
+1 model 35 pts
+Nork Deddog
+1 model 60 pts
+Ogryn Bodyguard
+1 model 40 pts
+Ogryn Squad
+3 models 60 pts
+6 models 130 pts
+Primaris Psyker
+1 model 60 pts
+Ratlings
+5 models 60 pts
+10 models 100 pts
+Rogal Dorn Battle Tank
+1 model 250 pts
+Rogal Dorn Commander
+1 model 275 pts
+Scout Sentinels
+1 model 55 pts
+2 models 110 pts
+Shadowsword
+1 model 410 pts
+Sly Marbo
+1 model 55 pts
+Stormlord
+1 model 430 pts
+Stormsword
+1 model 465 pts
+Taurox
+1 model 75 pts
+Taurox Prime
+1 model 90 pts
+Tech-priest Enginseer
+1 model 45 pts
+Tempestus Aquilons
+10 models 100 pts
+Tempestus Scions
+5 models 70 pts
+10 models 140 pts
+Ursula Creed
+1 model 85 pts
+Valkyrie
+1 model 190 pts
+Wyvern
+1 model 110 pts
+FORGE WORLD POINTS VALUES
+Avenger Strike Fighter
+1 model 130 pts
+Cyclops Demolition Vehicle
+1 model 25 pts
+8
+DETACHMENT ENHANCEMENTS
+Bridgehead Strike
+Advance Augury 15 pts
+Bombast-class Vox-array 35 pts
+Priority-drop Beacon 30 pts
+Shroud Projector 15 pts
+Combined Arms
+Death Mask of Ollanius 10 pts
+Drill Commander 20 pts
+Grand Strategist 15 pts
+Reactive Command 15 pts
+Grizzled Company
+Abhuman Detail 20 pts
+Aquilan Eye 20 pts
+Laud Hailer 10 pts
+Spec Ops Veteran 15 pts
+Hammer of the Emperor
+Calm Under Fire 15 pts
+Indomitable Steed 15 pts
+Regimental Banner 20 pts
+Veteran Crew 20 pts
+Mechanised Assault
+Bold Leadership 25 pts
+Sacred Unguents 10 pts
+Smoke Grenades 10 pts
+Vanguard Honours 15 pts
+Recon Element
+Guerrilla Honours 25 pts
+Scare Gas Grenades 5 pts
+Survival Gear 5 pts
+Tripwires 20 pts
+Siege Regiment
+Eager Advance 20 pts
+Flash Grenades 20 pts
+Legacy Sidearm 10 pts
+Stalwart’s Honours 15 pts
+9
+CODEX: BLACK TEMPLARS
+Castellan
+1 model (+10) 70 pts
+Chaplain Grimaldus
+4 models 110 pts
+Crusade Ancient
+1 model (-10) 55 pts
+Crusader Squad
+1 Sword Brother, 5 Initiates
+and 4 Neophytes 150 pts
+1 Sword Brother, 11 Initiates
+and 8 Neophytes 310 pts
+Emperor’s Champion
+1 model (+10) 100 pts
+Execrator
+1 model (-10) 60 pts
+Gladiator Lancer
+1 model 160 pts
+Gladiator Reaper
+1 model 160 pts
+Gladiator Valiant
+1 model (-10) 150 pts
+High Marshal Helbrecht
+1 model 120 pts
+Impulsor
+1 model 85 pts
+Land Raider Crusader
+1 model 220 pts
+Marshal
+1 model 80 pts
+Sternguard Veteran Squad
+5 models 85 pts
+10 models 170 pts
+Sword Brethren
+4 models 105 pts
+5 models 130 pts
+9 models 235 pts
+10 models 260 pts
+Terminator Squad
+5 models 175 pts
+10 models 330 pts
+Repulsor
+1 model 180 pts
+Repulsor Executioner
+1 model (+15) 235 pts
+DETACHMENT ENHANCEMENTS
+Companions of Vehemence
+Incendiary Animus 25 pts
+Merciless Denunciation 25 pts
+Oathbound Exemplar 15 pts
+Zealous Vanguard 20 pts
+Godhammer Assault Force
+Augury Servo-host 15 pts
+Battle-psalm Precentor 10 pts
+Herald of Sacred Slaughter 15 pts
+Paragon of Fury 25 pts
+Vindication Task Force
+Consecrating Aura 25 pts
+Imperialis of the Eternal Crusade 15 pts
+Orb of the Emperor’s Aegis 10 pts
+Warden of Honour 20 pts
+Wrathful Procession
+Benediction of Fury 10 pts
+Pyrebrand 25 pts
+Sacred Rage 30 pts
+Taramond’s Censer 15 pts
+10
+CODEX SUPPLEMENT:
+BLOOD ANGELS
+Astorath
+1 model 95 pts
+Baal Predator
+1 model 125 pts
+Blood Angels Captain
+1 model 80 pts
+Chief Librarian Mephiston
+1 model 120 pts
+Commander Dante
+1 model 120 pts
+Death Company Captain
+1 model 70 pts
+Death Company Captain with Jump Pack
+1 model 75 pts
+Death Company Dreadnought
+1 model 160 pts
+Death Company Marines
+5 models 85 pts
+10 models 160 pts
+Death Company Marines with Bolt Rifles
+5 models 85 pts
+10 models 160 pts
+Death Company Marines with Jump Packs
+5 models 120 pts
+10 models 230 pts
+Lemartes
+1 model 100 pts
+Sanguinary Guard
+3 models 125 pts
+6 models 260 pts
+Sanguinary Priest
+1 model 75 pts
+The Sanguinor
+1 model (-10) 130 pts
+DETACHMENT ENHANCEMENTS
+Angelic Inheritors
+Blazing Icon 20 pts
+Ordained Sacrifice 25 pts
+Prescient Flash 20 pts
+Troubling Visions 15 pts
+Liberator Assault Group
+Gift of Foresight 15 pts
+Icon of the Angel 20 pts
+Rage‑fuelled Warrior 35 pts
+Speed of the Primarch 25 pts
+Rage-cursed Onslaught
+Angel’s Fang 25 pts
+Carmine Reliquary 30 pts
+Master of the Red Thirst 25 pts
+Sanguinary Tear 35 pts
+The Angelic Host
+Archangel’s Shard 15 pts
+Artisan of War 20 pts
+Gleaming Pinions 25 pts
+Visage of Death 15 pts
+The Lost Brethren
+Blood Shard 25 pts
+Sanguinius’ Grace 20 pts
+To Slay the Warmaster 15 pts
+Vengeful Onslaught 10 pts
+11
+INDEX: CHAOS DAEMONS
+Beasts of Nurgle
+1 model 65 pts
+2 models 130 pts
+Be’lakor
+1 model 375 pts
+Bloodcrushers
+3 models 110 pts
+6 models 220 pts
+Bloodletters
+10 models 110 pts
+Bloodmaster
+1 model 65 pts
+Bloodthirster
+1 model 305 pts
+Blue Horrors
+10 models 125 pts
+Burning Chariot
+1 model 115 pts
+Changecaster
+1 model 60 pts
+Contorted Epitome
+1 model 100 pts
+Daemon Prince of Chaos
+1 model 190 pts
+Daemon Prince of Chaos with Wings
+1 model 180 pts
+Daemonettes
+10 models 100 pts
+Epidemius
+1 model 80 pts
+Exalted Flamer
+1 model 65 pts
+Fateskimmer
+1 model 95 pts
+Feculent Gnarlmaw
+1 model 100 pts
+Fiends
+3 models 95 pts
+6 models 190 pts
+Flamers
+3 models 65 pts
+6 models 130 pts
+Flesh Hounds
+5 models 75 pts
+10 models 150 pts
+Fluxmaster
+1 model 60 pts
+Great Unclean One
+1 model 250 pts
+Hellflayers
+1 model 80 pts
+2 models 160 pts
+Horticulous Slimux
+1 model 120 pts
+Infernal Enrapturess
+1 model 60 pts
+Kairos Fateweaver
+1 model (+15) 285 pts
+Karanak
+1 model 75 pts
+Keeper of Secrets
+1 model (-30) 240 pts
+Lord of Change
+1 model (+10) 270 pts
+Nurglings
+3 models 40 pts
+6 models 70 pts
+Pink Horrors
+10 models 140 pts
+Plague Drones
+3 models 110 pts
+6 models 220 pts
+Plaguebearers
+10 models 110 pts
+Poxbringer
+1 model 55 pts
+Rendmaster on Blood Throne
+1 model 165 pts
+Rotigus
+1 model (+15) 265 pts
+Screamers
+3 models 80 pts
+6 models 160 pts
+Seekers
+5 models 80 pts
+10 models 160 pts
+Shalaxi Helbane
+1 model (-40) 340 pts
+Skarbrand
+1 model 305 pts
+Skull Altar
+1 model 105 pts
+Skull Cannon
+1 model 95 pts
+Skullmaster
+1 model 100 pts
+Skulltaker
+1 model 85 pts
+Sloppity Bilepiper
+1 model 55 pts
+Soul Grinder
+1 model 180 pts
+Spoilpox Scrivener
+1 model 60 pts
+Syll’esske
+1 model 120 pts
+The Blue Scribes
+1 model 75 pts
+The Changeling
+1 model 90 pts
+The Masque of Slaanesh
+1 model 95 pts
+Tormentbringer
+1 model 140 pts
+Tranceweaver
+1 model 60 pts
+12
+DETACHMENT ENHANCEMENTS
+Blood Legion
+Brazenmaw 15 pts
+Fury’s Cage 20 pts
+Gateway Unto Damnation 10 pts
+Slaughterthirst 25 pts
+Daemonic Incursion
+A’rgath, the King of Blades 20 pts
+Soulstealer 15 pts
+The Endless Gift (-15) 30 pts
+The Everstave 25 pts
+Legion of Excess
+Avatar of Perfection 15 pts
+Dreaming Crown 30 pts
+False Majesty 30 pts
+Soul Glutton 10 pts
+Plague Legion
+Cankerblight 15 pts
+Droning Shroud 35 pts
+Font of Spores 20 pts
+Maggot Maws 15 pts
+Scintillating Legion
+Improbable Shield 30 pts
+Inescapable Eye 10 pts
+Infernal Puppeteer 10 pts
+Neverblade 20 pts
+Shadow Legion
+Fade to Darkness 30 pts
+Leaping Shadows 25 pts
+Malice Made Manifest 25 pts
+Mantle of Gloom 20 pts
+13
+CODEX: CHAOS KNIGHTS
+Knight Abominant
+1 model 355 pts
+Knight Desecrator
+1 model (-10) 355 pts
+Knight Despoiler
+1 model (+15) 390 pts
+Knight Rampager
+1 model 365 pts
+Knight Ruinator
+1 model (-20) 355 pts
+Knight Tyrant
+1 model 410 pts
+War Dog Brigand
+1 model 140 pts
+War Dog Executioner
+1 model 130 pts
+War Dog Huntsman
+1 model 140 pts
+War Dog Karnivore
+1 model 150 pts
+War Dog Stalker
+1 model 140 pts
+FORGE WORLD POINTS VALUES
+Chaos Acastus Knight Asterius
+1 model 765 pts
+Chaos Acastus Knight Porphyrion
+1 model 700 pts
+Chaos Cerastus Knight Acheron
+1 model 385 pts
+Chaos Cerastus Knight Atrapos
+1 model 395 pts
+Chaos Cerastus Knight Castigator
+1 model 385 pts
+Chaos Cerastus Knight Lancer
+1 model 385 pts
+Chaos Questoris Knight Magaera
+1 model 375 pts
+Chaos Questoris Knight Styrix
+1 model 375 pts
+War Dog Moirax
+1 model 150 pts
+DETACHMENT ENHANCEMENTS
+Houndpack Lance
+Final Howl 20 pts
+Loping Predator 10 pts
+Panoply of the Cursed Knight 15 pts
+Preyslayer’s Mantle 15 pts
+Infernal Lance
+Bestial Aspect 20 pts
+Blasphemous Engine 35 pts
+Fleshmetal Fusion 35 pts
+Knight Diabolus 25 pts
+Iconoclast Fiefdom
+Diabolical Resilience 35 pts
+Pave the Way 15 pts
+Profane Altar 20 pts
+Tyrant’s Banner 5 pts
+Lords of Dread
+Blade of Celerity 35 pts
+Blessing of the Dark Master 20 pts
+Mirror of Fates 30 pts
+Putrid Carapace 30 pts
+Throne Mechanicum of Skulls 25 pts
+Warp-borne Stalker 25 pts
+Traitoris Lance
+Malevolent Heraldry 30 pts
+Nightmare’s Master 20 pts
+Tyrant’s Shadow 25 pts
+Veil of Medrengard 35 pts
+14
+CODEX: CHAOS SPACE MARINES
+Abaddon the Despoiler
+1 model 270 pts
+Accursed Cultists
+8 models 90 pts
+16 models 195 pts
+Chaos Bikers
+3 models 70 pts
+6 models 130 pts
+Chaos Land Raider
+1 model 220 pts
+Chaos Lord
+1 model 90 pts
+Chaos Lord in Terminator Armour
+1 model (-10) 85 pts
+Chaos Lord with Jump Pack
+1 model 80 pts
+Chaos Predator Annihilator
+1 model 135 pts
+Chaos Predator Destructor
+1 model 140 pts
+Chaos Rhino
+1 model 75 pts
+Chaos Spawn
+2 models 70 pts
+Chaos Terminator Squad
+5 models 180 pts
+10 models 360 pts
+Chaos Vindicator
+1 model 185 pts
+Chosen
+5 models 125 pts
+10 models 250 pts
+Cultist Firebrand
+1 model 45 pts
+Cultist Mob
+10 models 50 pts
+20 models 100 pts
+Cypher
+1 model 90 pts
+Dark Apostle
+3 models 65 pts
+Dark Commune
+5 models 90 pts
+Defiler
+1 model 190 pts
+Fabius Bile
+2 models (+15) 100 pts
+Fellgor Beastmen
+10 models 70 pts
+Forgefiend
+1 model (-10) 170 pts
+Haarken Worldclaimer
+1 model 90 pts
+Havocs
+5 models 125 pts
+Helbrute
+1 model 130 pts
+Heldrake
+1 model 205 pts
+Heretic Astartes Daemon Prince
+1 model 165 pts
+Heretic Astartes Daemon Prince
+with Wings
+1 model 180 pts
+Huron Blackheart
+1 model 80 pts
+Khorne Lord of Skulls
+1 model 450 pts
+Legionaries
+5 models 90 pts
+10 models 170 pts
+Lord Discordant on Helstalker
+1 model 160 pts
+Master of Executions
+1 model 80 pts
+Master of Possession
+1 model 60 pts
+Maulerfiend
+1 model 130 pts
+Nemesis Claw
+5 models 110 pts
+10 models 190 pts
+Noctilith Crown
+1 model 125 pts
+Obliterators
+2 models 160 pts
+Possessed
+5 models 120 pts
+10 models 240 pts
+Raptors
+5 models 90 pts
+10 models 170 pts
+Sorcerer
+1 model 60 pts
+Sorcerer in Terminator Armour
+1 model 80 pts
+Traitor Enforcer
+2 models 55 pts
+Traitor Guardsmen Squad
+10 models 70 pts
+Vashtorr the Arkifane
+1 model 175 pts
+Venomcrawler
+1 model 110 pts
+Warp Talons
+5 models 125 pts
+10 models 270 pts
+Warpsmith
+1 model 70 pts
+15
+DETACHMENT ENHANCEMENTS
+Cabal of Chaos
+Eye of Z’desh 25 pts
+Infernal Avatar 20 pts
+Mind Blade 25 pts
+Touched by the Warp 10 pts
+Chaos Cult
+Amulet of Tainted Vigour 20 pts
+Cultist’s Brand 20 pts
+Incendiary Goad 15 pts
+Warped Foresight 10 pts
+Creations of Bile
+Helm of All-seeing 25 pts
+Living Carapace 15 pts
+Prime Test Subject 35 pts
+Surgical Precision 10 pts
+Deceptors
+Cursed Fang 10 pts
+Falsehood 10 pts
+Shroud of Obfuscation 15 pts
+Soul Link 5 pts
+Dread Talons
+Eater of Dread 15 pts
+Night’s Shroud 20 pts
+Warp‑fuelled Thrusters 20 pts
+Willbreaker 10 pts
+Fellhammer Siege‑host
+Bastion Plate 10 pts
+Iron Artifice 10 pts
+Ironbound Enmity 15 pts
+Warp Tracer 20 pts
+Nightmare Hunt
+Greyveil Hex 25 pts
+Sorrowscent Vulture 35 pts
+Terrorglut Parasite 20 pts
+Warp-fuelled Thrusters 20 pts
+Pactbound Zealots
+Eye of Tzeentch 15 pts
+Intoxicating Elixir 15 pts
+Orbs of Unlife 15 pts
+Talisman of Burning Blood 15 pts
+Renegade Raiders
+Despot’s Claim 15 pts
+Dread Reaver 15 pts
+Mark of the Hound 25 pts
+Tyrant’s Lash 20 pts
+Soulforged Warpack
+Forge’s Blessing 20 pts
+Invigorated Mechatendrils 15 pts
+Tempting Addendum 25 pts
+Soul Harvester 15 pts
+Veterans of the Long War
+Eager for Vengeance 20 pts
+Eye of Abaddon 15 pts
+Mark of Legend 10 pts
+Warmaster’s Gift 15 pts
+16
+CODEX SUPPLEMENT:
+DARK ANGELS
+Asmodai
+1 model 70 pts
+Azrael
+1 model (+10) 125 pts
+Belial
+1 model 85 pts
+Deathwing Knights
+5 models 250 pts
+Deathwing Terminator Squad
+5 models 180 pts
+10 models 360 pts
+Ezekiel
+1 model 75 pts
+Inner Circle Companions
+3 models 90 pts
+6 models 180 pts
+Land Speeder Vengeance
+1 model 120 pts
+Lazarus
+1 model 70 pts
+Lion El’Jonson
+1 model 315 pts
+Nephilim Jetfighter
+1 model 195 pts
+Ravenwing Black Knights
+3 models (-10) 80 pts
+6 models (-20) 160 pts
+Ravenwing Command Squad
+3 models 120 pts
+Ravenwing Dark Talon
+1 model 210 pts
+Ravenwing Darkshroud
+1 model 100 pts
+Sammael
+1 model 115 pts
+DETACHMENT ENHANCEMENTS
+Company of Hunters
+Master of Manoeuvre 15 pts
+Master-crafted Weapon 10 pts
+Mounted Strategist 30 pts
+Recon Hunter 20 pts
+Inner Circle Task Force
+Champion of the Deathwing 15 pts
+Deathwing Assault 30 pts
+Eye of the Unseen 10 pts
+Singular Will 20 pts
+Lion’s Blade Task Force
+Calibanite Armaments 15 pts
+Fulgus Magna 20 pts
+Lord of the Hunt 15 pts
+Stalwart Champion 25 pts
+Unforgiven Task Force
+Pennant of Remembrance 10 pts
+Shroud of Heroes 25 pts
+Stubborn Tenacity 15 pts
+Weapons of the First Legion 15 pts
+Wrath of the Rock
+Ancient Weapons 25 pts
+Deathwing Assault 15 pts
+Lord of the Ravenwing 10 pts
+Tempered in Battle 10 pts
+17
+CODEX: DEATH GUARD
+Biologus Putrifier
+1 model 60 pts
+Blightlord Terminators
+3 models 115 pts
+5 models 185 pts
+10 models 370 pts
+Chaos Land Raider
+1 model (-20) 220 pts
+Chaos Predator Annihilator
+1 model 135 pts
+Chaos Predator Destructor
+1 model 145 pts
+Chaos Rhino
+1 model 85 pts
+Chaos Spawn of Nurgle
+2 models 80 pts
+Daemon Prince of Nurgle
+1 model 195 pts
+Daemon Prince of Nurgle with Wings
+1 model 195 pts
+Deathshroud Terminators
+3 models 160 pts
+6 models 320 pts
+Defiler
+1 model 165 pts
+Foetid Bloat-drone
+1 model 100 pts
+Foetid Bloat-drone with
+Heavy Blight Launcher
+1 model 120 pts
+Foul Blightspawn
+1 model 75 pts
+Helbrute
+1 model 115 pts
+Icon Bearer
+1 model 45 pts
+Lord of Contagion
+1 model 120 pts
+Lord of Poxes
+1 model 75 pts
+Lord of Virulence
+1 model 100 pts
+Malignant Plaguecaster
+1 model 60 pts
+Miasmic Malignifier
+1 model 105 pts
+Mortarion
+1 model 380 pts
+Myphitic Blight-haulers
+1 model 100 pts
+2 models 200 pts
+Noxious Blightbringer
+1 model 50 pts
+Plague Marines
+5 models 95 pts
+7 models 130 pts
+10 models 190 pts
+Plague Surgeon
+1 model 50 pts
+Plagueburst Crawler
+1 model 210 pts
+Poxwalkers
+10 models 65 pts
+20 models 130 pts
+Tallyman
+1 model 50 pts
+Typhus
+1 model 100 pts
+PLAGUE LEGIONS
+Beasts of Nurgle
+1 model 65 pts
+2 models 130 pts
+Great Unclean One
+1 model 250 pts
+Nurglings
+3 models 40 pts
+6 models 70 pts
+Plague Drones
+3 models 115 pts
+6 models 230 pts
+Plaguebearers
+10 models 110 pts
+Rotigus
+1 model (+15) 265 pts
+DETACHMENT ENHANCEMENTS
+Champions of Contagion
+Cornucophagus 35 pts
+Final Ingredient 20 pts
+Needle of Nurgle 25 pts
+Visions of Virulence 15 pts
+Death Lord’s Chosen
+Face of Death 10 pts
+Helm of the Fly King 20 pts
+Vile Vigour 15 pts
+Warprot Talisman 30 pts
+Flyblown Host
+Droning Chorus 15 pts
+Insectile Murmuration 20 pts
+Plagueveil 25 pts
+Rejuvenating Swarm 10 pts
+Mortarion’s Hammer
+Bilemaw Blight 10 pts
+Eye of Affliction 20 pts
+Shriekworm Familiar 15 pts
+Tendrilous Emissions 30 pts
+Shamblerot Vectorium
+Lord of the Walking Pox 15 pts
+Sorrowsyphon 10 pts
+Talisman of Burgeoning 25 pts
+Witherbone Pipes 25 pts
+Tallyband Summoners
+Beckoning Blight 20 pts
+Entropic Knell 15 pts
+Fell Harvester 10 pts
+Tome of Bounteous Blessings 20 pts
+Virulent Vectorium
+Arch Contaminator 25 pts
+Daemon Weapon of Nurgle 10 pts
+Furnace of Plagues 25 pts
+Revolting Regeneration 20 pts
+18
+INDEX: DEATHWATCH
+Corvus Blackstar
+1 model 180 pts
+Deathwatch Terminator Squad
+5 models 190 pts
+10 models 350 pts
+Deathwatch Veterans
+5 models 100 pts
+10 models 190 pts
+Decimus Kill Team
+5 models 100 pts
+10 models 200 pts
+Fortis Kill Team
+10 models 180 pts
+Indomitor Kill Team
+10 models (+15) 265 pts
+Spectrus Kill Team
+10 models 180 pts
+Talonstrike Kill Team
+10 models 275 pts
+Watch Captain Artemis
+1 model 65 pts
+Watch Master
+1 model 95 pts
+DETACHMENT ENHANCEMENTS
+Black Spear Task Force
+Beacon Angelis 25 pts
+Osseus Key 15 pts
+The Tome of Ectoclades 30 pts
+Thief of Secrets 25 pts
+19
+CODEX: DRUKHARI
+Archon
+1 model 80 pts
+Cronos
+1 model 55 pts
+2 models 110 pts
+Drazhar
+1 model 85 pts
+Haemonculus
+1 model 70 pts
+Hand of the Archon
+10 models 125 pts
+Hellions
+5 models 85 pts
+10 models 170 pts
+Incubi
+5 models 90 pts
+10 models 180 pts
+Kabalite Warriors
+10 models 115 pts
+Lady Malys
+1 model 100 pts
+Lelith Hesperax
+1 model 85 pts
+Mandrakes
+5 models 75 pts
+10 models 150 pts
+Raider
+1 model 85 pts
+Ravager
+1 model (-5) 110 pts
+Razorwing Jetfighter
+1 model 170 pts
+Reavers
+3 models 70 pts
+6 models (+10) 140 pts
+Scourges with Heavy Weapons
+5 models 130 pts
+Scourges with Shardcarbines
+5 models 80 pts
+Succubus
+1 model 50 pts
+Talos
+1 model 80 pts
+2 models 160 pts
+Venom
+1 model 70 pts
+Voidraven Bomber
+1 model 245 pts
+Wracks
+5 models 65 pts
+8 models 105 pts
+10 models 130 pts
+Wyches
+10 models 90 pts
+DETACHMENT ENHANCEMENTS
+Covenite Coterie
+Master Artisan 20 pts
+Master Nemesine 5 pts
+Master Regenesist 25 pts
+Master Repugnomancer 15 pts
+Kabalite Cartel
+Informant Network 30 pts
+Leechbite Plate 5 pts
+Towering Arrogance 20 pts
+Webway Awl 25 pts
+Realspace Raiders
+Crucible of Malediction 20 pts
+Dark Vitality 25 pts
+Eye of Spite 15 pts
+Labyrinthine Cunning 25 pts
+Reaper’s Wager
+Archraider 15 pts
+Conductor of Torment 20 pts
+Reaper’s Cowl 25 pts
+Webway Walker 15 pts
+Skysplinter Assault
+Nightmare Shroud 20 pts
+Phantasmal Smoke 15 pts
+Sadistic Fulcrum 15 pts
+Spiteful Raider 10 pts
+Spectacle of Spite
+Chronoshard 15 pts
+Morghenna’s Curse 20 pts
+Periapt of Torments 25 pts
+Pharmacophex 15 pts
+20
+CODEX: EMPEROR’S CHILDREN
+Chaos Land Raider
+1 model 220 pts
+Chaos Rhino
+1 model 80 pts
+Chaos Spawn
+2 models (-10) 70 pts
+Chaos Terminators
+5 models (-15) 155 pts
+Daemon Prince of Slaanesh
+1 model (-15) 180 pts
+Daemon Prince of Slaanesh
+with Wings
+1 model (+15) 215 pts
+Flawless Blades
+3 models 110 pts
+6 models 220 pts
+Fulgrim
+1 model 340 pts
+Heldrake
+1 model 195 pts
+Infractors
+5 models 85 pts
+10 models 160 pts
+Lord Exultant
+1 model 80 pts
+Lord Kakophonist
+1 model 70 pts
+Lucius the Eternal
+1 model 150 pts
+Maulerfiend
+1 model 130 pts
+Noise Marines
+6 models 145 pts
+Sorcerer
+1 model 60 pts
+Tormentors
+5 models 85 pts
+10 models 170 pts
+LEGIONS OF EXCESS
+Daemonettes
+10 models 90 pts
+Fiends
+3 models 95 pts
+6 models 190 pts
+Keeper of Secrets
+1 model (-30) 240 pts
+Seekers
+5 models 80 pts
+10 models 160 pts
+Shalaxi Helbane
+1 model (-40) 340 pts
+DETACHMENT ENHANCEMENTS
+Carnival of Excess
+Dark Blessings 10 pts
+Empyric Suffusion 15 pts
+Possessed Blade 25 pts
+Warp Walker 30 pts
+Coterie of the Conceited
+Pledge of Dark Glory 25 pts
+Pledge of Eternal Servitude 25 pts
+Pledge of Mortal Pain 15 pts
+Pledge of Unholy Fortune 30 pts
+Court of the Phoenician
+Exalted Patron 15 pts
+Soulstain Made Manifest 15 pts
+Spiritsliver 20 pts
+Tears of the Phoenix 25 pts
+Mercurial Host
+Intoxicating Musk 20 pts
+Loathsome Dexterity 10 pts
+Steeped in Suffering 20 pts
+Tactical Perfection 15 pts
+Peerless Bladesmen
+Blinding Speed 25 pts
+Distortion 25 pts
+Faultless Opportunist 15 pts
+Rise to the Challenge 30 pts
+Rapid Evisceration
+Accomplished Tactician 35 pts
+Heretek Adept 35 pts
+Spearhead Striker 20 pts
+Sublime Prescience 25 pts
+Slaanesh’s Chosen
+Eager to Prove 15 pts
+Proud and Vainglorious 20 pts
+Repulsed by Weakness 25 pts
+Slayer of Champions 15 pts
+21
+CODEX: GENESTEALER CULTS
+Aberrants
+5 models 135 pts
+10 models 300 pts
+Abominant
+1 model 85 pts
+Achilles Ridgerunners
+1 model 95 pts
+2 models 170 pts
+Acolyte Hybrids with Autopistols
+5 models 65 pts
+10 models 130 pts
+Acolyte Hybrids with Hand Flamers
+5 models 70 pts
+10 models 140 pts
+Acolyte Iconward
+1 model 50 pts
+Atalan Jackals
+5 models 85 pts
+10 models 150 pts
+Benefictus
+1 model 70 pts
+Biophagus
+1 model 50 pts
+Clamavus
+1 model 50 pts
+Goliath Rockgrinder
+1 model 120 pts
+Goliath Truck
+1 model 85 pts
+Hybrid Metamorphs
+5 models 70 pts
+10 models 140 pts
+Jackal Alphus
+1 model 55 pts
+Kelermorph
+1 model 60 pts
+Locus
+1 model 45 pts
+Magus
+1 model 50 pts
+Neophyte Hybrids
+10 models 65 pts
+20 models 145 pts
+Nexos
+1 model 60 pts
+Patriarch
+1 model 75 pts
+Primus
+1 model 70 pts
+Purestrain Genestealers
+5 models 75 pts
+10 models 140 pts
+Reductus Saboteur
+1 model 65 pts
+Sanctus
+1 model 50 pts
+DETACHMENT ENHANCEMENTS
+Biosanctic Broodsurge
+Alien Majesty 15 pts
+Biomorph Adaptation 25 pts
+Mutagenic Regeneration 10 pts
+Predatory Instincts 20 pts
+Brood Brother Auxilia
+Adaptive Reprisal 15 pts
+Firepoint Commander 10 pts
+Martial Espionage 25 pts
+The Hero Returned 20 pts
+Final Day
+Enraptured Damnation 10 pts
+Inhuman Integration 20 pts
+Synaptic Auger 15 pts
+Vanguard Tyrant 25 pts
+Host of Ascension
+A Chink in Their Armour 20 pts
+Assassination Edict 15 pts
+Our Time Is Nigh 20 pts
+Prowling Agitant 15 pts
+Outlander Claw
+Assault Commando 15 pts
+Cartographic Data-leech 10 pts
+Serpentine Tactics 10 pts
+Starfall Shells 10 pts
+Xenocreed Congregation
+Deeds That Speak to the Masses 25 pts
+Denunciator of Tyrants 25 pts
+Gene-sire’s Reliquant 5 pts
+Incendiary Inspiration 15 pts
+22
+CODEX: GREY KNIGHTS
+Brother-Captain
+1 model 90 pts
+Brotherhood Champion
+1 model 70 pts
+Brotherhood Chaplain
+1 model 65 pts
+Brotherhood Librarian
+1 model 80 pts
+Brotherhood Techmarine
+1 model 70 pts
+Brotherhood Terminator Squad
+4 models 160 pts
+5 models 200 pts
+8 models 320 pts
+10 models 400 pts
+Castellan Crowe
+1 model 90 pts
+Grand Master
+1 model 95 pts
+Grand Master in Nemesis Dreadknight
+1 model 225 pts
+Grand Master Voldus
+1 model 110 pts
+Interceptor Squad
+5 models (-5) 125 pts
+10 models (-10) 250 pts
+Land Raider
+1 model 220 pts
+Land Raider Crusader
+1 model 220 pts
+Land Raider Redeemer
+1 model 270 pts
+Nemesis Dreadknight
+1 model 210 pts
+Paladin Squad
+4 models 180 pts
+5 models 225 pts
+8 models 360 pts
+10 models 450 pts
+Purgation Squad
+5 models (-10) 115 pts
+10 models (-20) 230 pts
+Purifier Squad
+5 models 125 pts
+10 models 250 pts
+Razorback
+1 model 85 pts
+Rhino
+1 model 80 pts
+Stormhawk Interceptor
+1 model 160 pts
+Stormraven Gunship
+1 model 280 pts
+Stormtalon Gunship
+1 model 170 pts
+Strike Squad
+5 models 120 pts
+10 models 240 pts
+Venerable Dreadnought
+1 model 140 pts
+FORGE WORLD POINTS VALUES
+Grey Knights Thunderhawk Gunship
+1 model 805 pts
+DETACHMENT ENHANCEMENTS
+Augurium Task Force
+A Foot in the Future 15 pts
+Doomseer’s Amulet 25 pts
+Grimoire of Conjunctions 10 pts
+Shield of Prophecy 20 pts
+Banishers
+Pyresoul 20 pts
+Sigil of the Hunt 10 pts
+The Ephemeral Tome 15 pts
+The Sixty-sixth Seal 25 pts
+Brotherhood Strike
+Banishing Wave 20 pts
+Blinding Aura 10 pts
+Purity of Purpose 15 pts
+Tome of Forbidden Ways 25 pts
+Hallowed Conclave
+Eye of the Augurium 25 pts
+Inescapable Judgement 20 pts
+Nemesis Rounds 10 pts
+Sanctic Reaper 15 pts
+Sanctic Spearhead
+Driven by Duty 10 pts
+Quickening Foci 15 pts
+Sigil of Exigence 30 pts
+Spiritus Machina 25 pts
+Warpbane Task Force
+Mandulian Reliquary 20 pts
+Paragon of Sanctity 10 pts
+Phial of the Abyss 25 pts
+Radiant Champion 15 pts
+23
+CODEX: IMPERIAL AGENTS
+If your Army Faction is not Agents of the Imperium, but every model in your army has the Imperium keyword, you can
+include Agents of the Imperium units in your army even if they do not have the Faction keyword you selected in the Select
+Army Faction step. When doing so, use the points values shown on the following page.
+ARMY FACTION:
+AGENTS OF THE IMPERIUM
+Aquila Kill Team
+5 models 100 pts
+10 models 200 pts
+Callidus Assassin
+1 model 100 pts
+Corvus Blackstar
+1 model 180 pts
+Culexus Assassin
+1 model 85 pts
+Deathwatch Kill Team
+5 models 100 pts
+10 models 190 pts
+Eversor Assassin
+1 model 110 pts
+Exaction Squad
+11 models 90 pts
+Grey Knights Terminator Squad
+5 models 190 pts
+Imperial Navy Breachers
+10 models 90 pts
+Imperial Rhino
+1 model 75 pts
+Inquisitor
+1 model 55 pts
+Inquisitor Coteaz
+1 model 75 pts
+Inquisitor Draxus
+1 model 75 pts
+Inquisitor Greyfax
+1 model 65 pts
+Inquisitorial Agents
+6 models 50 pts
+12 models 100 pts
+Inquisitorial Chimera
+1 model 70 pts
+Ministorum Priest
+1 model 40 pts
+Navigator
+1 model 60 pts
+Rogue Trader Entourage
+4 models 75 pts
+Sanctifiers
+9 models 100 pts
+Sisters of Battle Immolator
+1 model 100 pts
+Sisters of Battle Squad
+10 models 100 pts
+Subductor Squad
+11 models 85 pts
+Vigilant Squad
+11 models 85 pts
+Vindicare Assassin
+1 model 110 pts
+Voidsmen-at-Arms
+6 models 50 pts
+Watch Captain Artemis
+1 model 65 pts
+Watch Master
+1 model 95 pts
+DETACHMENT ENHANCEMENTS
+Alien Hunters
+Amulet of Auto-chastisement 25 pts
+Beacon Angelis 30 pts
+Blackweave Shroud 15 pts
+Universal Anathema 10 pts
+Daemon Hunters
+Daemon Slayer 10 pts
+Formidable Resolve 5 pts
+Gift of the Prescient 20 pts
+Grimoire of True Names 10 pts
+Imperialis Fleet
+Clandestine Operation 15 pts
+Combat Landers 10 pts
+Digital Weapons 10 pts
+Fleetmaster 20 pts
+Purgation Force
+Ignis Judicium 10 pts
+Liber Heresius 10 pts
+No Escape 25 pts
+Witch Hunter 15 pts
+Veiled Blade Elimination Force
+Decoy Targets 40 pts
+Esoteric Explosives 40 pts
+Intraneural Biotech 35 pts
+Micromelta Rounds 45 pts
+24
+EVERY MODEL HAS
+IMPERIUM KEYWORD
+Aquila Kill Team
+5 models 100 pts
+10 models 200 pts
+Callidus Assassin
+1 model 100 pts
+Corvus Blackstar
+1 model 180 pts
+Culexus Assassin
+1 model 85 pts
+Deathwatch Kill Team
+5 models 100 pts
+10 models 200 pts
+Eversor Assassin
+1 model 120 pts
+Exaction Squad
+11 models 90 pts
+Grey Knights Terminator Squad
+5 models 210 pts
+Imperial Navy Breachers
+10 models 90 pts
+Imperial Rhino
+1 model 75 pts
+Inquisitor
+1 model 55 pts
+Inquisitor Coteaz
+1 model 95 pts
+Inquisitor Draxus
+1 model 95 pts
+Inquisitor Greyfax
+1 model 65 pts
+Inquisitorial Agents
+6 models 60 pts
+12 models 120 pts
+Inquisitorial Chimera
+1 model 70 pts
+Ministorum Priest
+1 model 40 pts
+Navigator
+1 model 75 pts
+Rogue Trader Entourage
+4 models 105 pts
+Sanctifiers
+9 models 100 pts
+Sisters of Battle Immolator
+1 model 115 pts
+Sisters of Battle Squad
+1 model 115 pts
+Subductor Squad
+11 models 100 pts
+Vigilant Squad
+11 models 85 pts
+Vindicare Assassin
+1 model 125 pts
+Voidsmen-at-Arms
+6 models 70 pts
+Watch Captain Artemis
+1 model 65 pts
+Watch Master
+1 model 105 pts
+25
+CODEX: IMPERIAL KNIGHTS
+Armiger Helverin
+1 model 140 pts
+Armiger Warglaive
+1 model 140 pts
+Canis Rex
+1 model 415 pts
+Knight Castellan
+1 model 410 pts
+Knight Crusader
+1 model (-10) 385 pts
+Knight Defender
+1 model (-10) 415 pts
+Knight Errant
+1 model (-10) 365 pts
+Knight Gallant
+1 model (-10) 365 pts
+Knight Paladin
+1 model 375 pts
+Knight Preceptor
+1 model 365 pts
+Knight Valiant
+1 model 410 pts
+Knight Warden
+1 model (-10) 375 pts
+FORGE WORLD POINTS VALUES
+Acastus Knight Asterius
+1 model 765 pts
+Acastus Knight Porphyrion
+1 model 700 pts
+Armiger Moirax
+1 model 150 pts
+Cerastus Knight Acheron
+1 model 395 pts
+Cerastus Knight Atrapos
+1 model 405 pts
+Cerastus Knight Castigator
+1 model 395 pts
+Cerastus Knight Lancer
+1 model 395 pts
+Questoris Knight Magaera
+1 model 385 pts
+Questoris Knight Styrix
+1 model 385 pts
+DETACHMENT ENHANCEMENTS
+Gate Warden Lance
+Acquisitor-at-Arms 15 pts
+Augury Halo 20 pts
+Purgation’s Hand 20 pts
+Vengeful Tread 15 pts
+Questor Forgepact
+Knight of the Opus Machina 20 pts
+Magos Questoris 35 pts
+Omnissian Champion 30 pts
+Vocifer Magnificat 15 pts
+Questoris Companions
+Crushing Condemnation 10 pts
+Herald of Triumph 15 pts
+Pennant of Silvered Fury 15 pts
+Wyrmslayer Divination 10 pts
+Spearhead-At-Arms
+Fables of Nightmare 10 pts
+Martial Tuition 15 pts
+Mentor’s Pride 20 pts
+Tales of Heroism 10 pts
+Valourstrike Lance
+Bearer of the Evanescent Ion 15 pts
+Bearer of the Iron Chalice 20 pts
+Bearer of the Judicant’s Helm 25 pts
+Bearer of the Lancer’s Sigil 25 pts
+26
+CODEX: LEAGUES OF VOTANN
+Arkanyst Evaluator
+1 model (-10) 65 pts
+Brôkhyr Iron-master
+5 models ����������������������������������������������������75 pts
+Brôkhyr Thunderkyn
+3 models 80 pts
+6 models 160 pts
+Buri Aegnirssen
+1 model (-15) 95 pts
+Cthonian Beserks
+5 models 100 pts
+10 models 200 pts
+Cthonian Earthshakers
+2 models 110 pts
+Einhyr Champion
+1 model 70 pts
+Einhyr Hearthguard
+5 models 135 pts
+10 models 270 pts
+Grimnyr
+3 models 65 pts
+Hearthkyn Warriors
+10 models 100 pts
+Hekaton Land Fortress
+1 model 240 pts
+Hernkyn Pioneers
+3 models 80 pts
+6 models 160 pts
+Hernkyn Yaegirs
+10 models 90 pts
+Ironkin Steeljacks with
+Heavy Volkanite Disintegrators
+3 models (-5) 85 pts
+6 models (-10)170 pts
+Ironkin Steeljacks with Melee Weapons
+3 models (-5) 85 pts
+6 models (-10)170 pts
+Kâhl
+1 model (-5) 65 pts
+Kapricus Carrier
+1 model 75 pts
+Kapricus Defenders
+1 model 70 pts
+2 models 140 pts
+Memnyr Strategist
+1 model 45 pts
+Sagitaur
+1 model (-5) 90 pts
+Ûthar the Destined
+1 model 95 pts
+DETACHMENT ENHANCEMENTS
+Brandfast Oathband
+Precursive Judgement 15 pts
+Signature Restoration 5 pts
+Tactical Alchemy 10 pts
+Trivärg Cyber Implant (+10) 40 pts
+Dêlve Assault Shift
+Dêlvwerke Navigator 25 pts
+Multiwave System Jammer 10 pts
+Piledriver 15 pts
+Quake Supervisor 20 pts
+Hearthband
+Bastion Shield 25 pts
+High Kâhl 30 pts
+Ironskein 10 pts
+Quake Multigenerator 15 pts
+Hearthfyre Arsenal
+Calculated Tenacity 15 pts
+Fârstrydr Node 20 pts
+Graviton Vault 5 pts
+Mantle of Elders 10 pts
+Needgaârd Oathband
+Ancestral Crest 15 pts
+Dead Reckoning 10 pts
+Iron Ambassador 5 pts
+Oathbound Speculator 30 pts
+Persecution Prospect
+Eye for Weakness 25 pts
+Nomad Strategist 20 pts
+Surgical Saboteur 10 pts
+Writ of Acquisition 10 pts
+27
+CODEX: NECRONS
+Annihilation Barge
+1 model 105 pts
+C’tan Shard of the Deceiver
+1 model 265 pts
+C’tan Shard of the Nightbringer
+1 model 305 pts
+C’tan Shard of the Void Dragon
+1 model 300 pts
+Canoptek Doomstalker
+1 model 140 pts
+Canoptek Macrocytes
+5 models 85 pts
+Canoptek Reanimator
+1 model 75 pts
+Canoptek Scarab Swarms
+3 models 40 pts
+6 models 80 pts
+Canoptek Spyders
+1 model 75 pts
+2 models 150 pts
+Canoptek Tomb Crawlers
+2 models 50 pts
+Canoptek Wraiths
+3 models 110 pts
+6 models 220 pts
+Catacomb Command Barge
+1 model 120 pts
+Chronomancer
+1 model 65 pts
+Convergence of Dominion
+1 model 60 pts
+2 models 120 pts
+3 models 180 pts
+Cryptothralls
+2 models 60 pts
+Deathmarks
+5 models 60 pts
+10 models 120 pts
+Doom Scythe
+1 model 230 pts
+Doomsday Ark
+1 model 200 pts
+Flayed Ones
+5 models 60 pts
+10 models 120 pts
+Geomancer
+1 model 75 pts
+Ghost Ark
+1 model 115 pts
+Hexmark Destroyer
+1 model 75 pts
+Illuminor Szeras
+1 model 165 pts
+Immortals
+5 models 70 pts
+10 models 150 pts
+Imotekh the Stormlord
+1 model 100 pts
+Lokhust Destroyers
+1 model 40 pts
+2 models 60 pts
+3 models 90 pts
+6 models 180 pts
+Lokhust Heavy Destroyers
+1 model 55 pts
+2 models 110 pts
+3 models 165 pts
+Lokhust Lord
+1 model 80 pts
+Lychguard
+5 models 85 pts
+10 models 170 pts
+Monolith
+1 model 400 pts
+Necron Warriors
+10 models 90 pts
+20 models 200 pts
+Night Scythe
+1 model 145 pts
+Obelisk
+1 model 300 pts
+Ophydian Destroyers
+3 models 80 pts
+6 models 160 pts
+Orikan the Diviner
+1 model 80 pts
+Overlord
+1 model 85 pts
+Overlord with Translocation Shroud
+1 model 85 pts
+Plasmancer
+1 model 55 pts
+Psychomancer
+1 model 55 pts
+Royal Warden
+1 model 50 pts
+Skorpekh Destroyers
+3 models 90 pts
+6 models 180 pts
+Skorpekh Lord
+1 model 90 pts
+Technomancer
+1 model 80 pts
+Tesseract Vault
+1 model 425 pts
+The Silent King
+3 models 400 pts
+Tomb Blades
+3 models 75 pts
+6 models 150 pts
+Transcendent C’tan
+1 model 295 pts
+Trazyn the Infinite
+1 model 75 pts
+Triarch Praetorians
+5 models 90 pts
+10 models 180 pts
+Triarch Stalker
+1 model 110 pts
+FORGE WORLD POINTS VALUES
+Seraptek Heavy Construct
+1 model 540 pts
+DETACHMENT ENHANCEMENTS
+Annihilation Legion
+Eldritch Nightmare 15 pts
+Eternal Madness 25 pts
+Ingrained Superiority 10 pts
+Soulless Reaper 20 pts
+Awakened Dynasty
+Enaegic Dermal Bond 30 pts
+Nether-realm Casket 20 pts
+Phasal Subjugator 35 pts
+Veil of Darkness 20 pts
+Canoptek Court
+Autodivinator 15 pts
+Dimensional Sanctum 20 pts
+Hyperphasic Fulcrum 15 pts
+Metalodermal Tesla Weave 10 pts
+Hypercrypt Legion
+Arisen Tyrant 25 pts
+Dimensional Overseer 25 pts
+Hyperspatial Transfer Node 15 pts
+Osteoclave Fulcrum 20 pts
+Obeisance Phalanx
+Eternal Conqueror 25 pts
+Honourable Combatant 10 pts
+Unflinching Will 20 pts
+Warrior Noble 15 pts
+Starshatter Arsenal
+Chrono-impedance Fields 25 pts
+Demanding Leader 10 pts
+Dread Majesty 30 pts
+Miniaturised Nebuloscope 15 pts
+28
+CODEX: ORKS
+Battlewagon
+1 model 160 pts
+Beast Snagga Boyz
+10 models 95 pts
+20 models 190 pts
+Beastboss
+1 model 80 pts
+Beastboss on Squigosaur
+1 model 110 pts
+Big Mek
+1 model 70 pts
+Big Mek in Mega Armour
+1 model 90 pts
+Big Mek with Shokk Attack Gun
+1 model 80 pts
+Big’ed Bossbunka
+1 model 135 pts
+Blitza-bommer
+1 model 115 pts
+Boomdakka Snazzwagon
+1 model 70 pts
+Boss Snikrot
+1 model 75 pts
+Boyz
+10 models 80 pts
+20 models 170 pts
+Breaka Boyz
+6 models 140 pts
+Burna Boyz
+1 Spanner and 4 Burna Boyz 60 pts
+2 Spanners and 8 Burna Boyz 120 pts
+Burna-bommer
+1 model 125 pts
+Dakkajet
+1 model 135 pts
+Deff Dread
+1 model 120 pts
+Deffkilla Wartrike
+1 model 80 pts
+Deffkoptas
+3 models 80 pts
+6 models 160 pts
+Flash Gitz
+5 models 80 pts
+10 models 160 pts
+Ghazghkull Thraka
+2 models 235 pts
+Gorkanaut
+1 model 265 pts
+Gretchin
+11 models 40 pts
+22 models 80 pts
+Hunta Rig
+1 model 135 pts
+Kill Rig
+1 model 155 pts
+Killa Kans
+3 models 125 pts
+6 models 250 pts
+Kommandos
+10 models 120 pts
+Kustom Boosta-blasta
+1 model 70 pts
+Lootas
+1 Spanner and 4 Lootas 50 pts
+2 Spanners and 8 Lootas 100 pts
+Meganobz
+2 models 65 pts
+3 models 95 pts
+5 models 160 pts
+6 models 190 pts
+Megatrakk Scrapjet
+1 model 75 pts
+Mek
+1 model 45 pts
+Mek Gunz
+1 model 50 pts
+2 models 100 pts
+3 models 150 pts
+Morkanaut
+1 model 280 pts
+Mozrog Skragbad
+1 model 145 pts
+Nobz
+5 models 105 pts
+10 models 210 pts
+Painboss
+1 model 70 pts
+Painboy
+1 model 80 pts
+Rukkatrukk Squigbuggy
+1 model 95 pts
+Shokkjump Dragsta
+1 model 70 pts
+Squighog Boyz
+4 models 150 pts
+8 models 300 pts
+Stompa
+1 model 800 pts
+Stormboyz
+5 models 65 pts
+10 models 130 pts
+Tankbustas
+6 models 140 pts
+Trukk
+1 model 70 pts
+Warbikers
+3 models 65 pts
+6 models 130 pts
+Warboss
+1 model 75 pts
+Warboss in Mega Armour
+1 model 80 pts
+Wazbom Blastajet
+1 model 175 pts
+Weirdboy
+1 model 65 pts
+Wurrboy
+1 model 60 pts
+Zodgrod Wortsnagga
+1 model 90 pts
+FORGE WORLD POINTS VALUES
+Gargantuan Squiggoth
+1 model 440 pts
+29
+DETACHMENT ENHANCEMENTS
+Bully Boyz
+Big Gob 20 pts
+Da Biggest Boss 15 pts
+’Eadstompa 10 pts
+Tellyporta 25 pts
+Da Big Hunt
+Glory Hog 30 pts
+Proper Killy 15 pts
+Skrag Every Stash! 25 pts
+Surly as a Squiggoth 20 pts
+Dread Mob
+Gitfinder Googlez 10 pts
+Press It Fasta! 35 pts
+Smoky Gubbinz 15 pts
+Supa‑glowy Fing 20 pts
+Green Tide
+Bloodthirsty Belligerence 15 pts
+Brutal But Kunnin’ 25 pts
+Ferocious Show Off 10 pts
+Raucous Warcaller 20 pts
+Kult of Speed
+Fasta Than Yooz 35 pts
+Speed Makes Right 25 pts
+Squig‑hide Tyres 15 pts
+Wazblasta 10 pts
+More Dakka!
+Da Gobshot Thunderbuss 15 pts
+Dead Shiny Shootas 35 pts
+Targetin’ Squigs 15 pts
+Zog Off and Eat Dakka! 10 pts
+Taktikal Brigade
+Gob Boomer 10 pts
+Mek Kaptin 45 pts
+Mork’s Kunnin’ 15 pts
+Skwad Leader 15 pts
+War Horde
+Follow Me Ladz 25 pts
+Headwoppa’s Killchoppa 20 pts
+Kunnin’ But Brutal 15 pts
+Supa-Cybork Body 15 pts
+30
+CODEX: SPACE MARINES
+Adrax Agatone
+1 model 85 pts
+Aethon Shaan
+1 model (+25) 110 pts
+Aggressor Squad
+3 models (-5) 95 pts
+6 models (-10) 190 pts
+Ancient
+1 model 50 pts
+Ancient in Terminator Armour
+1 model 75 pts
+Apothecary
+1 model 50 pts
+Apothecary Biologis
+1 model 70 pts
+Assault Intercessor Squad
+5 models 75 pts
+10 models 150 pts
+Assault Intercessors with Jump Packs
+5 models 90 pts
+10 models 170 pts
+Ballistus Dreadnought
+1 model 150 pts
+Bladeguard Ancient
+1 model 45 pts
+Bladeguard Veteran Squad
+3 models 80 pts
+6 models 170 pts
+Brutalis Dreadnought
+1 model 160 pts
+Caanok Var
+1 model 100 pts
+Captain
+1 model 80 pts
+Captain in Gravis Armour
+1 model 80 pts
+Captain in Phobos Armour
+1 model 70 pts
+Captain in Terminator Armour
+1 model 95 pts
+Captain Sicarius
+1 model 85 pts
+Captain with Jump Pack
+1 model 75 pts
+Cato Sicarius
+1 model (-25) 95 pts
+Centurion Assault Squad
+3 models 150 pts
+6 models 300 pts
+Centurion Devastator Squad
+3 models (+10) 175 pts
+6 models (+20) 350 pts
+Chaplain
+1 model 60 pts
+Chaplain in Terminator Armour
+1 model 75 pts
+Chaplain on Bike
+1 model 75 pts
+Chaplain with Jump Pack
+1 model 75 pts
+Chief Librarian Tigurius
+1 model 75 pts
+Company Heroes
+4 models 105 pts
+Darnath Lysander
+1 model 100 pts
+Desolation Squad
+5 models 200 pts
+Devastator Squad
+5 models 120 pts
+10 models 200 pts
+Dreadnought
+1 model 135 pts
+Drop Pod
+1 model 70 pts
+Eliminator Squad
+3 models 85 pts
+Eradicator Squad
+3 models (-10) 90 pts
+6 models (-20) 180 pts
+Firestrike Servo-turrets
+1 model 75 pts
+2 models 150 pts
+Gladiator Lancer
+1 model 160 pts
+Gladiator Reaper
+1 model 160 pts
+Gladiator Valiant
+1 model 150 pts
+Hammerfall Bunker
+1 model 175 pts
+Heavy Intercessor Squad
+5 models 100 pts
+10 models 200 pts
+Hellblaster Squad
+5 models 110 pts
+10 models 220 pts
+Impulsor
+1 model 80 pts
+Inceptor Squad
+3 models 120 pts
+6 models 240 pts
+Incursor Squad
+5 models 80 pts
+10 models 160 pts
+Infernus Squad
+5 models 90 pts
+10 models 180 pts
+Infiltrator Squad
+5 models 100 pts
+10 models 200 pts
+Intercessor Squad
+5 models 80 pts
+10 models 160 pts
+Invader ATV
+1 model 60 pts
+Invictor Tactical Warsuit
+1 model 125 pts
+Iron Father Feirros
+1 model 95 pts
+Judiciar
+1 model 70 pts
+Kayvaan Shrike
+1 model 100 pts
+Kor’sarro Khan
+1 model (-10) 60 pts
+Land Raider
+1 model 220 pts
+Land Raider Crusader
+1 model 220 pts
+Land Raider Redeemer
+1 model 270 pts
+Librarian
+1 model 65 pts
+Librarian in Phobos Armour
+1 model 70 pts
+Librarian in Terminator Armour
+1 model 75 pts
+Lieutenant
+1 model (-10) 55 pts
+Lieutenant in Phobos Armour
+1 model 55 pts
+Lieutenant in Reiver Armour
+1 model 55 pts
+Lieutenant with Combi-weapon
+1 model 70 pts
+Lieutenant Titus
+1 model 70 pts
+Marneus Calgar
+3 models 200 pts
+Marneus Calgar in Armour of Antilochus
+1 model 140 pts
+31
+Outrider Squad
+3 models 80 pts
+6 models 160 pts
+Invader ATV +60 pts
+Pedro Kantor
+1 model 90 pts
+Predator Annihilator
+1 model 135 pts
+Predator Destructor
+1 model 140 pts
+Razorback
+1 model 95 pts
+Redemptor Dreadnought
+1 model 195 pts
+Reiver Squad
+5 models 80 pts
+10 models 160 pts
+Repulsor
+1 model 180 pts
+Repulsor Executioner
+1 model 220 pts
+Rhino
+1 model 75 pts
+Roboute Guilliman
+1 model 340 pts
+Scout Squad
+5 models 70 pts
+10 models 140 pts
+Sternguard Veteran Squad
+5 models 100 pts
+10 models 200 pts
+Storm Speeder Hailstrike
+1 model 115 pts
+Storm Speeder Hammerstrike
+1 model 125 pts
+Storm Speeder Thunderstrike
+1 model (-15) 135 pts
+Stormhawk Interceptor
+1 model 155 pts
+Stormraven Gunship
+1 model 280 pts
+Stormtalon Gunship
+1 model 165 pts
+Suboden Khan
+1 model 115 pts
+Suppressor Squad
+3 models 75 pts
+Tactical Squad
+10 models 140 pts
+Techmarine
+1 model 55 pts
+Terminator Assault Squad
+5 models 180 pts
+10 models 360 pts
+Terminator Squad
+5 models 170 pts
+10 models 340 pts
+Tor Garadon
+1 model 90 pts
+Uriel Ventris
+1 model 95 pts
+Vanguard Veteran Squad with Jump Packs
+5 models (+5) 100 pts
+10 models (+10) 200 pts
+Victrix Honour Guard
+3 models (-10) 120 pts
+6 models (+30) 240 pts
+Vindicator
+1 model 185 pts
+Vulkan He’stan
+1 model 100 pts
+Whirlwind
+1 model 190 pts
+FORGE WORLD POINTS VALUES
+Astraeus
+1 model 525 pts
+Thunderhawk Gunship
+1 model 840 pts
+DETACHMENT ENHANCEMENTS
+1st Company Task Force
+Fear Made Manifest 30 pts
+Iron Resolve 15 pts
+Rites of War 10 pts
+The Imperium’s Sword 25 pts
+Anvil Siege Force
+Architect of War 25 pts
+Fleet Commander 15 pts
+Indomitable Fury 20 pts
+Stoic Defender 15 pts
+Blade of Ultramar
+Armour of Antoninus 10 pts
+Oath of Macragge 15 pts
+Student of the Codex 20 pts
+Veteran of Behemoth 25 pts
+Emperor’s Shield
+Champion of the Feast 25 pts
+Disciple of Rhetoricus 10 pts
+Indomitable Champion 20 pts
+Malodraxian Standard 20 pts
+Firestorm Assault Force
+Adamantine Mantle 20 pts
+Champion of Humanity 10 pts
+Forged in Battle 15 pts
+War-tempered Artifice 25 pts
+Forgefather’s Seekers
+Adamantine Mantle 20 pts
+Forged in Battle 15 pts
+Immolator 10 pts
+War-tempered Artifice 25 pts
+Gladius Task Force
+Adept of the Codex 20 pts
+Artificer Armour 10 pts
+Fire Discipline 25 pts
+The Honour Vehement 15 pts
+Hammer of Avernii
+Iron Laurel 10 pts
+Medusan Roar 30 pts
+Spiritus Ferrum 25 pts
+Steel Font 15 pts
+Ironstorm Spearhead
+Adept of the Omnissiah 35 pts
+Master of Machine War 20 pts
+Target Augury Web 30 pts
+The Flesh is Weak 10 pts
+Librarius Conclave
+Celerity 30 pts
+Fusillade 35 pts
+Obfuscation 20 pts
+Prescience 25 pts
+Shadowmark Talon
+Blackwing Shroud 25 pts
+Coronal Susurrant 30 pts
+Hunter’s Instincts 25 pts
+Umbral Raptor 15 pts
+Spearpoint Task Force
+Chogorian Huntmaster 25 pts
+Hunter’s Eye 20 pts
+Spearpoint Paragon 25 pts
+Stormseers’ Wisdom 15 pts
+Stormlance Task Force
+Feinting Withdrawal 10 pts
+Fury of the Storm 25 pts
+Hunter’s Instincts 25 pts
+Portents of Wisdom 15 pts
+Vanguard Spearhead
+Execute and Redeploy 20 pts
+Ghostweave Cloak 15 pts
+Shadow War Veteran 30 pts
+The Blade Driven Deep 25 pts
+32
+CODEX: SPACE WOLVES
+Arjac Rockfist
+1 model 105 pts
+Bjorn the Fell-Handed
+1 model (-10) 160 pts
+Blood Claws
+10 models 135 pts
+20 models 285 pts
+Fenrisian Wolves
+5 models 40 pts
+10 models 80 pts
+Grey Hunters
+10 models (-15) 165 pts
+Iron Priest
+1 model (-5) 55 pts
+Logan Grimnar
+1 model 110 pts
+Murderfang
+1 model (-10) 150 pts
+Njal Stormcaller
+1 model 85 pts
+Ragnar Blackmane
+1 model 100 pts
+Thunderwolf Cavalry
+3 models 115 pts
+6 models 230 pts
+Ulrik the Slayer
+1 model 70 pts
+Venerable Dreadnought
+1 model (-10) 130 pts
+Wolf Guard Battle Leader
+1 model 65 pts
+Wolf Guard Headtakers
+3 Wolf Guard Headtakers 85 pts
+3 Wolf Guard Headtakers
+and 3 Hunting Wolves 110 pts
+6 Wolf Guard Headtakers 170 pts
+6 Wolf Guard Headtakers
+and 6 Hunting Wolves 220 pts
+Wolf Guard Terminators
+5 models 170 pts
+10 models 340 pts
+Wolf Priest
+1 model 70 pts
+Wolf Scouts
+6 models 105 pts
+12 models 210 pts
+Wulfen
+5 models 85 pts
+10 models 170 pts
+Wulfen Dreadnought
+1 model (-10) 135 pts
+Wulfen with Storm Shields
+5 models 100 pts
+10 models 200 pts
+DETACHMENT ENHANCEMENTS
+Champions of Fenris
+Fangrune Pendant 15 pts
+Foes’ Fate 15 pts
+Longstrider 20 pts
+Wolves’ Wisdom 30 pts
+Saga of the Beastslayer
+Elder’s Guidance 20 pts
+Helm of the Beastslayer 15 pts
+Hunter’s Guile 20 pts
+Wolf-touched 15 pts
+Saga of the Bold
+Braggart’s Steel 20 pts
+Hordeslayer 15 pts
+Skjald 15 pts
+Thunderwolf’s Fortitude 25 pts
+Saga of the Great Wolf
+Chariots of the Storm 25 pts
+Grimnar’s Mark 20 pts
+Howlmaw 15 pts
+Skjald’s Foretelling 25 pts
+Saga of the Hunter
+Fenrisian Grit 15 pts
+Feral Rage 10 pts
+Swift Hunter 20 pts
+Wolf Master 5 pts
+33
+CODEX: T’AU EMPIRE
+Breacher Team
+10 models (-10) 90 pts
+Broadside Battlesuits
+1 model 80 pts
+2 models 170 pts
+3 models 270 pts
+Cadre Fireblade
+1 model 50 pts
+Commander Farsight
+1 model 85 pts
+Commander in Coldstar Battlesuit
+1 model 95 pts
+Commander in Enforcer Battlesuit
+1 model 80 pts
+Commander Shadowsun
+1 model 100 pts
+Crisis Fireknife Battlesuits
+3 models 120 pts
+Crisis Starscythe Battlesuits
+3 models 110 pts
+Crisis Sunforge Battlesuits
+3 models 140 pts
+Darkstrider
+1 model 60 pts
+Devilfish
+1 model 85 pts
+Ethereal
+1 model 50 pts
+Firesight Team
+1 model 60 pts
+Ghostkeel Battlesuit
+1 model 160 pts
+Hammerhead Gunship
+1 model 145 pts
+Kroot Carnivores
+10 models 65 pts
+20 models 140 pts
+Kroot Farstalkers
+12 models 85 pts
+Kroot Flesh Shaper
+1 model 45 pts
+Kroot Hounds
+5 models 40 pts
+10 models 80 pts
+Kroot Lone-spear
+1 model 80 pts
+Kroot Trail Shaper
+1 model 55 pts
+Kroot War Shaper
+1 model 50 pts
+Krootox Rampagers
+3 models 85 pts
+6 models 170 pts
+Krootox Riders
+1 model 40 pts
+2 models 60 pts
+3 models 90 pts
+Pathfinder Team
+10 models 90 pts
+Piranhas
+1 model 60 pts
+2 models 120 pts
+3 models 180 pts
+Razorshark Strike Fighter
+1 model 170 pts
+Riptide Battlesuit
+1 model (+10) 200 pts
+Sky Ray Gunship
+1 model (+10) 150 pts
+Stealth Battlesuits
+5 models 110 pts
+Stormsurge
+1 model (-40) 360 pts
+Strike Team
+10 models (-5) 70 pts
+Sun Shark Bomber
+1 model 160 pts
+Tidewall Droneport
+1 model 85 pts
+Tidewall Gunrig
+1 model 90 pts
+Tidewall Shieldline
+1 model 85 pts
+Tidewall Defence Platform +20 pts
+Vespid Stingwings
+5 models 65 pts
+10 models 130 pts
+FORGE WORLD POINTS VALUES
+AX-1-0 Tiger Shark
+1 model 315 pts
+Manta
+1 model 2100 pts
+Ta’unar Supremacy Armour
+1 model 790 pts
+Tiger Shark
+1 model 325 pts
+DETACHMENT ENHANCEMENTS
+Auxiliary Cadre
+Admired Leader 20 pts
+Fanatical Convert 10 pts
+Student of Kauyon 15 pts
+Transponder Lock Module 25 pts
+Experimental Prototype Cadre
+Fusion Blades 25 pts
+Plasma Accelerator Rifle 10 pts
+Supernova Launcher 15 pts
+Thermoneutronic Projector 20 pts
+Kauyon
+Exemplar of the Kauyon 20 pts
+Precision of the Patient Hunter 15 pts
+Solid-image Projection Unit 30 pts
+Through Unity, Devastation 40 pts
+Kroot Hunting Pack
+Borthrod Gland 15 pts
+Kroothawk Flock 10 pts
+Nomadic Hunter 20 pts
+Root-carved Weapons 10 pts
+Mont’ka
+Coordinated Exploitation 40 pts
+Exemplar of the Mont’ka 10 pts
+Strategic Conqueror 15 pts
+Strike Swiftly 25 pts
+Retaliation Cadre
+Internal Grenade Racks 20 pts
+Prototype Weapon System 15 pts
+Puretide Engram Neurochip 25 pts
+Starflare Ignition System 20 pts
+34
+CODEX: THOUSAND SONS
+Ahriman
+1 model 100 pts
+Chaos Land Raider
+1 model 220 pts
+Chaos Predator Annihilator
+1 model 130 pts
+Chaos Predator Destructor
+1 model (-10) 130 pts
+Chaos Rhino
+1 model 90 pts
+Chaos Spawn
+2 models 65 pts
+Chaos Vindicator
+1 model 185 pts
+Daemon Prince of Tzeentch
+1 model 180 pts
+Daemon Prince of Tzeentch with Wings
+1 model 170 pts
+Defiler
+1 model 165 pts
+Exalted Sorcerer
+1 model 80 pts
+Exalted Sorcerer on Disc of Tzeentch
+1 model 100 pts
+Forgefiend
+1 model (-10) 130 pts
+Heldrake
+1 model 215 pts
+Helbrute
+1 model 110 pts
+Infernal Master
+1 model 95 pts
+Magnus the Red
+1 model 435 pts
+Maulerfiend
+1 model (-10) 120 pts
+Mutalith Vortex Beast
+1 model (-5) 170 pts
+Rubric Marines
+5 models (-5) 100 pts
+10 models 190 pts
+Scarab Occult Terminators
+5 models 180 pts
+10 models 360 pts
+Sekhetar Robots
+2 models 80 pts
+4 models 160 pts
+Sorcerer
+1 model (-5) 80 pts
+Sorcerer in Terminator Armour
+1 model 85 pts
+Tzaangor Enlightened
+3 models (-10) 45 pts
+6 models 90 pts
+Tzaangor Enlightened with
+Fatecaster Greatbows
+3 models (-5) 55 pts
+6 models 110 pts
+Tzaangor Shaman
+1 model 60 pts
+Tzaangors
+10 models 70 pts
+20 models 160 pts
+SCINTILLATING LEGIONS
+Blue Horrors
+10 models 90 pts
+Flamers
+3 models 65 pts
+6 models 130 pts
+Kairos Fateweaver
+1 model (+25) 285 pts
+Lord of Change
+1 model (+20) 270 pts
+Pink Horrors
+10 models 115 pts
+Screamers
+3 models 80 pts
+6 models 160 pts
+DETACHMENT ENHANCEMENTS
+Changehost of Deceit
+Diabolic Savant 20 pts
+Duplicitous Malediction 15 pts
+Nethershriek Mind-eater 10 pts
+Tome of True Names 20 pts
+Grand Coven
+Eldritch Vortex of E’taph 35 pts
+Incandaeum 15 pts
+Lord of Forbidden Lore 20 pts
+Umbralefic Crystal 20 pts
+Rubricae Phalanx
+Arcane Thralls 5 pts
+Lord of the Rubricae 15 pts
+Risen Rubricae 30 pts
+The Stave Abominus 20 pts
+Warpforged Cabal
+Biomechanical Mutation 15 pts
+The Perplexing Cloak 20 pts
+Warp Syphon 5 pts
+Warp-cursed Runemaster 10 pts
+Warpmeld Pact
+Bray Lord 15 pts
+Diamond of Distortion 20 pts
+Flowing Flesh 10 pts
+Warpmeld Dagger 10 pts
+Hexwarp Thrallband
+Arcane Might 20 pts
+Empowered Manifestation 20 pts
+Empyric Onslaught 25 pts
+Noctilith Mantle 15 pts
+35
+CODEX: TYRANIDS
+Barbgaunts
+5 models 55 pts
+10 models 110 pts
+Biovores
+1 model 50 pts
+2 models 100 pts
+3 models 150 pts
+Broodlord
+1 model 80 pts
+Carnifexes
+1 model (-25) 90 pts
+2 models (-50) 180 pts
+Deathleaper
+1 model 80 pts
+Exocrine
+1 model 140 pts
+Gargoyles
+10 models 85 pts
+20 models 170 pts
+Genestealers
+5 models 75 pts
+10 models 140 pts
+Harpy
+1 model 215 pts
+Haruspex
+1 model 125 pts
+Hive Crone
+1 model 200 pts
+Hive Guard
+3 models 90 pts
+6 models 180 pts
+Hive Tyrant
+1 model 195 pts
+Hormagaunts
+10 models 65 pts
+20 models 130 pts
+Hyperadapted Raveners
+5 models 165 pts
+Lictor
+1 model 60 pts
+Maleceptor
+1 model 170 pts
+Mawloc
+1 model 135 pts
+Mucolid Spores
+1 model 30 pts
+2 models 60 pts
+Neurogaunts
+11 models 45 pts
+22 models 90 pts
+Neurolictor
+1 model 70 pts
+Neurotyrant
+1 model 105 pts
+Norn Assimilator
+1 model 275 pts
+Norn Emissary
+1 model 260 pts
+Old One Eye
+1 model 150 pts
+Parasite of Mortrex
+1 model 80 pts
+Psychophage
+1 model 110 pts
+Pyrovores
+1 model 40 pts
+2 models 70 pts
+3 models 105 pts
+Raveners
+5 models 125 pts
+Ripper Swarms
+1 model 25 pts
+2 models 40 pts
+3 models 50 pts
+Screamer-Killer
+1 model (-10) 125 pts
+Spore MInes
+3 models 55 pts
+6 models 110 pts
+Sporocyst
+1 model 145 pts
+Termagants
+10 models 60 pts
+20 models 120 pts
+Tervigon
+1 model 160 pts
+The Swarmlord
+1 model 220 pts
+Toxicrene
+1 model 150 pts
+Trygon
+1 model 140 pts
+Tyranid Warriors with Melee Bio-weapons
+3 models 75 pts
+6 models 150 pts
+Tyranid Warriors with Ranged Bio-weapons
+3 models 65 pts
+6 models 130 pts
+Tyrannocyte
+1 model 105 pts
+Tyrannofex
+1 model 200 pts
+Tyrant Guard
+3 models 80 pts
+6 models 160 pts
+Venomthropes
+3 models 70 pts
+6 models 140 pts
+Von Ryan’s Leapers
+3 models 70 pts
+6 models 140 pts
+Winged Hive Tyrant
+1 model 170 pts
+Winged Tyranid Prime
+1 model 65 pts
+Zoanthropes
+3 models 100 pts
+6 models 200 pts
+FORGE WORLD POINTS VALUES
+Harridan
+1 model 610 pts
+Hierophant
+1 model 810 pts
+DETACHMENT ENHANCEMENTS
+Assimilation Swarm
+Biophagic Flow 10 pts
+Instinctive Defence 15 pts
+Parasitic Biomorphology 25 pts
+Regenerating Monstrosity 20 pts
+Crusher Stampede
+Enraged Reserves 20 pts
+Monstrous Nemesis 25 pts
+Null Nodules 10 pts
+Ominous Presence 15 pts
+Invasion Fleet
+Adaptive Biology 25 pts
+Alien Cunning 30 pts
+Perfectly Adapted 15 pts
+Synaptic Linchpin 20 pts
+Subterranean Assault
+Synaptic Strategy 15 pts
+Tremor Senses 20 pts
+Trygon Prime 20 pts
+Vanguard Intellect 15 pts
+Synaptic Nexus
+Power of the Hive Mind 10 pts
+Psychostatic Disruption 30 pts
+Synaptic Control 20 pts
+The Dirgeheart of Kharis 15 pts
+Unending Swarm
+Adrenalised Onslaught 15 pts
+Naturalised Camouflage 30 pts
+Piercing Talons 25 pts
+Relentless Hunger 20 pts
+Vanguard Onslaught
+Chameleonic 15 pts
+Hunting Grounds 20 pts
+Neuronode 20 pts
+Stalker 10 pts
+36
+Warrior Bioform Onslaught
+Elevated Might 30 pts
+Ocular Adaptation 20 pts
+Sensory Assimilation 20 pts
+Synaptic Tyrant 10 pts
+37
+CODEX: WORLD EATERS
+Angron
+1 model (-20) 340 pts
+Chaos Land Raider
+1 model 220 pts
+Chaos Predator Annihilator
+1 model 145 pts
+Chaos Predator Destructor
+1 model 145 pts
+Chaos Rhino
+1 model 85 pts
+Chaos Spawn
+2 models 90 pts
+Chaos Terminators
+5 models 175 pts
+10 models 350 pts
+Daemon Prince of Khorne
+1 model 200 pts
+Daemon Prince of Khorne with Wings
+1 model 180 pts
+Defiler
+1 model 180 pts
+Eightbound
+3 models 135 pts
+6 models 270 pts
+Exalted Eightbound
+3 models 140 pts
+6 models 280 pts
+Forgefiend
+1 model 170 pts
+Goremongers
+8 models (-10) 75 pts
+Helbrute
+1 model 120 pts
+Heldrake
+1 model 200 pts
+Jakhals
+10 models 65 pts
+20 models 140 pts
+Khârn the Betrayer
+1 model 100 pts
+Khorne Berzerkers
+10 models 180 pts
+20 models 360 pts
+Khorne Lord of Skulls
+1 model 505 pts
+Lord Invocatus
+1 model 110 pts
+Lord on Juggernaut
+1 model (+15) 105 pts
+Master of Executions
+1 model 60 pts
+Maulerfiend
+1 model 150 pts
+Slaughterbound
+1 model (+15) 100 pts
+BLOOD LEGIONS
+Bloodcrushers
+3 models 110 pts
+6 models 220 pts
+Bloodletters
+10 models 90 pts
+Bloodthirster
+1 model 305 pts
+Flesh Hounds
+5 models 75 pts
+10 models 150 pts
+Skarbrand
+1 model 305 pts
+DETACHMENT ENHANCEMENTS
+Berzerker Warband
+Battle-lust 10 pts
+Berzerker Glaive (+10) 35 pts
+Favoured of Khorne 15 pts
+Helm of Brazen Ire (+10) 30 pts
+Cult of Blood
+Brazen Form 25 pts
+Butcher Lord 10 pts
+Chosen of the Blood God 15 pts
+Strategic Slaughter 20 pts
+Khorne Daemonkin
+Blade of Endless Bloodshed 30 pts
+Blood‑forged Armour 20 pts
+Disciple of Khorne 15 pts
+Icon of War 25 pts
+Possessed Slaughterband
+Frenzied Focus 20 pts
+Killing Clarity 15 pts
+Malicious Vigour 30 pts
+Violent Demise 10 pts
+Goretrack Onslaught
+Aggressive Deployment 20 pts
+Infernal Infusion 25 pts
+Murderous Onslaught 5 pts
+Unleash Hell 10 pts
+Vessels of Wrath
+Archslaughterer 25 pts
+Avenger’s Crown 15 pts
+Gateways to Glory 10 pts
+Vox-diabolus 20 pts
+38
+LEGENDS FIELD MANUAL
+WARHAMMER LEGENDS
+The points values shown below are for all of your favourite Warhammer Legends datasheets and are designed to be used
+in Legends Approved battles. Before playing a Legends Approved battle, remember to confirm with all players or event
+organisers if Warhammer Legends datasheets will be in play.
+You can use the points values of the following Legends units with units and points values from the Munitorum Field Manual
+when assembling your armies. You can learn more about using points to muster your army on pages 55-56 of the Core Rules.
+ADEPTA SORORITAS
+Battle Sanctum
+1 model 170 pts
+Celestian Sacresant Aveline
+1 model 45 pts
+Crusaders
+2 models 40 pts
+4 models 80 pts
+Death Cult Assassins
+2 models 55 pts
+4 models 110 pts
+Repressor
+1 model 130 pts
+39
+ADEPTUS MECHANICUS
+Secutarii Hoplites
+5 models 65 pts
+10 models 130 pts
+Secutarii Peltasts
+5 models 50 pts
+10 models 100 pts
+Servitors
+4 models 50 pts
+Terrax-pattern Termite
+1 model 200 pts
+X-101
+1 model 40 pts
+40
+AELDARI
+Amallyn Shadowguide
+1 model 75 pts
+Autarch Skyrunner
+1 model 90 pts
+Bonesinger
+1 model 45 pts
+Cobra
+1 model 415 pts
+Corsair Cloud Dancer Band
+3 models 105 pts
+4 models 140 pts
+6 models 210 pts
+7 models 245 pts
+Corsair Reaver Band
+5 models 125 pts
+6 models 150 pts
+10 models 250 pts
+11 models 275 pts
+Corsair Skyreaver Band
+5 models 125 pts
+6 models 150 pts
+10 models 250 pts
+11 models 275 pts
+Firestorm
+1 model 115 pts
+Hornet
+1 model 100 pts
+Illic Nightspear
+1 model 70 pts
+Irillyth
+1 model 105 pts
+Karandras
+1 model 90 pts
+Lynx
+1 model 180 pts
+Nightwing
+1 model 150 pts
+Phoenix
+1 model 175 pts
+Prince Yriel
+1 model 100 pts
+Scorpion
+1 model 410 pts
+Skathach Wraithknight
+1 model 490 pts
+Shadow Spectres
+5 Shadow Spectres 115 pts
+10 Shadow Spectres 230 pts
+Shadow Spectre Exarch +30 pts
+Vampire Hunter
+1 model 460 pts
+Vampire Raider
+1 model 430 pts
+Warp Hunter
+1 model 145 pts
+Wasp Assault Walkers
+1 model 95 pts
+Webway Gate
+2 models 105 pts
+Wraithseer
+1 model 160 pts
+41
+ASTRA MILITARUM
+Aquila Lander
+1 model 120 pts
+Arkurian Stormhammer
+1 model 480 pts
+Armageddon-pattern Medusa
+1 model 105 pts
+Arvus Lighter
+1 model 95 pts
+Atlas Recovery Vehicle
+1 model 80 pts
+Carnadon
+1 model 160 pts
+Centaur Light Carrier
+1 model 40 pts
+Colossus
+1 model 160 pts
+Crassus
+1 model 180 pts
+Death Korps Grenadier Squad
+10 models 110 pts
+Death Rider Commissar
+1 model 35 pts
+Dominus Armoured Siege Bombard
+1 model 325 pts
+Earthshaker Carriage Battery
+1 model 120 pts
+Earthshaker Platform
+1 model 110 pts
+Elysian Drop Sentinel
+1 model 85 pts
+Elysian Sniper Squad
+3 models 65 pts
+Gorgon Heavy Transport
+1 model 275 pts
+Griffon Mortar Carrier
+1 model 115 pts
+Hades Breaching Drill
+1 model 110 pts
+Heavy Mortar Team
+1 model 50 pts
+Heavy Quad Launcher Team
+1 model 50 pts
+Hydra Platform
+1 model 95 pts
+‘Iron Hand’ Straken
+1 model 55 pts
+Macharius
+1 model 310 pts
+Macharius Omega
+1 model 310 pts
+Macharius Vanquisher
+1 model 285 pts
+Macharius Vulcan
+1 model 310 pts
+Malcador
+1 model 250 pts
+Malcador Annihilator
+1 model 270 pts
+Malcador Defender
+1 model 310 pts
+Malcador Infernus
+1 model 235 pts
+Manticore Platform
+1 model 95 pts
+Marauder Bomber
+1 model 345 pts
+Marauder Destroyer
+1 model 375 pts
+Medusa Carriage Battery
+1 model 125 pts
+Minotaur
+1 model 225 pts
+Mukaali Riders
+3 models 110 pts
+Munitorum Servitors
+4 models 35 pts
+Praetor
+1 model 275 pts
+Provisionally Prepared
+1 model 40 pts
+Quartermaster Cadre Squad
+5 models 45 pts
+Rapier Laser Destroyer Battery
+1 model 35 pts
+2 models 70 pts
+3 models 105 pts
+Regimental Attachés
+3 models 40 pts
+Rein and Raus
+2 models 50 pts
+Sabre Weapons Battery
+1 model 45 pts
+2 models 90 pts
+Salamander Command Vehicle
+1 model 80 pts
+Salamander Scout Vehicle
+1 model 95 pts
+Sentinel Powerlifter
+1 model 55 pts
+Sergeant Harker
+1 model 40 pts
+Stormblade
+1 model 415 pts
+Storm Chimera
+1 model 90 pts
+Stygies Destroyer Tank Hunter
+1 model 180 pts
+Tarantula Battery
+1 model 40 pts
+2 models 80 pts
+3 models 120 pts
+Tauros Assault Vehicle
+1 model 50 pts
+Tauros Venator
+1 model 50 pts
+Trojan Support Vehicle
+1 model 80 pts
+Valdor
+1 model 285 pts
+Valkyrie Sky Talon
+1 model 185 pts
+Vendetta Gunship
+1 model 255 pts
+Voss-pattern Lightning
+1 model 130 pts
+Vulture Gunship
+1 model 225 pts
+42
+CHAOS DAEMONS
+Aetaos’rau’keres
+1 model 315 pts
+An’ggrath the Unbound
+1 model 415 pts
+Exalted Seeker Chariot
+1 model 115 pts
+Furies
+5 models 40 pts
+10 models 80 pts
+Giant Chaos Spawn
+1 model 130 pts
+Hellflayer
+1 model 105 pts
+2 models 210 pts
+Herald of Slaanesh on Steed of Slaanesh
+1 model 70 pts
+Karanak
+1 model 65 pts
+Plague Toads
+3 models 120 pts
+Pox Riders
+3 models 160 pts
+Scabeiathrax the Bloated
+1 model 275 pts
+Seeker Chariot
+1 model 65 pts
+2 models 130 pts
+Spined Chaos Beast
+1 model 145 pts
+Tormentbringer on Exalted Seeker Chariot
+1 model 140 pts
+Zarakynel
+1 model 320 pts
+43
+CHAOS SPACE MARINES
+Blood Slaughterer
+1 model 160 pts
+Chaos Deimos Predator
+1 model 115 pts
+Chaos Lord on Bike
+1 model 95 pts
+Chaos Lord on Disc of Tzeentch
+1 model 100 pts
+Chaos Lord on Juggernaut
+1 model 115 pts
+Chaos Lord on Palanquin of Nurgle
+1 model 90 pts
+Chaos Lord on Steed of Slaanesh
+1 model 100 pts
+Chaos Thunderhawk
+1 model 840 pts
+Cultist Mob with Firearms
+10 models 50 pts
+20 models 100 pts
+Decimator
+1 model 165 pts
+Dreadclaw Drop Pod
+1 model 115 pts
+Exalted Champion
+1 model 70 pts
+Gellerpox Infected
+7 models 125 pts
+Greater Blight Drone
+1 model 150 pts
+Greater Brass Scorpion
+1 model 500 pts
+Hell Blade
+1 model 115 pts
+Hell Talon
+1 model 140 pts
+Kharybdis Assault Claw
+1 model 300 pts
+Kytan Ravager
+1 model 400 pts
+Mutilators
+3 models 185 pts
+Mutoid Vermin
+16 models 85 pts
+Negavolt Cultists
+4 models 55 pts
+Renegade Enforcer
+1 model 65 pts
+Renegade Heavy Weapons Squad
+3 models 75 pts
+Renegade Ogryn Beast Handler
+4 models 40 pts
+7 models 70 pts
+Renegade Ogryn Brutes
+3 models 95 pts
+Renegade Plague Ogryns
+3 models 95 pts
+Rogue Psyker
+1 model 60 pts
+Sorcerer on Bike
+1 model 75 pts
+Sorcerer on Disc of Tzeentch
+1 model 80 pts
+Sorcerer on Palanquin of Nurgle
+1 model 80 pts
+Sorcerer on Steed of Slaanesh
+1 model 85 pts
+44
+DEATH GUARD
+Death Guard Chaos Lord
+1 model 65 pts
+Death Guard Chaos Lord in Terminator Armour
+1 model 85 pts
+Death Guard Cultists
+10 models 50 pts
+20 models 100 pts
+Death Guard Possessed
+5 models 155 pts
+10 models 310 pts
+Death Guard Sorcerer in Terminator Armour
+1 model 70 pts
+45
+DRUKHARI
+Beastmaster
+7 models 135 pts
+Court of the Archon
+4 models 95 pts
+Grotesques
+3 models 80 pts
+6 models 170 pts
+Raven Strike Fighter
+1 model 170 pts
+Reaper
+1 model 115 pts
+Tantalus
+1 model 230 pts
+Urien Rakarth
+1 model 80 pts
+46
+GENESTEALER CULTS
+Tectonic Fragdrill
+1 model 125 pts
+47
+GREY KNIGHTS
+Brother-Captain Stern
+1 model 90 pts
+Grey Knights Dreadnought
+1 model 160 pts
+Grey Knights Relic Razorback
+1 model 95 pts
+Kaldor Draigo
+1 model 125 pts
+48
+IMPERIAL AGENTS
+Damned Legionnaires
+5 models 90 pts
+10 models 180 pts
+Daemonhost
+1 model 40 pts
+2 models 80 pts
+Deathwatch Terminator Squad
+5 models 210 pts
+10 models 420 pts
+Fortis Kill Team
+5 models 100 pts
+10 models 200 pts
+Indomitor Kill Team
+5 models 120 pts
+10 models 240 pts
+Inquisitor Eisenhorn
+1 model 65 pts
+Inquisitor in Terminator Armour
+1 model 70 pts
+Inquisitor Karamazov
+1 model 140 pts
+Inquisitor Ostromandeus
+2 models 65 pts
+Janus Draik
+1 model 40 pts
+Jokaero Weaponsmith
+1 model 30 pts
+Kill Team Cassius
+11 models 220 pts
+Neyam Shai Murad
+1 model 40 pts
+Proteus Kill Team
+5 models 160 pts
+10 models 320 pts
+Spectrus Kill Team
+5 models 90 pts
+10 models 180 pts
+UR-025
+1 model 55 pts
+Veteran Bike Squad
+3 models 70 pts
+6 models 140 pts
+49
+NECRONS
+Anrakyr the Traveller
+1 model 95 pts
+Canoptek Acanthrites
+3 models 85 pts
+6 models 170 pts
+Canoptek Tomb Sentinel
+1 model 115 pts
+Canoptek Tomb Stalker
+1 model 130 pts
+Gauss Pylon
+1 model 210 pts
+Lord
+1 model 65 pts
+Nemesor Zahndrekh
+1 model 85 pts
+Night Shroud
+1 model 140 pts
+Sentry Pylons
+1 model 120 pts
+Tesseract Ark
+1 model 130 pts
+Vargard Obyron
+1 model 85 pts
+50
+ORKS
+Attack Fighta
+1 model 100 pts
+Big Gunz
+1 model 20 pts
+2 models 40 pts
+Big Mek on Warbike
+1 model 105 pts
+Big Mek with Kustom Force Field
+1 model 55 pts
+Big Trakk
+1 model 90 pts
+Boss Zagstruk
+1 model 90 pts
+Chinork Warkopta
+1 model 105 pts
+Da Red Gobbo
+1 model 40 pts
+Deff Rolla Battle Fortress
+1 model 250 pts
+Deffkoptas with Big Shootas
+3 models 130 pts
+Fighta-Bommer
+1 model 100 pts
+Grot Bomm Launcha
+1 model 50 pts
+Grot Mega-tank
+1 model 110 pts
+Grot Tanks
+4 models 155 pts
+8 models 310 pts
+Kannonwagon
+1 model 115 pts
+Kaptin Badrukk
+1 model 80 pts
+Kill Krusha
+1 model 230 pts
+Kill Tank
+1 model 295 pts
+Lifta Wagon
+1 model 135 pts
+Mad Dok Grotsnik
+1 model 65 pts
+Mega Dread
+1 model 225 pts
+Meka-dread
+1 model 210 pts
+Mekboy Workshop
+1 model 80 pts
+Nob with Waaagh! Banner
+1 model 70 pts
+Nobz on Warbikes
+3 models 125 pts
+Painboy on Warbike
+1 model 85 pts
+Skorchas
+1 model 45 pts
+2 models 90 pts
+Squiggoth
+1 model 150 pts
+Ufthak Blackhawk
+1 model 70 pts
+Warboss on Warbike
+1 model 75 pts
+Warbuggies
+1 model 40 pts
+2 models 80 pts
+Wartrakks
+1 model 50 pts
+2 models 100 pts
+51
+SPACE MARINES
+Ancient on Bike
+1 model 90 pts
+Apothecary on Bike
+1 model 65 pts
+Assault Squad
+5 models 95 pts
+10 models 190 pts
+Assault Squad with Jump Packs
+5 models 115 pts
+10 models 230 pts
+Astartes Servitors
+4 models 55 pts
+Attack Bike Squad
+1 model 55 pts
+2 models 110 pts
+3 models 165 pts
+Bike Squad
+3 models 80 pts
+6 models 160 pts
+Attack Bike +55 pts
+Caestus Assault Ram
+1 model 215 pts
+Captain on Bike
+1 model 95 pts
+Carab Culln the Risen
+1 model 250 pts
+Cerberus
+1 model 270 pts
+Chaplain Cassius
+1 model 80 pts
+Chaplain Venerable Dreadnought
+1 model 150 pts
+Command Squad
+5 models 165 pts
+Company Champion on Bike
+1 model 60 pts
+Company Veterans on Bikes
+2 models 110 pts
+5 models 275 pts
+Deathstorm Drop Pod
+1 model 95 pts
+Deimos Predator
+1 model 115 pts
+Deredeo Dreadnought
+1 model 160 pts
+Dreadnought Drop Pod
+1 model 75 pts
+Falchion
+1 model 420 pts
+Fellblade
+1 model 480 pts
+Fire Raptor Gunship
+1 model 290 pts
+Hunter
+1 model 100 pts
+Imperial Space Marine
+1 model 40 pts
+Ironclad Dreadnought
+1 model 150 pts
+Javelin Attack Speeder
+1 model 110 pts
+Kratos
+1 model 240 pts
+Land Raider Achilles
+1 model 230 pts
+Land Raider Excelsior
+1 model 250 pts
+Land Raider Helios
+1 model 220 pts
+Land Raider Prometheus
+1 model 250 pts
+Land Raider Proteus
+1 model 220 pts
+Land Speeder
+1 model 80 pts
+Land Speeder Storm
+1 model 70 pts
+Land Speeder Tempest
+1 model 95 pts
+Land Speeder Tornado
+1 model 95 pts
+Land Speeder Typhoon
+1 model 100 pts
+Leviathan Dreadnought
+1 model 160 pts
+Librarian on Bike
+1 model 80 pts
+Librarian with Jump Pack
+1 model 75 pts
+Mastodon
+1 model 540 pts
+Mortis Dreadnought
+1 model 130 pts
+Primaris Company Champion
+1 model 55 pts
+Rapier Carrier
+1 model 90 pts
+Relic Contemptor Dreadnought
+1 model 140 pts
+Relic Razorback
+1 model 105 pts
+Relic Terminator Squad
+5 models 200 pts
+10 models 400 pts
+Rhino Primaris
+1 model 95 pts
+Scout Bike Squad
+3 models 75 pts
+6 models 150 pts
+Scout Sniper Squad
+5 models 75 pts
+10 models 150 pts
+Sergeant Chronus
+1 model 75 pts
+Sergeant Telion
+1 model 70 pts
+Sicaran Arcus
+1 model 160 pts
+Sicaran Battle Tank
+1 model 160 pts
+Sicaran Omega
+1 model 180 pts
+Sicaran Punisher
+1 model 160 pts
+Sicaran Venator
+1 model 180 pts
+Sokar-pattern Stormbird
+1 model 900 pts
+Spartan
+1 model 300 pts
+Stalker
+1 model 140 pts
+Storm Eagle Gunship
+1 model 250 pts
+Tarantula Air Defence Battery
+1 model 70 pts
+Tarantula Sentry Battery
+1 model 30 pts
+2 models 60 pts
+3 models 90 pts
+Techmarine on Bike
+1 model 110 pts
+Terminus Ultra
+1 model 285 pts
+Terrax-pattern Termite
+1 model 200 pts
+52
+Thunderfire Cannon
+2 models 90 pts
+Thunderhawk Transporter
+1 model 495 pts
+Typhon
+1 model 320 pts
+Tyrannic War Veterans
+5 models 85 pts
+Vanguard Veteran Squad
+5 models 120 pts
+10 models 240 pts
+Venerable Dreadnought
+1 model 165 pts
+Vindicator Laser Destroyer
+1 model 175 pts
+Whirlwind Scorpius
+1 model 115 pts
+Xiphon Interceptor
+1 model 115 pts
+BLOOD ANGELS
+Brother Corbulo
+1 model 75 pts
+Captain Tycho
+1 model 75 pts
+Death Company Dreadnought
+with Magna-grapple
+1 model 145 pts
+Death Company Marines with Boltguns
+5 models 125 pts
+10 models 250 pts
+Death Company Marines with Boltguns
+and Jump Packs
+5 models 140 pts
+10 models 280 pts
+Furioso Dreadnought
+1 model 150 pts
+Gabriel Seth
+1 model 90 pts
+Librarian Dreadnought
+1 model 170 pts
+Sanguinary Priest on Bike
+1 model 135 pts
+Sanguinary Priest with Jump Pack
+1 model 100 pts
+Tycho the Lost
+1 model 90 pts
+BLACK TEMPLARS
+Crusader Squad
+1 Sword Brother and 4 Initiates 85 pts
+1 Sword Brother and 9 Initiates 150 pts
+1 Sword Brother, 4 Initiates
+and 5 Neophytes 135 pts
+1 Sword Brother, 9 Initiates
+and 10 Neophytes 290 pts
+DARK ANGELS
+Deathwing Command Squad
+5 models 200 pts
+10 models 400 pts
+Deathwing Strikemaster
+1 model 80 pts
+Ravenwing Talonmaster
+1 model 105 pts
+SPACE WOLVES
+Canis Wolfborn
+1 model 75 pts
+Cyberwolf
+1 model 20 pts
+Harald Deathwolf
+1 model 85 pts
+Krom Dragongaze
+1 model 65 pts
+Iron Priest on Thunderwolf
+1 model 95 pts
+Logan Grimnar on Stormrider
+1 model 180 pts
+Lukas the Trickster
+1 model 50 pts
+Skyclaws
+5 models 90 pts
+10 models 165 pts
+15 models 240 pts
+Stormfang Gunship
+1 model 300 pts
+Stormwolf
+1 model 250 pts
+Wolf Guard
+5 models 85 pts
+10 models 170 pts
+Wolf Guard Battle Leader
+in Terminator Armour
+1 model 75 pts
+Wolf Guard Battle Leader on Thunderwolf
+1 model 80 pts
+Wolf Guard Pack Leader
+1 model 30 pts
+Wolf Guard Pack Leader in Terminator Armour
+1 model 40 pts
+Wolf Guard Pack Leader with Jump Pack
+1 model 35 pts
+Wolf Lord on Thunderwolf
+1 model 100 pts
+ULTRAMARINES
+Ferren Aerios
+1 model 80 pts
+Ultramarines Honour Guard
+4 models 155 pts
+53
+T’AU EMPIRE
+Aun’Shi
+1 model 50 pts
+Aun’Va
+3 models 65 pts
+Barracuda
+1 model 220 pts
+Commander in Crisis Battlesuit
+1 model 80 pts
+Crisis Battlesuits
+3 models 200 pts
+6 models 400 pts
+Drone Sentry Turret
+1 model 50 pts
+Great Knarloc
+1 model 100 pts
+Heavy Gun Drones
+2 models 45 pts
+Knarloc Riders
+3 models 110 pts
+Longstrike
+1 model 140 pts
+Orca Dropship
+1 model 275 pts
+Remora Stealth Drones
+2 models 160 pts
+Remote Sensor Tower
+1 model 50 pts
+R’varna Battlesuit
+1 model 200 pts
+Shas’o R’alai
+1 model 80 pts
+Tetras
+2 models 80 pts
+4 models 160 pts
+TX42 Piranha
+1 model 60 pts
+XV9 Hazard Battlesuits
+1 model 55 pts
+2 models 110 pts
+Y’vahra Battlesuit
+1 model 210 pts
+54
+TYRANIDS
+Barbed Hierodule
+1 model 340 pts
+Dimachaeron
+1 model 200 pts
+Malanthrope
+1 model 75 pts
+Scythed Hierodule
+1 model 330 pts
+Sky-slasher Swarms
+3 models 60 pts
+55
+UNALIGNED FORCES
+Aegis Defence Line with
+Weapon Emplacement
+1 model 145 pts
+Ambull
+1 model 85 pts
+Bastion
+1 model 275 pts
+Firestorm Redoubt
+1 model 260 pts
+Fortress of Redemption
+1 model 480 pts
+Guardian Drone
+1 model 45 pts
+Macro-cannon Aquila Strongpoint
+1 model 550 pts
+Plasma Obliterator
+1 model 225 pts
+Primaris Redoubt
+1 model 220 pts
+Skyshield Landing Pad
+1 model 125 pts
+Spindle Drones
+4 models 35 pts
+The Archivist
+1 model 70 pts
+Vengeance Weapon Battery
+1 model 140 pts
+Void Shield Generator
+1 model 155 pts
+Vortex Missile Strongpoint
+1 model 525 pts
+Wall of Martyrs Bunker
+1 model 180 pts
+Wall of Martyrs Defence Emplacement
+1 model 140 pts
+Wall of Martyrs Defence Line
+1 model 140 pts
+2 models 280 pts
+56

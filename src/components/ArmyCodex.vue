@@ -60,7 +60,9 @@ const groupedUnits = computed(() => {
   }
 
   if (codexStore.enhancements.sizes.length) {
-    const detachmentDisplayName = getBoardingActionsDisplayName(armyListStore.detachment).toLowerCase();
+    const detachmentDisplayName = getBoardingActionsDisplayName(
+      armyListStore.detachment
+    ).toLowerCase();
     const groupedEnhancements = {};
 
     codexStore.enhancements.sizes.forEach((enhancement) => {
@@ -71,12 +73,14 @@ const groupedUnits = computed(() => {
       groupedEnhancements[category].push(enhancement);
     });
 
-    const enhancementUnits = Object.entries(groupedEnhancements).map(([category, sizes]) => ({
-      name: category,
-      displayName: category,
-      sizes,
-      enhancements: true,
-    }));
+    const enhancementUnits = Object.entries(groupedEnhancements).map(
+      ([category, sizes]) => ({
+        name: category,
+        displayName: category,
+        sizes,
+        enhancements: true,
+      })
+    );
 
     if (enhancementUnits.length) {
       data.push({
@@ -133,7 +137,7 @@ function onScrollWheel(e) {
       </template>
       <template v-else>
         <div class="codex__no-units">
-          Forge World units are hidden, you can show them in the options
+          Some units are hidden, enable them in the options
         </div>
       </template>
     </div>

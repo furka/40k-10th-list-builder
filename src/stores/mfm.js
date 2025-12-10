@@ -1,17 +1,18 @@
-import { defineStore } from 'pinia';
-import { parse } from '../utils/data-reader';
-import deepFreeze from 'deep-freeze';
+import { defineStore } from "pinia";
+import { parse } from "../utils/data-reader";
+import deepFreeze from "deep-freeze";
 
 import MFM29 from "../data/munitorum-field-manual/MFM2.9.txt?raw";
 import MFM32 from "../data/munitorum-field-manual/MFM3.2.txt?raw";
 import MFM33 from "../data/munitorum-field-manual/MFM3.3.txt?raw";
 import MFM34 from "../data/munitorum-field-manual/MFM3.4.txt?raw";
 import MFM35 from "../data/munitorum-field-manual/MFM3.5.txt?raw";
+import MFM37 from "../data/munitorum-field-manual/MFM3.7.txt?raw";
 
-export const useMfmStore = defineStore('mfm', () => {
+export const useMfmStore = defineStore("mfm", () => {
   const MFM = {};
 
-  const imports = [MFM29, MFM32, MFM33, MFM34, MFM35];
+  const imports = [MFM29, MFM32, MFM33, MFM34, MFM35, MFM37];
 
   imports.forEach((mod) => {
     const { FACTIONS, DATA_SHEETS, MFM_VERSION } = parse(mod);
@@ -73,7 +74,9 @@ export const useMfmStore = defineStore('mfm', () => {
     } else {
       // If faction provided, prioritize units from that faction
       if (faction) {
-        data_sheet = mfm.DATA_SHEETS.find((d) => d.name === unit.name && d.faction === faction);
+        data_sheet = mfm.DATA_SHEETS.find(
+          (d) => d.name === unit.name && d.faction === faction
+        );
       }
 
       // Fallback to any unit with matching name
