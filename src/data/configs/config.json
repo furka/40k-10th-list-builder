@@ -259,6 +259,12 @@
       "Spectrus Kill Team",
       "Veteran Bike Squad",
       "ur-025"
+    ],
+    "endless-enhancements": [
+      "Decoy Targets",
+      "Esoteric Explosives",
+      "Intraneural Biotech",
+      "Micromelta Rounds"
     ]
   },
   "ASTRA MILITARUM": {
@@ -941,6 +947,12 @@
       "Night Shroud",
       "Tesseract Ark",
       "Vargard Obyron"
+    ],
+    "endless-enhancements": [
+      "Animus Damper",
+      "Quantum Goad",
+      "Reletavistic Tether",
+      "Singularity Matrix"
     ]
   },
   "ORKS": {

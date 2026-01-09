@@ -15,6 +15,7 @@ import { useCollectionStore } from "../stores/collection";
 import { useMfmStore } from "../stores/mfm";
 import { useCodexStore } from "../stores/codex";
 import { useAppStore } from "../stores/app";
+import { isEndlessEnhancement } from "../utils/endless-enhancement";
 
 const armyListStore = useArmyListStore();
 const collectionStore = useCollectionStore();
@@ -95,20 +96,18 @@ const count = computed(() => {
 });
 
 const maxed = computed(() => {
-  const max = unitMax(
-    props.dataSheet,
-    armyListStore.isBoardingActions
-  );
+  const max = unitMax(props.dataSheet, armyListStore.isBoardingActions);
 
   if (armyListStore.isBoardingActions) {
     // For enhancements in boarding actions, limit is based on non-epic characters
     if (props.dataSheet.enhancements) {
-      return armyListStore.totalEnhancementsCount >= armyListStore.nonEpicCharacterCount;
+      return (
+        armyListStore.totalEnhancementsCount >=
+        armyListStore.nonEpicCharacterCount
+      );
     }
 
-    const slotFull = isBoardingActionsSlotFull(
-      props.dataSheet.name
-    );
+    const slotFull = isBoardingActionsSlotFull(props.dataSheet.name);
 
     return count.value >= max || slotFull;
   }
@@ -121,10 +120,15 @@ const max = computed(() => {
   if (props.dataSheet.enhancements && armyListStore.isBoardingActions) {
     return armyListStore.nonEpicCharacterCount;
   }
-  return unitMax(
-    props.dataSheet,
-    armyListStore.isBoardingActions
-  );
+
+  if (
+    props.dataSheet.enhancements &&
+    props.dataSheet.sizes.map((o) => isEndlessEnhancement(o)).some((i) => i)
+  ) {
+    return Infinity;
+  }
+
+  return unitMax(props.dataSheet, armyListStore.isBoardingActions);
 });
 
 const hasOwned = computed(() => {
@@ -179,6 +183,9 @@ function enoughInCollection(option) {
 }
 
 function enhancementTaken(enhancement) {
+  if (isEndlessEnhancement(enhancement)) {
+    return false;
+  }
   return armyListStore.enhancementsTaken.has(enhancement.name);
 }
 
@@ -215,9 +222,7 @@ function optionAvailable(option) {
 
 const disabledReason = computed(() => {
   if (armyListStore.isBoardingActions && max.value === 0) {
-    return getBoardingActionsErrorMessage(
-      props.dataSheet.name
-    );
+    return getBoardingActionsErrorMessage(props.dataSheet.name);
   }
   return null;
 });
@@ -235,16 +240,11 @@ const disabledReason = computed(() => {
       :style="appStore.showPointsChanges ? `background-color: ${color};` : ''"
     >
       <span class="data-sheet__name">
-        <template v-if="count > -1"> {{ count }}/{{ max }}</template>
+        <template v-if="max === Infinity"></template>
+        <template v-else-if="count > -1"> {{ count }}/{{ max }}</template>
         {{ props.dataSheet.displayName || props.dataSheet.name }}
         <template v-if="appStore.group === GROUP_NONE">
-          <span
-            v-if="
-              isBattleLine(
-                props.dataSheet
-              )
-            "
-            title="Battleline"
+          <span v-if="isBattleLine(props.dataSheet)" title="Battleline"
             >[B]</span
           >
           <span v-if="props.dataSheet.character" title="Character">[C]</span>
@@ -259,9 +259,7 @@ const disabledReason = computed(() => {
         <span v-if="props.dataSheet.legends" title="Legends">[L]</span>
       </span>
 
-      <label
-        v-if="!props.dataSheet.enhancements && appStore.editCollection"
-      >
+      <label v-if="!props.dataSheet.enhancements && appStore.editCollection">
         Models owned:
         <input
           class="data-sheet__owned"

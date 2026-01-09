@@ -1,19 +1,19 @@
-import { defineStore } from 'pinia';
-import { computed, ref } from 'vue';
-import { useMfmStore } from './mfm';
-import { useAppStore } from './app';
-import { nameEquals, normalizeString } from '../utils/name-match';
-import unitNameAliases from '../data/configs/unit-name-aliases.json';
+import { defineStore } from "pinia";
+import { computed, ref } from "vue";
+import { useMfmStore } from "./mfm";
+import { useAppStore } from "./app";
+import { nameEquals, normalizeString } from "../utils/name-match";
+import unitNameAliases from "../data/configs/unit-name-aliases.json";
 import {
   sortDataSheetAlphabetical,
   sortDataSheetPtsAscending,
   sortDataSheetPtsDescending,
-} from '../utils/sort-functions';
-import { SORT_CHEAPEST_FIRST, SORT_EXPENSIVE_FIRST } from '../data/constants';
-import { BOARDING_ACTIONS } from '../data/configs';
-import { isBoardingActionsDetachment } from '../utils/boarding-actions';
+} from "../utils/sort-functions";
+import { SORT_CHEAPEST_FIRST, SORT_EXPENSIVE_FIRST } from "../data/constants";
+import { BOARDING_ACTIONS } from "../data/configs";
+import { isBoardingActionsDetachment } from "../utils/boarding-actions";
 
-export const useCodexStore = defineStore('codex', () => {
+export const useCodexStore = defineStore("codex", () => {
   const mfmStore = useMfmStore();
   const appStore = useAppStore();
 
@@ -37,7 +37,8 @@ export const useCodexStore = defineStore('codex', () => {
 
     compendium.value.forEach((sheet) => {
       const normalizedName = normalizeString(sheet.name);
-      const isCurrentFaction = sheet.faction === faction.value || sheet.faction === subFaction.value;
+      const isCurrentFaction =
+        sheet.faction === faction.value || sheet.faction === subFaction.value;
 
       // Add to faction map if it's current faction
       if (isCurrentFaction) {
@@ -50,7 +51,7 @@ export const useCodexStore = defineStore('codex', () => {
       // Also add entries for all aliases
       const aliases = unitNameAliases[sheet.name];
       if (aliases) {
-        aliases.forEach(alias => {
+        aliases.forEach((alias) => {
           const normalizedAlias = normalizeString(alias);
           if (isCurrentFaction) {
             factionMap.set(normalizedAlias, sheet);
@@ -66,7 +67,8 @@ export const useCodexStore = defineStore('codex', () => {
   // Get filtered compendium based on faction, subfaction, detachment, and UI filters
   const filteredCompendium = computed(() => {
     let sheets = compendium.value.filter((unit) => {
-      const factionMatch = unit.faction === faction.value || unit.faction === subFaction.value;
+      const factionMatch =
+        unit.faction === faction.value || unit.faction === subFaction.value;
 
       // If no detachment or unit has no detachment, just use faction match
       if (!detachment.value || !unit.detachment) {
@@ -74,27 +76,29 @@ export const useCodexStore = defineStore('codex', () => {
       }
 
       // For boarding actions, also check detachment match
-      const detachmentMatch = unit.detachment?.toLowerCase() === detachment.value?.toLowerCase();
+      const detachmentMatch =
+        unit.detachment?.toLowerCase() === detachment.value?.toLowerCase();
 
       return factionMatch && detachmentMatch;
     });
 
     // Apply boarding actions filtering
-    const isBoardingActions = detachment.value && isBoardingActionsDetachment(detachment.value);
+    const isBoardingActions =
+      detachment.value && isBoardingActionsDetachment(detachment.value);
     if (isBoardingActions) {
       const config = BOARDING_ACTIONS[faction.value]?.[detachment.value];
       if (config?.units) {
         // Build a lookup map for boarding actions units, including aliases
         const unitConfigMap = new Map();
-        config.units.forEach(slot => {
-          slot.options.forEach(option => {
+        config.units.forEach((slot) => {
+          slot.options.forEach((option) => {
             const normalizedOptionName = normalizeString(option.name);
             unitConfigMap.set(normalizedOptionName, option);
           });
         });
 
         sheets = sheets
-          .map(sheet => {
+          .map((sheet) => {
             const normalizedSheetName = normalizeString(sheet.name);
             let unitConfig = unitConfigMap.get(normalizedSheetName);
 
@@ -117,16 +121,16 @@ export const useCodexStore = defineStore('codex', () => {
               return sheet;
             }
 
-            const filteredSizes = sheet.sizes.filter(size =>
+            const filteredSizes = sheet.sizes.filter((size) =>
               unitConfig.models.includes(size.models)
             );
 
             return {
               ...sheet,
-              sizes: filteredSizes.length > 0 ? filteredSizes : sheet.sizes
+              sizes: filteredSizes.length > 0 ? filteredSizes : sheet.sizes,
             };
           })
-          .filter(sheet => sheet !== null);
+          .filter((sheet) => sheet !== null);
       } else {
         sheets = [];
       }
@@ -163,8 +167,8 @@ export const useCodexStore = defineStore('codex', () => {
 
   // Get enhancements filtered by current detachment
   const enhancements = computed(() => {
-    const enhancementsSheet = compendium.value.find(
-      (sheet) => nameEquals(sheet.name, "Enhancements")
+    const enhancementsSheet = compendium.value.find((sheet) =>
+      nameEquals(sheet.name, "Enhancements")
     );
 
     if (!enhancementsSheet) {
@@ -211,8 +215,10 @@ export const useCodexStore = defineStore('codex', () => {
 
     const normalized = normalizeString(unitName);
     // Try faction map first (prioritizes current faction), then fall back to all units
-    return compendiumByName.value.factionMap.get(normalized) ||
-           compendiumByName.value.allUnitsMap.get(normalized);
+    return (
+      compendiumByName.value.factionMap.get(normalized) ||
+      compendiumByName.value.allUnitsMap.get(normalized)
+    );
   }
 
   return {

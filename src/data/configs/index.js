@@ -10,6 +10,7 @@ export const CONFIGS = {
   character: [],
   conditional: {},
   fortification: [],
+  "endless-enhancements": [],
 };
 
 export const BOARDING_ACTIONS = boardingActionsConfig;
@@ -20,8 +21,12 @@ for (const key in configs) {
   CONFIGS["battle-line"].push(
     ...config["battle-line"].map((i) => normalizeString(i))
   );
-  CONFIGS["character"].push(...config["character"].map((i) => normalizeString(i)));
-  CONFIGS["epic-hero"].push(...config["epic-hero"].map((i) => normalizeString(i)));
+  CONFIGS["character"].push(
+    ...config["character"].map((i) => normalizeString(i))
+  );
+  CONFIGS["epic-hero"].push(
+    ...config["epic-hero"].map((i) => normalizeString(i))
+  );
   CONFIGS["dedicated-transport"].push(
     ...config["dedicated-transport"].map((i) => normalizeString(i))
   );
@@ -35,10 +40,17 @@ for (const key in configs) {
   if (config["sub-faction"]) {
     CONFIGS["sub-factions"][key] = config["sub-faction"];
   }
+
   if (config["conditional"]) {
     CONFIGS["conditional"] = {
       ...CONFIGS["conditional"],
       ...config["conditional"],
     };
+  }
+
+  if (config["endless-enhancements"]) {
+    CONFIGS["endless-enhancements"].push(
+      ...config["endless-enhancements"].map((i) => normalizeString(i))
+    );
   }
 }

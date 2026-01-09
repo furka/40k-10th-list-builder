@@ -1,24 +1,29 @@
-import { defineStore } from 'pinia';
-import { computed, ref, watch, reactive } from 'vue';
-import { isBoardingActionsDetachment, getBoardingActionsErrorMessage, isBoardingActionsSlotFull } from '../utils/boarding-actions';
-import { save, restore } from '../utils/localStorage';
-import { useMfmStore } from './mfm';
-import { useCodexStore } from './codex';
-import { unitMax } from '../utils/unit-max';
-import { nameEquals } from '../utils/name-match';
+import { defineStore } from "pinia";
+import { computed, ref, watch, reactive } from "vue";
+import {
+  isBoardingActionsDetachment,
+  getBoardingActionsErrorMessage,
+  isBoardingActionsSlotFull,
+} from "../utils/boarding-actions";
+import { save, restore } from "../utils/localStorage";
+import { useMfmStore } from "./mfm";
+import { useCodexStore } from "./codex";
+import { unitMax } from "../utils/unit-max";
+import { nameEquals } from "../utils/name-match";
+import { isEndlessEnhancement } from "../utils/endless-enhancement";
 
-export const useArmyListStore = defineStore('armyList', () => {
+export const useArmyListStore = defineStore("armyList", () => {
   const mfmStore = useMfmStore();
   const codexStore = useCodexStore();
-  const name = ref('');
-  const faction = ref('');
-  const detachment = ref('');
+  const name = ref("");
+  const faction = ref("");
+  const detachment = ref("");
   const subFaction = ref(null);
   const maxPoints = ref(2000);
-  const mfm_version = ref('');
-  const version = ref('');
+  const mfm_version = ref("");
+  const version = ref("");
   const modifiedDate = ref(Date.now());
-  const sortOrder = ref('');
+  const sortOrder = ref("");
   const units = ref([]);
 
   const isBoardingActions = computed(() => {
@@ -37,6 +42,9 @@ export const useArmyListStore = defineStore('armyList', () => {
   const unitCounts = computed(() => {
     const counts = {};
     units.value.forEach((unit) => {
+      if (isEndlessEnhancement({ name: unit.optionName })) {
+        return;
+      }
       if (!unit.bonus) {
         counts[unit.name] = (counts[unit.name] || 0) + 1;
       }
@@ -66,7 +74,10 @@ export const useArmyListStore = defineStore('armyList', () => {
     let count = 0;
     units.value.forEach((unit) => {
       const datasheet = codexStore.getDataSheet(unit.name);
-      if (datasheet?.enhancements || (!datasheet && unit.optionName && !unit.models)) {
+      if (
+        datasheet?.enhancements ||
+        (!datasheet && unit.optionName && !unit.models)
+      ) {
         count++;
       }
     });
@@ -84,7 +95,6 @@ export const useArmyListStore = defineStore('armyList', () => {
     return count;
   });
 
-
   function getUnitValidationError(unit) {
     if (unit.error) {
       return "Invalid Unit";
@@ -93,8 +103,13 @@ export const useArmyListStore = defineStore('armyList', () => {
     const datasheet = codexStore.getDataSheet(unit.name);
 
     // Check if this is an enhancement - either by checking the datasheet or by having an optionName but no datasheet
-    if (datasheet?.enhancements || (!datasheet && unit.optionName && !unit.models)) {
-      const availableEnhancements = codexStore.enhancements.sizes.map((e) => e.name);
+    if (
+      datasheet?.enhancements ||
+      (!datasheet && unit.optionName && !unit.models)
+    ) {
+      const availableEnhancements = codexStore.enhancements.sizes.map(
+        (e) => e.name
+      );
       if (!availableEnhancements.includes(unit.optionName)) {
         return "Enhancement not available in this detachment";
       }
@@ -136,7 +151,7 @@ export const useArmyListStore = defineStore('armyList', () => {
 
       // Check if this unit violates slot exceptions by checking if the slot
       // would be full WITHOUT this unit. If so, this unit is invalid.
-      const unitsExcludingThis = units.value.filter(u => u.id !== unit.id);
+      const unitsExcludingThis = units.value.filter((u) => u.id !== unit.id);
       const slotFull = isBoardingActionsSlotFull(unit.name, unitsExcludingThis);
 
       if (slotFull) {
@@ -151,14 +166,13 @@ export const useArmyListStore = defineStore('armyList', () => {
     return false;
   }
 
-
   function addUnit(unit) {
     units.value = [unit, ...units.value];
     modifiedDate.value = Date.now();
   }
 
   function removeUnit(id) {
-    units.value = units.value.filter(u => u.id !== id);
+    units.value = units.value.filter((u) => u.id !== id);
     modifiedDate.value = Date.now();
   }
 
@@ -167,15 +181,15 @@ export const useArmyListStore = defineStore('armyList', () => {
   }
 
   function setList(list) {
-    name.value = list.name || '';
-    faction.value = list.faction || '';
-    detachment.value = list.detachment || '';
+    name.value = list.name || "";
+    faction.value = list.faction || "";
+    detachment.value = list.detachment || "";
     subFaction.value = list.subFaction || null;
     maxPoints.value = list.maxPoints || 2000;
-    mfm_version.value = list.mfm_version || '';
-    version.value = list.version || '';
+    mfm_version.value = list.mfm_version || "";
+    version.value = list.version || "";
     modifiedDate.value = list.modifiedDate || Date.now();
-    sortOrder.value = list.sortOrder || '';
+    sortOrder.value = list.sortOrder || "";
     units.value = list.units || [];
   }
 
@@ -195,7 +209,7 @@ export const useArmyListStore = defineStore('armyList', () => {
   }
 
   function loadFromStorage(defaultList = null) {
-    const savedList = restore('currentList');
+    const savedList = restore("currentList");
     if (savedList) {
       setList(savedList);
     } else if (defaultList) {
@@ -206,7 +220,7 @@ export const useArmyListStore = defineStore('armyList', () => {
   watch(
     () => toObject(),
     (currentList) => {
-      save('currentList', currentList);
+      save("currentList", currentList);
     },
     { deep: true }
   );
