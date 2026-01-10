@@ -9,6 +9,7 @@ import { useCodexStore } from "../stores/codex";
 import { useAppStore } from "../stores/app";
 import { GROUP_NONE } from "../data/constants";
 import { isBattleLine } from "../utils/is-battleline";
+import { isDedicatedTransport } from "../utils/is-dedicated-transport";
 import { getBoardingActionsDisplayName } from "../utils/boarding-actions";
 
 const armyListStore = useArmyListStore();
@@ -47,7 +48,7 @@ const groupedUnits = computed(() => {
         characters.units.push(sheet);
       } else if (isBattleLine(sheet)) {
         battleLine.units.push(sheet);
-      } else if (sheet.dedicatedTransport) {
+      } else if (isDedicatedTransport(sheet)) {
         transports.units.push(sheet);
       } else if (sheet.forgeWorld) {
         forgeWorld.units.push(sheet);
