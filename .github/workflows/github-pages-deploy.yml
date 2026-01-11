@@ -37,6 +37,26 @@ jobs:
           cache: "npm"
       - name: Install dependencies
         run: npm install
+      - name: Run tests
+        id: tests
+        continue-on-error: true
+        run: |
+          npm test -- --reporter=json --outputFile=test-results.json || true
+          npm test -- --reporter=verbose 2>&1 | tee test-output.txt || true
+
+          if grep -q "Tests.*failed" test-output.txt; then
+            echo "outcome=failure" >> $GITHUB_OUTPUT
+          else
+            echo "outcome=success" >> $GITHUB_OUTPUT
+          fi
+
+          PASSED=$(grep -oP '\d+(?= passed)' test-output.txt | tail -1 || echo "0")
+          FAILED=$(grep -oP '\d+(?= failed)' test-output.txt | tail -1 || echo "0")
+          TOTAL=$((PASSED + FAILED))
+
+          echo "passed=${PASSED:-0}" >> $GITHUB_OUTPUT
+          echo "failed=${FAILED:-0}" >> $GITHUB_OUTPUT
+          echo "total=${TOTAL:-0}" >> $GITHUB_OUTPUT
       - name: Build
         run: npm run build
       - name: Get version from package.json
@@ -79,14 +99,22 @@ jobs:
       - name: Send Discord notification
         if: success()
         run: |
+          if [ "${{ steps.tests.outputs.outcome }}" == "success" ]; then
+            TEST_STATUS="++UNIT TESTS: ${{ steps.tests.outputs.passed }}/${{ steps.tests.outputs.total }} PASSED++"
+          else
+            TEST_STATUS="++WARNING: UNIT TESTS: ${{ steps.tests.outputs.failed }}/${{ steps.tests.outputs.total }} FAILED++"
+          fi
+
           PAYLOAD=$(jq -n \
             --arg content "++DEPLOYMENT PROTOCOLS: COMPLETE++
           ++OMNISSIAH BE PRAISED++
           ++VERSION: ${{ steps.package-version.outputs.version }}++
+          ${TEST_STATUS}
 
           <${{ steps.deployment.outputs.page_url }}>
 
-          📦 Data-Vault Archive: <${{ steps.create-release.outputs.url }}>" \
+          📦 Data-Vault Archive: <${{ steps.create-release.outputs.url }}>
+          📋 Test Results: <https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}>" \
             '{content: $content}')
 
           curl -H "Content-Type: application/json" -d "$PAYLOAD" ${{ secrets.DISCORD_WEBHOOK_URL }}

@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 import { GROUP_NONE, SORT_EXPENSIVE_FIRST } from "../data/constants";
 import { sortOptionsPtsDescending } from "../utils/sort-functions";
 import { isBattleLine } from "../utils/is-battleline";
+import { isDedicatedTransport } from "../utils/is-dedicated-transport";
 import { unitMax } from "../utils/unit-max";
 import {
   isBoardingActionsSlotFull,
@@ -249,7 +250,7 @@ const disabledReason = computed(() => {
           >
           <span v-if="props.dataSheet.character" title="Character">[C]</span>
           <span
-            v-if="props.dataSheet.dedicatedTransport"
+            v-if="isDedicatedTransport(props.dataSheet)"
             title="Dedicated Transport"
             >[T]</span
           >
