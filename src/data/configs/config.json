@@ -116,6 +116,7 @@
       "Irillyth",
       "Jain Zar",
       "Karandras",
+      "Kharseth",
       "Lhykhis",
       "Maugan Ra",
       "Prince Yriel",
@@ -141,6 +142,7 @@
       "Irillyth",
       "Jain Zar",
       "Karandras",
+      "Kharseth",
       "Lhykhis",
       "Maugan Ra",
       "Prince Yriel",
@@ -599,6 +601,7 @@
       "Lord Discordant on Helstalker",
       "Master of Executions",
       "Master of Possession",
+      "Red Corsairs Reave-Captain",
       "Renegade Enforcer",
       "Rogue Psyker",
       "Sorcerer",
@@ -617,6 +620,7 @@
       "Fabius Bile",
       "Haarken Worldclaimer",
       "Huron Blackheart",
+      "Masters of the Maelstrom",
       "Vashtorr the Arkifane"
     ],
     "dedicated-transport": ["Chaos Rhino"],
@@ -872,6 +876,7 @@
     "battle-line": ["Hearthkyn Warriors"],
     "character": [
       "Arkanyst Evaluator",
+      "Berehk Stornbröw",
       "Brôkhyr Iron-master",
       "Buri Aegnirssen",
       "Einhyr Champion",
@@ -880,7 +885,7 @@
       "Memnyr Strategist",
       "Ûthar the Destined"
     ],
-    "epic-hero": ["Buri Aegnirssen", "Ûthar the Destined"],
+    "epic-hero": ["Berehk Stornbröw", "Buri Aegnirssen", "Ûthar the Destined"],
     "dedicated-transport": ["Kapricus Carrier", "Sagitaur"],
     "fortification": [],
     "legends": [],
@@ -1056,7 +1061,6 @@
       "Captain in Phobos Armour",
       "Captain in Terminator Armour",
       "Captain on Bike",
-      "Captain Sicarius",
       "Captain Titus",
       "Captain with Jump Pack",
       "Captain",
@@ -1086,7 +1090,6 @@
       "Lieutenant with Combi-weapon",
       "Lieutenant",
       "Marneus Calgar in Armour of Antilochus",
-      "Marneus Calgar",
       "Pedro Kantor",
       "Primaris Company Champion",
       "Roboute Guilliman",
@@ -1103,7 +1106,6 @@
       "Aethon Shaan",
       "Caanok Var",
       "Captain on Bike",
-      "Captain Sicarius",
       "Captain Titus",
       "Carab Culln the Risen",
       "Cato Sicarius",
@@ -1115,7 +1117,6 @@
       "Kor’sarro Khan",
       "Lieutenant Titus",
       "Marneus Calgar in Armour of Antilochus",
-      "Marneus Calgar",
       "Pedro Kantor",
       "Roboute Guilliman",
       "Sergeant Chronus",
@@ -1269,14 +1270,16 @@
       "Kroot Trail Shaper",
       "Kroot War Shaper",
       "Longstrike",
-      "Shas'o R'alai"
+      "Shas'o R'alai",
+      "The Twin Lance"
     ],
     "epic-hero": [
       "Aun'Shi",
       "Commander Farsight",
       "Commander Shadowsun",
       "Darkstrider",
-      "Longstrike"
+      "Longstrike",
+      "The Twin Lance"
     ],
     "dedicated-transport": ["Devilfish"],
     "fortification": [
@@ -1340,6 +1343,7 @@
       "Parasite of Mortrex",
       "Tervigon",
       "The Swarmlord",
+      "Tyranid Prime with Lash Whip",
       "Winged Hive Tyrant",
       "Winged Tyranid Prime"
     ],
