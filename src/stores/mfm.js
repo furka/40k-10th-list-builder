@@ -10,11 +10,12 @@ import MFM35 from "../data/munitorum-field-manual/MFM3.5.txt?raw";
 import MFM37 from "../data/munitorum-field-manual/MFM3.7.txt?raw";
 import MFM38 from "../data/munitorum-field-manual/MFM3.8.txt?raw";
 import MFM40 from "../data/munitorum-field-manual/MFM4.0.txt?raw";
+import MFM41 from "../data/munitorum-field-manual/MFM4.1.txt?raw";
 
 export const useMfmStore = defineStore("mfm", () => {
   const MFM = {};
 
-  const imports = [MFM29, MFM32, MFM33, MFM34, MFM35, MFM37, MFM38, MFM40];
+  const imports = [MFM29, MFM32, MFM33, MFM34, MFM35, MFM37, MFM38, MFM40, MFM41];
 
   imports.forEach((mod) => {
     const { FACTIONS, DATA_SHEETS, MFM_VERSION } = parse(mod);

@@ -152,10 +152,7 @@ The core data structure is built around parsing official Warhammer 40K points do
 - **Version Manager**: `src/utils/mfm.js` - Imports all MFM versions, provides `MFM.CURRENT`, `MFM.LATEST`, `MFM.PREVIOUS`
 - **Upgrades**: `src/utils/update-list-mfm.js` - Handles upgrading saved lists to new MFM versions, detecting point changes
 
-When adding a new MFM version:
-1. Add the raw text file to `src/data/munitorum-field-manual/`
-2. Import it in `src/utils/mfm.js` and add to imports array
-3. Add any necessary text fixes to `src/data/munitorum-field-manual/fixes.js`
+When adding a new MFM version, see `src/data/munitorum-field-manual/README.md` for the full step-by-step process (diffing, classifying new units, updating configs, importing, and verifying).
 
 ### Component Structure
 

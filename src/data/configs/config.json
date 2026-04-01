@@ -70,9 +70,10 @@
       "Tech-Priest Enginseer",
       "Tech-Priest Manipulus",
       "Technoarcheologist",
+      "Thulia Ghuld",
       "x-101"
     ],
-    "epic-hero": ["Belisarius Cawl", "x-101"],
+    "epic-hero": ["Belisarius Cawl", "Thulia Ghuld", "x-101"],
     "dedicated-transport": ["Skorpius Dunerider", "Terrax-pattern Termite"],
     "fortification": [],
     "legends": [
@@ -612,7 +613,8 @@
       "Sorcerer on Steed of Slaanesh",
       "Traitor Enforcer",
       "Vashtorr the Arkifane",
-      "Warpsmith"
+      "Warpsmith",
+      "Warsmith Kravek Morne"
     ],
     "epic-hero": [
       "Abaddon the Despoiler",
@@ -621,7 +623,8 @@
       "Haarken Worldclaimer",
       "Huron Blackheart",
       "Masters of the Maelstrom",
-      "Vashtorr the Arkifane"
+      "Vashtorr the Arkifane",
+      "Warsmith Kravek Morne"
     ],
     "dedicated-transport": ["Chaos Rhino"],
     "fortification": ["Noctilith Crown"],
@@ -849,6 +852,7 @@
       "Knight Castellan",
       "Knight Crusader",
       "Knight Defender",
+      "Knight Destrier",
       "Knight Errant",
       "Knight Gallant",
       "Knight Paladin",
