@@ -63,4 +63,8 @@ when assembling your armies. You can learn more about using points to muster you
     in: `UR-025`,
     out: `ur-025`,
   },
+  {
+    in: `Cermite Sentinels`,
+    out: `Ceramite Sentinels`,
+  },
 ];

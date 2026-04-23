@@ -11,6 +11,7 @@
       "Dogmata",
       "Hospitaller",
       "Imagifier",
+      "Intranzia Fraye",
       "Junith Eruita",
       "Ministorum Priest",
       "Morvenn Vahl",
@@ -22,6 +23,7 @@
       "Aestred Thurga and Agathae Dolan",
       "Celestian Sacresant Aveline",
       "Daemonifuge",
+      "Intranzia Fraye",
       "Junith Eruita",
       "Morvenn Vahl",
       "Saint Celestine",
@@ -208,6 +210,7 @@
       "Inquisitor Greyfax",
       "Inquisitor in Terminator Armour",
       "Inquisitor Karamazov",
+      "Inquisitor Kroyle",
       "Inquisitor Ostromandeus",
       "Inquisitor",
       "Janus Draik",
@@ -231,6 +234,7 @@
       "Inquisitor Eisenhorn",
       "Inquisitor Greyfax",
       "Inquisitor Karamazov",
+      "Inquisitor Kroyle",
       "Inquisitor Ostromandeus",
       "Janus Draik",
       "Kill Team Cassius",
@@ -281,6 +285,8 @@
       "Cadian Command Squad",
       "Catachan Command Squad",
       "Commissar",
+      "Commissar Graves on Foot",
+      "Commissar Yarrick",
       "Death Rider Commissar",
       "Gaunt’s Ghosts",
       "Krieg Command Squad",
@@ -303,6 +309,9 @@
       "‘Iron Hand’ Straken"
     ],
     "epic-hero": [
+      "Commissar Graves",
+      "Commissar Graves on Foot",
+      "Commissar Yarrick",
       "Gaunt’s Ghosts",
       "Lord Marshal Dreir",
       "Lord Solar Leontus",
@@ -315,6 +324,7 @@
       "‘Iron Hand’ Straken"
     ],
     "dedicated-transport": [
+      "Centaur RSV",
       "Chimera",
       "Storm Chimera",
       "Taurox",
@@ -991,6 +1001,7 @@
       "Warboss",
       "Warboss in Mega Armour",
       "Warboss on Warbike",
+      "Wazdakka Gutsmek",
       "Weirdboy",
       "Wurrboy",
       "Zodgrod Wortsnagga"
@@ -1004,6 +1015,7 @@
       "Mad Dok Grotsnik",
       "Mozrog Skragbad",
       "Ufthak Blackhawk",
+      "Wazdakka Gutsmek",
       "Zodgrod Wortsnagga"
     ],
     "dedicated-transport": ["Trukk"],
