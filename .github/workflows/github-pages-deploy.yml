@@ -62,6 +62,12 @@ jobs:
       - name: Get version from package.json
         id: package-version
         run: echo "version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
+      - name: Get latest MFM version
+        id: mfm-version
+        run: |
+          LATEST_MFM=$(ls src/data/munitorum-field-manual/MFM*.txt | sort -V | tail -1)
+          MFM_VERSION=$(sed -n '3p' "$LATEST_MFM" | tr -d '\r' | sed 's/^VERSION //')
+          echo "version=$MFM_VERSION" >> $GITHUB_OUTPUT
       - name: Get commits since last release
         id: commits
         run: |
@@ -108,6 +114,7 @@ jobs:
           PAYLOAD=$(jq -n \
             --arg content "++DEPLOYMENT PROTOCOLS: COMPLETE++
           ++OMNISSIAH BE PRAISED++
+          ++MUNITORUM FIELD MANUAL ${{ steps.mfm-version.outputs.version }}++
           ++VERSION: ${{ steps.package-version.outputs.version }}++
           ${TEST_STATUS}
 
