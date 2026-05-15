@@ -1358,12 +1358,13 @@
       "Old One Eye",
       "Parasite of Mortrex",
       "Tervigon",
+      "The Red Terror",
       "The Swarmlord",
       "Tyranid Prime with Lash Whip",
       "Winged Hive Tyrant",
       "Winged Tyranid Prime"
     ],
-    "epic-hero": ["Deathleaper", "Old One Eye", "The Swarmlord"],
+    "epic-hero": ["Deathleaper", "Old One Eye", "The Red Terror", "The Swarmlord"],
     "dedicated-transport": ["Tyrannocyte"],
     "fortification": [],
     "legends": [
