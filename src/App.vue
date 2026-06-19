@@ -18,6 +18,7 @@ import {
 import AppToolBar from "./components/AppToolBar.vue";
 import CodexToolBar from "./components/CodexToolBar.vue";
 import VersionBar from "./components/VersionBar.vue";
+import EditionNoticeBar from "./components/EditionNoticeBar.vue";
 import { deserializeList } from "./utils/serialize-list";
 import PACKAGE from "../package.json";
 import { BOARDING_ACTIONS, CONFIGS } from "./data/configs";
@@ -33,6 +34,14 @@ const appStore = useAppStore();
 const appData = reactive({
   boardingActions: BOARDING_ACTIONS,
 });
+
+const editionNoticeDismissed = ref(
+  sessionStorage.getItem("editionNoticeDismissed") === "true"
+);
+function dismissEditionNotice() {
+  editionNoticeDismissed.value = true;
+  sessionStorage.setItem("editionNoticeDismissed", "true");
+}
 
 
 const factions = computed(() => {
@@ -256,7 +265,11 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="app">
+  <div class="app" :class="{ 'app--with-notice': !editionNoticeDismissed }">
+    <EditionNoticeBar
+      v-if="!editionNoticeDismissed"
+      @dismiss="dismissEditionNotice"
+    />
     <AppToolBar class="app__toolbar" />
     <CodexToolBar class="app__codex-toolbar" />
     <div class="app__body">
@@ -272,10 +285,15 @@ onUnmounted(() => {
 .app {
   --font-family: Calibri, sans-serif;
   --toolbar-height: 44px;
+  --edition-notice-height: 0px;
   background-color: #111;
   font-family: var(--font-family);
   position: relative;
   overflow: hidden;
+
+  &--with-notice {
+    --edition-notice-height: 32px;
+  }
 
   &__toolbar {
     height: var(--toolbar-height);
@@ -287,7 +305,7 @@ onUnmounted(() => {
 
   &__body {
     display: flex;
-    height: calc(100svh - (var(--toolbar-height) * 2) - 20px);
+    height: calc(100svh - (var(--toolbar-height) * 2) - 20px - var(--edition-notice-height));
     justify-content: center;
     position: relative;
     z-index: 1;
